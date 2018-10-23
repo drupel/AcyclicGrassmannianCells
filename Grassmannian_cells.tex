@@ -186,8 +186,22 @@ For $i,j\in Q_0$ and $m\in\ZZ_{\ge0}$, set $\Irr(P_{i,m},P_{j,m})=\tau^{-m}\Irr(
 \end{lemma}
 
 \begin{proposition}
-  For $i\in Q_0$ and $m\in\ZZ_{\ge0}$, there exists an Auslander-Reiten sequence
-  \[\ses{P_{i,m}}{\bigoplus_{k\in Q_1(-,i)} P_{k,m}\otimes\Irr(P_{k,m},P_{i,m+1})\oplus\bigoplus_{j\in Q_1(i,-)} P_{j,m+1}\otimes \Irr(P_{j,m+1},P_{i,m+1})}{P_{i,m+1}}.\] 
+  For $i\in Q_0$ and $m\in\ZZ_{\ge0}$, the following hold:
+  \begin{enumerate}
+    \item there exists an Auslander-Reiten sequence
+      \begin{equation}
+        \label{eq:preprojective ar}
+        \ses{P_{i,m}}{\bigoplus\limits_{k\in Q_1(-,i)} P_{k,m}\otimes\Irr(P_{k,m},P_{i,m+1})\oplus\bigoplus\limits_{j\in Q_1(i,-)} P_{j,m+1}\otimes \Irr(P_{j,m+1},P_{i,m+1})}{P_{i,m+1}};
+      \end{equation}
+    \item if there exists an Auslander-Reiten sequence
+      \[\ses{P_{\ell,m-1}}{P_{i,m}}{P_{\ell,m}}\] 
+      with $\ell\in Q_1(-,i)$ and $\dim\Irr(P_{\ell,m},P_{i,m+1})=1$, then the sequence \eqref{eq:preprojective ar} induces an Auslander-Reiten sequence
+      \[\ses{P_{\ell,m-1}}{\bigoplus\limits_{\substack{k\in Q_1(-,i)\\ k\ne\ell}} P_{k,m}\otimes\Irr(P_{k,m},P_{i,m+1})\oplus\bigoplus\limits_{j\in Q_1(i,-)} P_{j,m+1}\otimes \Irr(P_{j,m+1},P_{i,m+1})}{P_{i,m+1}};\] 
+    \item if there exists an Auslander-Reiten sequence
+      \[\ses{P_{\ell,m}}{P_{i,m}}{P_{\ell,m+1}}\] 
+      with $\ell\in Q_1(i,-)$ and $\dim\Irr(P_{\ell,m+1},P_{i,m+1})=1$, then the sequence \eqref{eq:preprojective ar} induces an Auslander-Reiten sequence
+      \[\ses{P_{\ell,m}}{\bigoplus\limits_{k\in Q_1(-,i)} P_{k,m}\otimes\Irr(P_{k,m},P_{i,m+1})\oplus\bigoplus\limits_{\substack{j\in Q_1(i,-)\\ j\ne\ell}} P_{j,m+1}\otimes \Irr(P_{j,m+1},P_{i,m+1})}{P_{i,m+1}}.\] 
+  \end{enumerate}
 \end{proposition}
 
 
