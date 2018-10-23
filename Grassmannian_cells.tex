@@ -80,7 +80,9 @@
 \newcommand{\Hom}{\operatorname{Hom}}
 \renewcommand{\Im}{\operatorname{Im}}
 \newcommand{\Ind}{\mathrm{Ind}}
+\newcommand{\Irr}{\operatorname{Irr}}
 \newcommand{\pt}{\mathrm{pt}}
+\newcommand{\Rad}{\operatorname{Rad}}
 \newcommand{\Rep}{\mathrm{Rep}}
 \newcommand{\rep}{\operatorname{rep}}
 \newcommand{\rk}{\mathrm{rk}}
@@ -98,7 +100,7 @@
 \title{Cell Decompositions for Acyclic Quiver Grassmannians}
 
 \author{Dylan Rupel}
-\address[Dylan Rupel]{University of Notre Dame, Department of Mathematics, Notre Dame, IN 46556, USA}
+\address[Dylan Rupel]{Michigan State University, Department of Mathematics, 619 Red Cedar Road, C212 Wells Hall, East Lansing, MI 48824}
 \email{drupel@nd.edu}
 \author{Thorsten Weist}
 \address[Thorsten Weist]{Bergische Universit\"at Wuppertal, Gau\ss str.\ 20, 42097 Wuppertal, Germany}
@@ -158,6 +160,35 @@ Then there is a map
 given by forgetting the summands of a subrepresentation $E\subset X$ which do not lie in $\cC(X_i,X_{i+1})$.
 
 What can we say about the fibers of this map?
+
+\section{Truncated Preprojectives}
+
+Let $Q=(Q_0,Q_1,s,t)$ be an acyclic quiver.
+For $i,j\in Q_0$, we introduce the following notation:
+\begin{itemize}
+  \item $Q_1(i,-)$ is the set of arrows $\alpha\in Q_1$ with $s(\alpha)=i$;
+  \item $Q_1(-,j)$ is the set of arrows $\alpha\in Q_1$ with $t(\alpha)=j$;
+  \item $Q_1(i,j)=Q_1(i,-)\cap Q_1(-,j)$ is the set of arrows $\alpha\in Q_1$ with $s(\alpha)=i$ and $t(\alpha)=j$;
+  \item write $q_{ij}=|Q_1(i,j)|$.
+\end{itemize}
+
+For $i\in Q_0$, write $P_i$ for the projective cover of the simple $S_i$.
+For $i,j\in Q_0$, write $\Irr(P_i,P_j)\subset\Hom(P_i,P_j)$ for the subspace of morphisms which have no nontrivial factorization through a projective $P_k$ with $k\ne i,j$. 
+\begin{lemma}
+  For $i,j\in Q_0$, we have $\dim\Irr(P_j,P_i)=q_{ij}$.
+\end{lemma}
+
+The preprojective representations $P_{i,m}$ for $i\in Q_0$ and $m\in\ZZ_{\ge0}$ are defined inductively by
+\[P_{i,0}=P_i,\qquad P_{i,m+1}=\tau^{-1} P_{i,m}.\]
+For $i,j\in Q_0$ and $m\in\ZZ_{\ge0}$, set $\Irr(P_{i,m},P_{j,m})=\tau^{-m}\Irr(P_i,P_j)$ and write $\Irr(P_{i,m},P_{j,m+1})\subset\Hom(P_{i,m},P_{j,m+1})$ for the subspace of morphisms which do not admit a nontrivial factorization through a preprojective $P_{k,m}$ nor through $P_{k,m+1}$ with $k\ne i,j$.
+\begin{lemma}
+  For $i,j\in Q_0$ and $m\in\ZZ_{\ge0}$, we have $\dim\Irr(P_{i,m},P_{j,m+1})=q_{ij}$.
+\end{lemma}
+
+\begin{proposition}
+  For $i\in Q_0$ and $m\in\ZZ_{\ge0}$, there exists an Auslander-Reiten sequence
+  \[\ses{P_{i,m}}{\bigoplus_{k\in Q_1(-,i)} P_{k,m}\otimes\Irr(P_{k,m},P_{i,m+1})\oplus\bigoplus_{j\in Q_1(i,-)} P_{j,m+1}\otimes \Irr(P_{j,m+1},P_{i,m+1})}{P_{i,m+1}}.\] 
+\end{proposition}
 
 
 
