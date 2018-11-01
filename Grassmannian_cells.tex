@@ -61,8 +61,12 @@
 \newcommand{\cC}{\mathcal{C}}
 \newcommand{\cG}{\mathcal{G}}
 \newcommand{\cH}{\mathcal{H}}
+\newcommand{\cI}{\mathcal{I}}
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
 
 \newcommand{\ui}{{\underline i}}
 \newcommand{\uj}{{\underline j}}
@@ -117,16 +121,25 @@
 \setcounter{tocdepth}{2}
 
 \maketitle
-
 \tableofcontents
+
 %%%%%%%%%%%%%%%%%%%%%%
+
 \section{Introduction}
 
 \subsubsection*{Acknowledgements}
 We would like to thank Giovanni Cerulli Irelli, Hans Franzen, Oliver Lorscheid and Markus Reineke for very fruitful discussions related to this project.
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Notation}
+\begin{itemize}
+  \item Given two tuples $x=(x_1,\ldots,x_n)$ and $y=(y_1,\ldots,y_m)$, we write $x\frown y$ for their concatenation $(x_1,\ldots,x_n,y_1,\ldots,y_m)$. (better notation?)
+  \item Given two tuples of vector spaces $\cU=(U_1,\ldots,U_n)$ and $\cW=(W_1,\ldots,W_n)$, we write $\cU\subset\cW$ if $U_i$ is a subspace of $W_i$ for each $i$ and $\cU\subsetneq\cW$ if at least one of these subspaces is proper.
+  \item Given two tuples of vector spaces $\cU=(U_1,\ldots,U_n)$ and $\cW=(W_1,\ldots,W_n)$, we write $\cU\bullet\cW$ for $\bigoplus_{i=1}^n U_i\otimes W_i$. (better notation?)
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Exceptional sequences}
 
@@ -161,6 +174,9 @@ given by forgetting the summands of a subrepresentation $E\subset X$ which do no
 
 What can we say about the fibers of this map?
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Truncated Preprojectives}
 
 Let $Q=(Q_0,Q_1,s,t)$ be an acyclic quiver.
@@ -185,38 +201,81 @@ For $i,j\in Q_0$ and $m\in\ZZ_{\ge0}$, set $\Irr(P_{i,m},P_{j,m})=\tau^{-m}\Irr(
   For $i,j\in Q_0$ and $m\in\ZZ_{\ge0}$, we have $\dim\Irr(P_{i,m},P_{j,m+1})=q_{ij}$.
 \end{lemma}
 
+For $i\in Q_0$ and $m\in\ZZ_{\ge0}$, consider the tuple of representations $\cP_{i,m}=\big(P_{k,m}\big)_{k\in Q_1(-,i)} \frown\big(P_{j,m+1}\big)_{j\in Q_1(i,-)}$ and the tuple of vector spaces $\cI_{i,m}=\big(\Irr(P_{k,m},P_{i,m+1})\big)_{k\in Q_1(-,i)} \frown\big(\Irr(P_{j,m+1},P_{i,m+1}\big)_{j\in Q_1(i,-)}$.
+
 \begin{proposition}
+  \label{prop:standard AR sequences}
   For $i\in Q_0$ and $m\in\ZZ_{\ge0}$, the following hold:
   \begin{enumerate}
     \item there exists an Auslander-Reiten sequence
       \begin{equation}
-        \label{eq:preprojective ar}
-        \ses{P_{i,m}}{\bigoplus\limits_{k\in Q_1(-,i)} P_{k,m}\otimes\Irr(P_{k,m},P_{i,m+1})\oplus\bigoplus\limits_{j\in Q_1(i,-)} P_{j,m+1}\otimes \Irr(P_{j,m+1},P_{i,m+1})}{P_{i,m+1}};
+        \label{eq:preprojective AR}
+        \ses{P_{i,m}}{\cP_{i,m}\bullet\cI_{i,m}}{P_{i,m+1}};
       \end{equation}
+      %\begin{equation}
+      %  \label{eq:preprojective AR}
+      %  \ses{P_{i,m}}{\bigoplus\limits_{k\in Q_1(-,i)} P_{k,m}\otimes\Irr(P_{k,m},P_{i,m+1})\oplus\bigoplus\limits_{j\in Q_1(i,-)} P_{j,m+1}\otimes \Irr(P_{j,m+1},P_{i,m+1})}{P_{i,m+1}};
+      %\end{equation}
     \item if there exists an Auslander-Reiten sequence
       \[\ses{P_{\ell,m-1}}{P_{i,m}}{P_{\ell,m}}\] 
-      with $\ell\in Q_1(-,i)$ and $\dim\Irr(P_{\ell,m},P_{i,m+1})=1$, then the sequence \eqref{eq:preprojective ar} induces an Auslander-Reiten sequence
-      \[\ses{P_{\ell,m-1}}{\bigoplus\limits_{\substack{k\in Q_1(-,i)\\ k\ne\ell}} P_{k,m}\otimes\Irr(P_{k,m},P_{i,m+1})\oplus\bigoplus\limits_{j\in Q_1(i,-)} P_{j,m+1}\otimes \Irr(P_{j,m+1},P_{i,m+1})}{P_{i,m+1}};\] 
+      with $\ell\in Q_1(-,i)$ and $\dim\Irr(P_{\ell,m},P_{i,m+1})=1$, then the sequence \eqref{eq:preprojective AR} induces an Auslander-Reiten sequence
+      \begin{equation}
+        \label{eq:reduced AR 1}
+        \ses{P_{\ell,m-1}}{\cP_{i,m}\bullet\cI_{i,m}^{\{\ell\}}}{P_{i,m+1}};
+      \end{equation}
+      %\begin{equation}
+      %  \label{eq:reduced AR 1}
+      %  \ses{P_{\ell,m-1}}{\bigoplus\limits_{\substack{k\in Q_1(-,i)\\ k\ne\ell}} P_{k,m}\otimes\Irr(P_{k,m},P_{i,m+1})\oplus\bigoplus\limits_{j\in Q_1(i,-)} P_{j,m+1}\otimes \Irr(P_{j,m+1},P_{i,m+1})}{P_{i,m+1}};
+      %\end{equation}
     \item if there exists an Auslander-Reiten sequence
       \[\ses{P_{\ell,m}}{P_{i,m}}{P_{\ell,m+1}}\] 
-      with $\ell\in Q_1(i,-)$ and $\dim\Irr(P_{\ell,m+1},P_{i,m+1})=1$, then the sequence \eqref{eq:preprojective ar} induces an Auslander-Reiten sequence
-      \[\ses{P_{\ell,m}}{\bigoplus\limits_{k\in Q_1(-,i)} P_{k,m}\otimes\Irr(P_{k,m},P_{i,m+1})\oplus\bigoplus\limits_{\substack{j\in Q_1(i,-)\\ j\ne\ell}} P_{j,m+1}\otimes \Irr(P_{j,m+1},P_{i,m+1})}{P_{i,m+1}}.\] 
+      with $\ell\in Q_1(i,-)$ and $\dim\Irr(P_{\ell,m+1},P_{i,m+1})=1$, then the sequence \eqref{eq:preprojective AR} induces an Auslander-Reiten sequence
+      \begin{equation}
+        \label{eq:reduced AR 2}
+        \ses{P_{\ell,m}}{\cP_{i,m}\bullet\cI_{i,m}^{\{\ell\}}}{P_{i,m+1}};
+      \end{equation}
+      %\begin{equation}
+      %  \label{eq:reduced AR 2}
+      %  \ses{P_{\ell,m}}{\bigoplus\limits_{k\in Q_1(-,i)} P_{k,m}\otimes\Irr(P_{k,m},P_{i,m+1})\oplus\bigoplus\limits_{\substack{j\in Q_1(i,-)\\ j\ne\ell}} P_{j,m+1}\otimes \Irr(P_{j,m+1},P_{i,m+1})}{P_{i,m+1}}.
+      %\end{equation}
   \end{enumerate}
 \end{proposition}
 \begin{proof}
+  Part (1) can be reduced to the case $m=0$ by applying Auslander-Reiten translations and then to the case where vertex $i$ is a sink in $Q$ using BGP-reflection functors (APR-tilting).
+  Thus it suffices to establish the existence of an Auslander-Reiten sequence 
+  \[\ses{P_{i,m}}{\bigoplus\limits_{k\in Q_1(-,i)} P_{k,m}\otimes\Irr(P_{k,m},P_{i,m+1})}{P_{i,m+1}}\]
+  when $i\in Q_0$ is a sink.
+
   To see part (2), we consider the commutative diagram:
   \[\xymatrix{
       0 \ar[d] & 0 \ar[d] \\
-      P_{\ell,m-1} \ar[d]\ar[r]\ar@{}[dr]|(.7){\lrcorner} & \bigoplus\limits_{\substack{k\in Q_1(-,i)\\ k\ne\ell}} P_{k,m}\otimes\Irr(P_{k,m},P_{i,m+1})\oplus\bigoplus\limits_{j\in Q_1(i,-)} P_{j,m+1}\otimes \Irr(P_{j,m+1},P_{i,m+1}) \ar[d] \\
-      P_{i,m} \ar[d]\ar[r] & \bigoplus\limits_{k\in Q_1(-,i)} P_{k,m}\otimes\Irr(P_{k,m},P_{i,m+1})\oplus\bigoplus\limits_{j\in Q_1(i,-)} P_{j,m+1}\otimes \Irr(P_{j,m+1},P_{i,m+1}) \ar[d] \\
+      P_{\ell,m-1} \ar[d]\ar[r]\ar@{}[dr]|(.7){\lrcorner} & \cP_{i,m}\bullet\cI_{i,m}^{\{\ell\}} \ar[d] \\
+      P_{i,m} \ar[d]\ar[r] & \cP_{i,m}\bullet\cI_{i,m} \ar[d] \\
       P_{\ell,m} \ar@{=}[r]\ar[d] & P_{\ell,m} \ar[d] \\
       0 & 0}\]
   Since the lower morphism is an equality, the top square is a pushout.
   It follows that the cokernels of the two upper horizontal morphisms are equal, giving the claim.
 \end{proof}
 
+\begin{lemma}
+  For any $\cV\subsetneq\cI_{i,m}$, the natural map $\cP_{i,m}\bullet\cV\to P_{i,m+1}$ is injective (assuming we are not in cases (2) or (3) of Proposition~\ref{prop:standard AR sequences}, otherwise $\cI_{i,m}$ should be replaced by $\cI_{i,m}^{\{\ell\}}$).
+\end{lemma}
+\begin{definition}
+  For $i\in Q_0$, $m\in\ZZ_{\ge0}$, and $\cV\subsetneq\cI_{i,m}$, define the \emph{truncated preprojective} representation $P_{i,m+1}^\cV=P_{i,m+1}/\cP_{i,m}\bullet\cV$.
+\end{definition}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{$\CC^*$-equivariant Caldero-Chapoton Maps}
+The ideas presented here assume that we have already constructed a cell decomposition by combining the Bia\l{}ynicki-Birula cells coming from $\CC^*$-actions with the inductive construction of cell decompositions for lifts to the universal covering quiver.
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{thebibliography}{10}
 
 \bibitem{ass} 
