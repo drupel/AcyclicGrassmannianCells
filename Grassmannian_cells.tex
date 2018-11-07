@@ -133,8 +133,9 @@ We would like to thank Giovanni Cerulli Irelli, Hans Franzen, Oliver Lorscheid a
 
 \subsection{Notation}
 \begin{itemize}
-  \item Given two tuples $x=(x_1,\ldots,x_n)$ and $y=(y_1,\ldots,y_m)$, we write $x\frown y$ for their concatenation $(x_1,\ldots,x_n,y_1,\ldots,y_m)$. (better notation?)
+  \item Given two tuples $x=(x_1,\ldots,x_n)$ and $y=(y_1,\ldots,y_m)$, we write $x\smile y$ for their concatenation $(x_1,\ldots,x_n,y_1,\ldots,y_m)$. (better notation?)
   \item Given two tuples of vector spaces $\cU=(U_1,\ldots,U_n)$ and $\cW=(W_1,\ldots,W_n)$, we write $\cU\subset\cW$ if $U_i$ is a subspace of $W_i$ for each $i$ and $\cU\subsetneq\cW$ if at least one of these subspaces is proper.
+    In this case we write $\codim_\cW(\cU)=\sum\limits_{i=1}^n \dim(W_i/U_i)$.
   \item Given two tuples of vector spaces $\cU=(U_1,\ldots,U_n)$ and $\cW=(W_1,\ldots,W_n)$, we write $\cU\bullet\cW$ for $\bigoplus_{i=1}^n U_i\otimes W_i$. (better notation?)
 \end{itemize}
 
@@ -153,7 +154,7 @@ A (non-)complete $\Ext$-orthogonal exceptional sequence $(X_1,\ldots,X_k)$ deter
 As any exceptional representation $X$ can be completed to tilting representation \cite{???}, every exceptional representation can be found in a complete exceptional sequence.
 We will see below that this may be done with $X$ in any position of the sequence. 
 
-Without loss of generality we will assume $Q_0=\{1,\ldots,n\}$ is a \emph{sink adapted sequence}, i.e.\ vertex 1 is a sink in $Q$ and $\{2,\ldots,n\}$ is sink adapted for the quiver obtained from $Q$ by removing vertex 1 and all arrows incident to this vertex.
+Without loss of generality we will assume $Q_0=\{1,\ldots,n\}$ is labeled along a \emph{sink adapted sequence}, i.e.\ vertex 1 is a sink in $Q$ and $(2,\ldots,n)$ is sink adapted for the quiver obtained from $Q$ by removing vertex 1 and all arrows incident to this vertex.
 Then we have a canonical $\Hom$-orthogonal exceptional sequence $(S_1,\ldots,S_n)$.
 A remarkable result of Crawley-Boevey shows that all complete exceptional sequences may be obtained from this standard sequence by an action of the braid group.
 
@@ -180,28 +181,72 @@ What can we say about the fibers of this map?
 \section{Truncated Preprojectives}
 
 Let $Q=(Q_0,Q_1,s,t)$ be an acyclic quiver.
+Given a sink or source vertex $k\in Q_0$, write $\mu_k Q$ for the quiver obtained from $Q$ by reversing all arrows incident to vertex $k$.
+Without loss of generality, we will assume $Q_0=\{1,\ldots,n\}$ is labeled along a \emph{sink adapted sequence}, i.e.~vertex 1 is a sink in $Q$, vertex $2$ is a sink in $\mu_1 Q$, vertex $3$ is a sink in $\mu_2\mu_1 Q$, etc.
+
 For $i,j\in Q_0$, we introduce the following notation:
 \begin{itemize}
   \item $Q_1(i,-)$ is the set of arrows $\alpha\in Q_1$ with $s(\alpha)=i$;
   \item $Q_1(-,j)$ is the set of arrows $\alpha\in Q_1$ with $t(\alpha)=j$;
   \item $Q_1(i,j)=Q_1(i,-)\cap Q_1(-,j)$ is the set of arrows $\alpha\in Q_1$ with $s(\alpha)=i$ and $t(\alpha)=j$;
-  \item write $q_{ij}=|Q_1(i,j)|$.
+  \item write $n_{ij}=|Q_1(i,j)|$ for the number of arrows from vertex $i$ to vertex $j$.
 \end{itemize}
 
+For a sink or source vertex $k\in Q_0$, write $\Sigma_k:\rep Q\to\rep \mu_k Q$ for the BGP-reflection functor \cite{BGP??}.
+Note that we use the same symbol $\Sigma$ to denote the reflection functor associated to a sink or a source and also for the reflection functors associated to any reflection of $Q$.
+In particular, the functor $\Sigma_k^2$ is the identity when restricted to the full subcategory $\rep^{\langle k\rangle} Q\subset\rep Q$ consisting of representations with no summand isomorphic to the vertex simple $S_k$.
+
 For $i\in Q_0$, write $P_i$ for the projective cover of the simple $S_i$.
-For $i,j\in Q_0$, write $\Irr(P_i,P_j)\subset\Hom(P_i,P_j)$ for the subspace of morphisms which have no nontrivial factorization through a projective $P_k$ with $k\ne i,j$. 
-\begin{lemma}
-  For $i,j\in Q_0$, we have $\dim\Irr(P_j,P_i)=q_{ij}$.
-\end{lemma}
+These representations are constructed inductively via $P_i=\Sigma_1\cdots\Sigma_{i-1}S_i$, where $S_i$ here denotes the vertex simple of the quiver $\mu_{i-1}\cdots\mu_1 Q$.
+%For $i,j\in Q_0$, write $\Irr(P_i,P_j)\subset\Hom(P_i,P_j)$ for the subspace of morphisms which have no nontrivial factorization through a projective $P_k$ with $k\ne i,j$. 
+%\begin{lemma}
+%  For $i,j\in Q_0$, we have $\dim\Irr(P_j,P_i)=n_{ij}$.
+%\end{lemma}
+The \emph{preprojective} representations $P_{i,m}$ for $i\in Q_0$ and $m\in\ZZ_{\ge0}$ are defined inductively by
+\[P_{i,0}=P_i,\qquad P_{i,m+1}=\tau^{-1} P_{i,m},\]
+where $\tau:\rep Q\to\rep Q$ denotes the Auslander-Reiten translation.
+The Auslander-Reiten translation can be identified with the product of reflection functors $\Sigma_n\cdots\Sigma_1$ \cite{BB??}.
 
-The preprojective representations $P_{i,m}$ for $i\in Q_0$ and $m\in\ZZ_{\ge0}$ are defined inductively by
-\[P_{i,0}=P_i,\qquad P_{i,m+1}=\tau^{-1} P_{i,m}.\]
-For $i,j\in Q_0$ and $m\in\ZZ_{\ge0}$, set $\Irr(P_{i,m},P_{j,m})=\tau^{-m}\Irr(P_i,P_j)$ and write $\Irr(P_{i,m},P_{j,m+1})\subset\Hom(P_{i,m},P_{j,m+1})$ for the subspace of morphisms which do not admit a nontrivial factorization through a preprojective $P_{k,m}$ nor through $P_{k,m+1}$ with $k\ne i,j$.
-\begin{lemma}
-  For $i,j\in Q_0$ and $m\in\ZZ_{\ge0}$, we have $\dim\Irr(P_{i,m},P_{j,m+1})=q_{ij}$.
-\end{lemma}
+In the definitions that follow we will need to identify particularly nice subsets of $\Hom_Q(P_{i,m},P_{j,m})$ and of $\Hom_Q(P_{i,m},P_{j,m+1})$.
+To do this efficiently, we need to introduce the universal covering quiver $\widetilde{Q}$ of $Q$.
+\begin{definition}
+  Let $W=W(Q)$ denote the free group generated by the arrows $\alpha\in Q_1$ of $Q$.
+  The \emph{universal covering quiver} of $Q$ is the quiver $\widetilde{Q}$ with vertices $(i,w)$ for $i\in Q_0$ and $w\in W$, and arrows $(\alpha,w):\big(s(\alpha),w\big)\to \big(t(\alpha),w \alpha \big)$ for $\alpha\in Q_1$ and $w\in W$.
+\end{definition}
+There is a natural forgetful functor $F:\rep\widetilde{Q}\to\rep Q$ and we say $M\in\rep Q$ \emph{lifts to $\widetilde{Q}$} if there exists $\widetilde{M}\in\rep\widetilde{Q}$ with $F(\widetilde{M})=M$.
+This forgetful functor intertwines the actions of the reflection functor $\Sigma_k:\rep Q\to\rep Q$ for $k$ a sink (resp.~source) vertex and the composite reflection functor $\widetilde{\Sigma}_k:\rep\widetilde{Q}\to\rep\widetilde{Q}$ given by applying all reflections $\Sigma_{(k,w)}$, $w\in W$, associated to sinks (resp.~sources) of $\widetilde{Q}$ covering vertex $k$.
 
-For $i\in Q_0$ and $m\in\ZZ_{\ge0}$, consider the tuple of representations $\cP_{i,m}=\big(P_{k,m}\big)_{k\in Q_1(-,i)} \frown\big(P_{j,m+1}\big)_{j\in Q_1(i,-)}$ and the tuple of vector spaces $\cI_{i,m}=\big(\Irr(P_{k,m},P_{i,m+1})\big)_{k\in Q_1(-,i)} \frown\big(\Irr(P_{j,m+1},P_{i,m+1}\big)_{j\in Q_1(i,-)}$.
+Each projective representation $P_i$, $i\in Q_0$, admits a canonical lift $\widetilde{P}_i$ which is symmetric with respect to permutations about the central vertex $(i,e)$; this can be obtained using the intertwined reflection functors of $\widetilde{Q}$ as described above.
+By applying Auslander-Reiten translations on the universal covering quiver, we obtain the same claim for each preprojective representation $P_{i,m}$ for $i\in Q_0$ and $m\ge0$.
+
+There is a natural action of $W$ on $\widetilde{Q}$ given on vertices by $w.(i,w')=(i,ww')$ and on arrows by $w.(\alpha,w')=(\alpha,ww')$.
+This induces an action of $W$ on $\rep\widetilde{Q}$ which we denote by $\widetilde{M}\mapsto w.\widetilde{M}$ for a representation $\widetilde{M}\in\rep\widetilde{Q}$ and $w\in W$.
+\begin{lemma}
+  \label{le:hom lifts}
+  Given representations $M,N\in\rep Q$ which lift to $\widetilde{Q}$, there is an isomorphism $\Hom_Q(M,N)\cong\bigoplus\limits_{w\in W} \Hom_{\widetilde{Q}}(w.\widetilde{M},\widetilde{N})$.
+\end{lemma}
+\begin{lemma}
+  For $i,j\in Q_0$ and $m\ge0$, each of the spaces 
+  \[\Hom_{\widetilde{Q}}(\alpha.\widetilde{P}_{j,m},\widetilde{P}_{i,m})\qquad\text{and}\qquad\Hom_{\widetilde{Q}}(\alpha^{-1}.\widetilde{P}_{i,m},\widetilde{P}_{j,m+1})\]
+  for $\alpha\in Q_1(i,j)$ is one-dimensional.
+\end{lemma}
+\begin{proof}
+  For $m=0$ and $j$ a sink in $Q$, both claims are immediate from the definitions via reflection functors.
+  For $m>0$ and $j$ arbitrary, these follow from the first case inductively by applying reflection functors.
+\end{proof}
+\begin{definition}
+  For $i,j\in Q_0$ and $m\ge0$, write $\Irr(P_{j,m},P_{i,m})\subset\Hom_Q(P_{j,m},P_{i,m})$ for the subspace corresponding to $\bigoplus_{\alpha\in Q_1(i,j)} \Hom_{\widetilde{Q}}(\alpha.\widetilde{P}_{j,m},\widetilde{P}_{i,m})$ in Lemma~\ref{le:hom lifts}.
+  Similarly, let $\Irr(P_{i,m},P_{j,m+1})\subset\Hom_Q(P_{i,m},P_{j,m+1})$ denote the subspace corresponding to $\bigoplus_{\alpha\in Q_1(i,j)} \Hom_{\widetilde{Q}}(\alpha^{-1}.\widetilde{P}_{i,m},\widetilde{P}_{j,m+1})$ in Lemma~\ref{le:hom lifts}.
+\end{definition}
+\begin{corollary}
+  For $i,j\in Q_0$ and $m\ge0$, the morphism spaces $\Irr(P_{j,m},P_{i,j})$ and $\Irr(P_{i,m},P_{j,m+1})$ are both $n_{ij}$-dimensional.
+\end{corollary}
+\begin{remark}
+  The notation $\Irr(P_{j,m},P_{i,j})$ and $\Irr(P_{i,m},P_{j,m+1})$ is justified by the following observation: these spaces map isomorphically to the appropriate spaces $\Rad(M,N)/\Rad^2(M,N)$ of irreducible morphisms.
+  For the results that follow, it will be important to have honest morphisms and we fix these particular choices of lifts from this quotient space.
+\end{remark}
+
+For $i\in Q_0$ and $m\in\ZZ_{\ge0}$, consider the tuple of representations $\cP_{i,m}=\big(P_{k,m}\big)_{k\in Q_1(-,i)} \smile\big(P_{j,m+1}\big)_{j\in Q_1(i,-)}$ and the tuple of vector spaces $\cI_{i,m}=\big(\Irr(P_{k,m},P_{i,m+1})\big)_{k\in Q_1(-,i)} \smile\big(\Irr(P_{j,m+1},P_{i,m+1}\big)_{j\in Q_1(i,-)}$.
 
 \begin{proposition}
   \label{prop:standard AR sequences}
@@ -218,7 +263,7 @@ For $i\in Q_0$ and $m\in\ZZ_{\ge0}$, consider the tuple of representations $\cP_
       %\end{equation}
     \item if there exists an Auslander-Reiten sequence
       \[\ses{P_{\ell,m-1}}{P_{i,m}}{P_{\ell,m}}\] 
-      with $\ell\in Q_1(-,i)$ and $\dim\Irr(P_{\ell,m},P_{i,m+1})=1$, then the sequence \eqref{eq:preprojective AR} induces an Auslander-Reiten sequence
+      with $\ell\in Q_1(-,i)$ and $\dim\Irr(P_{\ell,m},P_{i,m+1})=1$, then the sequence \eqref{eq:preprojective AR} induces an exact sequence
       \begin{equation}
         \label{eq:reduced AR 1}
         \ses{P_{\ell,m-1}}{\cP_{i,m}\bullet\cI_{i,m}^{\{\ell\}}}{P_{i,m+1}};
@@ -229,7 +274,7 @@ For $i\in Q_0$ and $m\in\ZZ_{\ge0}$, consider the tuple of representations $\cP_
       %\end{equation}
     \item if there exists an Auslander-Reiten sequence
       \[\ses{P_{\ell,m}}{P_{i,m}}{P_{\ell,m+1}}\] 
-      with $\ell\in Q_1(i,-)$ and $\dim\Irr(P_{\ell,m+1},P_{i,m+1})=1$, then the sequence \eqref{eq:preprojective AR} induces an Auslander-Reiten sequence
+      with $\ell\in Q_1(i,-)$ and $\dim\Irr(P_{\ell,m+1},P_{i,m+1})=1$, then the sequence \eqref{eq:preprojective AR} induces an exact sequence
       \begin{equation}
         \label{eq:reduced AR 2}
         \ses{P_{\ell,m}}{\cP_{i,m}\bullet\cI_{i,m}^{\{\ell\}}}{P_{i,m+1}};
@@ -263,6 +308,22 @@ For $i\in Q_0$ and $m\in\ZZ_{\ge0}$, consider the tuple of representations $\cP_
 \begin{definition}
   For $i\in Q_0$, $m\in\ZZ_{\ge0}$, and $\cV\subsetneq\cI_{i,m}$, define the \emph{truncated preprojective} representation $P_{i,m+1}^\cV=P_{i,m+1}/\cP_{i,m}\bullet\cV$.
 \end{definition}
+
+\begin{proposition}
+  Consider $\cV\subsetneq\cI_{i,m}$ with $\codim_{\cI_{i,m}}(\cV)=1$, say $\cP_{i,m}\bullet\cI_{i,m}/\cP_{i,m}\bullet\cV\cong P_{\ell,n}$ with $n=m$ or $n=m+1$.
+  Then $P_{i,m+1}^\cV\cong P_{\ell,n}^{\overline{\cV}}$, where $\overline{\cV}=..$.
+\end{proposition}
+\begin{proof}
+  There is a commutative diagram of the following form:
+  \[\xymatrix{
+      & & 0 \ar[d] & 0 \ar[d] \\
+      & & \cP_{i,m}\bullet\cV \ar[d]\ar@{=}[r] & \cP_{i,m}\bullet\cV \ar[d] \\
+      0 \ar[r] & P_{i,m} \ar[r]\ar@{=}[d] & \cP_{i,m}\bullet\cI_{i,m}  \ar[d]\ar[r] & P_{i,m+1} \ar[r]\ar[d] & 0\\
+      0 \ar[r] & P_{i,m} \ar[r] & P_{\ell,n} \ar[r]\ar[d] & P_{i,m+1}^\cV \ar[r]\ar[d] & 0 \\
+      & & 0 & 0}\]
+  It follows that we may identify $P_{i,m+1}^\cV$ with a truncated preprojective $P_{\ell,n}^{\overline{\cV}}$.
+\end{proof}
+
 
 
 
