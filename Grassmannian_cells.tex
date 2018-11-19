@@ -16,7 +16,7 @@
 \input xy
 \xyoption{all}
 
-%\usepackage[inline]{showlabels}
+\usepackage[inline]{showlabels}
 %\usepackage[marginal]{showlabels}
 
 \newtheorem{theorem}{Theorem}[section]
@@ -78,6 +78,7 @@
 
 \newcommand{\Att}{\operatorname{Att}}
 \newcommand{\codim}{\operatorname{codim}}
+\newcommand{\End}{\operatorname{End}}
 \newcommand{\Ext}{\operatorname{Ext}}
 \newcommand{\Gr}{\mathrm{Gr}}
 \newcommand{\GL}{\mathrm{GL}}
@@ -135,7 +136,7 @@ We would like to thank Giovanni Cerulli Irelli, Hans Franzen, Oliver Lorscheid a
 \begin{itemize}
   \item Given two tuples $x=(x_1,\ldots,x_n)$ and $y=(y_1,\ldots,y_m)$, we write $x\smile y$ for their concatenation $(x_1,\ldots,x_n,y_1,\ldots,y_m)$. (better notation?)
   \item Given two tuples of vector spaces $\cU=(U_1,\ldots,U_n)$ and $\cW=(W_1,\ldots,W_n)$, we write $\cU\subset\cW$ if $U_i$ is a subspace of $W_i$ for each $i$ and $\cU\subsetneq\cW$ if at least one of these subspaces is proper.
-    In this case we write $\codim_\cW(\cU)=\sum\limits_{i=1}^n \dim(W_i/U_i)$.
+    In this case, we write $\cW/\cU=(W_1/U_1,\ldots,W_n/U_n)$ and set $\codim_\cW(\cU)=\sum\limits_{i=1}^n \dim(W_i/U_i)$.
   \item Given two tuples of vector spaces $\cU=(U_1,\ldots,U_n)$ and $\cW=(W_1,\ldots,W_n)$, we write $\cU\bullet\cW$ for $\bigoplus_{i=1}^n U_i\otimes W_i$. (better notation?)
 \end{itemize}
 
@@ -180,41 +181,88 @@ What can we say about the fibers of this map?
 
 \section{Truncated Preprojectives}
 
-Let $Q=(Q_0,Q_1,s,t)$ be an acyclic quiver.
+Let $Q=(Q_0,Q_1,h,t)$ be a connected acyclic quiver, to avoid special cases we assume $Q$ is not of finite representation type.
 Given a sink or source vertex $k\in Q_0$, write $\mu_k Q$ for the quiver obtained from $Q$ by reversing all arrows incident to vertex $k$.
-Without loss of generality, we will assume $Q_0=\{1,\ldots,n\}$ is labeled along a \emph{sink adapted sequence}, i.e.~vertex 1 is a sink in $Q$, vertex $2$ is a sink in $\mu_1 Q$, vertex $3$ is a sink in $\mu_2\mu_1 Q$, etc.
+Without loss of generality, we will assume the vertex set $Q_0=\{1,\ldots,n\}$ is labeled along a \emph{sink adapted sequence}, i.e.~vertex 1 is a sink in $Q$, vertex $2$ is a sink in $\mu_1 Q$, vertex $3$ is a sink in $\mu_2\mu_1 Q$, etc.
+Observe that this implies vertex $n$ is a source in $Q$, vertex $n-1$ is a source in $\mu_n Q$, vertex $n-2$ is a source in $\mu_{n-1}\mu_n Q$, etc.
 
 For $i,j\in Q_0$, we introduce the following notation:
 \begin{itemize}
-  \item $Q_1(i,-)$ is the set of arrows $\alpha\in Q_1$ with $s(\alpha)=i$;
-  \item $Q_1(-,j)$ is the set of arrows $\alpha\in Q_1$ with $t(\alpha)=j$;
+  \item $Q_1(i,-)$ is the set of arrows $\alpha\in Q_1$ with source $s(\alpha)=i$ and $Q_0(i,-)$ is the set of targets $t(\alpha)$ for all such arrows;
+  \item $Q_1(-,j)$ is the set of arrows $\alpha\in Q_1$ with target $t(\alpha)=j$ and $Q_0(-,j)$ is the set of sources $s(\alpha)$ for all such arrows;
   \item $Q_1(i,j)=Q_1(i,-)\cap Q_1(-,j)$ is the set of arrows $\alpha\in Q_1$ with $s(\alpha)=i$ and $t(\alpha)=j$;
-  \item write $n_{ij}=|Q_1(i,j)|$ for the number of arrows from vertex $i$ to vertex $j$.
+  \item write $b_{ij}=|Q_1(i,j)|$ for the number of arrows from vertex $i$ to vertex $j$.
 \end{itemize}
 
-For a sink or source vertex $k\in Q_0$, write $\Sigma_k:\rep Q\to\rep \mu_k Q$ for the BGP-reflection functor \cite{BGP??}.
-Note that we use the same symbol $\Sigma$ to denote the reflection functor associated to a sink or a source and also for the reflection functors associated to any reflection of $Q$.
-In particular, the functor $\Sigma_k^2$ is the identity when restricted to the full subcategory $\rep^{\langle k\rangle} Q\subset\rep Q$ consisting of representations with no summand isomorphic to the vertex simple $S_k$.
+For $i,\ell\in Q_0$, an arrow $\alpha\in Q_1(i,\ell)\cup Q_1(\ell,i)$ is called a \emph{limb arrow} and $\ell$ is a \emph{limb vertex} with respect to vertex $i$ if removing $\alpha$ from $Q$ creates a disconnected quiver in which the component containing vertex $\ell$ is an orientation of a Dynkin diagram of type A.
+A special case of a limb is a \emph{leaf} of $Q$ which is a vertex $\ell\in Q_0$ with $|Q_1(\ell,-)\cup Q_1(-,\ell)|=1$.
 
-For $i\in Q_0$, write $P_i$ for the projective cover of the simple $S_i$.
-These representations are constructed inductively via $P_i=\Sigma_1\cdots\Sigma_{i-1}S_i$, where $S_i$ here denotes the vertex simple of the quiver $\mu_{i-1}\cdots\mu_1 Q$.
+Note that each limb vertex $\ell\in Q_0$ has a uniquely associated leaf vertex $\ell'$ of~$Q$ lying at the opposite end of its type A component, if $\ell$ itself is a leaf of $Q$ then $\ell=\ell'$.
+Once a limb vertex $\ell$ is specified, the type A component associated to $\ell$ is uniquely determined (we assume $Q$ itself is not of type A).
+In the type A subquiver $Q(\ell)\subset Q$ obtained by adjoining the limb arrow $\alpha$ to this component, all arrows are directed either toward vertex $i$ or toward vertex $\ell'$.
+We write $h(\ell)$ for the total number of arrows in the quiver $Q(\ell)$ directed toward vertex $i$.
+
+For a sink or source vertex $k\in Q_0$, write $\Sigma_k:\rep Q\to\rep \mu_k Q$ for the BGP-reflection functor \cite{BGP??} (see also \cite{APR??} for an equivalent formulation known as APR-tilting).
+Note that we use the same symbol $\Sigma$ to denote the reflection functor associated to a sink or a source and also for the reflection functors associated to any reflection of $Q$.
+In particular, the functor $\Sigma_k^2$ is naturally isomorphic to the identity functor when restricted to the full subcategory $\rep^{\langle k\rangle} Q\subset\rep Q$ consisting of representations with no summand isomorphic to the vertex simple $S_k$.
+Moreover, the reflection functor $\Sigma_k:\rep^{\langle k\rangle} Q\to\rep^{\langle k\rangle} \mu_k Q$ is an exact equivalence of categories \cite{DR76}.
+Recall that the \emph{Auslander-Reiten translation} $\tau:\rep Q\to\rep Q$ is naturally isomorphic to the product of reflection functors $\Sigma_n\cdots\Sigma_1$ \cite{BB??}.
+
+For $i\in Q_0$, write $P_i$ for the projective cover of the simple $S_i$ and write $I_i$ for its injective hull.
+These representations are constructed inductively via $P_i=\Sigma_1\cdots\Sigma_{i-1}S_i$ (resp.~via $I_i=\Sigma_n\cdots\Sigma_{i+1}S_i$), where $S_i$ here denotes the vertex simple of the quiver $\mu_{i-1}\cdots\mu_1 Q$ (resp.~of the quiver $\mu_{i+1}\cdots\mu_n Q$).
 %For $i,j\in Q_0$, write $\Irr(P_i,P_j)\subset\Hom(P_i,P_j)$ for the subspace of morphisms which have no nontrivial factorization through a projective $P_k$ with $k\ne i,j$. 
 %\begin{lemma}
-%  For $i,j\in Q_0$, we have $\dim\Irr(P_j,P_i)=n_{ij}$.
+%  For $i,j\in Q_0$, we have $\dim\Irr(P_j,P_i)=b_{ij}$.
 %\end{lemma}
-The \emph{preprojective} representations $P_{i,m}$ for $i\in Q_0$ and $m\in\ZZ_{\ge0}$ are defined inductively by
-\[P_{i,0}=P_i,\qquad P_{i,m+1}=\tau^{-1} P_{i,m},\]
-where $\tau:\rep Q\to\rep Q$ denotes the Auslander-Reiten translation.
-The Auslander-Reiten translation can be identified with the product of reflection functors $\Sigma_n\cdots\Sigma_1$ \cite{BB??}.
+The \emph{preprojective} (resp.~\emph{preinjective}) representations $P_{i,m}$ (resp.~$I_{i,m}$) for $i\in Q_0$ and $m\in\ZZ_{\ge0}$ are defined inductively by
+\[P_{i,0}=P_i,\qquad P_{i,m+1}=\tau^{-1} P_{i,m},\qquad I_{i,0}=I_i,\qquad I_{i,m+1}=\tau I_{i,m}.\]
+More generally, we say a representation $M\in\rep Q$ is \emph{preprojective} (resp.~\emph{preinjective}) if $\tau^r M=0$ (resp. if~$\tau^{-r} M=0$) for some $r>0$.
+
+\begin{lemma}
+  \label{le:preprojective ext groups}
+  For $i,j,k\in Q_0$ with $|Q_1(i,j)|\ne0$ and $m\ge0$, we have 
+  \[\Ext(P_{k,m},P_{i,m})=0 \qquad \text{and} \qquad \Ext(P_{j,m+1},P_{i,m})=0.\]
+\end{lemma}
+%\begin{proof}
+%  The first claim for $m=0$ is immediate since the representations $P_{i,0}$ are projective, for $m>0$ this follows by applying Auslander-Reiten translations.
+%  The second claim may be reduced to the case $m=0$ and $j$ a sink in $Q$ using Auslander-Reiten translations and reflection functors.
+%\end{proof}
+
+\begin{lemma}
+  Suppose $\ell\in Q_0(n,-)$ is not a limb vertex with respect to the source vertex $n$.
+  Then any nontrivial extension $E\in\Ext(S_n,P_{\ell,0})$ is indecomposable and not preinjective.
+\end{lemma}
+\begin{proof}
+  By definition, we have a non-split exact sequence
+  \[\ses{P_{\ell,0}}{E}{S_n}.\]
+  Applying $\Hom(P_{\ell,0},-)$ to this sequence shows $\Hom(P_{\ell,0},E)\cong\Hom(P_{\ell,0},P_{\ell,0})$ is one-dimensional.
+  Since $S_n$ is injective, we have $\Hom(S_n,E)=0$ and thus applying $\Hom(-,E)$ to the sequence above shows that $\End(E)$ is also one-dimensional, in particular $E$ must be indecomposable.
+
+  For sake of contradiction, suppose $E$ is preinjective, say $E\cong \tau^r\Sigma_n\cdots\Sigma_{k+1} S_k$ for some $k\in Q_0$ and some~$r\ge0$.
+\end{proof}
+
+\begin{lemma}
+  If $M\in\rep Q$ is indecomposable and not preinjective, then any extension $E\in\Ext(M,P_{i,m})$ of $M$ by a preprojective representation $P_{i,m}$ contains no preinjective summand.
+\end{lemma}
+\begin{proof}
+  For sake of contradiction, assume $E$ contains a preinjective summand.
+
+  By assumption, the quiver $Q$ is not of finite representation type so that $P_{i,m}$ is not preinjective for any $i\in Q_0$ and $m\ge0$.
+  Therefore, after an APR-tilt, we may assume $E$ actually contains a simple injective summand, say $E\cong E'\oplus S_k$ for a source $k\in Q_0$.
+  Since $M$ is indecomposable and not injective, this $S_k$ component must lie in the kernel of the projection $E\onto M$.
+  That is, we have $S_k\subset P_{i,m}$ which implies $S_k$ is a summand of $P_{i,m}$, a contradiction.
+\end{proof}
 
 In the definitions that follow we will need to identify particularly nice subsets of $\Hom_Q(P_{i,m},P_{j,m})$ and of $\Hom_Q(P_{i,m},P_{j,m+1})$.
-To do this efficiently, we need to introduce the universal covering quiver $\widetilde{Q}$ of $Q$.
+To do this efficiently, we introduce the universal covering quiver $\widetilde{Q}$ of $Q$.
 \begin{definition}
   Let $W=W(Q)$ denote the free group generated by the arrows $\alpha\in Q_1$ of $Q$.
   The \emph{universal covering quiver} of $Q$ is the quiver $\widetilde{Q}$ with vertices $(i,w)$ for $i\in Q_0$ and $w\in W$, and arrows $(\alpha,w):\big(s(\alpha),w\big)\to \big(t(\alpha),w \alpha \big)$ for $\alpha\in Q_1$ and $w\in W$.
 \end{definition}
 There is a natural forgetful functor $F:\rep\widetilde{Q}\to\rep Q$ and we say $M\in\rep Q$ \emph{lifts to $\widetilde{Q}$} if there exists $\widetilde{M}\in\rep\widetilde{Q}$ with $F(\widetilde{M})=M$.
-This forgetful functor intertwines the actions of the reflection functor $\Sigma_k:\rep Q\to\rep Q$ for $k$ a sink (resp.~source) vertex and the composite reflection functor $\widetilde{\Sigma}_k:\rep\widetilde{Q}\to\rep\widetilde{Q}$ given by applying all reflections $\Sigma_{(k,w)}$, $w\in W$, associated to sinks (resp.~sources) of $\widetilde{Q}$ covering vertex $k$.
+Below, when we assume that a representation $M$ lifts to $\widetilde{Q}$, we will also implicitly assume that such a lift $\widetilde{M}$ has been chosen.
+This forgetful functor intertwines the action of the reflection functor $\Sigma_k:\rep Q\to\rep Q$ for $k$ a sink (resp.~source) vertex with the action of the composite reflection functor $\widetilde{\Sigma}_k:\rep\widetilde{Q}\to\rep\widetilde{Q}$ given by applying all reflections $\Sigma_{(k,w)}$, $w\in W$, associated to sinks (resp.~sources) of $\widetilde{Q}$ covering vertex $k$ of $Q$.
+Analogously, the Auslander-Reiten translation $\tilde\tau:\rep\widetilde{Q}\to\rep\widetilde{Q}$ is naturally isomorphic to the product $\widetilde{\Sigma}_n\cdots\widetilde{\Sigma}_1$ and thus the actions of $\tau$ and $\tilde{\tau}$ are also intertwined by $F$. 
 
 Each projective representation $P_i$, $i\in Q_0$, admits a canonical lift $\widetilde{P}_i$ which is symmetric with respect to permutations about the central vertex $(i,e)$; this can be obtained using the intertwined reflection functors of $\widetilde{Q}$ as described above.
 By applying Auslander-Reiten translations on the universal covering quiver, we obtain the same claim for each preprojective representation $P_{i,m}$ for $i\in Q_0$ and $m\ge0$.
@@ -223,12 +271,13 @@ There is a natural action of $W$ on $\widetilde{Q}$ given on vertices by $w.(i,w
 This induces an action of $W$ on $\rep\widetilde{Q}$ which we denote by $\widetilde{M}\mapsto w.\widetilde{M}$ for a representation $\widetilde{M}\in\rep\widetilde{Q}$ and $w\in W$.
 \begin{lemma}
   \label{le:hom lifts}
-  Given representations $M,N\in\rep Q$ which lift to $\widetilde{Q}$, there is an isomorphism $\Hom_Q(M,N)\cong\bigoplus\limits_{w\in W} \Hom_{\widetilde{Q}}(w.\widetilde{M},\widetilde{N})$.
+  Given representations $M,N\in\rep Q$ which lift to $\widetilde{Q}$, there is an isomorphism 
+  \[\Hom_Q(M,N)\cong\bigoplus\limits_{w\in W} \Hom_{\widetilde{Q}}(w.\widetilde{M},\widetilde{N}).\]
 \end{lemma}
 \begin{lemma}
-  For $i,j\in Q_0$ and $m\ge0$, each of the spaces 
+  For $i,j\in Q_0$ and $m\ge0$, the spaces 
   \[\Hom_{\widetilde{Q}}(\alpha.\widetilde{P}_{j,m},\widetilde{P}_{i,m})\qquad\text{and}\qquad\Hom_{\widetilde{Q}}(\alpha^{-1}.\widetilde{P}_{i,m},\widetilde{P}_{j,m+1})\]
-  for $\alpha\in Q_1(i,j)$ is one-dimensional.
+  for $\alpha\in Q_1(i,j)$ are both one-dimensional.
 \end{lemma}
 \begin{proof}
   For $m=0$ and $j$ a sink in $Q$, both claims are immediate from the definitions via reflection functors.
@@ -239,75 +288,198 @@ This induces an action of $W$ on $\rep\widetilde{Q}$ which we denote by $\wideti
   Similarly, let $\Irr(P_{i,m},P_{j,m+1})\subset\Hom_Q(P_{i,m},P_{j,m+1})$ denote the subspace corresponding to $\bigoplus_{\alpha\in Q_1(i,j)} \Hom_{\widetilde{Q}}(\alpha^{-1}.\widetilde{P}_{i,m},\widetilde{P}_{j,m+1})$ in Lemma~\ref{le:hom lifts}.
 \end{definition}
 \begin{corollary}
-  For $i,j\in Q_0$ and $m\ge0$, the morphism spaces $\Irr(P_{j,m},P_{i,j})$ and $\Irr(P_{i,m},P_{j,m+1})$ are both $n_{ij}$-dimensional.
+  For $i,j\in Q_0$ and $m\ge0$, the morphism spaces $\Irr(P_{j,m},P_{i,m})$ and $\Irr(P_{i,m},P_{j,m+1})$ are both $b_{ij}$-dimensional.
 \end{corollary}
 \begin{remark}
-  The notation $\Irr(P_{j,m},P_{i,j})$ and $\Irr(P_{i,m},P_{j,m+1})$ is justified by the following observation: these spaces map isomorphically to the appropriate spaces $\Rad(M,N)/\Rad^2(M,N)$ of irreducible morphisms.
-  For the results that follow, it will be important to have honest morphisms and we fix these particular choices of lifts from this quotient space.
+  The notation $\Irr(P_{j,m},P_{i,j})$ and $\Irr(P_{i,m},P_{j,m+1})$ is justified by the following observation: these spaces map isomorphically to the appropriate spaces $\Rad(M,N)/\Rad^2(M,N)$ of irreducible morphisms labeling arrows in the Auslander-Reiten quiver of $Q$.
+  For the results that follow, it will be important to have honest morphisms and we fix these particular choices of lifts from such quotient spaces.
 \end{remark}
 
-For $i\in Q_0$ and $m\in\ZZ_{\ge0}$, consider the tuple of representations $\cP_{i,m}=\big(P_{k,m}\big)_{k\in Q_1(-,i)} \smile\big(P_{j,m+1}\big)_{j\in Q_1(i,-)}$ and the tuple of vector spaces $\cI_{i,m}=\big(\Irr(P_{k,m},P_{i,m+1})\big)_{k\in Q_1(-,i)} \smile\big(\Irr(P_{j,m+1},P_{i,m+1}\big)_{j\in Q_1(i,-)}$.
+For $k\in Q_0$, we take $P_{k,-1}=0$.
+\begin{definition}
+  For $i\in Q_0$ and $m\in\ZZ_{\ge-1}$, consider the tuple of representations 
+  \[\cP_{i,m}=\big(P_{k,m}\big)_{k\in Q_0(-,i)} \smile\big(P_{j,m+1}\big)_{j\in Q_0(i,-)}\]
+  and the tuple of vector spaces 
+  \[\cI_{i,m}=\big(\Irr(P_{k,m},P_{i,m+1})\big)_{k\in Q_0(-,i)} \smile\big(\Irr(P_{j,m+1},P_{i,m+1})\big)_{j\in Q_0(i,-)}.\]
+  We write $\cP_{i,m}\bullet\cI_{i,m}$ for the representation
+  \[\bigoplus_{k\in Q_0(-,i)} P_{k,m}\otimes \Irr(P_{k,m},P_{i,m+1}) \oplus \bigoplus_{j\in Q_0(i,-)} P_{j,m+1}\otimes\Irr(P_{j,m+1},P_{i,m+1}).\]
+  Call a tuple of subspaces $\cV\subsetneq\cI_{i,m}$ \emph{admissible} if $\cP_{i,m}\bullet(\cI_{i,m}/\cV)$ is not isomorphic to $P_{\ell,m}$ nor to $P_{\ell,m+1}$ for any vertex $\ell\in Q_0$ which is a limb with respect to $i$.
+\end{definition}
 
-\begin{proposition}
-  \label{prop:standard AR sequences}
-  For $i\in Q_0$ and $m\in\ZZ_{\ge0}$, the following hold:
+\begin{lemma}
+  \label{le:standard AR sequences}
+  \mbox{}
   \begin{enumerate}
-    \item there exists an Auslander-Reiten sequence
+    \item For $i\in Q_0$, there exists an exact sequence
+      \begin{equation}
+        \label{eq:projective AR}
+        \ses{\cP_{i,-1}\bullet\cI_{i,-1}}{P_{i,0}}{S_i}.
+      \end{equation}
+    \item For $i\in Q_0$ and $m\in\ZZ_{\ge0}$, there exists an Auslander-Reiten sequence
       \begin{equation}
         \label{eq:preprojective AR}
-        \ses{P_{i,m}}{\cP_{i,m}\bullet\cI_{i,m}}{P_{i,m+1}};
+        \ses{P_{i,m}}{\cP_{i,m}\bullet\cI_{i,m}}{P_{i,m+1}}.
       \end{equation}
       %\begin{equation}
       %  \label{eq:preprojective AR}
       %  \ses{P_{i,m}}{\bigoplus\limits_{k\in Q_1(-,i)} P_{k,m}\otimes\Irr(P_{k,m},P_{i,m+1})\oplus\bigoplus\limits_{j\in Q_1(i,-)} P_{j,m+1}\otimes \Irr(P_{j,m+1},P_{i,m+1})}{P_{i,m+1}};
       %\end{equation}
-    \item if there exists an Auslander-Reiten sequence
-      \[\ses{P_{\ell,m-1}}{P_{i,m}}{P_{\ell,m}}\] 
-      with $\ell\in Q_1(-,i)$ and $\dim\Irr(P_{\ell,m},P_{i,m+1})=1$, then the sequence \eqref{eq:preprojective AR} induces an exact sequence
-      \begin{equation}
-        \label{eq:reduced AR 1}
-        \ses{P_{\ell,m-1}}{\cP_{i,m}\bullet\cI_{i,m}^{\{\ell\}}}{P_{i,m+1}};
-      \end{equation}
-      %\begin{equation}
-      %  \label{eq:reduced AR 1}
-      %  \ses{P_{\ell,m-1}}{\bigoplus\limits_{\substack{k\in Q_1(-,i)\\ k\ne\ell}} P_{k,m}\otimes\Irr(P_{k,m},P_{i,m+1})\oplus\bigoplus\limits_{j\in Q_1(i,-)} P_{j,m+1}\otimes \Irr(P_{j,m+1},P_{i,m+1})}{P_{i,m+1}};
-      %\end{equation}
-    \item if there exists an Auslander-Reiten sequence
-      \[\ses{P_{\ell,m}}{P_{i,m}}{P_{\ell,m+1}}\] 
-      with $\ell\in Q_1(i,-)$ and $\dim\Irr(P_{\ell,m+1},P_{i,m+1})=1$, then the sequence \eqref{eq:preprojective AR} induces an exact sequence
-      \begin{equation}
-        \label{eq:reduced AR 2}
-        \ses{P_{\ell,m}}{\cP_{i,m}\bullet\cI_{i,m}^{\{\ell\}}}{P_{i,m+1}};
-      \end{equation}
-      %\begin{equation}
-      %  \label{eq:reduced AR 2}
-      %  \ses{P_{\ell,m}}{\bigoplus\limits_{k\in Q_1(-,i)} P_{k,m}\otimes\Irr(P_{k,m},P_{i,m+1})\oplus\bigoplus\limits_{\substack{j\in Q_1(i,-)\\ j\ne\ell}} P_{j,m+1}\otimes \Irr(P_{j,m+1},P_{i,m+1})}{P_{i,m+1}}.
-      %\end{equation}
   \end{enumerate}
-\end{proposition}
+\end{lemma}
 \begin{proof}
-  Part (1) can be reduced to the case $m=0$ by applying Auslander-Reiten translations and then to the case where vertex $i$ is a sink in $Q$ using BGP-reflection functors (APR-tilting).
+  Part (2) can be reduced to the case $m=0$ by applying Auslander-Reiten translations and then to the case where vertex $i$ is a sink in $Q$ using reflection functors.
   Thus it suffices to establish the existence of an Auslander-Reiten sequence 
-  \[\ses{P_{i,m}}{\bigoplus\limits_{k\in Q_1(-,i)} P_{k,m}\otimes\Irr(P_{k,m},P_{i,m+1})}{P_{i,m+1}}\]
+  \[\ses{P_{i,0}}{\bigoplus\limits_{k\in Q_0(-,i)} P_{k,0}\otimes\Irr(P_{k,0},P_{i,1})}{P_{i,1}}\]
   when $i\in Q_0$ is a sink.
-
-  To see part (2), we consider the commutative diagram:
-  \[\xymatrix{
-      0 \ar[d] & 0 \ar[d] \\
-      P_{\ell,m-1} \ar[d]\ar[r]\ar@{}[dr]|(.7){\lrcorner} & \cP_{i,m}\bullet\cI_{i,m}^{\{\ell\}} \ar[d] \\
-      P_{i,m} \ar[d]\ar[r] & \cP_{i,m}\bullet\cI_{i,m} \ar[d] \\
-      P_{\ell,m} \ar@{=}[r]\ar[d] & P_{\ell,m} \ar[d] \\
-      0 & 0}\]
-  Since the lower morphism is an equality, the top square is a pushout.
-  It follows that the cokernels of the two upper horizontal morphisms are equal, giving the claim.
+  This sequence and the one from part (1) follow immediately from the definitions $P_{k,0}:=\Sigma_1\cdots\Sigma_{k-1} S_k$ and $P_{i,1}:=\Sigma_1\cdots\Sigma_n P_{i,0}$.
 \end{proof}
 
+The sequences \eqref{eq:projective AR} and \eqref{eq:preprojective AR} are essential for the results to follow.
+In some cases, the left hand term $P_{i,m}$ in \eqref{eq:preprojective AR} surjects onto one of the summands of the middle term and the sequence \eqref{eq:preprojective AR} will not serve our purposes.
+The next results describe situations when this will occur and provides the correct alternative sequences to consider.
+\begin{corollary}
+  \label{cor:thin sequences}
+  Suppose $i\in Q_0$ is adjacent to a limb vertex $\ell$ with associated leaf $\ell'$.
+  \begin{enumerate}
+    \item If $\ell\in Q_0(i,-)$, then for any $m\ge h(\ell)$ we have an exact sequence
+      \begin{equation}
+        \label{eq:thin limb sequence 1}
+        \ses{P_{\ell',m-h(\ell)}}{P_{i,m}}{P_{\ell,m+1}}.
+      \end{equation}
+    \item If $\ell\in Q_0(-,i)$, then for any $m\ge h(\ell)$ we have an exact sequence
+      \begin{equation}
+        \label{eq:thin source sequence}
+        \ses{P_{\ell',m-h(\ell)}}{P_{i,m}}{P_{\ell,m}}.
+      \end{equation}
+  \end{enumerate}
+\end{corollary}
+\begin{proof}
+  We work by simultaneous induction on $h(\ell)$ and $m$.
+  When $h(\ell)=0$, the type A quiver $Q(\ell)$ is linearly oriented from vertex $i$ to the leaf $\ell'$, in particular $\ell\in Q_0(i,-)$ and $\ell'$ is a sink of $Q$.
+
+  If $\ell'=\ell$, then Lemma~\ref{le:standard AR sequences} gives the desired exact sequence
+  \[\ses{P_{\ell,m}}{P_{i,m}}{P_{\ell,m+1}}\]
+  for $m\ge0$.
+  When $\ell'\ne\ell$, there exists $\ell''\in Q_0(\ell,-)$ which is itself a limb vertex with respect to $\ell$ and by induction we obtain an exact sequence
+  \[\ses{P_{\ell',m}}{P_{\ell,m}}{P_{\ell'',m+1}}\]
+  for $m\ge0$.
+  Lemma~\ref{le:standard AR sequences} gives us an exact sequence
+  \[\ses{P_{\ell,0}}{P_{i,0}\oplus P_{\ell'',1}}{P_{\ell,1}}\]
+  which then reduces to the desired sequence using Lemma~\ref{le:sequence reducing}.
+
+  Now assume $h(\ell)>0$.
+  If $\ell'=\ell$, then $\ell\in Q_0(-,i)$ is a source of $Q$.
+  In this case, Lemma~\ref{le:standard AR sequences} gives the desired exact sequence
+  \[\ses{P_{\ell,m}}{P_{i,m+1}}{P_{\ell,m+1}}\]
+  for $m\ge0$.
+  
+  Assume $\ell'\ne\ell$.
+  Write $\ell''$ for the limb vertex with respect to $\ell$.
+  Then there are several cases to consider.
+  \begin{itemize}
+    \item If $\ell\in Q_0(i,-)$ and $\ell''\in Q_0(\ell,-)$, then $h(\ell'')=h(\ell)$ and by induction we obtain an exact sequence
+      \[\ses{P_{\ell',m-h(\ell)}}{P_{\ell,m}}{P_{\ell'',m+1}}\]
+      for $m\ge h(\ell)$.
+      Lemma~\ref{le:standard AR sequences} gives an exact sequence
+      \[\ses{P_{\ell,m}}{P_{i,m}\oplus P_{\ell'',m+1}}{P_{\ell,m+1}}\]
+      which reduces to the desired sequence using Lemma~\ref{le:sequence reducing}.
+    \item If $\ell\in Q_0(i,-)$ and $\ell''\in Q_0(-,\ell)$, then $h(\ell'')=h(\ell)$ and by induction we obtain an exact sequence
+      \[\ses{P_{\ell',m-h(\ell)}}{P_{\ell,m}}{P_{\ell'',m}}\]
+      for $m\ge h(\ell)$.
+      Lemma~\ref{le:standard AR sequences} gives an exact sequence
+      \[\ses{P_{\ell,m}}{P_{i,m}\oplus P_{\ell'',m}}{P_{\ell,m+1}}\]
+      which reduces to the desired sequence using Lemma~\ref{le:sequence reducing}.
+    \item If $\ell\in Q_0(-,i)$ and $\ell''\in Q_0(\ell,-)$, then $h(\ell'')=h(\ell)-1$ and by induction we obtain an exact sequence
+      \[\ses{P_{\ell',m-h(\ell)}}{P_{\ell,m-1}}{P_{\ell'',m}}\]
+      for $m\ge h(\ell)$.
+      Lemma~\ref{le:standard AR sequences} gives an exact sequence
+      \[\ses{P_{\ell,m-1}}{P_{i,m}\oplus P_{\ell'',m}}{P_{\ell,m}}\]
+      which reduces to the desired sequence using Lemma~\ref{le:sequence reducing}.
+    \item If $\ell\in Q_0(-,i)$ and $\ell''\in Q_0(-,\ell)$, then $h(\ell'')=h(\ell)-1$ and by induction we obtain an exact sequence
+      \[\ses{P_{\ell',m-h(\ell)}}{P_{\ell,m-1}}{P_{\ell'',m-1}}\]
+      for $m\ge h(\ell)$.
+      Lemma~\ref{le:standard AR sequences} gives an exact sequence
+      \[\ses{P_{\ell,m-1}}{P_{i,m}\oplus P_{\ell'',m-1}}{P_{\ell,m}}\]
+      which reduces to the desired sequence using Lemma~\ref{le:sequence reducing}.
+  \end{itemize}
+\end{proof}
+
+For $i\in Q_0$ and $m\ge0$, given $\ell\in Q_0(-,i)\cup Q_0(i,-)$ we write $\cI_{i,m}^{\{\ell\}}\subset\cI_{i,m}$ for the tuple of subspaces with the only proper subspace at position $\ell$ and the zero subspace in that component.
+\begin{corollary}
+  \label{cor:reduced sequences}
+  Suppose $i\in Q_0$ is adjacent to a limb vertex $\ell$ with associated leaf $\ell'$.
+  Then there is an exact sequence
+  \begin{equation}
+    \label{eq:reduced AR}
+    \ses{P_{\ell',m-h(\ell)}}{\cP_{i,m}\bullet\cI_{i,m}^{\{\ell\}}}{P_{i,m+1}}.
+  \end{equation}
+\end{corollary}
+\begin{proof}
+  This is immediate by applying Lemma~\ref{le:sequence reducing} to the sequences from Corollary~\ref{cor:thin sequences} and Lemma~\ref{le:standard AR sequences}.
+\end{proof}
+
+The following result is crucial to the constructions to follow.
 \begin{lemma}
-  For any $\cV\subsetneq\cI_{i,m}$, the natural map $\cP_{i,m}\bullet\cV\to P_{i,m+1}$ is injective (assuming we are not in cases (2) or (3) of Proposition~\ref{prop:standard AR sequences}, otherwise $\cI_{i,m}$ should be replaced by $\cI_{i,m}^{\{\ell\}}$).
+  Consider $i\in Q_0$ and $m\ge0$.
+  \begin{enumerate}
+    \item For any tuple of subspaces $\cV\subsetneq\cI_{i,-1}$, the natural evaluation map $\cP_{i,-1}\bullet\cV\to P_{i,0}$ is injective.
+    \item For any admissible tuple $\cV\subsetneq\cI_{i,m}$, the natural evaluation map $\cP_{i,m}\bullet\cV\to P_{i,m+1}$ is injective.
+    \item The sequence \eqref{eq:preprojective AR} induces isomorphisms 
+      \[\Irr(P_{k,m},P_{i,m+1})^*\cong \Irr(P_{i,m},P_{k,m}) \qquad \text{and} \qquad \Irr(P_{j,m+1},P_{i,m+1})^*\cong \Irr(P_{i,m},P_{j,m+1})\]
+      for each $k\in Q_0(-,i)$ and each $j\in Q_0(i,-)$.
+  \end{enumerate}
 \end{lemma}
+\begin{proof}
+  Part (1) immediately follows from the exactness of the sequence \eqref{eq:projective AR}.
+  Thus for an admissible tuple~$\cV\subsetneq\cI_{i,-1}$, say with $V_j\subset\Irr(P_{j,0},P_{i,0})$ in the $j$-th component, we have an exact commutative diagram:
+  \[\xymatrix{
+      & 0 \ar[d] & 0 \ar[d] & & \\
+      0 \ar[r] & \bigoplus\limits_{j\in Q_0(i,-)} P_{j,0}\otimes V_j \ar@{=}[r] \ar[d] & \bigoplus\limits_{j\in Q_0(i,-)} P_{j,0}\otimes V_j \ar[r]\ar[d] & 0 \ar[d] & \\
+      0 \ar[r] & \bigoplus\limits_{j\in Q_0(i,-)} P_{j,0}\otimes\Irr(P_{j,0},P_{i,0}) \ar[r]\ar[d] & P_{i,0} \ar[r]\ar[d] & S_i \ar[r]\ar@{=}[d] & 0 \\
+      0 \ar[r] & \bigoplus\limits_{j\in Q_0(i,-)} P_{j,0}\otimes\big(\Irr(P_{j,0},P_{i,0})/V_j\big) \ar[r]\ar[d] & C \ar[r]\ar[d] & S_i \ar[r]\ar[d] & 0 \\
+      & 0 & 0 & 0 & 
+    }
+  \]
+  
+  Part (2) is trivial if $\cV$ has all components zero, so we assume this is not the case.
+  First observe that after an APR-tilt (applying a sequence of reflection functors) it suffices to show in the case $m=-1$ with vertex $i=n$ the unique source of $Q$ that the representation $C$ in the diagram above contains no preinjective summands.
+  For the sake of contradiction, assume that $C$ does contain a preinjective summand.
+
+  A simple homological calculation shows that $\End(C)\cong\End(P_{i,0})$ is one-dimensional.
+  Therefore $C$ must be indecomposable and hence preinjective.
+  Thus there exists $k\in Q_0$ with $C\cong \tau^r\Sigma_n\cdots \Sigma_{k+1} S_k$ for some $r\ge0$.
+
+  Note that the lower horizontal sequence in the diagram above shows that $C$ contains a one-dimensional space at vertex $n$.
+  As $C$ has a one-dimensional space at vertex $n$, this implies there is a unique path in $Q$ from vertex $k$ to vertex $n$.
+  Since $\cV\subsetneq\cI_{n,-1}$ is a proper subspace, $C$ contains a projective subrepresentation and so vertex $k$ must be a sink in $Q$.
+  
+  
+  are two cases to consider.
+  We need to verify that $\cV$ being admissible implies that $P_{i,0}/\cP_{i,-1}\bullet\cV$ contains no preinjective summands.
+  This then implies the statement of part (2) by applying reflection functors.
+
+  By Lemma~\ref{le:preprojective ext groups}, we have $\Ext(\cP_{i,m}\bullet\cV,P_{i,m})=0$.
+  Thus, by taking pullbacks, we obtain a commutative diagram 
+  \[\xymatrix{0 \ar[r] & P_{i,m}\ar@{=}[d]\ar[r] & P_{i,m}\oplus \cP_{i,m}\bullet\cV \ar@{}[dr]|(.7){\lrcorner} \ar[r]\ar[d]_{(\iota_{i,m},\mathrm{id}_{\cP_{i,m}}\bullet\iota_\cV)} & \cP_{i,m}\bullet\cV \ar[r]\ar_{ev_\cV}[d] & 0\\
+  0 \ar[r] & P_{i,m}\ar[r]^{\iota_{i,m}} & \cP_{i,m}\bullet \cI_{i,m} \ar[r]^{ev} & P_{i,m+1} \ar[r] & 0}\]
+  in which we set $P_0=0$ and $I_l=0$ for $l\leq 0$.
+  Since $\mathrm{id}_{P_1}\otimes \iota_V$ is injective, the snake lemma shows that $\ker(ev_V)=0$ for $m=1$ and thus $ev_V$ is injective in this case.
+  
+  In view of Remark~\ref{rem:reflection recursion}, it is enough for the case $m>1$ to show that the cokernel of $ev_V$ does not have a preinjective direct summand when $m=1$.
+  Clearly the cokernel of $\mathrm{id}_{P_1}\otimes \iota_V$ is isomorphic to $P_1\otimes \cH_1/V$.
+  Thus we obtain the following commutative diagram induced by the cokernels of the above vertical maps, note that the vertical maps below are surjective:
+  \[\xymatrix{0 \ar[r]  & P_1\otimes \cH_1 \ar[d]\ar[r]^{ev} &P_{2}\ar[d] \ar[r] & I_{1}\ar@{=}[d]\ar[r]&0\\ 0\ar[r] & P_1\otimes \cH_1/V \ar[r] &K\ar[r]& I_{1}\ar[r]&0.}\]
+
+  We need to show that $K$ has no preinjective direct summand.
+  As $\Hom(P_2,P_1)=0$ and as the vertical maps are surjective, the representation $K$ has no direct summand which is isomorphic to $P_1=S_1$.
+  But this already shows that $K$ is indecomposable as $\udim K=(\dim \cH_1/V,1)$.
+  Since $V$ is a proper subspace of $\cH_1$, $\udim K$ is not the dimension vector of a preinjective representation and the claim follows.
+\end{proof}
+
 \begin{definition}
   For $i\in Q_0$, $m\in\ZZ_{\ge0}$, and $\cV\subsetneq\cI_{i,m}$, define the \emph{truncated preprojective} representation $P_{i,m+1}^\cV=P_{i,m+1}/\cP_{i,m}\bullet\cV$.
 \end{definition}
+
 
 \begin{proposition}
   Consider $\cV\subsetneq\cI_{i,m}$ with $\codim_{\cI_{i,m}}(\cV)=1$, say $\cP_{i,m}\bullet\cI_{i,m}/\cP_{i,m}\bullet\cV\cong P_{\ell,n}$ with $n=m$ or $n=m+1$.
@@ -325,6 +497,29 @@ For $i\in Q_0$ and $m\in\ZZ_{\ge0}$, consider the tuple of representations $\cP_
 \end{proof}
 
 
+\section{Appendix: Homological Lemmas}
+
+\begin{lemma}
+  \label{le:sequence reducing}
+  Suppose there is a exact sequence 
+  \[\ses{A}{X\oplus B}{C}\]
+  for which the induced map $f:A\to B$ given by composing the left hand morphism with the natural projection is surjective.
+  Then there is an induced short exact sequence 
+  \[\ses{K}{X}{C},\]
+  where $K=\ker(f)$.
+\end{lemma}
+\begin{proof}
+  Consider the following exact commutative diagram:
+  \[\xymatrix{
+      & 0 \ar[d] & 0 \ar[d] & \\
+      0 \ar[r] & K \ar[d]\ar[r]\ar@{}[dr]|(.3){\ulcorner} & X \ar[d] & & \\
+      0 \ar[r] & A \ar[d]\ar[r] & X\oplus B \ar[d]\ar[r] & C \ar[r] & 0\\
+      & B \ar@{=}[r]\ar[d] & B \ar[d] & \\
+      & 0 & 0 & }\]
+  The middle vertical sequence is naturally split which induces the upper horizontal morphism and shows that it is injective.
+  Since the lower horizontal morphism is an equality, the upper left square is a pushout.
+  It follows that the cokernel of the upper horizontal morphism coincides with the cokernel in the middle horizontal sequence, giving the claim.
+\end{proof}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
