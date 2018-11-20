@@ -233,12 +233,20 @@ More generally, we say a representation $M\in\rep Q$ is \emph{preprojective} (re
   Then any nontrivial extension $E\in\Ext(S_n,P_{\ell,0})$ is indecomposable and not preinjective.
 \end{lemma}
 \begin{proof}
+Recall that $\dim (P_{\ell,0})_n$ is the number of paths from $\ell$ to $n$. As there is an arrow from $n$ to $\ell$ and as $Q$ is acyclic, we have $\dim (P_{\ell,0})_n=0$.
   By definition, we have a non-split exact sequence
   \[\ses{P_{\ell,0}}{E}{S_n}.\]
-  Applying $\Hom(P_{\ell,0},-)$ to this sequence shows $\Hom(P_{\ell,0},E)\cong\Hom(P_{\ell,0},P_{\ell,0})$ is one-dimensional.
+	   Applying $\Hom(P_{\ell,0},-)$ to this sequence shows $\Hom(P_{\ell,0},E)\cong\Hom(P_{\ell,0},P_{\ell,0})$ is one-dimensional.
   Since $S_n$ is injective, we have $\Hom(S_n,E)=0$ and thus applying $\Hom(-,E)$ to the sequence above shows that $\End(E)$ is also one-dimensional, in particular $E$ must be indecomposable.
+ using that $P_{\ell,0}$ and $S_n$ are exceptional and $\Sc{P_{\ell,0}}{S_n}=0$, we obtain
+$$\Sc{\udim E}{\udim E}=\Sc{\udim P_{\ell,0}+S_n}{\udim P_{\ell,0}+S_n}=2-\Sc{S_n}{P_{\ell,0}}=2-\dim\Ext(S_n,P_{\ell,0})$$
+If $\dim\Ext(S_n,P_{\ell,0})\geq 2$, it follows that $\udim E$ is an imaginary Schur root. This means that $E$ is not preinjective.
 
-  For sake of contradiction, suppose $E$ is preinjective, say $E\cong \tau^r\Sigma_n\cdots\Sigma_{k+1} S_k$ for some $k\in Q_0$ and some~$r\ge0$.
+Thus assume that $\dim\Ext(S_n,P_{\ell,0})\geq|Q_1(n,\ell)|=1$. We have that $\ell$ is the only vertex in the support of $P_{\ell,0}$ which is a neighbor of $n$ because otherwise we could again conclude that $\dim\Ext(S_n,P_{\ell,0})\geq 2$. But this already shows that 
+$\Sigma_n\Sigma_{\ell-1}\cdots\Sigma_{1} E\cong S_\ell$. As $\ell$ is not a limb vertex, it has at least one neighbor except $n$ which is by construction a source of $\mu_n\mu_{\ell-1}\cdots\mu_{1} Q$. As $n$ was a source of $Q$, it follows that $n$ is a sink of $\mu_n\mu{\ell-1}\cdots\mu_{1} Q$. In turn $\ell$ is neither sink nor source and thus $S_{\ell}$ is not preinjective because we assumed that $Q$ is not of Dynkin type.
+\sayT{(why) is this true? Make this precise}
+Thus $E$ is also not preinjective.
+%  For sake of contradiction, suppose $E$ is preinjective, say $E\cong \tau^r\Sigma_n\cdots\Sigma_{k+1} S_k$ for some $k\in Q_0$ and some~$r\ge0$.
 \end{proof}
 
 \begin{lemma}
