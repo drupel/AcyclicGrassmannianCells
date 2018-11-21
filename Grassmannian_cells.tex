@@ -181,10 +181,10 @@ What can we say about the fibers of this map?
 
 \section{Truncated Preprojectives}
 
-Let $Q=(Q_0,Q_1,h,t)$ be a connected acyclic quiver, to avoid special cases we assume $Q$ is not of finite representation type.
-Given a sink or source vertex $k\in Q_0$, write $\mu_k Q$ for the quiver obtained from $Q$ by reversing all arrows incident to vertex $k$.
+Let $Q=(Q_0,Q_1,s,t)$ be a connected acyclic quiver, to avoid special cases we assume $Q$ is not of finite representation type.
+Given a sink or source $k\in Q_0$, write $\mu_k Q$ for the quiver obtained from $Q$ by reversing all arrows incident to vertex $k$.
 Without loss of generality, we will assume the vertex set $Q_0=\{1,\ldots,n\}$ is labeled along a \emph{sink adapted sequence}, i.e.~vertex 1 is a sink in $Q$, vertex $2$ is a sink in $\mu_1 Q$, vertex $3$ is a sink in $\mu_2\mu_1 Q$, etc.
-Observe that this implies vertex $n$ is a source in $Q$, vertex $n-1$ is a source in $\mu_n Q$, vertex $n-2$ is a source in $\mu_{n-1}\mu_n Q$, etc.
+Observe that this implies vertex $n$ is a source in $Q$, vertex $n-1$ is a source in $\mu_n Q$, vertex~$n-2$ is a source in $\mu_{n-1}\mu_n Q$, etc.
 
 For $i,j\in Q_0$, we introduce the following notation:
 \begin{itemize}
@@ -199,7 +199,7 @@ A special case of a limb is a \emph{leaf} of $Q$ which is a vertex $\ell\in Q_0$
 
 Note that each limb vertex $\ell\in Q_0$ has a uniquely associated leaf vertex $\ell'$ of~$Q$ lying at the opposite end of its type A component, if $\ell$ itself is a leaf of $Q$ then $\ell'=\ell$.
 Once a limb vertex $\ell$ is specified, the type A component associated to $\ell$ is uniquely determined (we assume $Q$ itself is not of type A).
-In the type A subquiver $Q(\ell)\subset Q$ obtained by adjoining the limb arrow $\alpha$ to this component, all arrows are directed either toward vertex $i$ or toward vertex $\ell'$.
+In the type A subquiver $Q(\ell)\subset Q$ obtained by adjoining the limb arrow $\alpha$ to this component, each arrow is directed either toward vertex $i$ or toward vertex $\ell'$.
 We write $h(\ell)$ for the total number of arrows in the quiver $Q(\ell)$ directed toward vertex $i$.
 
 For a sink or source vertex $k\in Q_0$, write $\Sigma_k:\rep Q\to\rep \mu_k Q$ for the BGP-reflection functor \cite{BGP??} (see also \cite{APR??} for an equivalent formulation known as APR-tilting).
@@ -233,12 +233,34 @@ More generally, we say a representation $M\in\rep Q$ is \emph{preprojective} (re
   Then any nontrivial extension $E\in\Ext(S_n,P_{\ell,0})$ is indecomposable and not preinjective.
 \end{lemma}
 \begin{proof}
-  By definition, we have a non-split exact sequence
+  By assumption, we have a non-split exact sequence
   \[\ses{P_{\ell,0}}{E}{S_n}.\]
-  Applying $\Hom(P_{\ell,0},-)$ to this sequence shows $\Hom(P_{\ell,0},E)\cong\Hom(P_{\ell,0},P_{\ell,0})$ is one-dimensional.
+  Since $\Hom(P_{\ell,0},S_n)=0$, applying $\Hom(P_{\ell,0},-)$ to this sequence shows $\Hom(P_{\ell,0},E)\cong\Hom(P_{\ell,0},P_{\ell,0})$ is one-dimensional.
   Since $S_n$ is injective, we have $\Hom(S_n,E)=0$ and thus applying $\Hom(-,E)$ to the sequence above shows that $\End(E)$ is also one-dimensional, in particular $E$ must be indecomposable.
 
-  For sake of contradiction, suppose $E$ is preinjective, say $E\cong \tau^r\Sigma_n\cdots\Sigma_{k+1} S_k$ for some $k\in Q_0$ and some~$r\ge0$.
+  Using that $P_{\ell,0}$ and $S_n$ are exceptional and $\Sc{P_{\ell,0}}{S_n}=0$, we obtain
+  $$\Sc{\udim E}{\udim E}=\Sc{\udim P_{\ell,0}+S_n}{\udim P_{\ell,0}+S_n}=2-\Sc{S_n}{P_{\ell,0}}=2-\dim\Ext(S_n,P_{\ell,0}).$$
+  If $\dim\Ext(S_n,P_{\ell,0})\geq 2$, it follows that $\udim E$ is an imaginary Schur root and thus $E$ is not preinjective.
+
+  Thus assume that $\dim\Ext(S_n,P_{\ell,0})=1$.
+  This implies $\ell$ is the only vertex in the support of $P_{\ell,0}$ which is a neighbor of $n$ and $|Q_1(n,\ell)|=1$, otherwise we could again conclude that $\dim\Ext(S_n,P_{\ell,0})\geq 2$.
+  Let $Q'\subset Q$ denote the support quiver of $E$ and label $Q'_0=\{i_1,\ldots,i_r\}$ along a sink adapted sequence for $Q'$.
+  Then by definition of $P_{\ell,0}$ we must have $i_r=n$ and $i_{r-1}=\ell$.
+  It follows that 
+  $$P_{\ell,0}=\Sigma_{i_1}\cdots\Sigma_{i_{r-2}} S_\ell \qquad \text{and} \qquad E=\Sigma_{i_1}\cdots\Sigma_{i_{r-2}}\Sigma_\ell S_n,$$%=\Sigma_{i_1}\cdots\Sigma_{i_{r-2}}\Sigma_n S_\ell=\Sigma_n\Sigma_{i_1}\cdots\Sigma_{i_{r-2}} S_\ell.$$
+  in particular $E$ is projective as a representation of $Q'$.
+  It follows that $E$ is not injective as a representation of $Q$.
+  Indeed, as $\ell$ is not a limb vertex, $Q'$ is not of type A and thus $Q'$ does not admit a projective-injective representation.
+  \sayD{I am not sure why $E$ having a one-dimensional space at vertex $n$ implies it is not strictly preinjective.}
+  
+  %It follows that $\Sigma_n\Sigma_{i_{r-1}}\cdots\Sigma_{i_1} E\cong S_\ell$ as representations of $\mu_n\mu_{i_{r-1}}\cdots\mu_{i_1} Q$.
+  %As $\ell$ is not a limb vertex, it has at least one neighbor other than $n$ which is by construction a source of $\mu_n\mu_{i_{r-1}}\cdots\mu_{i_1} Q$.
+  %As $n$ was a source of $Q$, it follows that $n$ is a sink of $\mu_n\mu_{\ell-1}\cdots\mu_{1} Q$.
+  %In turn $\ell$ is neither sink nor source and thus $S_{\ell}$ is not preinjective because we assumed that $Q$ is not of Dynkin type.
+  %\sayT{(why) is this true? Make this precise}
+  %\sayD{Here is an argument, is there a shorter one? The dimension vector of a preinjective representation is a positive root of the form $c^rs_n\cdots s_{i+1}\alpha_i$ where $c=s_n\cdots s_1$ is a Coxeter element.  If $Q$ is not of finite representation type, then a Coxeter element is not of finite order and thus $\alpha_\ell$ cannot be the dimension vector of a preinjective representation.}
+  %Thus $E$ is also not preinjective.
+%  For sake of contradiction, suppose $E$ is preinjective, say $E\cong \tau^r\Sigma_n\cdots\Sigma_{k+1} S_k$ for some $k\in Q_0$ and some~$r\ge0$.
 \end{proof}
 
 \begin{lemma}
@@ -282,6 +304,7 @@ This induces an action of $W$ on $\rep\widetilde{Q}$ which we denote by $\wideti
 \begin{proof}
   For $m=0$ and $j$ a sink in $Q$, both claims are immediate from the definitions via reflection functors.
   For $m>0$ and $j$ arbitrary, these follow from the first case inductively by applying reflection functors.
+  \sayD{This requires the cokernels to not be preinjective, why does that have to be true?}
 \end{proof}
 \begin{definition}
   For $i,j\in Q_0$ and $m\ge0$, write $\Irr(P_{j,m},P_{i,m})\subset\Hom_Q(P_{j,m},P_{i,m})$ for the subspace corresponding to $\bigoplus_{\alpha\in Q_1(i,j)} \Hom_{\widetilde{Q}}(\alpha.\widetilde{P}_{j,m},\widetilde{P}_{i,m})$ in Lemma~\ref{le:hom lifts}.
@@ -341,12 +364,12 @@ The next results describe situations when this will occur and provides the corre
   \label{cor:thin sequences}
   Suppose $i\in Q_0$ is adjacent to a limb vertex $\ell$ with associated leaf $\ell'$.
   \begin{enumerate}
-    \item If $\ell\in Q_0(i,-)$, then for any $m\ge h(\ell)$ we have an exact sequence
+    \item If $\ell\in Q_0(i,-)$, then for any $m\ge h(\ell)$, we have an exact sequence
       \begin{equation}
         \label{eq:thin limb sequence 1}
         \ses{P_{\ell',m-h(\ell)}}{P_{i,m}}{P_{\ell,m+1}}.
       \end{equation}
-    \item If $\ell\in Q_0(-,i)$, then for any $m\ge h(\ell)$ we have an exact sequence
+    \item If $\ell\in Q_0(-,i)$, then for any $m\ge h(\ell)$, we have an exact sequence
       \begin{equation}
         \label{eq:thin source sequence}
         \ses{P_{\ell',m-h(\ell)}}{P_{i,m}}{P_{\ell,m}}.
@@ -364,8 +387,8 @@ The next results describe situations when this will occur and provides the corre
   \[\ses{P_{\ell',m}}{P_{\ell,m}}{P_{\ell'',m+1}}\]
   for $m\ge0$.
   Lemma~\ref{le:standard AR sequences} gives us an exact sequence
-  \[\ses{P_{\ell,0}}{P_{i,0}\oplus P_{\ell'',1}}{P_{\ell,1}}\]
-  which then reduces to the desired sequence using Lemma~\ref{le:sequence reducing}.
+  \[\ses{P_{\ell,m}}{P_{i,m}\oplus P_{\ell'',m+1}}{P_{\ell,m+1}}\]
+  which reduces to the desired sequence using Lemma~\ref{le:sequence reducing}.
 
   Now assume $h(\ell)>0$.
   If $\ell'=\ell$, then $\ell\in Q_0(-,i)$ is a source of $Q$.
@@ -391,13 +414,13 @@ The next results describe situations when this will occur and provides the corre
       which reduces to the desired sequence using Lemma~\ref{le:sequence reducing}.
     \item If $\ell\in Q_0(-,i)$ and $\ell''\in Q_0(\ell,-)$, then $h(\ell'')=h(\ell)-1$ and by induction we obtain an exact sequence
       \[\ses{P_{\ell',m-h(\ell)}}{P_{\ell,m-1}}{P_{\ell'',m}}\]
-      for $m\ge h(\ell)$.
+      for $m-1\ge h(\ell)-1$.
       Lemma~\ref{le:standard AR sequences} gives an exact sequence
       \[\ses{P_{\ell,m-1}}{P_{i,m}\oplus P_{\ell'',m}}{P_{\ell,m}}\]
       which reduces to the desired sequence using Lemma~\ref{le:sequence reducing}.
     \item If $\ell\in Q_0(-,i)$ and $\ell''\in Q_0(-,\ell)$, then $h(\ell'')=h(\ell)-1$ and by induction we obtain an exact sequence
       \[\ses{P_{\ell',m-h(\ell)}}{P_{\ell,m-1}}{P_{\ell'',m-1}}\]
-      for $m\ge h(\ell)$.
+      for $m-1\ge h(\ell)-1$.
       Lemma~\ref{le:standard AR sequences} gives an exact sequence
       \[\ses{P_{\ell,m-1}}{P_{i,m}\oplus P_{\ell'',m-1}}{P_{\ell,m}}\]
       which reduces to the desired sequence using Lemma~\ref{le:sequence reducing}.
