@@ -266,6 +266,38 @@ More generally, we say a representation $M\in\rep Q$ is \emph{preprojective} (re
 \end{proof}
 
 \begin{lemma}
+  Suppose $Q_0(n,-)=\{\ell_1,\ldots,\ell_p\}$ consists entirely of limb vertices with respect to the source vertex $n$.
+  Then for any proper subset $\{i_1,\ldots,i_q\}\subset[1,p]$ with $q\ge2$, any indecomposable extension $E\in\Ext(S_n,P_{\ell_{i_1},0}\oplus\cdots\oplus P_{\ell_{i_q},0})$ is not preinjective.
+\end{lemma}
+\begin{proof}
+  First note that $Q$ is not of finite representation type and so $p\ge3$.
+  Let $\ell'_i$, $i=1,\ldots,p$, denote the leaf vertex of $Q$ in the subquiver $Q(\ell_i)\subset Q$.
+  Write $r_i$, $i=1,\ldots,p$, for the number of arrows in $Q(\ell_i)$ directed towards $\ell'_i$.
+  
+  If $q=2$, there exists a commutative diagram
+  \[\xymatrix{
+      & & 0 \ar[d] & 0 \ar[d] & \\
+      & & P_{\ell_{i_1},0} \ar@{=}[r]\ar[d] & P_{\ell_{i_1},0} \ar[d] & \\
+      0 \ar[r] & P_{\ell_{i_2},0} \ar[r]\ar@{=}[d] & E \ar[r]\ar[d]\ar@{}[dr]|(.7){\lrcorner} & I_{\ell'_{i_1},0} \ar[r]\ar[d] & 0\\
+      0 \ar[r] & P_{\ell_{i_2},0} \ar[r] & I_{\ell'_{i_2},0} \ar[r]\ar[d] & S_n \ar[r]\ar[d] & 0\\
+      & & 0 & 0 & 
+    }\]
+  Since the upper horizontal morphism (or the left hand vertical morphism) is an equality, the lower right square is a pullback and thus there exists an exact sequence
+  \[\ses{E}{I_{\ell'_{i_1},0}\oplus I_{\ell'_{i_2},0}}{S_n}.\]
+  This sequence is not split since $E\not\cong I_{\ell'_{i_1},0},I_{\ell'_{i_2},0}$ and so $E$ is not injective.
+  If we can show in this case that $E$ is not strictly preinjective, then the general case follows by applying Lemma~\ref{le:nonpreinjective extensions} below.
+
+  It may be useful to make the following reduction:
+
+  If $q=p-1$, say index $j$ is not included in the subset, then an easy calculation shows that $E\cong\tau^{-r_j}P_{\ell'_j,0}$ is preprojective.
+  Since $Q$ is not of finite representation type, this implies $E$ is not preinjective.
+
+  The argument above in particular gives the full claim for $p=3$ and thus we assume $p\ge4$.
+\end{proof}
+
+
+\begin{lemma}
+  \label{le:nonpreinjective extensions}
   If $M\in\rep Q$ is indecomposable and not preinjective, then any extension $E\in\Ext(M,P_{i,m})$ of $M$ by a preprojective representation $P_{i,m}$ contains no preinjective summand.
 \end{lemma}
 \begin{proof}
