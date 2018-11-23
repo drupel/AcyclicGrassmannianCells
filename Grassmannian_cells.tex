@@ -229,6 +229,7 @@ More generally, we say a representation $M\in\rep Q$ is \emph{preprojective} (re
 %\end{proof}
 
 \begin{lemma}
+  \label{le:nonlimb extensions}
   Suppose $\ell\in Q_0(n,-)$ is not a limb vertex with respect to the source vertex $n$.
   Then any nontrivial extension $E\in\Ext(S_n,P_{\ell,0})$ is indecomposable and not preinjective.
 \end{lemma}
@@ -500,7 +501,14 @@ The following result is crucial to the constructions to follow.
   
   Part (2) is trivial if $\cV$ has all components zero, so we assume this is not the case.
   First observe that after an APR-tilt (applying a sequence of reflection functors) it suffices to show in the case $m=-1$ with vertex $i=n$ the unique source of $Q$ that the representation $C$ in the diagram above contains no preinjective summands.
-  For the sake of contradiction, assume that $C$ does contain a preinjective summand.
+
+  There are two cases to consider.
+  \begin{itemize}
+    \item Assume $\bigoplus\limits_{j\in Q_0(i,-)} P_{j,0}\otimes\big(\Irr(P_{j,0},P_{i,0})/V_j\big)$ contains a summand $P_{\ell,0}$ for $\ell\in Q_0(n,-)$ which is not a limb with reprect to the source vertex $n$.
+      Then the result follows by induction using Lemma~\ref{le:nonlimb extensions} and Lemma~\ref{le:nonpreinjective extensions}.
+    \item Assume all summands of $\bigoplus\limits_{j\in Q_0(i,-)} P_{j,0}\otimes\big(\Irr(P_{j,0},P_{i,0})/V_j\big)$ correspond to vertices which are limbs with respect to $n$, say $V_j=0$ exactly for $j\in\{i_1,\ldots,i_q\}$.
+      Since $\cV$ is admissible, we must have $q\ge2$.
+  \end{itemize}
 
   A simple homological calculation shows that $\End(C)\cong\End(P_{i,0})$ is one-dimensional.
   Therefore $C$ must be indecomposable and hence preinjective.
