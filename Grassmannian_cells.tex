@@ -194,7 +194,9 @@ For $i,j\in Q_0$, we introduce the following notation:
   \item write $b_{ij}=|Q_1(i,j)|$ for the number of arrows from vertex $i$ to vertex $j$.
 \end{itemize}
 
-For $i,\ell\in Q_0$, an arrow $\alpha\in Q_1(i,\ell)\cup Q_1(\ell,i)$ is called a \emph{limb arrow} and $\ell$ is a \emph{limb vertex} with respect to vertex $i$ if removing $\alpha$ from $Q$ creates a disconnected quiver in which the component containing vertex $\ell$ is an orientation of a Dynkin diagram of type A.\sayT{$\ell$ itself should probably be a leaf of this component? Or do we want to include cases where $\ell$ is a middle vertex of a type $A$ component?}
+For $i,\ell\in Q_0$, an arrow $\alpha\in Q_1(i,\ell)\cup Q_1(\ell,i)$ is called a \emph{limb arrow} and $\ell$ is a \emph{limb vertex} with respect to vertex $i$ if removing $\alpha$ from $Q$ creates a disconnected quiver in which the component containing vertex $\ell$ is an orientation of a Dynkin diagram of type A.
+\sayT{$\ell$ itself should probably be a leaf of this component? Or do we want to include cases where $\ell$ is a middle vertex of a type $A$ component?}
+\sayD{Part of the point is that a limb controls a ``wing'' in the AR quiver that looks more or less like an infinite version of the AR quiver for a linearly oriented type A component where all mesh relations are simply squares, this is essentially why Corollary 3.15 holds.}
 A special case of a limb is a \emph{leaf} of $Q$ which is a vertex $\ell\in Q_0$ with $|Q_1(\ell,-)\cup Q_1(-,\ell)|=1$.
 
 Note that each limb vertex $\ell\in Q_0$ has a uniquely associated leaf vertex $\ell'$ of~$Q$ lying at the opposite end of its type A component, if $\ell$ itself is a leaf of $Q$ then $\ell'=\ell$.
@@ -314,33 +316,29 @@ Thus again Lemma \ref{lem: non-preinjective} applies.
 \end{proof}
 
 \begin{lemma}
-  Suppose $Q_0(n,-)=\{\ell_1,\ldots,\ell_p\}$ consists entirely of limb vertices with respect to the source vertex $n$.
-  Then for any proper subset $\{i_1,\ldots,i_q\}\subset[1,p]$ with $q\ge2$, any indecomposable extension $E\in\Ext(S_n,P_{\ell_{i_1},0}\oplus\cdots\oplus P_{\ell_{i_q},0})$ is not preinjective.
+  Suppose $\ell_1,\ell_2\in Q_0(n,-)$ are limb vertices with respect to the source vertex $n$.
+  Then any indecomposable extension $E\in\Ext(S_n,P_{\ell_1,0}\oplus P_{\ell_2,0})$ is not preinjective.
 \end{lemma}
 \begin{proof}
-  First note that $Q$ is not of finite representation type and so $p\ge3$.
-  Let $\ell'_i$, $i=1,\ldots,p$, denote the leaf vertex of $Q$ in the subquiver $Q(\ell_i)\subset Q$.
-  Write $r_i$, $i=1,\ldots,p$, for the number of arrows in $Q(\ell_i)$ directed towards $\ell'_i$.
+  First note that $Q$ is not of finite representation type and so there exists $\ell\in Q_0(n,-)$ with $\ell\ne\ell_1,\ell_2$.
+  If $\ell$ is a limb with respect to vertex $n$ and $Q_0(n,-)=\{\ell,\ell_1,\ell_2\}$, then an easy calculation shows that $E\cong\tau^{-r}P_{\ell',0}$ is preprojectivei, here $\ell'$ is the leaf vertex of $Q$ in the subquiver $Q(\ell)\subset Q$ and $r$ is the number of arrows in $Q(\ell)$ directed towards $\ell'$.
+  Since $Q$ is not of finite representation type, this implies $E$ is not preinjective.
+  Thus we may assume that $Q_0(n,-)$ contains a vertex which is not a leaf or that $|Q_0(n,-)|\ge4$.
   
-  If $q=2$, there exists a commutative diagram
+  There exists a commutative diagram
   \[\xymatrix{
       & & 0 \ar[d] & 0 \ar[d] & \\
-      & & P_{\ell_{i_1},0} \ar@{=}[r]\ar[d] & P_{\ell_{i_1},0} \ar[d] & \\
-      0 \ar[r] & P_{\ell_{i_2},0} \ar[r]\ar@{=}[d] & E \ar[r]\ar[d]\ar@{}[dr]|(.7){\lrcorner} & I_{\ell'_{i_1},0} \ar[r]\ar[d] & 0\\
-      0 \ar[r] & P_{\ell_{i_2},0} \ar[r] & I_{\ell'_{i_2},0} \ar[r]\ar[d] & S_n \ar[r]\ar[d] & 0\\
+      & & P_{\ell_1,0} \ar@{=}[r]\ar[d] & P_{\ell_1,0} \ar[d] & \\
+      0 \ar[r] & P_{\ell_2,0} \ar[r]\ar@{=}[d] & E \ar[r]\ar[d]\ar@{}[dr]|(.7){\lrcorner} & I_{\ell'_1,0} \ar[r]\ar[d] & 0\\
+      0 \ar[r] & P_{\ell_2,0} \ar[r] & I_{\ell'_2,0} \ar[r]\ar[d] & S_n \ar[r]\ar[d] & 0\\
       & & 0 & 0 & 
     }\]
   Since the upper horizontal morphism (or the left hand vertical morphism) is an equality, the lower right square is a pullback and thus there exists an exact sequence
-  \[\ses{E}{I_{\ell'_{i_1},0}\oplus I_{\ell'_{i_2},0}}{S_n}.\]
-  This sequence is not split since $E\not\cong I_{\ell'_{i_1},0},I_{\ell'_{i_2},0}$ and so $E$ is not injective.
-  If we can show in this case that $E$ is not strictly preinjective, then the general case follows by applying Lemma~\ref{le:nonpreinjective extensions} below.
+  \[\ses{E}{I_{\ell'_1,0}\oplus I_{\ell'_2,0}}{S_n}.\]
+  This sequence is not split since $E\not\cong I_{\ell'_1,0},I_{\ell'_2,0}$ and so $E$ is not injective.
 
-  It may be useful to make the following reduction:
-
-  If $q=p-1$, say index $j$ is not included in the subset, then an easy calculation shows that $E\cong\tau^{-r_j}P_{\ell'_j,0}$ is preprojective.
-  Since $Q$ is not of finite representation type, this implies $E$ is not preinjective.
-
-  The argument above in particular gives the full claim for $p=3$ and thus we assume $p\ge4$.
+  Why is $E$ not strictly preinjective?  Does applying $\tau^{-1}$ to $E$ help?  
+  This would produce surjective maps $P_{\ell_i,1}\onto \tau^{-1} E$, but I don't know how that helps.
 \end{proof}
 
 
