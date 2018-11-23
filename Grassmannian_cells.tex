@@ -230,50 +230,73 @@ More generally, we say a representation $M\in\rep Q$ is \emph{preprojective} (re
 %  The second claim may be reduced to the case $m=0$ and $j$ a sink in $Q$ using Auslander-Reiten translations and reflection functors.
 %\end{proof}
 For two dimension vectors $\alpha$ and $\beta$ we denote by $\hom(\alpha,\beta)$ the minimal and thus general value if $\dim\Hom:R_\alpha(Q)\times R_\beta(Q)\to \NN$, see \cite{sch} for more details.
-\begin{lemma}\label{lem: non-preinjective}
-If $M,N\in\rep(Q)$ are indecomposable such that $\udim M$ is an imaginary root and such that $\Hom(N,M)\neq 0$, then $N$ is not preinjective. In particular, if $\hom(\alpha,\beta)\neq 0$ and $\beta$ is an imaginary Schur root, $\alpha$ is not the dimension vector of a preinjective representation.
+\begin{lemma}
+  \label{lem: non-preinjective}
+  If $M,N\in\rep(Q)$ are indecomposable such that $\udim M$ is an imaginary root and such that $\Hom(N,M)\neq 0$, then $N$ is not preinjective.
+  In particular, if $\hom(\alpha,\beta)\neq 0$ and $\beta$ is an imaginary Schur root, $\alpha$ is not the dimension vector of a preinjective representation.
 \end{lemma}
 \begin{proof}
-As $\udim M$ is imaginary, $M$ is a regular representation. Indeed all preinjectives and preprojective indecomposable representations are exceptional. But if $N$ were preinjective, we had $\Hom(N,M)\neq 0$ only for preinjectives $M$.
+  As $\udim M$ is imaginary, $M$ is a regular representation.
+  Indeed all preinjectives and preprojective indecomposable representations are exceptional.
+  But if $N$ were preinjective, we had $\Hom(N,M)\neq 0$ only for preinjectives $M$.
 
-Finally, if $\beta$ is a Schur root, then a general representation is indecomposable which gives the second part.
+  Finally, if $\beta$ is a Schur root, then a general representation is indecomposable which gives the second part.
 \end{proof}
+
 For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\alpha_q q$.
-\begin{proposition}\label{pro:simpleregular}
-Let $Q$ be any acyclic quiver which is not of Dynkin type and let $\ell\in Q_0$. % be neither a sink nor a source. 
-%Then $S_\ell$ is preprojective if and only if there exists a unique limb vertex $n\in Q_1(\ell,-)$ and 
-Then $S_\ell$ is preinjective if one of the following cases holds: 
-\begin{enumerate}
-\item $|Q_1(-,\ell)|=0$;
-\item $|Q_1(-,\ell)|=1$ and  removing all arrows $\alpha\in Q_1(\ell,-)$ creates a disconnected component $Q'$ containing $\ell$ which is of type $A$. \sayT{to get if and only if we probably have to go for Dynkin type here}
-\end{enumerate}
-Moreover, $S_\ell$ is not preinjective if $|Q_1(-,\ell)|\geq 2$.
+\begin{proposition}
+  \label{pro:simpleregular}
+  Let $Q$ be any acyclic quiver which is not of Dynkin type and let $i\in Q_0$. % be neither a sink nor a source. 
+  %Then $S_\ell$ is preprojective if and only if there exists a unique limb vertex $n\in Q_1(\ell,-)$ and 
+  Then $S_i$ is preinjective if one of the following cases holds: 
+  \begin{enumerate}
+    \item $|Q_1(-,i)|=0$;
+    \item $|Q_1(-,i)|=1$ and removing all arrows $\alpha\in Q_1(i,-)$ creates a disconnected component $Q'$ containing $i$ which is of type $A$.
+      \sayT{to get if and only if we probably have to go for Dynkin type here}
+  \end{enumerate}
+  Moreover, $S_i$ is not preinjective if $|Q_1(-,i)|\geq 2$.
 \end{proposition}
 \begin{proof}
+  If $Q_1(-,i)=0$, then $i$ is a source of $Q$ and so $S_i$ is injective.
 
-If $Q_1(-,\ell)=0$, then $\ell$ is a source of $Q$ and thus $S_\ell$ is injective. Thus assume that $|Q_1(-,\ell)|=1$ and let $Q'$ be the connected component containing $\ell$ after removing all arrows $\alpha\in Q_1(\ell,-)$ which is by assumption of type $A$. 
-%First assume that there exists a vertex $n$ such that after removing all arrows $\alpha:\ell\to n$, the vertex $\ell$ is a leaf of a quiver $Q'\subset Q$ of type $A_m$.
-Denote the vertices of $Q'$ by $\{1,2,\ldots,m-1\}\cup\{\ell\}$ with arrows between vertices $i$ and $i+1$ for $i=1,\ldots m-2$ and $m-1$ and $\ell$. As $\ell$ is a sink of $Q'$, at least one of the vertices $1,\ldots,m-1$ is a source. Let $q$ be the maximal source of $Q'$, i.e. closest to $\ell$. Then all arrows from $q$ to $\ell$ are oriented towards $\ell$. Then it is easy to check that the representation $\Sigma_{m-1}\ldots\Sigma_{q} S_\ell$ is an injective representation of $\mu_{m-1}\ldots\mu_{q}Q$ of dimension $(m-1)+\ell$. As we did only reflect at sources of  $Q_0'\backslash\{\ell\}$ and as $Q_1(-,\ell)=\{m-1\}$, this already shows that $S_\ell$ is a preinjective representation of $Q$.
+  Assume $|Q_1(-,i)|=1$, say $\ell\in Q_0(-,i)$, and that $\ell$ is a limb vertex with respect to $i$ with associated leaf $\ell'$ in $Q(\ell)$.
+  Then $S_i=\tau^{-h(\ell)}I_{\ell',0}$ is preinjective.
 
-%Thus assume that $\ell$ is not a source and satisfies the following condition:  If $|Q_1(-,\ell)|=1$, the connected component $Q'$ obtained after removing all vertices  $\alpha\in Q_1(\ell,-)$ is not of type $A$. 
-Thus let $Q_1(-,\ell)\geq 2$. If there is no outgoing arrow from $\ell$ to some vertex $n$, it follows that $S_\ell$ is projective and thus not preinjective as $Q$ is not of Dynkin type. Thus assume that there exists a vertex $n$ such that $|Q_1(\ell,n)|\geq 1$. By assumption, there exists at least two arrows $\alpha:q\to\ell$ and $\alpha':q'\to\ell$ for some $q,q'\in Q_0$.  Note that $q,q'\neq n$ as $Q$ is acyclic. 
+  Now consider the case $|Q_1(-,i)|\geq 2$.
+  If there exists $q\in Q_0(-,i)$ with $|Q_1(q,i)|\ge2$, then the root $q+i$ is imaginary with $\hom(i,q+i)=1$ and thus $S_i$ is not preinjective by Lemma~\ref{lem: non-preinjective}.
+  Thus we may assume $|Q_0(-,i)|=|Q_1(-,i)|$, i.e.~there are no parallel arrows with target $i$.
+  By this assumption, there exist distinct vertices $q,q'\in Q_0(-,i)$.
 
-First assume that $q=q'$. Then the root $q+\ell$ is imaginary with $\hom(\ell,q+\ell)=1$ and thus $S_\ell$ is not preinjective by Lemma \ref{lem: non-preinjective}.
-Thus assume that $q\neq q'$ and $Q_1(i,\ell)=1$ for $i\in\{q,q'\}$. If $Q_1(\ell,n)\geq 2$, we may consider the imaginary root $\beta=q+q'+3\ell+n$ for which we have $\hom(\ell,\beta)\geq 1$. Again this shows that $S_\ell$ is not preinjective by Lemma \ref{lem: non-preinjective}.
+  If $|Q_1(i,-)|=0$, then $S_i$ is projective and hence not preinjective as $Q$ is not of Dynkin type.
+  Thus assume that there exists a vertex $j$ such that $|Q_1(i,j)|\geq 1$.
+  Note that $q,q'\neq j$ as $Q$ is acyclic. 
+  If $|Q_1(i,j)|\geq 2$, we may consider the imaginary root $\beta=q+q'+3i+j$ for which we have $\hom(i,\beta)\geq 1$.
+  Again this shows that $S_i$ is not preinjective by Lemma~\ref{lem: non-preinjective}.
+  Thus we may assume $|Q_0(i,-)|=|Q_1(i,-)$, i.e.~there are no parallel arrows with source $i$.
 
-Next assume that $Q_1(\ell,n)=1$. If there were a vertex $n'\notin \{n,q,q'\}$ such that $Q_1(n',\ell)\cup Q_1(\ell,n')=1$, the full subquiver $Q'$ with vertices $\{\ell,n,n',q,q'\}$ would be of type $\tilde D_4$ with middle vertex $\ell$ which is neither a source nor a sink. Then it is straightforward that $S_\ell$ is regular as a representation of $Q'$. In particular, there exists an indecomposable imaginary root representation $X$ in the same tube which is of dimension $\delta=n+n'+q+q'+2\ell$ and such that $\Hom(S_\ell,X)\neq 0$. As we clearly have $\dim\Ext_Q(X,X)\geq \dim\Ext_{Q'}(X,X)\neq 0$, we can again apply Lemma \ref{lem: non-preinjective}.
+  If there were a vertex $j'\notin \{j,q,q'\}$ such that $|Q_1(j',i)\cup Q_1(i,j')|=1$, the full subquiver $Q'$ with vertices $\{i,j,j',q,q'\}$ would be of type $\tilde D_4$ with middle vertex $i$ which is neither a source nor a sink.
+  Then it is straightforward that $S_i$ is regular as a representation of $Q'$.
+  In particular, there exists an indecomposable imaginary root representation $X$ in the same tube which is of dimension $\delta=j+j'+q+q'+2i$ and such that $\Hom(S_j,X)\neq 0$.
+  As we clearly have $\dim\Ext_Q(X,X)\geq \dim\Ext_{Q'}(X,X)\neq 0$, we can again apply Lemma~\ref{lem: non-preinjective} and conclude that $S_i$ is not preinjective.
 
-Thus assume that there does not exist such a vertex $n'$. Thus $\ell$ has precisely three neighbors $q,q'$ and $n$.
-If $q$ is connected to $q'$ by a sequence of vertices $q=q_1,q_2,\ldots,q_r=q'$ with $q_i\neq n$, it is easy to check that $\beta=\sum_{i=1}^rq_i$ is an imaginary Schur root with $\hom(\ell,\beta)\neq 0$. If $n$ is connected to $q$ (or $q'$) by a sequence as above, denoting the arrow from $\ell$ to $n$ by $\gamma$, there exists an imaginary Schur root $X$ representation of dimension $\beta=\sum_{i=1}^{r}q_i$ with $X_\gamma=0$ which implies $\Hom(S_\ell,X_\gamma)\neq 0$. Thus Lemma \ref{lem: non-preinjective} yields the claim. 
+  Thus we may assume that there does not exist such a vertex $j'$ and so $i$ has precisely three neighbors $q$, $q'$, and $j$.
+  If $q$ is connected to $q'$ by a sequence of vertices $q=q_1,q_2,\ldots,q_r=q'$ with $q_i\neq j$, it is easy to check that $\beta=i+\sum_{p=1}^rq_p$ is an imaginary Schur root with $\hom(i,\beta)\neq 0$.
+  If $j$ is connected to $q$ (or to $q'$) by a sequence as above, denoting the arrow from $i$ to $j$ by $\gamma$, there exists an imaginary Schur root $X$ representation of dimension $\beta=i+\sum_{p=1}^{r}q_p$ with $X_\gamma=0$ which implies $\Hom(S_i,X_\gamma)\neq 0$.
+  Thus Lemma \ref{lem: non-preinjective} yields the claim in this case. 
 
-Thus we may additionally assume that the arrows $q,q'$ and $n$ are only connected by a unique walk. If $Q$ has another vertex with at least three neighbors, it is straightforward to check that it has a subquiver of extended Dynkin type $D$ in which case a similar argument as in the $\tilde D_4$ case applies.\sayT{more precise}
+  Thus we may additionally assume that the vertices $q,q'$ and $j$ are only connected by a unique walk.
+  If $Q$ has another vertex with at least three neighbors, it is straightforward to check that it has a subquiver of extended Dynkin type $D$ in which case a similar argument as in the $\tilde D_4$ case applies.\sayT{more precise}
 
-Thus it remains to consider the case when $Q$ is a flag quiver with central vertex $\ell$. If $Q$ is not a tree, the root 
-$$2\ell+\sum_{q\in Q_0\backslash\{\ell\}}q$$
-is imaginary with $\hom(\ell,\beta)\neq 0$ and Lemma \ref{lem: non-preinjective} applies. Thus assume that $Q$ is a tree. As it is not of Dynkin type, it contains an extended Dynkin quiver of type $E$. But then it is straightforward that $\hom(\ell,\delta)\neq 0$ for the respective imaginary Schur roots $\delta$, see \cite[Section 4]{CB} for a list.
-Thus again Lemma \ref{lem: non-preinjective} applies.
-
+  Thus it remains to consider the case when $Q$ is a flag quiver with central vertex $i$.
+  If $Q$ is not a tree, the root 
+  $$\beta=2i+\sum_{q\in Q_0\backslash\{i\}}q$$
+  is imaginary with $\hom(i,\beta)\neq 0$ and Lemma \ref{lem: non-preinjective} applies.
+  Thus assume that $Q$ is a tree.
+  As it is not of Dynkin type, it contains an extended Dynkin quiver of type $E$.
+  But then it is straightforward that $\hom(i,\delta)\neq 0$ for the respective imaginary Schur roots $\delta$, see \cite[Section 4]{CB} for a list.
+  Thus again Lemma \ref{lem: non-preinjective} applies.
 \end{proof}
+
 \begin{lemma}
   \label{le:nonlimb extensions}
   Suppose $\ell\in Q_0(n,-)$ is not a limb vertex with respect to the source vertex $n$.
