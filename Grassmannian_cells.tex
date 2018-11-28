@@ -342,11 +342,16 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
   Then any indecomposable extension $E\in\Ext(S_n,P_{\ell_1,0}\oplus P_{\ell_2,0})$ is not preinjective.
 \end{lemma}
 \begin{proof}
-Alternative proof (maybe I miss something): Let $\P_{\ell_i}=\Sigma_iS_{\ell_i}$ where we only reflect at the support of $P_{\ell_i}$. As $\ell_1$, $\ell_2$ are limb vertices, we have $\Sc{\udim P_{l_i}}{\udim P_{l_j}}=0$ for $i\neq j$. Moreover, $n$ is not a neighbor of any other vertex than $\ell_i$ in $\mathrm{supp}P_{\ell_i,0}$. Thus we have
-$$\Hom(P_{\ell_i},S_n)=0=\Hom(S_n,P_{\ell_i})=\Ext(P_{\ell_i}, S_n)=0.$$
-Moreover, we have $\dim\Ext(S_n,P_{\ell_i})=1$ as $\ell_i$ as there is precisely one arrow from $n$ to $\ell_i$. Thus if $E$ is decomposable, it is forced to have a projective direct summand. If it is indecomposable, we have
-$$E=\Sigma_1\Sigma_{\ell_1}\Sigma_2\Sigma_{\ell_2} S_n.$$ Now $\ell_1,\ell_2\in Q'_0(\ell_i,n)$ where $Q'=\Sigma_{\ell_2}\Sigma^{-1}_2\Sigma_{\ell_1}\Sigma_1^{-1}Q$. In particular, $S_n$ is not a preinjective representation of $Q'$ by Proposition \ref{pro:simpleregular}.
+Alternative proof (maybe I miss something): First note that $n$ is not a neighbor of any other vertex than $\ell_i$ in $\mathrm{supp}P_{\ell_i,0}$. As $\ell_i$ is a limb vertex, reflecting at all vertices in the type $A$ component except $\ell_i$, we can assume that $P_{\ell_i}=S_{\ell_i}$. This means that all arrows in the type $A$ component with leaf $\ell_i$ point towards $\ell_i$. As $\ell_i$ is a limb vertex and $n$ a source, $\ell_i$ is a sink.  
 
+%Then we have $\Sc{\udim S_{l_i}}{\udim S_{l_j}}=0$ for $i\neq j$. Moreover, we have
+%$$\Hom(S_{\ell_i},S_n)=0=\Hom(S_n,P_{\ell_i})=\Ext(P_{\ell_i}, S_n)=0.$$
+
+We have $\dim\Ext(S_n,P_{\ell_i})=|Q_0(n,\ell_i)|=1$ as there is precisely one arrow from $n$ to $\ell_i$. Thus $n+\ell_1+\ell_2$ is an exceptional root. As $E$ is indecomposable, it already follows that 
+$$S_n=\Sigma_{\ell_1}\Sigma_{\ell_2} E\in\rep(Q')$$
+where $Q'=\mu_{\ell_1}\mu_{\ell_2} Q$. In $Q'$ we have $\{\ell_1,\ell_2\}\subset Q_1(-,n)$ and thus $|Q_1(-,n)|\geq 2$. In particular, $S_n$ is not a preinjective representation of $Q'$ by Proposition \ref{pro:simpleregular} which means that $E$ is not a preinjective representation of $Q$.
+
+--------------------------------------------
 
   First note that $Q$ is not of finite representation type and so there exists $\ell\in Q_0(n,-)$ with $\ell\ne\ell_1,\ell_2$.
   If $\ell$ is a limb with respect to vertex $n$ and $Q_0(n,-)=\{\ell,\ell_1,\ell_2\}$, then an easy calculation shows that $E\cong\tau^{-r}P_{\ell',0}$ is preprojective, here $\ell'$ is the leaf vertex of $Q$ in the subquiver $Q(\ell)\subset Q$ and $r$ is the number of arrows in $Q(\ell)$ directed towards $\ell'$.
