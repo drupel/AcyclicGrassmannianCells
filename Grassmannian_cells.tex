@@ -276,25 +276,22 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
 
   If there were a vertex $j'\notin \{j,q,q'\}$ such that $|Q_1(j',i)\cup Q_1(i,j')|=1$, the full subquiver $Q'$ with vertices $\{i,j,j',q,q'\}$ would be of type $\tilde D_4$ with middle vertex $i$ which is neither a source nor a sink.
   Then it is straightforward that $S_i$ is regular as a representation of $Q'$.
-  In particular, there exists an indecomposable imaginary root representation $X$ in the same tube which is of dimension $\delta=j+j'+q+q'+2i$ and such that $\Hom(S_j,X)\neq 0$.
+  In particular, there exists an indecomposable imaginary root representation $X$ in the same tube which is of dimension $\delta=j+j'+q+q'+2i$ and such that $\Hom(S_i,X)\neq 0$.
   As we clearly have $\dim\Ext_Q(X,X)\geq \dim\Ext_{Q'}(X,X)\neq 0$, we can again apply Lemma~\ref{lem: non-preinjective} and conclude that $S_i$ is not preinjective.
 
   Thus we may assume that there does not exist such a vertex $j'$ and so $i$ has precisely three neighbors $q$, $q'$, and $j$.
   If $q$ is connected to $q'$ by a sequence of vertices $q=q_1,q_2,\ldots,q_r=q'$ with $q_i\neq j$, it is easy to check that $\beta=i+\sum_{p=1}^rq_p$ is an imaginary Schur root with $\hom(i,\beta)\neq 0$.
-  If $j$ is connected to $q$ (or to $q'$) by a sequence as above, denoting the arrow from $i$ to $j$ by $\gamma$, there exists an imaginary Schur root $X$ representation of dimension $\beta=i+\sum_{p=1}^{r}q_p$ with $X_\gamma=0$ which implies $\Hom(S_i,X_\gamma)\neq 0$.
+  If $j$ is connected to $q$ (or analogously to $q'$) by a sequence $j=q_1,q_2,\ldots,q_r=q$ with $q_i\neq q'$, the root $\beta=i+\sum_{p=1}^rq_p$ is imaginary. Denoting the arrow from $i$ to $j$ by $\gamma$, there exists a Schurian representation of dimension $\beta$ with $X_\gamma=0$ which implies $\Hom(S_i,X_\gamma)\neq 0$.
   Thus Lemma \ref{lem: non-preinjective} yields the claim in this case. 
 
-  Thus we may additionally assume that the vertices $q,q'$ and $j$ are only connected by a unique walk.
-  If $Q$ has another vertex with at least three neighbors, it is straightforward to check that it has a subquiver of extended Dynkin type $D$ in which case a similar argument as in the $\tilde D_4$ case applies.\sayT{more precise}
+  Thus we may additionally assume that there exists precisely one path from each of the vertices $q,q'$ to $j$. If there exists vertex $i'\in Q_0$ different from $i$ such that $|Q_0(i,-)\cup Q_0(-,i)|\geq 3$, it is straightforward to check that $Q$ has a subquiver of extended Dynkin type $D$. In this subquiver precisely two vertices out of $\{q,q',j\}$ are leafs. With this observation, it is straightforward to reduce to the case $\tilde D_4$ treated before.
 
   Thus it remains to consider the case when $Q$ is a flag quiver with central vertex $i$.
   If $Q$ is not a tree, the root 
   $$\beta=2i+\sum_{q\in Q_0\backslash\{i\}}q$$
   is imaginary with $\hom(i,\beta)\neq 0$ and Lemma \ref{lem: non-preinjective} applies.
-  Thus assume that $Q$ is a tree.
-  As it is not of Dynkin type, it contains an extended Dynkin quiver of type $E$.
-  But then it is straightforward that $\hom(i,\delta)\neq 0$ for the respective imaginary Schur roots $\delta$, see \cite[Section 4]{CB} for a list.
-  Thus again Lemma \ref{lem: non-preinjective} applies.
+  
+	Thus assume that $Q$ is a tree. As it is not of Dynkin type, it contains an extended Dynkin quiver of type $E$ as a full subquiver. But then it is straightforward that $\hom(i,\delta)\neq 0$ for the respective imaginary Schur roots $\delta$, see \cite[Section 4]{CB} for a list. Thus again Lemma \ref{lem: non-preinjective} applies.
 \end{proof}
 
 \begin{lemma}
@@ -417,8 +414,8 @@ This induces an action of $W$ on $\rep\widetilde{Q}$ which we denote by $\wideti
 \begin{proof}
   For $m=0$ and $j$ a sink in $Q$, both claims are immediate from the definitions via reflection functors.
   For $m>0$ and $j$ arbitrary, these follow from the first case inductively by applying reflection functors.
-  \sayD{This requires the cokernels to not be preinjective, why does that have to be true?}
-\end{proof}
+  \sayD{This requires the cokernels to not be preinjective, why does that have to be true?}\sayT{If the cokernel is injective, injective maps become surjective, see $\tilde D_4$ in subspace orientation}
+	\end{proof}
 \begin{definition}
   For $i,j\in Q_0$ and $m\ge0$, write $\Irr(P_{j,m},P_{i,m})\subset\Hom_Q(P_{j,m},P_{i,m})$ for the subspace corresponding to $\bigoplus_{\alpha\in Q_1(i,j)} \Hom_{\widetilde{Q}}(\alpha.\widetilde{P}_{j,m},\widetilde{P}_{i,m})$ in Lemma~\ref{le:hom lifts}.
   Similarly, let $\Irr(P_{i,m},P_{j,m+1})\subset\Hom_Q(P_{i,m},P_{j,m+1})$ denote the subspace corresponding to $\bigoplus_{\alpha\in Q_1(i,j)} \Hom_{\widetilde{Q}}(\alpha^{-1}.\widetilde{P}_{i,m},\widetilde{P}_{j,m+1})$ in Lemma~\ref{le:hom lifts}.
@@ -427,7 +424,7 @@ This induces an action of $W$ on $\rep\widetilde{Q}$ which we denote by $\wideti
   For $i,j\in Q_0$ and $m\ge0$, the morphism spaces $\Irr(P_{j,m},P_{i,m})$ and $\Irr(P_{i,m},P_{j,m+1})$ are both $b_{ij}$-dimensional.
 \end{corollary}
 \begin{remark}
-  The notation $\Irr(P_{j,m},P_{i,j})$ and $\Irr(P_{i,m},P_{j,m+1})$ is justified by the following observation: these spaces map isomorphically to the appropriate spaces $\Rad(M,N)/\Rad^2(M,N)$ of irreducible morphisms labeling arrows in the Auslander-Reiten quiver of $Q$.
+  The notation $\Irr(P_{j,m},P_{i,m})$ and $\Irr(P_{i,m},P_{j,m+1})$ is justified by the following observation: these spaces map isomorphically to the appropriate spaces $\Rad(M,N)/\Rad^2(M,N)$ of irreducible morphisms labeling arrows in the Auslander-Reiten quiver of $Q$.
   For the results that follow, it will be important to have honest morphisms and we fix these particular choices of lifts from such quotient spaces.
 \end{remark}
 
@@ -541,7 +538,7 @@ The next results describe situations when this will occur and provide the correc
 \end{proof}
 
 For $i\in Q_0$ and $m\ge0$, given $\ell\in Q_0(-,i)\cup Q_0(i,-)$ we write $\cI_{i,m}^{\{\ell\}}\subset\cI_{i,m}$ for the tuple of subspaces with the only proper subspace at position $\ell$ and the zero subspace in that component.
-\begin{corollary}
+\begin{corollary}\sayT{Is there a typo and $P_{i,m+1}$ maybe $P_{\ell,m+1}$? We have $|\cI_{i,m}^{\{\ell\}}|=1$ right?}
   \label{cor:reduced sequences}
   Suppose $i\in Q_0$ is adjacent to a limb vertex $\ell$ with associated leaf $\ell'$.
   Then there is an exact sequence
@@ -558,7 +555,7 @@ The following result is crucial to the constructions to follow.
 \begin{lemma}
   Consider $i\in Q_0$ and $m\ge0$.
   \begin{enumerate}
-    \item For any tuple of subspaces $\cV\subsetneq\cI_{i,-1}$, the natural evaluation map $\cP_{i,-1}\bullet\cV\to P_{i,0}$ is injective.
+    \item For any tuple of subspaces $\cV\subsetneq\cI_{i,-1}$, the natural evaluation map $\cP_{i,-1}\bullet\cV\to P_{i,0}$ is injective.\sayT{$\cV$ admissible in (1)?}
     \item For any admissible tuple $\cV\subsetneq\cI_{i,m}$, the natural evaluation map $\cP_{i,m}\bullet\cV\to P_{i,m+1}$ is injective.
     \item The sequence \eqref{eq:preprojective AR} induces isomorphisms 
       \[\Irr(P_{k,m},P_{i,m+1})^*\cong \Irr(P_{i,m},P_{k,m}) \qquad \text{and} \qquad \Irr(P_{j,m+1},P_{i,m+1})^*\cong \Irr(P_{i,m},P_{j,m+1})\]
