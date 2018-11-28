@@ -319,7 +319,7 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
   Let $Q'\subset Q$ denote the support quiver of $E$ and label $Q'_0=\{i_1,\ldots,i_r\}$ along a sink adapted sequence for $Q'$.
   Then by definition of $P_{\ell,0}$ we must have $i_r=n$ and $i_{r-1}=\ell$.
   It follows that 
-  $$P_{\ell,0}=\Sigma_{i_1}\cdots\Sigma_{i_{r-2}} S_\ell \qquad \text{and} \qquad E=\Sigma_{i_1}\cdots\Sigma_{i_{r-2}}\Sigma_\ell S_n=\Sigma_{i_1}\cdots\Sigma_{i_{r-2}}\Sigma_n S_\ell=\Sigma_n\Sigma_{i_1}\cdots\Sigma_{i_{r-2}} S_\ell.$$
+  $$P_{\ell,0}=\Sigma_{i_1}\cdots\Sigma_{i_{r-2}} S_\ell \qquad \text{and} \qquad E=\Sigma_{i_1}\cdots\Sigma_{i_{r-2}}\Sigma_n S_\ell.$$
  
 
 % in particular $E$ is projective as a representation of $Q'$.
@@ -327,8 +327,7 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
  % Indeed, this would imply that $E$ is injective as a representation of $Q'$, but as $\ell$ is not a limb vertex, $Q'$ is not of type A and thus $Q'$ does not admit a projective-injective representation.
   %\sayD{I am not sure why $E$ having a one-dimensional space at vertex $n$ implies it is not strictly preinjective.}
 	%It follows that $\Sigma_n\Sigma_{i_{r-1}}\cdots\Sigma_{i_1} E\cong S_\ell$ as representations of $\mu_n\mu_{i_{r-1}}\cdots\mu_{i_1} Q$.
-  As $\ell$ is not a limb vertex and a sink of $Q'$ and thus of the full subquiver with vertices $Q_0\backslash\{n\}$, there exist at least two arrows $\alpha:q\to \ell$ and $\alpha':q'\to \ell$ with $q,q'\neq n$. Thus we have $Q_1(-,\ell)\geq 2$. But now Proposition \ref{pro:simpleregular} shows that $S_\ell=\Sigma_n E$ and thus $E$
-	
+  As $\ell$ is not a limb vertex with respect to $n$ and as $\ell$ is a sink of $Q'':=\mu_{i_{1}}\ldots\mu_{i_{r-1}}Q$, there exist at least two arrows $\alpha:q\to \ell$ and $\alpha':q'\to \ell$ with $q,q'\neq n$ in $Q''$, i.e. we have $Q_1(-,\ell)\geq 2$. But now Proposition \ref{pro:simpleregular} shows that $S_\ell$ and thus $E=\Sigma_{i_1}\cdots\Sigma_{i_{r-2}}\Sigma_n S_\ell$ is not  preinjective.	
 	
   %As $n$ was a source of $Q$, it follows that $n$ is a sink of $\mu_n\mu_{\ell-1}\cdots\mu_{1} Q$.
   %In turn $\ell$ is neither sink nor source and thus $S_{\ell}$ is not preinjective because we assumed that $Q$ is not of Dynkin type.
@@ -343,8 +342,14 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
   Then any indecomposable extension $E\in\Ext(S_n,P_{\ell_1,0}\oplus P_{\ell_2,0})$ is not preinjective.
 \end{lemma}
 \begin{proof}
+Alternative proof (maybe I miss something): Let $\P_{\ell_i}=\Sigma_iS_{\ell_i}$ where we only reflect at the support of $P_{\ell_i}$. As $\ell_1$, $\ell_2$ are limb vertices, we have $\Sc{\udim P_{l_i}}{\udim P_{l_j}}=0$ for $i\neq j$. Moreover, $n$ is not a neighbor of any other vertex than $\ell_i$ in $\mathrm{supp}P_{\ell_i,0}$. Thus we have
+$$\Hom(P_{\ell_i},S_n)=0=\Hom(S_n,P_{\ell_i})=\Ext(P_{\ell_i}, S_n)=0.$$
+Moreover, we have $\dim\Ext(S_n,P_{\ell_i})=1$ as $\ell_i$ as there is precisely one arrow from $n$ to $\ell_i$. Thus if $E$ is decomposable, it is forced to have a projective direct summand. If it is indecomposable, we have
+$$E=\Sigma_1\Sigma_{\ell_1}\Sigma_2\Sigma_{\ell_2} S_n.$$ Now $\ell_1,\ell_2\in Q'_0(\ell_i,n)$ where $Q'=\Sigma_{\ell_2}\Sigma^{-1}_2\Sigma_{\ell_1}\Sigma_1^{-1}Q$. In particular, $S_n$ is not a preinjective representation of $Q'$ by Proposition \ref{pro:simpleregular}.
+
+
   First note that $Q$ is not of finite representation type and so there exists $\ell\in Q_0(n,-)$ with $\ell\ne\ell_1,\ell_2$.
-  If $\ell$ is a limb with respect to vertex $n$ and $Q_0(n,-)=\{\ell,\ell_1,\ell_2\}$, then an easy calculation shows that $E\cong\tau^{-r}P_{\ell',0}$ is preprojectivei, here $\ell'$ is the leaf vertex of $Q$ in the subquiver $Q(\ell)\subset Q$ and $r$ is the number of arrows in $Q(\ell)$ directed towards $\ell'$.
+  If $\ell$ is a limb with respect to vertex $n$ and $Q_0(n,-)=\{\ell,\ell_1,\ell_2\}$, then an easy calculation shows that $E\cong\tau^{-r}P_{\ell',0}$ is preprojective, here $\ell'$ is the leaf vertex of $Q$ in the subquiver $Q(\ell)\subset Q$ and $r$ is the number of arrows in $Q(\ell)$ directed towards $\ell'$.
   Since $Q$ is not of finite representation type, this implies $E$ is not preinjective.
   Thus we may assume that $Q_0(n,-)$ contains a vertex which is not a leaf or that $|Q_0(n,-)|\ge4$.
   
