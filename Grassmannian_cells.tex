@@ -248,21 +248,23 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
   \label{pro:simpleregular}
   Let $Q$ be any acyclic quiver which is not of Dynkin type and let $i\in Q_0$. % be neither a sink nor a source. 
   %Then $S_\ell$ is preprojective if and only if there exists a unique limb vertex $n\in Q_1(\ell,-)$ and 
-  Then $S_i$ is preinjective if one of the following cases holds: 
+  Then $S_i$ is preinjective if and only if one of the following cases holds: 
   \begin{enumerate}
     \item $|Q_1(-,i)|=0$;
     \item $|Q_1(-,i)|=1$ and removing all arrows $\alpha\in Q_1(i,-)$ creates a disconnected component $Q'$ containing $i$ which is of type $A$.
-      \sayT{to get if and only if we probably have to go for Dynkin type here}
-  \end{enumerate}
-  Moreover, $S_i$ is not preinjective if $|Q_1(-,i)|\geq 2$.
+		\end{enumerate}
+In particular, $S_i$ is not preinjective if $|Q_1(-,i)|\geq 2$.
+			
 \end{proposition}
 \begin{proof}
   If $Q_1(-,i)=0$, then $i$ is a source of $Q$ and so $S_i$ is injective.
 
   Assume $|Q_1(-,i)|=1$, say $\ell\in Q_0(-,i)$, and that $\ell$ is a limb vertex with respect to $i$ with associated leaf $\ell'$ in $Q(\ell)$.
-  Then $S_i=\tau^{-h(\ell)}I_{\ell',0}$ is preinjective.
+  Then $S_i=\tau^{-h(\ell)}I_{\ell',0}$ is preinjective.\sayT{reference?}
 
-  Now consider the case $|Q_1(-,i)|\geq 2$.
+For the remaining cases, the aim is to apply Lemma~\ref{lem: non-preinjective}. 
+
+First consider the case $|Q_1(-,i)|\geq 2$.
   If there exists $q\in Q_0(-,i)$ with $|Q_1(q,i)|\ge2$, then the root $q+i$ is imaginary with $\hom(i,q+i)=1$ and thus $S_i$ is not preinjective by Lemma~\ref{lem: non-preinjective}.
   Thus we may assume $|Q_0(-,i)|=|Q_1(-,i)|$, i.e.~there are no parallel arrows with target $i$.
   By this assumption, there exist distinct vertices $q,q'\in Q_0(-,i)$.
@@ -292,6 +294,19 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
   is imaginary with $\hom(i,\beta)\neq 0$ and Lemma \ref{lem: non-preinjective} applies.
   
 	Thus assume that $Q$ is a tree. As it is not of Dynkin type, it contains an extended Dynkin quiver of type $E$ as a full subquiver. But then it is straightforward that $\hom(i,\delta)\neq 0$ for the respective imaginary Schur roots $\delta$, see \cite[Section 4]{CB} for a list. Thus again Lemma \ref{lem: non-preinjective} applies.
+	
+	It remains to consider the case when $|Q_0(-,i)|=1$ and removing all arrows $\alpha\in Q_1(i,-)$ does not create a disconnected component $Q'$  of type $A$ with leaf $\ell$ where $\gamma:\ell\to i$ denotes the unique arrow with sink $i$. Let $Q'$ be the connected component containing $\ell$ after removing all arrows from $Q_1(i,-)$.
+	
+If $Q'$ is wild or of extended Dynkin type, let $M$ be any indecomposable representation of $Q'$ such that $\beta=\udim M$ is an imaginary root of $Q'$ and thus of $Q$. We can naturally identify $M$ with a representation of $Q$ when setting $M_\alpha=0$ for all $\alpha\in Q_1(i,-)$. This yields $\Hom_Q(S_i,M)\neq 0$. Thus Lemma \ref{lem: non-preinjective} yields the claim.
+
+Finally, assume that $Q'$ is of Dynkin type $D$ or $E$ (with leaf $i$). Moreover, we can assume that removing $\gamma$ yields precisely two connected components, the one of $\ell$ and the one of $i$. Indeed, otherwise, we can proceed as in the respective case for $Q_0(-,i)\geq 2$. Applying reflection functors we can assume that all arrows in $Q'$ are oriented towards $\ell$, i.e. $\ell$ is a sink of $Q'$. By assumption, we either have $Q_0(-,\ell)=2$ or there is a vertex $\ell'\in Q'0$ such that $Q_0(-,\ell')=2$ and $Q_0(\ell',-)=1$. Moreover, there is a unique path from $\ell'$ to $i$. Now let $Q(\ell',i)$ be the quiver obtained from $Q$ when identifying $\ell'$ and $i$ and removing all arrows and vertices along the path from $\ell'$ to $i$. Denote the vertex obtained via this identification by $(\ell',i)$. It is straightforward to check that roots $\beta$ of $Q$ with $\beta_i=\ldots=\beta_\ell'$ are imaginary if and only if the corresponding root of $Q$ with $\beta_{(\ell',i)}$ is imaginary. Thus if $Q(\ell',i)$ is not of Dynkin type, we can make use of the observations in the case $Q(-,i)=2$. Note that $Q(\ell',i)_1(-,i)\geq 2$.
+ Thus assume that $Q(\ell',i)$ is of Dynkin type and $Q$ is not. This is only possible if $Q$ is of type $E$. But then for the imaginary Schur root $\delta$ we have $\delta_i<\delta_\ell$. But this yields $\hom(i,\delta)\neq 0$ and thus the claim.
+
+
+%Let $M$ be any indecomposable representation of $Q'$ such that $\beta=\udim M$ is an imaginary root of $Q'$ and thus of $Q$. We can naturally identify $M$ with a representation of $Q$ when setting $M_\alpha=0$ for all $\alpha\in Q_1(i,-)$. This yields $\Hom_Q(S_i,M)\neq 0$. Thus Lemma \ref{lem: non-preinjective} yields the claim.
+  
+	 
+
 \end{proof}
 
 \begin{lemma}
