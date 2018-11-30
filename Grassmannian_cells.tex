@@ -251,7 +251,7 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
   Then $S_i$ is preinjective if and only if one of the following cases holds: 
   \begin{enumerate}
     \item $|Q_1(-,i)|=0$;
-    \item $|Q_1(-,i)|=1$ and removing all arrows $\alpha\in Q_1(i,-)$ creates a disconnected component $Q'$ containing $i$ which is of type $A$.
+    \item $|Q_1(-,i)|=1$ and $\ell\in Q_0(-,i)$ is a limb vertex such that the associated leaf is not equal to $i$.\sayT{If the quiver is of extended Dynkin type $A$, the simples corresponding to vertices which are neither sink nor source are regular, but are limb vertices. Probably we want to exclude this cases by definition?!}
 		\end{enumerate}
 In particular, $S_i$ is not preinjective if $|Q_1(-,i)|\geq 2$.
 			
@@ -260,47 +260,48 @@ In particular, $S_i$ is not preinjective if $|Q_1(-,i)|\geq 2$.
   If $Q_1(-,i)=0$, then $i$ is a source of $Q$ and so $S_i$ is injective.
 
   Assume $|Q_1(-,i)|=1$, say $\ell\in Q_0(-,i)$, and that $\ell$ is a limb vertex with respect to $i$ with associated leaf $\ell'$ in $Q(\ell)$.
-  Then $S_i=\tau^{-h(\ell)}I_{\ell',0}$ is preinjective.\sayT{reference?}
+  Then $S_i=\tau^{-h(\ell)}I_{\ell',0}$ is preinjective.\sayT{reference?} 
+	
 
-For the remaining cases, the aim is to apply Lemma~\ref{lem: non-preinjective}. 
+For the remaining cases, the aim is to apply Lemma~\ref{lem: non-preinjective}. Let $Q'$ be the connected component containing $i$ after removing all arrows from $Q_1(i,-)$.
+	
+If $Q'$ is wild or of extended Dynkin type, let $M$ be any indecomposable representation of $Q'$ such that $\beta=\udim M$ is an imaginary root of $Q'$ and thus of $Q$. We can naturally identify $M$ with a representation of $Q$ when setting $M_\alpha=0$ for all $\alpha\in Q_1(i,-)$. This yields $\Hom_Q(S_i,M)\neq 0$. Now Lemma \ref{lem: non-preinjective} gives the claim. 
 
-First consider the case $|Q_1(-,i)|\geq 2$.
-  If there exists $q\in Q_0(-,i)$ with $|Q_1(q,i)|\ge2$, then the root $q+i$ is imaginary with $\hom(i,q+i)=1$ and thus $S_i$ is not preinjective by Lemma~\ref{lem: non-preinjective}.
-  Thus we may assume $|Q_0(-,i)|=|Q_1(-,i)|$, i.e.~there are no parallel arrows with target $i$.
-  By this assumption, there exist distinct vertices $q,q'\in Q_0(-,i)$.
+Thus in the following we assume that $Q'$ is of Dynkin type $D$ or $E$ (with leaf $i$) or that $|Q_1(-,i)|\geq 2$ holds if it is of type $A$.
+  In particular, we can assume that $|Q_0(-,i)|=|Q_1(-,i)|$, i.e.~there are no parallel arrows with target $i$. Moreover, since $Q$ is not of Dynkin type, there exists a vertex $j$ such that $|Q_1(i,j)|\geq 1$.  
+	
+	%If $|Q_1(i,-)|=0$, then $S_i$ is projective and hence not preinjective as $Q$ is not of Dynkin type.
+ % If there exists $q\in Q_0(-,i)$ with $|Q_1(q,i)|\ge2$, then the root $q+i$ is imaginary with $\hom(i,q+i)=1$ and thus $S_i$ is not preinjective by Lemma~\ref{lem: non-preinjective}.
 
-  If $|Q_1(i,-)|=0$, then $S_i$ is projective and hence not preinjective as $Q$ is not of Dynkin type.
-  Thus assume that there exists a vertex $j$ such that $|Q_1(i,j)|\geq 1$.
-  Note that $q,q'\neq j$ as $Q$ is acyclic. 
+	First assume that $|Q_0(-,i)|\geq 2$. Thus there exist distinct vertices $q,q'\in Q_0(-,i)$.  Note that $q,q'\neq j$ as $Q$ is acyclic. 
   If $|Q_1(i,j)|\geq 2$, we may consider the imaginary root $\beta=q+q'+3i+j$ for which we have $\hom(i,\beta)\geq 1$.
-  Again this shows that $S_i$ is not preinjective by Lemma~\ref{lem: non-preinjective}.
-  Thus we may assume $|Q_0(i,-)|=|Q_1(i,-)$, i.e.~there are no parallel arrows with source $i$.
+  This shows that $S_i$ is not preinjective by Lemma~\ref{lem: non-preinjective}.
+  Thus we may additionally assume that $|Q_0(i,-)|=|Q_1(i,-)|$, i.e.~there are no parallel arrows with source $i$.
 
-  If there were a vertex $j'\notin \{j,q,q'\}$ such that $|Q_1(j',i)\cup Q_1(i,j')|=1$, the full subquiver $Q'$ with vertices $\{i,j,j',q,q'\}$ would be of type $\tilde D_4$ with middle vertex $i$ which is neither a source nor a sink.
-  Then it is straightforward that $S_i$ is regular as a representation of $Q'$.
+  If there were a vertex $j'\notin \{j,q,q'\}$ such that $|Q_1(j',i)\cup Q_1(i,j')|\geq 1$, there exists a subquiver $Q''$ of $Q$ with vertices $\{i,j,j',q,q'\}$ of type $\tilde D_4$ with middle vertex $i$ which is neither a source nor a sink.
+  Then it is straightforward that $S_i$ is regular as a representation of $Q''$.
   In particular, there exists an indecomposable imaginary root representation $X$ in the same tube which is of dimension $\delta=j+j'+q+q'+2i$ and such that $\Hom(S_i,X)\neq 0$.
-  As we clearly have $\dim\Ext_Q(X,X)\geq \dim\Ext_{Q'}(X,X)\neq 0$, we can again apply Lemma~\ref{lem: non-preinjective} and conclude that $S_i$ is not preinjective.
+  As we clearly have $\dim\Ext_Q(X,X)\geq \dim\Ext_{Q''}(X,X)\neq 0$, we can again apply Lemma~\ref{lem: non-preinjective} and conclude that $S_i$ is not preinjective.
 
-  Thus we may assume that there does not exist such a vertex $j'$ and so $i$ has precisely three neighbors $q$, $q'$, and $j$.
-  If $q$ is connected to $q'$ by a sequence of vertices $q=q_1,q_2,\ldots,q_r=q'$ with $q_i\neq j$, it is easy to check that $\beta=i+\sum_{p=1}^rq_p$ is an imaginary Schur root with $\hom(i,\beta)\neq 0$.
-  If $j$ is connected to $q$ (or analogously to $q'$) by a sequence $j=q_1,q_2,\ldots,q_r=q$ with $q_i\neq q'$, the root $\beta=i+\sum_{p=1}^rq_p$ is imaginary. Denoting the arrow from $i$ to $j$ by $\gamma$, there exists a Schurian representation of dimension $\beta$ with $X_\gamma=0$ which implies $\Hom(S_i,X_\gamma)\neq 0$.
-  Thus Lemma \ref{lem: non-preinjective} yields the claim in this case. 
+  Thus we may assume that there does not exist such a vertex $j'$ and so $i$ has precisely three neighbors $q$, $q'$, and $j$. Note that, as $Q'$ is of Dynkin type, $q$ is not connected to $q'$.
+	
+	  If $j$ is connected to $q$ (or analogously to $q'$) by a sequence $j=q_1,q_2,\ldots,q_r=q$ with $q_i\neq q'$, the root $\beta=i+\sum_{p=1}^rq_p$ is imaginary. Denoting the arrow from $i$ to $j$ by $\rho$, there exists a Schurian representation of dimension $\beta$ with $X_\rho=0$ which implies $\Hom(S_i,X_\rho)\neq 0$. 
+  Thus Lemma \ref{lem: non-preinjective} yields the claim in this case.  
+
 
   Thus we may additionally assume that there exists precisely one path from each of the vertices $q,q'$ to $j$. If there exists vertex $i'\in Q_0$ different from $i$ such that $|Q_0(i,-)\cup Q_0(-,i)|\geq 3$, it is straightforward to check that $Q$ has a subquiver of extended Dynkin type $D$. In this subquiver precisely two vertices out of $\{q,q',j\}$ are leafs. With this observation, it is straightforward to reduce to the case $\tilde D_4$ treated before.
 
   Thus it remains to consider the case when $Q$ is a flag quiver with central vertex $i$.
-  If $Q$ is not a tree, the root 
+  If $Q$ is not a tree, i.e. there exist vertices $s,s'$ with $|Q_1(s,s')|\geq 2$, the root 
   $$\beta=2i+\sum_{q\in Q_0\backslash\{i\}}q$$
   is imaginary with $\hom(i,\beta)\neq 0$ and Lemma \ref{lem: non-preinjective} applies.
   
 	Thus assume that $Q$ is a tree. As it is not of Dynkin type, it contains an extended Dynkin quiver of type $E$ as a full subquiver. But then it is straightforward that $\hom(i,\delta)\neq 0$ for the respective imaginary Schur roots $\delta$, see \cite[Section 4]{CB} for a list. Thus again Lemma \ref{lem: non-preinjective} applies.
 	
-	It remains to consider the case when $|Q_0(-,i)|=1$ and removing all arrows $\alpha\in Q_1(i,-)$ does not create a disconnected component $Q'$  of type $A$ with leaf $\ell$ where $\gamma:\ell\to i$ denotes the unique arrow with sink $i$. Let $Q'$ be the connected component containing $\ell$ after removing all arrows from $Q_1(i,-)$.
-	
-If $Q'$ is wild or of extended Dynkin type, let $M$ be any indecomposable representation of $Q'$ such that $\beta=\udim M$ is an imaginary root of $Q'$ and thus of $Q$. We can naturally identify $M$ with a representation of $Q$ when setting $M_\alpha=0$ for all $\alpha\in Q_1(i,-)$. This yields $\Hom_Q(S_i,M)\neq 0$. Thus Lemma \ref{lem: non-preinjective} yields the claim.
+	It remains to consider the case when $|Q_0(-,i)|=1$ and $\ell\in Q_0(-,i)$ is a limb vertex such that corresponding leaf is not equal to $i$. Let $\gamma:\ell\to i$ denote the unique arrow with sink $i$. 
+The consideration from above give that we can assume that $Q'$ is of Dynkin type $D$ or $E$ (with leaf $i$). Moreover, we can assume that removing $\gamma$ yields precisely two connected components, the one of $\ell$ and the one of $i$. Applying reflection functors we can assume that all arrows in $Q'$ are oriented towards $\ell$, i.e. $\ell$ is a sink of $Q'$. By assumption, we either have $|Q_0(-,\ell)|=2$ or there is a vertex $\ell'\in Q'_0$ such that $|Q_0(-,\ell')|=2$ and $|Q_0(\ell',-)|=1$. Moreover, there is a unique path from $\ell'$ to $i$ where we denote the vertices in between by $q_1,\ldots,q_r$. Now let $Q(\ell',i)$ be the quiver obtained from $Q$ when identifying $\ell'$ and $i$ and removing all arrows and vertices along the path from $\ell'$ to $i$. Denote the vertex obtained via this identification by $(\ell',i)$. It is straightforward to check that roots $\beta$ of $Q$ with $\beta_i=\beta_{q_l}=\beta_\ell'$ for $l=1,\ldots,r$ are imaginary if and only if the corresponding root of $Q(\ell',i)$ with $\beta_{(\ell',i)}=\beta_i$ is imaginary. Thus if $Q(\ell',i)$ is not of Dynkin type, we can make use of the observations in the case $|Q(-,i)|=2$. Note that $|Q(\ell',i)_1(-,(\ell',i))|\geq 2$.
 
-Finally, assume that $Q'$ is of Dynkin type $D$ or $E$ (with leaf $i$). Moreover, we can assume that removing $\gamma$ yields precisely two connected components, the one of $\ell$ and the one of $i$. Indeed, otherwise, we can proceed as in the respective case for $Q_0(-,i)\geq 2$. Applying reflection functors we can assume that all arrows in $Q'$ are oriented towards $\ell$, i.e. $\ell$ is a sink of $Q'$. By assumption, we either have $Q_0(-,\ell)=2$ or there is a vertex $\ell'\in Q'0$ such that $Q_0(-,\ell')=2$ and $Q_0(\ell',-)=1$. Moreover, there is a unique path from $\ell'$ to $i$. Now let $Q(\ell',i)$ be the quiver obtained from $Q$ when identifying $\ell'$ and $i$ and removing all arrows and vertices along the path from $\ell'$ to $i$. Denote the vertex obtained via this identification by $(\ell',i)$. It is straightforward to check that roots $\beta$ of $Q$ with $\beta_i=\ldots=\beta_\ell'$ are imaginary if and only if the corresponding root of $Q$ with $\beta_{(\ell',i)}$ is imaginary. Thus if $Q(\ell',i)$ is not of Dynkin type, we can make use of the observations in the case $Q(-,i)=2$. Note that $Q(\ell',i)_1(-,i)\geq 2$.
- Thus assume that $Q(\ell',i)$ is of Dynkin type and $Q$ is not. This is only possible if $Q$ is of type $E$. But then for the imaginary Schur root $\delta$ we have $\delta_i<\delta_\ell$. But this yields $\hom(i,\delta)\neq 0$ and thus the claim.
+ Thus we may finally assume that $Q(\ell',i)$ is of Dynkin type and $Q$ is not. This is only possible if $Q$ is of type $E$. But then for the imaginary Schur root $\delta$ we have $\delta_i<\delta_\ell$. But this yields $\hom(i,\delta)\neq 0$ and thus the claim.
 
 
 %Let $M$ be any indecomposable representation of $Q'$ such that $\beta=\udim M$ is an imaginary root of $Q'$ and thus of $Q$. We can naturally identify $M$ with a representation of $Q$ when setting $M_\alpha=0$ for all $\alpha\in Q_1(i,-)$. This yields $\Hom_Q(S_i,M)\neq 0$. Thus Lemma \ref{lem: non-preinjective} yields the claim.
@@ -308,6 +309,18 @@ Finally, assume that $Q'$ is of Dynkin type $D$ or $E$ (with leaf $i$). Moreover
 	 
 
 \end{proof}
+
+\begin{corollary}
+  \label{pro:simpleregular2}
+  Let $Q$ be any acyclic quiver which is not of Dynkin type and let $i\in Q_0$. Then $S_i$ is preprojective if and only if one of the following cases holds: 
+  \begin{enumerate}
+    \item $|Q_1(i,-)|=0$;
+    \item $|Q_1(i,-)|=1$ and $\ell\in Q_0(i,-)$ is a limb vertex such that the associated leaf is not equal to $i$.
+		\end{enumerate}
+In particular, $S_i$ is not preprojective if $|Q_1(i,-)|\geq 2$.
+			
+
+\end{corollary}
 
 \begin{lemma}
   \label{le:nonlimb extensions}
