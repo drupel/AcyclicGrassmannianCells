@@ -194,10 +194,8 @@ For $i,j\in Q_0$, we introduce the following notation:
   \item write $b_{ij}=|Q_1(i,j)|$ for the number of arrows from vertex $i$ to vertex $j$.
 \end{itemize}
 
-For $i,\ell\in Q_0$, an arrow $\alpha\in Q_1(i,\ell)\cup Q_1(\ell,i)$ is called a \emph{limb arrow} and $\ell$ is a \emph{limb vertex} with respect to vertex $i$ if removing $\alpha$ from $Q$ creates a disconnected quiver in which the component containing vertex $\ell$ is an orientation of a Dynkin diagram of type A.
-\sayT{$\ell$ itself should probably be a leaf of this component? Or do we want to include cases where $\ell$ is a middle vertex of a type $A$ component?}
-\sayD{Part of the point is that a limb controls a ``wing'' in the AR quiver that looks more or less like an infinite version of the AR quiver for a linearly oriented type A component where all mesh relations are simply squares, this is essentially why Corollary 3.15 holds.}
-A special case of a limb is a \emph{leaf} of $Q$ which is a vertex $\ell\in Q_0$ with $|Q_1(\ell,-)\cup Q_1(-,\ell)|=1$.
+A \emph{leaf} of $Q$ which is a vertex $\ell\in Q_0$ with $|Q_1(\ell,-)\cup Q_1(-,\ell)|=1$.
+For vertices $i,\ell\in Q_0$, an arrow $\alpha\in Q_1(i,\ell)\cup Q_1(\ell,i)$ is called a \emph{limb arrow} and $\ell$ is a \emph{limb vertex} with respect to vertex $i$ if removing $\alpha$ from $Q$ creates a disconnected quiver in which the component containing vertex $\ell$ is an orientation of a Dynkin diagram of type A with $\ell$ a leaf in this component.
 
 Note that each limb vertex $\ell\in Q_0$ has a uniquely associated leaf vertex $\ell'$ of~$Q$ lying at the opposite end of its type A component, if $\ell$ itself is a leaf of $Q$ then $\ell'=\ell$.
 Once a limb vertex $\ell$ is specified, the type A component associated to $\ell$ is uniquely determined (we assume $Q$ itself is not of type A).
@@ -251,8 +249,9 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
   Then $S_i$ is preinjective if and only if one of the following cases holds: 
   \begin{enumerate}
     \item $|Q_1(-,i)|=0$;
-    \item $|Q_1(-,i)|=1$ and $\ell\in Q_0(-,i)$ is a limb vertex such that the associated leaf is not equal to $i$.\sayT{If the quiver is of extended Dynkin type $A$, the simples corresponding to vertices which are neither sink nor source are regular, but are limb vertices. Probably we want to exclude this cases by definition?!}
-		\end{enumerate}
+    \item $|Q_1(-,i)|=1$ and $\ell\in Q_0(-,i)$ is a limb vertex such that the associated leaf is not equal to $i$.
+      \sayT{If the quiver is of extended Dynkin type $A$, the simples corresponding to vertices which are neither sink nor source are regular, but are limb vertices. Probably we want to exclude this cases by definition?!}
+  \end{enumerate}
 In particular, $S_i$ is not preinjective if $|Q_1(-,i)|\geq 2$.
 			
 \end{proposition}
@@ -260,7 +259,8 @@ In particular, $S_i$ is not preinjective if $|Q_1(-,i)|\geq 2$.
   If $Q_1(-,i)=0$, then $i$ is a source of $Q$ and so $S_i$ is injective.
 
   Assume $|Q_1(-,i)|=1$, say $\ell\in Q_0(-,i)$, and that $\ell$ is a limb vertex with respect to $i$ with associated leaf $\ell'$ in $Q(\ell)$.
-  Then $S_i=\tau^{-h(\ell)}I_{\ell',0}$ is preinjective.\sayT{reference?} 
+  Then $S_i=\tau^{-h(\ell)}I_{\ell',0}$ is preinjective.
+  \sayT{reference?} 
 	
 
 For the remaining cases, the aim is to apply Lemma~\ref{lem: non-preinjective}. Let $Q'$ be the connected component containing $i$ after removing all arrows from $Q_1(i,-)$.
