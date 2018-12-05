@@ -231,7 +231,7 @@ For two dimension vectors $\alpha$ and $\beta$ we denote by $\hom(\alpha,\beta)$
 \begin{lemma}
   \label{lem: non-preinjective}
   If $M,N\in\rep(Q)$ are indecomposable such that $\udim M$ is an imaginary root and such that $\Hom(N,M)\neq 0$, then $N$ is not preinjective.
-  In particular, if $\hom(\alpha,\beta)\neq 0$ and $\beta$ is an imaginary Schur root, $\alpha$ is not the dimension vector of a preinjective representation.
+  In particular, if $\hom(\alpha,\beta)\neq 0$ and $\beta$ is an imaginary Schur root, then $\alpha$ is not the dimension vector of a preinjective representation.
 \end{lemma}
 \begin{proof}
   As $\udim M$ is imaginary, $M$ is a regular representation.
@@ -244,19 +244,17 @@ For two dimension vectors $\alpha$ and $\beta$ we denote by $\hom(\alpha,\beta)$
 For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\alpha_q q$.
 \begin{proposition}
   \label{pro:simpleregular}
-  Let $Q$ be any acyclic quiver which is not of Dynkin type and let $i\in Q_0$. % be neither a sink nor a source. 
-  %Then $S_\ell$ is preprojective if and only if there exists a unique limb vertex $n\in Q_1(\ell,-)$ and 
-  Then $S_i$ is preinjective if and only if one of the following cases holds: 
+  For $i\in Q_0$, the vertex simple $S_i$ is preinjective if and only if one of the following holds: 
   \begin{enumerate}
     \item $|Q_1(-,i)|=0$;
-    \item $|Q_1(-,i)|=1$ and $\ell\in Q_0(-,i)$ is a limb vertex such that the associated leaf is not equal to $i$.
+    \item $|Q_1(-,i)|=1$ and $\ell\in Q_0(-,i)$ is a limb vertex with respect to vertex $i$. %such that the associated leaf is not equal to $i$.
       \sayT{If the quiver is of extended Dynkin type $A$, the simples corresponding to vertices which are neither sink nor source are regular, but are limb vertices. Probably we want to exclude this cases by definition?!}
       \sayD{The definition requires that removing a limb arrow creates more than one component, I believe this already excludes this possibility.}
   \end{enumerate}
-  In particular, $S_i$ is not preinjective if $|Q_1(-,i)|\geq 2$.			
+  In particular, the vertex simple $S_i$ is not preinjective if $|Q_1(-,i)|\geq 2$.			
 \end{proposition}
 \begin{proof}
-  If $Q_1(-,i)=0$, then $i$ is a source of $Q$ and so $S_i$ is injective.
+  If $Q_1(-,i)=0$, then vertex $i$ is a source of $Q$ and so $S_i$ is injective.
 
   Assume $|Q_1(-,i)|=1$, say $\ell\in Q_0(-,i)$, and that $\ell$ is a limb vertex with respect to $i$ with associated leaf $\ell'$ in $Q(\ell)$.
   We work by induction on $h(\ell)\ge1$ to show that $S_i=\tau^{-h(\ell)}I_{\ell',0}$ is preinjective.
@@ -268,12 +266,12 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
   If $\ell$ is not a source, then by induction $S_\ell=\tau^{-h(\ell)+1}I_{\ell',0}$ is preinjective, but $S_\ell=\tau S_i$ in this case and so $S_i=\tau^{-h(\ell)}I_{\ell',0}$ as desired.
   If $\ell$ is a source, then there exists a vertex $i'$ in $Q(\ell)$ so that $\tau^2 S_i=S_{i'}$ with $S_{i'}=\tau^{-h(\ell)+2} I_{\ell',0}$ by induction, this again gives $S_i=\tau^{-h(\ell)} I_{\ell',0}$ in this case.
 
-  For the remaining cases, the aim is to apply Lemma~\ref{lem: non-preinjective}. Let $Q'$ be the connected component containing $i$ after removing all arrows from $Q_1(i,-)$.
+  For the remaining cases, the aim is to apply Lemma~\ref{lem: non-preinjective} to see that $S_i$ is not preinjective. 
+  Let $Q'$ be the connected component containing $i$ after removing all arrows from $Q_1(i,-)$.
 
   If $Q'$ is wild or of extended Dynkin type, let $M$ be any indecomposable representation of $Q'$ such that $\beta=\udim M$ is an imaginary root of $Q'$ and thus of $Q$.
   We can naturally identify $M$ with a representation of $Q$ by setting $M_\alpha=0$ for all $\alpha\in Q_1(i,-)$.
-  This yields $\Hom_Q(S_i,M)\neq 0$.
-  Now Lemma \ref{lem: non-preinjective} gives the claim. 
+  This yields $\Hom_Q(S_i,M)\neq 0$ and thus the claim follows from Lemma \ref{lem: non-preinjective} in this case. 
 
   Thus in the following we assume that $Q'$ is of Dynkin type $D$ or $E$ (with leaf $i$) or that $|Q_1(-,i)|\geq 2$ holds if it is of type $A$.
   In particular, we can assume that $|Q_0(-,i)|=|Q_1(-,i)|$, i.e.~there are no parallel arrows with target $i$. Moreover, since $Q$ is not of Dynkin type, there exists a vertex $j$ such that $|Q_1(i,j)|\geq 1$.  
@@ -281,10 +279,8 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
 	%If $|Q_1(i,-)|=0$, then $S_i$ is projective and hence not preinjective as $Q$ is not of Dynkin type.
  % If there exists $q\in Q_0(-,i)$ with $|Q_1(q,i)|\ge2$, then the root $q+i$ is imaginary with $\hom(i,q+i)=1$ and thus $S_i$ is not preinjective by Lemma~\ref{lem: non-preinjective}.
 
-  First assume that $|Q_0(-,i)|\geq 2$.
-  Then there exist distinct vertices $q,q'\in Q_0(-,i)$.
+  First assume that $|Q_0(-,i)|\geq 2$, i.e.~there exist distinct vertices $q,q'\in Q_0(-,i)$.
   Note that $q,q'\neq j$ as $Q$ is acyclic. 
-  \sayD{With the last edits we lost the definition of vertex $j$.}
   If $|Q_1(i,j)|\geq 2$, we may consider the imaginary root $\beta=q+q'+3i+j$ for which we have $\hom(i,\beta)\geq 1$.
   This shows that $S_i$ is not preinjective by Lemma~\ref{lem: non-preinjective}.
   Thus we may additionally assume that $|Q_0(i,-)|=|Q_1(i,-)|$, i.e.~there are no parallel arrows with source $i$.
@@ -296,11 +292,14 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
 
   Thus we may assume that there does not exist such a vertex $j'$ and so $i$ has precisely three neighbors $q$, $q'$, and $j$. Note that, as $Q'$ is of Dynkin type, $q$ is not connected to $q'$.
 	
-	  If $j$ is connected to $q$ (or analogously to $q'$) by a sequence $j=q_1,q_2,\ldots,q_r=q$ with $q_i\neq q'$, the root $\beta=i+\sum_{p=1}^rq_p$ is imaginary. Denoting the arrow from $i$ to $j$ by $\rho$, there exists a Schurian representation of dimension $\beta$ with $X_\rho=0$ which implies $\Hom(S_i,X_\rho)\neq 0$. 
+  If $j$ is connected to $q$ (or analogously to $q'$) by a sequence $j=q_1,q_2,\ldots,q_r=q$ with $q_i\neq q'$, the root $\beta=i+\sum_{t=1}^rq_t$ is imaginary.
+  Denoting the arrow from $i$ to $j$ by $\rho$, there exists a Schurian representation of dimension $\beta$ with $X_\rho=0$ which implies $\Hom(S_i,X_\rho)\neq 0$. 
   Thus Lemma \ref{lem: non-preinjective} yields the claim in this case.  
 
-
-  Thus we may additionally assume that there exists precisely one path from each of the vertices $q,q'$ to $j$. If there exists vertex $i'\in Q_0$ different from $i$ such that $|Q_0(i,-)\cup Q_0(-,i)|\geq 3$, it is straightforward to check that $Q$ has a subquiver of extended Dynkin type $D$. In this subquiver precisely two vertices out of $\{q,q',j\}$ are leafs. With this observation, it is straightforward to reduce to the case $\tilde D_4$ treated before.
+  Thus we may additionally assume that there exists precisely one path from each of the vertices $q,q'$ to $j$.
+  If there exists vertex $i'\in Q_0$ different from $i$ such that $|Q_0(i,-)\cup Q_0(-,i)|\geq 3$, it is straightforward to check that $Q$ has a subquiver of extended Dynkin type $D$.
+  In this subquiver precisely two vertices out of $\{q,q',j\}$ are leaves.
+  With this observation, it is straightforward to reduce to the case $\tilde D_4$ treated before.
 
   Thus it remains to consider the case when $Q$ is a flag quiver with central vertex $i$.
   If $Q$ is not a tree, i.e. there exist vertices $s,s'$ with $|Q_1(s,s')|\geq 2$, the root 
@@ -323,14 +322,12 @@ The consideration from above give that we can assume that $Q'$ is of Dynkin type
 
 \begin{corollary}
   \label{pro:simpleregular2}
-  Let $Q$ be any acyclic quiver which is not of Dynkin type and let $i\in Q_0$. Then $S_i$ is preprojective if and only if one of the following cases holds: 
+  For $i\in Q_0$, the vertex simple $S_i$ is preprojective if and only if one of the following holds: 
   \begin{enumerate}
     \item $|Q_1(i,-)|=0$;
-    \item $|Q_1(i,-)|=1$ and $\ell\in Q_0(i,-)$ is a limb vertex such that the associated leaf is not equal to $i$.
-		\end{enumerate}
-In particular, $S_i$ is not preprojective if $|Q_1(i,-)|\geq 2$.
-			
-
+    \item $|Q_1(i,-)|=1$ and $\ell\in Q_0(i,-)$ is a limb vertex with respect to vertex $i$. %such that the associated leaf is not equal to $i$.
+  \end{enumerate}
+  In particular, the vertex simple $S_i$ is not preprojective if $|Q_1(i,-)|\geq 2$.
 \end{corollary}
 
 \begin{lemma}
@@ -339,7 +336,7 @@ In particular, $S_i$ is not preprojective if $|Q_1(i,-)|\geq 2$.
   Then any nontrivial extension $E\in\Ext(S_n,P_{\ell,0})$ is indecomposable and not preinjective.
 \end{lemma}
 \begin{proof}
-  Recall that $\dim (P_{\ell,0})_n$ is the number of paths from $\ell$ to $n$.
+  Recall that $\dim (P_{\ell,0})_n$ is the number of paths from $\ell$ to $n$ in $Q$.
   As there is an arrow from $n$ to $\ell$ and as $Q$ is acyclic, we have $\dim (P_{\ell,0})_n=0$.
   By assumption, we have a non-split exact sequence
   \[\ses{P_{\ell,0}}{E}{S_n}.\]
@@ -353,24 +350,24 @@ In particular, $S_i$ is not preprojective if $|Q_1(i,-)|\geq 2$.
   Thus assume that $\dim\Ext(S_n,P_{\ell,0})=1$.
   This implies $\ell$ is the only vertex in the support of $P_{\ell,0}$ which is a neighbor of $n$ and $|Q_1(n,\ell)|=1$, otherwise we could again conclude that $\dim\Ext(S_n,P_{\ell,0})\geq 2$.
   Let $Q'\subset Q$ denote the support quiver of $E$ and label $Q'_0=\{i_1,\ldots,i_r\}$ along a sink adapted sequence for $Q'$.
-  Then by definition of $P_{\ell,0}$ we must have $i_r=n$ and $i_{r-1}=\ell$.
+  Then, since $\ell$ is a source in the support of $P_{\ell,0}$, we must have $i_r=n$ and $i_{r-1}=\ell$.
   It follows that 
   $$P_{\ell,0}=\Sigma_{i_1}\cdots\Sigma_{i_{r-2}} S_\ell \qquad \text{and} \qquad E=\Sigma_{i_1}\cdots\Sigma_{i_{r-2}}\Sigma_n S_\ell.$$
- 
 
 % in particular $E$ is projective as a representation of $Q'$.
  % It follows that $E$ is not injective as a representation of $Q$.
  % Indeed, this would imply that $E$ is injective as a representation of $Q'$, but as $\ell$ is not a limb vertex, $Q'$ is not of type A and thus $Q'$ does not admit a projective-injective representation.
   %\sayD{I am not sure why $E$ having a one-dimensional space at vertex $n$ implies it is not strictly preinjective.}
 	%It follows that $\Sigma_n\Sigma_{i_{r-1}}\cdots\Sigma_{i_1} E\cong S_\ell$ as representations of $\mu_n\mu_{i_{r-1}}\cdots\mu_{i_1} Q$.
-  As $\ell$ is not a limb vertex with respect to $n$ and as $\ell$ is a sink of $Q'':=\mu_{i_{1}}\ldots\mu_{i_{r-1}}Q$, there exist at least two arrows $\alpha:q\to \ell$ and $\alpha':q'\to \ell$ with $q,q'\neq n$ in $Q''$, i.e. we have $Q_1(-,\ell)\geq 2$. But now Proposition \ref{pro:simpleregular} shows that $S_\ell$ and thus $E=\Sigma_{i_1}\cdots\Sigma_{i_{r-2}}\Sigma_n S_\ell$ is not  preinjective.	
+  As $\ell$ is not a limb vertex with respect to $n$ and as $\ell$ is a sink of $Q'':=\mu_{i_{r-1}}\ldots\mu_{i_1}Q$, there exist at least two arrows $\alpha:q\to \ell$ and $\alpha':q'\to \ell$ with $q,q'\neq n$ in $Q''$, i.e. we have $Q_1(-,\ell)\geq 2$.
+  \sayD{I don't see why this claim should be true.  For example we could have $|Q_1(\ell,-)\cup Q_1(-,\ell)|=2$ with one of the arrows connected to $n$.}
+  But now Proposition \ref{pro:simpleregular} shows that $S_\ell$ and thus $E=\Sigma_{i_1}\cdots\Sigma_{i_{r-2}}\Sigma_n S_\ell$ is not  preinjective.	
 	
   %As $n$ was a source of $Q$, it follows that $n$ is a sink of $\mu_n\mu_{\ell-1}\cdots\mu_{1} Q$.
   %In turn $\ell$ is neither sink nor source and thus $S_{\ell}$ is not preinjective because we assumed that $Q$ is not of Dynkin type.
   %\sayT{(why) is this true? Make this precise}
   %\sayD{Here is an argument, is there a shorter one? The dimension vector of a preinjective representation is a positive root of the form $c^rs_n\cdots s_{i+1}\alpha_i$ where $c=s_n\cdots s_1$ is a Coxeter element.  If $Q$ is not of finite representation type, then a Coxeter element is not of finite order and thus $\alpha_\ell$ cannot be the dimension vector of a preinjective representation.}
   %Thus $E$ is also not preinjective.
-%  For sake of contradiction, suppose $E$ is preinjective, say $E\cong \tau^r\Sigma_n\cdots\Sigma_{k+1} S_k$ for some $k\in Q_0$ and some~$r\ge0$.
 \end{proof}
 
 \begin{lemma}
