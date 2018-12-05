@@ -64,6 +64,8 @@
 \newcommand{\cI}{\mathcal{I}}
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cT}{\mathcal{T}}
+
 \newcommand{\cU}{\mathcal{U}}
 \newcommand{\cV}{\mathcal{V}}
 \newcommand{\cW}{\mathcal{W}}
@@ -178,6 +180,38 @@ What can we say about the fibers of this map?
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{General statements}
+\begin{lemma}\label{lem:indecomposable}
+Let $M_1,\ldots,M_n$ be pairwise orthogonal exceptional representations, i.e. $\Hom(M_i,M_j)=\Ext(M_i,M_j)=0$ if $i\neq j$. Let $N\in {^\perp} M_i$ for $i=1,\ldots,n$ and let $\Hom(M_i,N)=\langle f_i\rangle=\kk$. Let $f=(f_1,\ldots,f_n):\bigoplus_{i=1}^n M_i\to N$. Then $f$ is either surjective or injective. In the first case $\ker(f)$ is exceptional, in the second case $\mathrm{coker}(f)$ is exceptional. 
+
+Finally, $f$ is injective if and only if $\sum_{i=1}^n\udim M_i\geq \udim N$.
+
+
+\end{lemma}
+\begin{proof}
+We proceed by induction on $n$. Let $n=1$. As $\Ext(N,M_1)=0$, the map $f_1$ is either surjective or injective by the Happel-Ringel lemma. In the first case, we obtain a short exact sequence $\ses{K}{M_1}{N}$ such that $\Hom(K,N)=0$ as the induced map $\Hom(M_1,M_1)\to\Hom(M_1,N)$ is an isomorphism. Applying $\Hom(-,M_1)$ shows $\Ext(K,M_1)=0$ as $M_1$ is exceptional. Thus applying $\Ext(K,-)$ shows that $K$ is exceptional. The second case follows in the same way.
+
+Thus assume that the claim is true for $n-1$. In the first case, write $K$ for the kernel of $f':=(f_1,\ldots,f_{n-1})$. Then we have $ \Hom(M_n,N)\cong \Ext(M_n,K)$, $\Hom(M_n,K)=0$ and $K\in{^\perp} M_n$ for $n.$ Write $\tilde K_n$ for the middle term of the unique exact sequence $e_n\in \Ext(M_n,K)$ which is easily seen to be exceptional. Considering the corresponding pullback diagram shows that $\ker(f)=\tilde K_n$.
+
+If $f'$ is injective, write $C=\mathrm{coker}(f')$. Then we have $\Hom(M_n,C)\cong\Hom(M_n,N)$, $\Ext(M_n,C)=0$ and $C\in{^\perp}M_n$. Thus the claim follows in the same way as for $n=1$. 
+
+The last statement is clear.
+\end{proof}
+
+\begin{lemma}\label{lem:indecomposable2}\sayT{does this follow from some general stuff?}
+Let $(N,M_1,\ldots,M_n)$ be an exceptional sequence as in Lemma \ref{lem:indecomposable} Assume that each $M_i$ and $N$ are not injective. Moreover, assume that $f$ is injective and that $\mathrm{coker}(f)$ is the injective indecomposable representation $I_q$. Then $\tau^{-1}f:\bigoplus_{i=1}^n\tau^{-1}M_i\to \tau^{-1}N$ is surjective with $\mathrm{ker}(\tau^{-1}f)=P_q$.  
+\end{lemma}
+\begin{proof}\sayT{notation needs to be improved and adjusted}
+Applying reflection functors, as all representation except the cokernel are not injective, we may assume that $I_q=S_q$, i.e. $q$ is a source. Then we have
+$$\udim N-\sum_{i=1}^n\udim M_i=q.$$
+It follows that
+$$\sum_{i=1}^n\udim \sigma_qM_i-\udim \sigma_q N=q$$
+and thus $\sigma_qf$ is surjective with $\mathrm{coker}(f)=P_q$. Note that $q$ is a sink of $\mu_qQ$. Furthermore, $\sigma_q$ and $\tau^{-1}$ preserve all properties of the exceptional sequence  necessary for Lemma \ref{lem:indecomposable}. Now write $\tau^{-1}=\sigma_{q_1}\ldots\sigma_{q_m}\sigma_q$ for some source adapting sequence $(q,q_m,\ldots,q_1)$. As $\sigma_{q_1}\ldots\sigma_{q_m}P_q$ is the projective representation corresponding to $q$ in the quiver $\mu_{q_1}\ldots\mu_{q_m}\mu_q Q=Q$, we obtain a short exact sequence $$\ses{P_q}{\bigoplus_{i=1}^n\tau^{-1}M_i}{\tau^{-1}N}$$ which shows the claim.
+
+When applying reflection functors again, the general statement is obtained.
+
+
+\end{proof}
 
 \section{Truncated Preprojectives}
 
@@ -321,7 +355,7 @@ The consideration from above give that we can assume that $Q'$ is of Dynkin type
 \end{proof}
 
 \begin{corollary}
-  \label{pro:simpleregular2}
+  \label{cor:simpleregular}
   For $i\in Q_0$, the vertex simple $S_i$ is preprojective if and only if one of the following holds: 
   \begin{enumerate}
     \item $|Q_1(i,-)|=0$;
@@ -671,6 +705,85 @@ The following result is crucial to the constructions to follow.
       & & 0 & 0}\]
   It follows that we may identify $P_{i,m+1}^\cV$ with a truncated preprojective $P_{\ell,n}^{\overline{\cV}}$.
 \end{proof}
+
+\section{Truncated preprojective representations of tree quivers}
+\noindent In this section, we consider truncated preprojective representations of those quivers whose underlying graph is a tree. We first consider bipartite quivers, i.e. every vertex is either sink or source. Actually, it will turn out that the general situation can be reduced to this case.
+
+
+
+Let $Q$ be a bipartite tree quiver with sources $\cT$ and sinks $\cH$. For a source $t\in\cT$, the corresponding projective representation $P_t$ (resp. injective representation $I_t$) is the exceptional representation with dimension vector $t+\sum_{h\in Q_0(t,-)}h$ (resp. $t$). Dually, the projective (resp. injective) representation of a sink $h\in\cH$ is given by $h$ is given by the dimension vector $h$ (resp. $h+\sum_{t\in Q_0(-,h)} t$).
+
+For every $h\in Q_0(t,-)$, there exists a unique irreducible morphism $f_{h,t}^m:P_{h,m}\to P_{t,m}$ and the corresponding Auslander-Reiten sequence
+$$\ses{P_{t,m-1}}{\bigoplus_{h\in Q_0(t,-)}P_{h,m}}{P_{t,m}}.$$ 
+
+Dually, for every $t\in Q_0(-,h)$, there exists a unique irreducible morphism $f_{t,h}^m:P_{t,m}\to P_{h,m+1}$ and the corresponding Auslander-Reiten sequence
+$$\ses{P_{h,m}}{\bigoplus_{t\in Q_0(-,h)}P_{t,m}}{P_{h,m+1}}.$$
+
+In turn, for every $H\subset Q_0(t,-)$ we obtain a morphism
+$f_{t,H}^m:\bigoplus_{h\in H}P_{h,m}\to P_{t,m}$ and for every $T\subset Q_0(-,h)$ we obtain a morphism
+$f_{h,T}^m:\bigoplus_{t\in T}P_{h,m}\to P_{t,m}.$ Up to scalars, these morphisms only depend on $t$ and $H$ (resp. $h$ and $T$). 
+
+If $f_{t,H}^m$ (resp. $f_{h,T}^m$) is injective, we define
+$$P_{t,H}^m=\mathrm{coker}f_{t,H}^m,\quad P_{h,T}^m=\mathrm{coker}f_{h,T}^m.$$  
+If $f_{t,H}^m$ (resp. $f_{h,T}^m$) is surjective, we define
+$$P_{t,H}^m=\mathrm{ker}f_{t,H}^m,\quad P_{h,T}^m=\mathrm{ker}f_{h,T}^m.$$  
+
+
+
+We call the representation $P_{t,H}^m$ and $P_{T,h}^m$ truncated preprojective in the following.\sayT{we should discuss whether we want certain preinjectives and preprojective to be t.proj. as well. Maybe this makes the definition easier?!}
+
+Lemma \ref{lem:indecomposable2} immediately gives the following.
+\begin{lemma}\begin{enumerate}
+\item
+If $P_{t,H}^m$ is neither preprojective nor injective, $f_{t,H}^m$ is injective and we obtain a short exact sequence
+$$\ses{\bigoplus_{h\in H}P_{h,m+1}}{P_{t,m+1}}{P_{t,H}^{m+1}}$$
+with $P_{t,H}^{m+1}=\tau^{-1}P_{t,H}^m$.
+\item
+If $P_{t,H}^m$ is a preprojective representation, $\tau^{-1}$ preserves injectivity and surjectivity of $f_{t,H}^m$ and $P_{t,H}^{m+1}=\tau^{-1}P_{t,H}^m$.
+\item
+If $P_{t,H}^m$ is an injective representation, say $I_q$ for $q\in Q_0$, the map $f_{t,H}^m$ is injective, and we obtain a short exact sequence 
+$$\ses{P_{t,H}^{m+1}}{\bigoplus_{h\in H}P_{h,m+1}}{P_{t,m+1}}$$
+with $P_{t,H}^{m+1}=P_q$.
+\end{enumerate}
+
+The dual statement also holds.\sayT{make it explicit}
+\end{lemma}
+
+\begin{comment}
+The next step is to analyze the truncated preprojective representations and to give criteria which help to decide whether they are prepeprojective, regular or preinjective.
+
+\begin{lemma}
+
+\end{lemma}
+\begin{proof}
+Let $H\subset Q_0(t,-)$. By Proposition \ref{pro:simpleregular}, the representation $P_{t,H}^0$ is preinjective if $H=Q_0(t,-)$ or if $|H|=|Q_0(t,-)|-1\neq 0$ and, moreover, the unique vertex $h\in Q_0(t,-)\backslash\{H\}$ is a limb vertex.
+
+By Corollary \ref{cor:simpleregular}, the representation $\mathrm{coker}(f_{t,H}^0)$ is preprojective if $H=\emptyset$ or if $|H|=1\neq |Q_0(t,-)| $ and, moreover, the unique vertex $h\in H$ is a limb vertex.
+
+
+
+For $T\subsetneq Q_0(-,h)$, we have 
+$$\udim P_{h,T}^0=\sum_{\substack{t\in Q_0(-,h)\\t\notin T}}\left(t+\sum_{h'\in Q_0(t,-)}h'\right)-h.$$
+
+Then $P_{h,T}^0$ is an exceptional representation such that
+$$\udim\tau\left(P_{h,T}^0\right)=h+\sum_{t\in T}t.$$
+Thus by Proposition \ref{pro:simpleregular}, the representation $P_{h,T}^0$ is preinjective if and only if $0\neq |T|=|Q_0(h,-)|-1$ and, moreover, the unique vertex $t\in Q_0(h,-)\backslash T$ is a limb vertex.
+
+By Corollary \ref{cor:simpleregular}, it is preprojective if $|T|=0$ or $|T|=1\neq |Q_0(-,h)|$ and, moreover, the unique vertex $t\in T$ is a limb vertex.
+
+
+\end{proof}
+As the cokernel
+
+\begin{definition}
+We call a truncated representation $S$ simple if we have $\Hom(S,X)=0$ for all truncated representations $X\ncong S$.
+\end{definition}
+
+Write $P_{q,m}:=\tau^{-m} P_q$ for $q\in Q_0$. Then we have 
+
+$$\udim P_{h,1}=|Q_0(h,-)-1|h+\sum_{t\in Q_0(h,-)}\left(t+\sum_{h'\in Q_0(-,t)}h'\right).$$
+\end{comment}
+
 
 
 \section{Appendix: Homological Lemmas}
