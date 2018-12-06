@@ -229,15 +229,15 @@ For $i,j\in Q_0$, we introduce the following notation:
 \end{itemize}
 
 A \emph{leaf} of $Q$ is a vertex $\ell\in Q_0$ with $|Q_1(\ell,-)\cup Q_1(-,\ell)|=1$.
-For $i,\ell\in Q_0$, an arrow $\alpha\in Q_1(i,\ell)\cup Q_1(\ell,i)$ is called a \emph{limb arrow} and $\ell$ is a \emph{limb vertex} with respect to vertex $i$ if removing $\alpha$ from $Q$ creates a disconnected quiver in which the component containing vertex $\ell$ is an orientation of a Dynkin diagram of type A with $\ell$ a leaf in this component.
+For $i,\ell\in Q_0$, an arrow $\alpha\in Q_1(i,\ell)\cup Q_1(\ell,i)$ is called a \emph{limb arrow} and $\ell$ is a \emph{limb vertex} with respect to vertex $i$ if removing $\alpha$ from $Q$ creates a disconnected quiver in which the component containing vertex $\ell$ is an orientation of a Dynkin diagram of type $A$ with $\ell$ a leaf in this component.
 
-Note that each limb vertex $\ell\in Q_0$ has a uniquely associated leaf vertex $\ell'$ of~$Q$ lying at the opposite end of its type A component, if $\ell$ itself is a leaf of $Q$ then $\ell'=\ell$.
-Once a limb vertex $\ell$ is specified, the type A component associated to $\ell$ is uniquely determined (we assume $Q$ itself is not of type A).
-In the type A subquiver $Q(\ell)\subset Q$ obtained by adjoining the limb arrow $\alpha$ to this component, each arrow is directed either toward vertex $i$ or toward vertex $\ell'$.
+Note that each limb vertex $\ell\in Q_0$ has a uniquely associated leaf vertex $\ell'$ of~$Q$ lying at the opposite end of its type $A$ component, if $\ell$ itself is a leaf of $Q$ then $\ell'=\ell$.
+Once a limb vertex $\ell$ is specified, the type $A$ component associated to $\ell$ is uniquely determined (we assume $Q$ itself is not of type $A$).
+In the type $A$ subquiver $Q(\ell)\subset Q$ obtained by adjoining the limb arrow $\alpha$ to this component, each arrow is directed either toward vertex $i$ or toward vertex $\ell'$.
 We write $h(\ell)$ for the total number of arrows in the quiver $Q(\ell)$ directed toward vertex $i$.
 
 For a sink or source vertex $k\in Q_0$, write $\Sigma_k:\rep Q\to\rep \mu_k Q$ for the BGP-reflection functor \cite{BGP??} (see also \cite{APR??} for an equivalent formulation known as APR-tilting).
-Note that we use the same symbol $\Sigma$ to denote the reflection functor associated to a sink or a source and also for the reflection functors associated to any reflection of $Q$.
+Note that we use the same symbol $\Sigma$ to denote the reflection functor associated to a sink or to a source and also for the reflection functors associated to any reflection of $Q$.
 In particular, the functor $\Sigma_k^2$ is naturally isomorphic to the identity functor when restricted to the full subcategory $\rep^{\langle k\rangle} Q\subset\rep Q$ consisting of representations with no summand isomorphic to the vertex simple $S_k$.
 Moreover, the reflection functor $\Sigma_k:\rep^{\langle k\rangle} Q\to\rep^{\langle k\rangle} \mu_k Q$ is an exact equivalence of categories \cite{DR76}.
 Recall that the \emph{Auslander-Reiten translation} $\tau:\rep Q\to\rep Q$ is naturally isomorphic to the product of reflection functors $\Sigma_n\cdots\Sigma_1$ \cite{BB??}.
@@ -300,31 +300,35 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
   If $\ell$ is not a source, then by induction $S_\ell=\tau^{-h(\ell)+1}I_{\ell',0}$ is preinjective, but $S_\ell=\tau S_i$ in this case and so $S_i=\tau^{-h(\ell)}I_{\ell',0}$ as desired.
   If $\ell$ is a source, then there exists a vertex $i'$ in $Q(\ell)$ so that $\tau^2 S_i=S_{i'}$ with $S_{i'}=\tau^{-h(\ell)+2} I_{\ell',0}$ by induction, this again gives $S_i=\tau^{-h(\ell)} I_{\ell',0}$ in this case.
 
-  For the remaining cases, the aim is to apply Lemma~\ref{lem: non-preinjective} to see that $S_i$ is not preinjective. 
-  Let $Q'$ be the connected component containing $i$ after removing all arrows from $Q_1(i,-)$.
+  To finish, we aim to show in the remaining cases, namely when $|Q_1(-,i)|\ge2$ or when $|Q_1(-,i)|=1$ but $\ell\in Q_0(-,i)$ is not a limb vertex with respect to vertex $i$, that $S_i$ is not preinjective by applying Lemma~\ref{lem: non-preinjective}. 
+  Let $Q'$ be the connected component containing $i$ after removing all arrows in $Q_1(i,-)$ from the quiver $Q$.
 
-  If $Q'$ is wild or of extended Dynkin type, let $M$ be any indecomposable representation of $Q'$ such that $\beta=\udim M$ is an imaginary root of $Q'$ and thus of $Q$.
-  We can naturally identify $M$ with a representation of $Q$ by setting $M_\alpha=0$ for all $\alpha\in Q_1(i,-)$.
+  If $Q'$ is wild or of extended Dynkin type, let $M$ be any indecomposable representation of $Q'$ such that $\beta=\udim M$ is an imaginary root of $Q'$ and thus an imaginary root of $Q$.
+  We can naturally identify $M$ with a representation of $Q$ by setting $M_j=0$ for all $j\in Q_0\setminus Q'_0$ (in particular, $M_\alpha=0$ for all $\alpha\in Q_1(i,-)$).
   This yields $\Hom_Q(S_i,M)\neq 0$ and thus the claim follows from Lemma \ref{lem: non-preinjective} in this case. 
 
-  Thus in the following we assume that $Q'$ is of Dynkin type $D$ or $E$ (with leaf $i$) or that $|Q_1(-,i)|\geq 2$ holds if it is of type $A$.
-  In particular, we can assume that $|Q_0(-,i)|=|Q_1(-,i)|$, i.e.~there are no parallel arrows with target $i$. Moreover, since $Q$ is not of Dynkin type, there exists a vertex $j$ such that $|Q_1(i,j)|\geq 1$.  
+  Thus in the following we assume that $Q'$ is of Dynkin type $A$, $D$, or $E$.
+  In particular, this implies that $|Q_0(-,i)|=|Q_1(-,i)|$, i.e.~there are no parallel arrows with target $i$.
+  Moreover, since $Q$ is not of Dynkin type itself, there exists a vertex $j\in Q_0(i,-)$.  
 	
-	%If $|Q_1(i,-)|=0$, then $S_i$ is projective and hence not preinjective as $Q$ is not of Dynkin type.
- % If there exists $q\in Q_0(-,i)$ with $|Q_1(q,i)|\ge2$, then the root $q+i$ is imaginary with $\hom(i,q+i)=1$ and thus $S_i$ is not preinjective by Lemma~\ref{lem: non-preinjective}.
-
-  First assume that $|Q_0(-,i)|\geq 2$, i.e.~there exist distinct vertices $q,q'\in Q_0(-,i)$.
+  First consider the case $|Q_0(-,i)|\geq 2$, i.e.~there exist distinct vertices $q,q'\in Q_0(-,i)$.
   Note that $q,q'\neq j$ as $Q$ is acyclic. 
-  If $|Q_1(i,j)|\geq 2$, we may consider the imaginary root $\beta=q+q'+3i+j$ for which we have $\hom(i,\beta)\geq 1$.
-  This shows that $S_i$ is not preinjective by Lemma~\ref{lem: non-preinjective}.
+  If $|Q_1(i,j)|\geq 2$, we have for the imaginary root $\beta=q+q'+3i+j$ that $\hom(i,\beta)\geq 1$.
+  It follows that $S_i$ is not preinjective by Lemma~\ref{lem: non-preinjective}.
   Thus we may additionally assume that $|Q_0(i,-)|=|Q_1(i,-)|$, i.e.~there are no parallel arrows with source $i$.
 
-  If there were a vertex $j'\notin \{j,q,q'\}$ such that $|Q_1(j',i)\cup Q_1(i,j')|\geq 1$, there exists a subquiver $Q''$ of $Q$ with vertices $\{i,j,j',q,q'\}$ of type $\tilde D_4$ with middle vertex $i$ which is neither a source nor a sink.
-  Then it is straightforward that $S_i$ is regular as a representation of $Q''$.
-  In particular, there exists an indecomposable imaginary root representation $X$ in the same tube which is of dimension $\delta=j+j'+q+q'+2i$ and such that $\Hom(S_i,X)\neq 0$.
-  As we clearly have $\dim\Ext_Q(X,X)\geq \dim\Ext_{Q''}(X,X)\neq 0$, we can again apply Lemma~\ref{lem: non-preinjective} and conclude that $S_i$ is not preinjective.
+  If $|Q_0(i,-)|\ge2$, i.e.~there exists $j'\in Q_0(i,-)$ distinct from vertex $j$, then there would exists a (not necessarily full) subquiver $Q''$ of $Q$ with vertices $\{i,j,j',q,q'\}$ of extended Dynkin type $\tilde D_4$ with middle vertex $i$ and two each of incoming/outgoing arrows.
+  Then $S_i$ is regular as a representation of $Q''$.
+  Indeed, in this case there exists an indecomposable imaginary root representation $X$ of $Q''$ in the same tube as $S_i$ which is of dimension $\delta=j+j'+q+q'+2i$ and such that $\Hom(S_i,X)\neq 0$.
+  As we have $\dim\Ext_Q(X,X)\geq\dim\Ext_{Q''}(X,X)\neq 0$, $X$ is also an imaginary root representation of $Q$ and we can again apply Lemma~\ref{lem: non-preinjective} to conclude that $S_i$ is not preinjective.
 
-  Thus we may assume that there does not exist such a vertex $j'$ and so $i$ has precisely three neighbors $q$, $q'$, and $j$. Note that, as $Q'$ is of Dynkin type, $q$ is not connected to $q'$.
+  Thus we may assume that $|Q_0(i,-)|=|Q_1(i,-)|=1$ in the case $|Q_0(-,i)|\ge2$.
+  If there were a vertex $j'\notin \{j,q,q'\}$ such that $|Q_1(j',i)|\geq 1$, then we may again consider the (not necessarily full) subquiver $Q''$ of $Q$ with vertices $\{i,j,j',q,q'\}$ which will again be of extended Dynkin type $\tilde D_4$ with middle vertex $i$, only now there are three incoming and a single outgoing arrow.
+  Now $S_i$ is preprojective as a representation of $Q''$.
+  \sayD{How do we conclude from here that $S_i$ is not preinjective as a representation of $Q$?}
+
+  Thus we may assume that there does not exist such a vertex $j'$ and so $i$ has precisely three neighbors $q$, $q'$, and $j$.
+  Note that, as $Q'$ is of Dynkin type, $q$ is not connected to $q'$.
 	
   If $j$ is connected to $q$ (or analogously to $q'$) by a sequence $j=q_1,q_2,\ldots,q_r=q$ with $q_i\neq q'$, the root $\beta=i+\sum_{t=1}^rq_t$ is imaginary.
   Denoting the arrow from $i$ to $j$ by $\rho$, there exists a Schurian representation of dimension $\beta$ with $X_\rho=0$ which implies $\Hom(S_i,X_\rho)\neq 0$. 
@@ -342,6 +346,7 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
   
 	Thus assume that $Q$ is a tree. As it is not of Dynkin type, it contains an extended Dynkin quiver of type $E$ as a full subquiver. But then it is straightforward that $\hom(i,\delta)\neq 0$ for the respective imaginary Schur roots $\delta$, see \cite[Section 4]{CB} for a list. Thus again Lemma \ref{lem: non-preinjective} applies.
 	
+        \sayD{I don't see why this paragraph is necessary.}
 	It remains to consider the case when $|Q_0(-,i)|=1$ and $\ell\in Q_0(-,i)$ is a limb vertex such that corresponding leaf is not equal to $i$. Let $\gamma:\ell\to i$ denote the unique arrow with sink $i$. 
 The consideration from above give that we can assume that $Q'$ is of Dynkin type $D$ or $E$ (with leaf $i$). Moreover, we can assume that removing $\gamma$ yields precisely two connected components, the one of $\ell$ and the one of $i$. Applying reflection functors we can assume that all arrows in $Q'$ are oriented towards $\ell$, i.e. $\ell$ is a sink of $Q'$. By assumption, we either have $|Q_0(-,\ell)|=2$ or there is a vertex $\ell'\in Q'_0$ such that $|Q_0(-,\ell')|=2$ and $|Q_0(\ell',-)|=1$. Moreover, there is a unique path from $\ell'$ to $i$ where we denote the vertices in between by $q_1,\ldots,q_r$. Now let $Q(\ell',i)$ be the quiver obtained from $Q$ when identifying $\ell'$ and $i$ and removing all arrows and vertices along the path from $\ell'$ to $i$. Denote the vertex obtained via this identification by $(\ell',i)$. It is straightforward to check that roots $\beta$ of $Q$ with $\beta_i=\beta_{q_l}=\beta_\ell'$ for $l=1,\ldots,r$ are imaginary if and only if the corresponding root of $Q(\ell',i)$ with $\beta_{(\ell',i)}=\beta_i$ is imaginary. Thus if $Q(\ell',i)$ is not of Dynkin type, we can make use of the observations in the case $|Q(-,i)|=2$. Note that $|Q(\ell',i)_1(-,(\ell',i))|\geq 2$.
 
