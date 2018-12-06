@@ -295,15 +295,15 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
   Indeed, when $h(\ell)=1$, the quiver $Q(\ell)$ has the form
   \[\xymatrix{\bullet^{\ell'} & \hdots \ar[l] & \bullet^{\ell''} \ar[l] & \bullet^{\ell} \ar[l] \ar[r] & \bullet^{i} }\]
   An easy calculation shows that $S_i=\tau^{-1}I_{\ell',0}$ in this case.
-
   Now for $h(\ell)>1$, there are two possibilities.
   If $\ell$ is not a source, then by induction $S_\ell=\tau^{-h(\ell)+1}I_{\ell',0}$ is preinjective, but $S_\ell=\tau S_i$ in this case and so $S_i=\tau^{-h(\ell)}I_{\ell',0}$ as desired.
   If $\ell$ is a source, then there exists a vertex $i'$ in $Q(\ell)$ so that $\tau^2 S_i=S_{i'}$ with $S_{i'}=\tau^{-h(\ell)+2} I_{\ell',0}$ by induction, this again gives $S_i=\tau^{-h(\ell)} I_{\ell',0}$ in this case.
 
   To finish, we aim to show in the remaining cases, namely when $|Q_1(-,i)|\ge2$ or when $|Q_1(-,i)|=1$ but $\ell\in Q_0(-,i)$ is not a limb vertex with respect to vertex $i$, that $S_i$ is not preinjective by applying Lemma~\ref{lem: non-preinjective}. 
   Let $Q'$ be the connected component containing $i$ after removing all arrows in $Q_1(i,-)$ from the quiver $Q$.
+  Note that vertex $i$ is a sink in $Q'$.
 
-  If $Q'$ is wild or of extended Dynkin type, let $M$ be any indecomposable representation of $Q'$ such that $\beta=\udim M$ is an imaginary root of $Q'$ and thus an imaginary root of $Q$.
+  If $Q'$ is wild or of extended Dynkin type, let $M$ be any indecomposable representation of $Q'$ such that $\beta=\udim M$ is an imaginary root of $Q'$, and hence an imaginary root of $Q$.
   We can naturally identify $M$ with a representation of $Q$ by setting $M_j=0$ for all $j\in Q_0\setminus Q'_0$ (in particular, $M_\alpha=0$ for all $\alpha\in Q_1(i,-)$).
   This yields $\Hom_Q(S_i,M)\neq 0$ and thus the claim follows from Lemma \ref{lem: non-preinjective} in this case. 
 
@@ -324,8 +324,8 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
 
   Thus we may assume that $|Q_0(i,-)|=|Q_1(i,-)|=1$ in the case $|Q_0(-,i)|\ge2$.
   If there were a vertex $j'\notin \{j,q,q'\}$ such that $|Q_1(j',i)|\geq 1$, then we may again consider the (not necessarily full) subquiver $Q''$ of $Q$ with vertices $\{i,j,j',q,q'\}$ which will again be of extended Dynkin type $\tilde D_4$ with middle vertex $i$, only now there are three incoming and a single outgoing arrow.
-  Now $S_i$ is preprojective as a representation of $Q''$.
-  \sayD{How do we conclude from here that $S_i$ is not preinjective as a representation of $Q$?}
+  Then for an indecomposable imaginary root representation $X$ of $Q''$ of dimension $\delta=j+j'+q+q'+2i$ which lies in a homogeneous tube, we again have $\Hom(S_i,X)\neq 0$.
+  As in the previous case, we may again apply Lemma~\ref{lem:non-preinjective} to conclude that $S_i$ is not preinjective.
 
   Thus we may assume that there does not exist such a vertex $j'$ and so $i$ has precisely three neighbors $q$, $q'$, and $j$.
   Note that, as $Q'$ is of Dynkin type, $q$ is not connected to $q'$.
@@ -616,13 +616,15 @@ The next results describe situations when this will occur and provide the correc
 \end{proof}
 
 For $i\in Q_0$ and $m\ge0$, given $\ell\in Q_0(-,i)\cup Q_0(i,-)$ we write $\cI_{i,m}^{\{\ell\}}\subset\cI_{i,m}$ for the tuple of subspaces with the only proper subspace at position $\ell$ and the zero subspace in that component.
-\begin{corollary}\sayT{Is there a typo and $P_{i,m+1}$ maybe $P_{\ell,m+1}$? We have $|\cI_{i,m}^{\{\ell\}}|=1$ right?}
+\begin{corollary}
+  \sayT{We have $|\cI_{i,m}^{\{\ell\}}|=1$ right?}
+  \sayD{We have $\codim_{\cI_{i,m}}(\cI_{i,m}^{\{\ell\}})=1$ in this case.}
   \label{cor:reduced sequences}
   Suppose $i\in Q_0$ is adjacent to a limb vertex $\ell$ with associated leaf $\ell'$.
   Then there is an exact sequence
   \begin{equation}
     \label{eq:reduced AR}
-    \ses{P_{\ell',m-h(\ell)}}{\cP_{i,m}\bullet\cI_{i,m}^{\{\ell\}}}{P_{i,m+1}}.
+    \ses{P_{\ell',m-h(\ell)}}{\cP_{i,m}\bullet\cI_{i,m}^{\{\ell\}}}{P_{\ell,m+1}}.
   \end{equation}
 \end{corollary}
 \begin{proof}
@@ -633,7 +635,9 @@ The following result is crucial to the constructions to follow.
 \begin{lemma}
   Consider $i\in Q_0$ and $m\ge0$.
   \begin{enumerate}
-    \item For any tuple of subspaces $\cV\subsetneq\cI_{i,-1}$, the natural evaluation map $\cP_{i,-1}\bullet\cV\to P_{i,0}$ is injective.\sayT{$\cV$ admissible in (1)?}
+    \item For any tuple of subspaces $\cV\subsetneq\cI_{i,-1}$, the natural evaluation map $\cP_{i,-1}\bullet\cV\to P_{i,0}$ is injective.
+      \sayT{$\cV$ admissible in (1)?}
+      \sayD{I believe this is true as stated with no assumptions on $\cV$.}
     \item For any admissible tuple $\cV\subsetneq\cI_{i,m}$, the natural evaluation map $\cP_{i,m}\bullet\cV\to P_{i,m+1}$ is injective.
     \item The sequence \eqref{eq:preprojective AR} induces isomorphisms 
       \[\Irr(P_{k,m},P_{i,m+1})^*\cong \Irr(P_{i,m},P_{k,m}) \qquad \text{and} \qquad \Irr(P_{j,m+1},P_{i,m+1})^*\cong \Irr(P_{i,m},P_{j,m+1})\]
@@ -700,7 +704,7 @@ The following result is crucial to the constructions to follow.
 
 
 \begin{proposition}
-  Consider $\cV\subsetneq\cI_{i,m}$ with $\codim_{\cI_{i,m}}(\cV)=1$, say $\cP_{i,m}\bullet\cI_{i,m}/\cP_{i,m}\bullet\cV\cong P_{\ell,n}$ with $n=m$ or $n=m+1$.
+  Consider $\cV\subsetneq\cI_{i,m}$ with $\codim_{\cI_{i,m}}(\cV)=1$, say $(\cP_{i,m}\bullet\cI_{i,m})/(\cP_{i,m}\bullet\cV)\cong P_{\ell,n}$ with $n=m$ or $n=m+1$.
   Then $P_{i,m+1}^\cV\cong P_{\ell,n}^{\overline{\cV}}$, where $\overline{\cV}=..$.
 \end{proposition}
 \begin{proof}
@@ -869,7 +873,7 @@ $$\udim P_{h,1}=|Q_0(h,-)-1|h+\sum_{t\in Q_0(h,-)}\left(t+\sum_{h'\in Q_0(-,t)}h
 
 \begin{lemma}
   \label{le:sequence reducing}
-  Suppose there is a exact sequence 
+  Suppose there is an exact sequence 
   \[\ses{A}{X\oplus B}{C}\]
   for which the induced map $f:A\to B$ given by composing the left hand morphism with the natural projection is surjective.
   Then there is an induced short exact sequence 
