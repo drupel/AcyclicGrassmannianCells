@@ -393,9 +393,12 @@ The consideration from above give that we can assume that $Q'$ is of Dynkin type
  % Indeed, this would imply that $E$ is injective as a representation of $Q'$, but as $\ell$ is not a limb vertex, $Q'$ is not of type A and thus $Q'$ does not admit a projective-injective representation.
   %\sayD{I am not sure why $E$ having a one-dimensional space at vertex $n$ implies it is not strictly preinjective.}
 	%It follows that $\Sigma_n\Sigma_{i_{r-1}}\cdots\Sigma_{i_1} E\cong S_\ell$ as representations of $\mu_n\mu_{i_{r-1}}\cdots\mu_{i_1} Q$.
-  As $\ell$ is not a limb vertex with respect to $n$ and as $\ell$ is a sink of $Q'':=\mu_{i_{r-1}}\ldots\mu_{i_1}Q$, there exist at least two arrows $\alpha:q\to \ell$ and $\alpha':q'\to \ell$ with $q,q'\neq n$ in $Q''$, i.e. we have $Q_1(-,\ell)\geq 2$.
-  \sayD{I don't see why this claim should be true.  For example we could have $|Q_1(\ell,-)\cup Q_1(-,\ell)|=2$ with one of the arrows connected to $n$.}
-  But now Proposition \ref{pro:simpleregular} shows that $S_\ell$ and thus $E=\Sigma_{i_1}\cdots\Sigma_{i_{r-2}}\Sigma_n S_\ell$ is not  preinjective.	
+  As $\ell$ is not a limb vertex with respect to $n$ and as $\ell$ is a sink of $Q'':=\mu_{i_{r-1}}\ldots\mu_{i_1}Q$,   Proposition \ref{pro:simpleregular} shows that $S_\ell$ and thus $E=\Sigma_{i_1}\cdots\Sigma_{i_{r-2}}\Sigma_n S_\ell$ is not  preinjective. Indeed, we either have $|Q_1(-,\ell)|\geq 2$ or the unique vertex $\ell'\in Q_0(-,\ell)$ is not a limb vertex as $\ell$ is not a limb vertex.
+	
+	
+	%there exist at least two arrows $\alpha:q\to \ell$ and $\alpha':q'\to \ell$ with $q,q'\neq n$ in $Q''$, i.e. we have $Q_1(-,\ell)\geq 2$.
+  \sayD{I don't see why this claim should be true.  For example we could have $|Q_1(\ell,-)\cup Q_1(-,\ell)|=2$ with one of the arrows connected to $n$.}\sayT{Actually, the claim follows from the refined version of Prop. 4.3, changed this}
+
 	
   %As $n$ was a source of $Q$, it follows that $n$ is a sink of $\mu_n\mu_{\ell-1}\cdots\mu_{1} Q$.
   %In turn $\ell$ is neither sink nor source and thus $S_{\ell}$ is not preinjective because we assumed that $Q$ is not of Dynkin type.
@@ -791,7 +794,7 @@ $$\udim P_{h,T}^0=\sum_{\substack{t\in Q_0(-,h)\\t\notin T}}\left(t+\sum_{h'\in 
 
 \begin{proposition}\label{pro:truncated}Let $t\in\cT$ and $H\subsetneq  Q_0(t,-)$.
 Assume that 
-$$\bigoplus_{h\in H} P_{h,m}\to P_{t,m}$$ is surjective. Then $|H|=|Q_0(t,-)|-1$, the unique vertex $h'\in Q_0(t,-)\backslash\{H\}$ is a limb vertex and we have $P_{t,H}^m=P_{t',m}$ where $t'\in Q_0(-,h')$ with $t'\neq t$. Finally, we obtain a short exact sequence
+$$\bigoplus_{h\in H} P_{h,m}\to P_{t,m}$$ is surjective. Then $|H|=|Q_0(t,-)|-1$, the unique vertex $h'\in Q_0(t,-)\backslash\{H\}$ is a limb vertex and we have $P_{t,H}^m=P_{\ell',m-h(h')}$ where $\ell'\in Q_0(-,h')$ with $\ell'\neq t$. Finally, we obtain a short exact sequence
 $$\ses{P_{\ell',m-h(h')}}{P^m_{t,m}}{P_{h',m}}$$
 with preprojective kernel.
 \end{proposition}
@@ -818,17 +821,19 @@ with injective cokernel.
 \end{remark}
 
 \begin{theorem}
-Let $t\in \cT$.
-\begin{enumerate}\item If each $h\in Q_0(t,0)=\{h_1,\ldots,h_n\}$ is not a limb vertex, writing $H_i:=\{h_1,\ldots,h_i\}$, for every $m\geq 1$, there exists chains of  non-preinjective exceptional representations
+Let $t\in \cT$. Let $Q_0(t,-)=\{h_1,\ldots,h_n\}$ and write $H_i:=\{h_1,\ldots,h_i\}$
+\begin{enumerate}\item If each $h\in Q_0(t,-)$ is not a limb vertex, for every $m\geq 1$, there exists chains of  non-preinjective exceptional representations
 $$P_{t,H_1}^m\twoheadrightarrow\ldots\twoheadrightarrow P_{t,H_{n-1}}^m.$$
 Furthermore, we have $$P_{t,H_{n-1}}^m\cong P_{h_n,\{t\}}^{m-1}.$$  \sayT{the same applies when $h_n$ is not a limb vertex. But maybe it is better to organize all t.projectives?!}
 
 
-\item  Let $Q_0(t,0)=\{h_1,\ldots,h_n\}$ and write $H_i:=\{h_1,\ldots,h_i\}$. Moreover, assume that $h_{i_1},\ldots,h_{i_r}$ are limb vertices. For every $m\geq 1$, there exists chains of regular representations
+\item Assume that $h_{i_1},\ldots,h_{i_r}$ are limb vertices. For every $m\geq 1$, there exists chains of regular representations
 $$P_{t,H_1}^m\twoheadrightarrow\ldots\twoheadrightarrow P_{t,H_{n-2}}^m.$$
 
-Furthermore, we have $$P_{t,H_{n-1}}^m\cong P_{h_n,\{t\}}^{m-1}.$$ 
+Furthermore, we have $$P_{t,H_{n-1}}^m\cong P_{h_n,\{t\}}^{m-1}.$$
+ 
 \end{enumerate}
+
 \end{theorem}
 \begin{proof}
 The statements of this section show that for all $H\subsetneq Q_0(t,-)$, the maps $\oplus_{h\in H}P_{h,m}\to P_{t,m}$ are injective. We obtain a commutative diagram
@@ -838,13 +843,13 @@ The statements of this section show that for all $H\subsetneq Q_0(t,-)$, the map
       0 \ar[r] & P_{t,m-1} \ar[r]\ar@{=}[d] & \bigoplus_{h\in Q_0(t,-)}P_{h,m} \ar[d]\ar[r] & P_{t,m} \ar[r]\ar[d] & 0\\
       0 \ar[r] & P_{t,m-1} \ar[r] &\bigoplus_{h\in Q_0(t,-)\backslash H}P_{h,m}\ar[r]\ar[d] &  P_{t,H}^m\ar[r]\ar[d] & 0 \\
       & & 0 & 0}\]
+If $r<n$ the second part holds when choosing $h_n$ to be not a limb. Thus assume that $r=n$, i.e. all neighbors of $t$ are limb vertices.
 			
 \end{proof}
 
 
 \begin{comment}
 \begin{definition}
-We call a truncated representation $S$ simple if we have $\Hom(S,X)=0$ for all truncated representations $X\ncong S$.
 \end{definition}
 
 Write $P_{q,m}:=\tau^{-m} P_q$ for $q\in Q_0$. Then we have 
