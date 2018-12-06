@@ -728,12 +728,26 @@ $$P_{t,H}^m=\mathrm{coker}f_{t,H}^m,\quad P_{h,T}^m=\mathrm{coker}f_{h,T}^m.$$
 If $f_{t,H}^m$ (resp. $f_{h,T}^m$) is surjective, we define
 $$P_{t,H}^m=\mathrm{ker}f_{t,H}^m,\quad P_{h,T}^m=\mathrm{ker}f_{h,T}^m.$$  
 
+\begin{lemma}\label{lem:truncated1}        
+Let $Q_0(t,-)=\{h_1,\ldots,h_n\}$ and let $H_i=\{h_1,\ldots,h_i\}$. 
+\begin{enumerate} 
+\item If both $P^m_{t,H_i}$ and $P^m_{t,H_{i+1}}$ are cokernels, we obtain a unique map
+$$P_{t,H_i}^m\twoheadrightarrow P_{t,H_{i+1}}^m$$
+and $P^m_{t,H_{i}}\in (P^m_{t,H_{i+1}})^{\perp}$.
+\item If $P^m_{t,H_i}$ is a cokernel and $P^m_{t,H_{i+1}}$ is a kernel, we have $\Ext(P^m_{t,H_{i+1}},P^m_{t,H_i})=\kk$ and $P^m_{t,H_{i+1}}\in (P^m_{t,H_i})^{\perp}$.
+
+\item If both $P^m_{t,H_i}$ and $P^m_{t,H_{i+1}}$ are kernels, we have a unique map $$P_{t,H_i}^m\hookrightarrow P_{t,H_{i+1}}^m$$
+ and $P^m_{t,H_{i}}\in (P^m_{t,H_{i+1}})^{\perp}$.
+\end{enumerate}
+
+The dual version also holds.
+\end{lemma}
 
 
 We call the representation $P_{t,H}^m$ and $P_{T,h}^m$ truncated preprojective in the following.\sayT{we should discuss whether we want certain preinjectives and preprojective to be t.proj. as well. Maybe this makes the definition easier?!}
 
 Lemma \ref{lem:indecomposable2} immediately gives the following.
-\begin{lemma}\begin{enumerate}
+\begin{lemma}\label{lem:truncated2}\begin{enumerate}
 \item
 If $P_{t,H}^m$ is neither preprojective nor injective, $f_{t,H}^m$ is injective and we obtain a short exact sequence
 $$\ses{\bigoplus_{h\in H}P_{h,m+1}}{P_{t,m+1}}{P_{t,H}^{m+1}}$$
@@ -749,32 +763,86 @@ with $P_{t,H}^{m+1}=P_q$.
 The dual statement also holds.\sayT{make it explicit}
 \end{lemma}
 
-\begin{comment}
 The next step is to analyze the truncated preprojective representations and to give criteria which help to decide whether they are prepeprojective, regular or preinjective.
 
-\begin{lemma}
+\begin{lemma}\label{lem:truncated3}Let $H\subset Q_0(t,-)$ and $T\subset Q_0(-,h)$ for fixed $t\in\cT$ and $h\in\cH $.
+\begin{enumerate} 
+\item $P_{t,H}^0$ is preinjective if $H=Q_0(t,-)$ or if $|H|=|Q_0(t,-)|-1\neq 0$ and, moreover, the unique vertex $h\in Q_0(t,-)\backslash\{H\}$ is a limb vertex.
+\item $P_{t,H}^0$ is preprojective if $H=\emptyset$ or if $|H|=1\neq |Q_0(t,-)| $ and, moreover, the unique vertex $h\in H$ is a limb vertex.
+\item  $P_{h,T}^0$ is preinjective if and only if $0\neq |T|=|Q_0(h,-)|-1$ and, moreover, the unique vertex $t\in Q_0(h,-)\backslash T$ is a limb vertex.
+\item $P_{h,T}^0$ is preprojective if $|T|=0$ or $|T|=1\neq |Q_0(-,h)|$ and, moreover, the unique vertex $t\in T$ is a limb vertex.
+\end{enumerate}
 
 \end{lemma}
 \begin{proof}
-Let $H\subset Q_0(t,-)$. By Proposition \ref{pro:simpleregular}, the representation $P_{t,H}^0$ is preinjective if $H=Q_0(t,-)$ or if $|H|=|Q_0(t,-)|-1\neq 0$ and, moreover, the unique vertex $h\in Q_0(t,-)\backslash\{H\}$ is a limb vertex.
+The results follow by Proposition \ref{pro:simpleregular} and Corollary \ref{cor:simpleregular}. Note that $P_{h,T}^0$ is an exceptional representation such that
+$$\udim\tau\left(P_{h,T}^0\right)=h+\sum_{t\in T}t.$$
 
-By Corollary \ref{cor:simpleregular}, the representation $\mathrm{coker}(f_{t,H}^0)$ is preprojective if $H=\emptyset$ or if $|H|=1\neq |Q_0(t,-)| $ and, moreover, the unique vertex $h\in H$ is a limb vertex.
-
-
-
-For $T\subsetneq Q_0(-,h)$, we have 
+Moreover, for $T\subsetneq Q_0(-,h)$, we have 
 $$\udim P_{h,T}^0=\sum_{\substack{t\in Q_0(-,h)\\t\notin T}}\left(t+\sum_{h'\in Q_0(t,-)}h'\right)-h.$$
 
-Then $P_{h,T}^0$ is an exceptional representation such that
-$$\udim\tau\left(P_{h,T}^0\right)=h+\sum_{t\in T}t.$$
-Thus by Proposition \ref{pro:simpleregular}, the representation $P_{h,T}^0$ is preinjective if and only if $0\neq |T|=|Q_0(h,-)|-1$ and, moreover, the unique vertex $t\in Q_0(h,-)\backslash T$ is a limb vertex.
 
-By Corollary \ref{cor:simpleregular}, it is preprojective if $|T|=0$ or $|T|=1\neq |Q_0(-,h)|$ and, moreover, the unique vertex $t\in T$ is a limb vertex.
+
+
 
 
 \end{proof}
-As the cokernel
 
+
+\begin{proposition}\label{pro:truncated}Let $t\in\cT$ and $H\subsetneq  Q_0(t,-)$.
+Assume that 
+$$\bigoplus_{h\in H} P_{h,m}\to P_{t,m}$$ is surjective. Then $|H|=|Q_0(t,-)|-1$, the unique vertex $h'\in Q_0(t,-)\backslash\{H\}$ is a limb vertex and we have $P_{t,H}^m=P_{t',m}$ where $t'\in Q_0(-,h')$ with $t'\neq t$. Finally, we obtain a short exact sequence
+$$\ses{P_{\ell',m-h(h')}}{P^m_{t,m}}{P_{h',m}}$$
+with preprojective kernel.
+\end{proposition}
+\begin{proof}
+For $m=0$, the maps $f_{t,H}$ are all injective and the cokernel is preinjective if and only if $H=Q_0(t,-)$ or if $H=Q_0(t,-)\backslash\{h'\}$ for some $h'\in Q_0(t,-)$ and $h'$ is a limb vertex. Thus Lemma \ref{lem:truncated2} gives the first part of the Proposition. As  $\Ext(P_{h,m},P_{t,m})=0$ for $h\in Q_0(t,-)$, applying $\Hom(\bigoplus_{h\in H}P_{h,m},-)$ to the Auslander-Reiten sequence between $P_{t,m}$ and $P_{t,m+1}$ we obtain the commutative diagram
+
+  \[\xymatrix{
+      & & 0 \ar[d] & 0 \ar[d] \\
+      & & P^m_{t,H} \ar[d]\ar@{=}[r] & P_{t,H}^m \ar[d] \\
+      0 \ar[r] & P_{t,m} \ar[r]\ar@{=}[d] & \bigoplus_{h\in H}P_{h,m}\oplus P_{t,m} \ar[d]^\vartheta\ar[r] &  \bigoplus_{h\in H}P_{h,m} \ar[r]\ar[d] & 0\\
+      0 \ar[r] & P_{t,m} \ar[r] & \bigoplus_{h\in Q_0(t,-)}P_{h,m}\ar[r]\ar[d] &  P_{t,m+1}\ar[r]\ar[d] & 0 \\
+      & & 0 & 0}\]
+			
+			As the representations $P_{h,m}$ with $h\in Q_0(t,-)$ are pairwise orthogonal and as $\vartheta$ is surjective, it restricts to an isomorphism on $\bigoplus_{h\in H}P_{h,m}$. It follows that, we obtain a short exact sequence
+			$$\ses{P_{t,H}^m}{P_{t,m}}{P_{h',m}}.$$
+			As we have $\Hom(P_{t,m},P_{h',m})=\kk$, we can combine Corollary \ref{cor:thin sequences} with Lemma \ref{lem:indecomposable} and obtain $P_{t,H}^m=P_{\ell,m-h(h')}$.\sayT{here we need that $m\geq h(h')$; for $m<h(h')$, the horizontal maps are not surjective}
+\end{proof}
+
+
+\begin{remark}
+Note that the only possibility that $\bigoplus_{h\in H}P_{h,m}\to P_{t,m}$ is surjective, is that $h'\in Q_0(t,-)$ is a limb vertex and $|H|=|Q_0(t,-)-1|$. In this case, there exists an $m'<m$ such that there exists a short exact sequence
+$$\ses{\bigoplus_{h\in H}P_{h,m'}}{P_{t,m'}}{P_{t,H}^{m'}}$$
+with injective cokernel.
+\end{remark}
+
+\begin{theorem}
+Let $t\in \cT$.
+\begin{enumerate}\item If each $h\in Q_0(t,0)=\{h_1,\ldots,h_n\}$ is not a limb vertex, writing $H_i:=\{h_1,\ldots,h_i\}$, for every $m\geq 1$, there exists chains of  non-preinjective exceptional representations
+$$P_{t,H_1}^m\twoheadrightarrow\ldots\twoheadrightarrow P_{t,H_{n-1}}^m.$$
+Furthermore, we have $$P_{t,H_{n-1}}^m\cong P_{h_n,\{t\}}^{m-1}.$$  \sayT{the same applies when $h_n$ is not a limb vertex. But maybe it is better to organize all t.projectives?!}
+
+
+\item  Let $Q_0(t,0)=\{h_1,\ldots,h_n\}$ and write $H_i:=\{h_1,\ldots,h_i\}$. Moreover, assume that $h_{i_1},\ldots,h_{i_r}$ are limb vertices. For every $m\geq 1$, there exists chains of regular representations
+$$P_{t,H_1}^m\twoheadrightarrow\ldots\twoheadrightarrow P_{t,H_{n-2}}^m.$$
+
+Furthermore, we have $$P_{t,H_{n-1}}^m\cong P_{h_n,\{t\}}^{m-1}.$$ 
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+The statements of this section show that for all $H\subsetneq Q_0(t,-)$, the maps $\oplus_{h\in H}P_{h,m}\to P_{t,m}$ are injective. We obtain a commutative diagram
+  \[\xymatrix{
+      & & 0 \ar[d] & 0 \ar[d] \\
+      & & \bigoplus_{h\in H}P_{h,m} \ar[d]\ar@{=}[r] &\bigoplus_{h\in H}P_{h,m} \ar[d] \\
+      0 \ar[r] & P_{t,m-1} \ar[r]\ar@{=}[d] & \bigoplus_{h\in Q_0(t,-)}P_{h,m} \ar[d]\ar[r] & P_{t,m} \ar[r]\ar[d] & 0\\
+      0 \ar[r] & P_{t,m-1} \ar[r] &\bigoplus_{h\in Q_0(t,-)\backslash H}P_{h,m}\ar[r]\ar[d] &  P_{t,H}^m\ar[r]\ar[d] & 0 \\
+      & & 0 & 0}\]
+			
+\end{proof}
+
+
+\begin{comment}
 \begin{definition}
 We call a truncated representation $S$ simple if we have $\Hom(S,X)=0$ for all truncated representations $X\ncong S$.
 \end{definition}
@@ -783,6 +851,7 @@ Write $P_{q,m}:=\tau^{-m} P_q$ for $q\in Q_0$. Then we have
 
 $$\udim P_{h,1}=|Q_0(h,-)-1|h+\sum_{t\in Q_0(h,-)}\left(t+\sum_{h'\in Q_0(-,t)}h'\right).$$
 \end{comment}
+
 
 
 
