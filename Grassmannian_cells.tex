@@ -304,6 +304,7 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
   Note that vertex $i$ is a sink in $Q'$.
 
   If $Q'$ is wild or of extended Dynkin type, let $M$ be any indecomposable representation of $Q'$ such that $\beta=\udim M$ is an imaginary root of $Q'$, and hence an imaginary root of $Q$.
+  \sayD{We should probably be a little more careful here to guarantee that vertex $i$ lies in the support of $M$.}
   We can naturally identify $M$ with a representation of $Q$ by setting $M_j=0$ for all $j\in Q_0\setminus Q'_0$ (in particular, $M_\alpha=0$ for all $\alpha\in Q_1(i,-)$).
   This yields $\Hom_Q(S_i,M)\neq 0$ and thus the claim follows from Lemma \ref{lem: non-preinjective} in this case. 
 
@@ -325,16 +326,15 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
   Thus we may assume that $|Q_0(i,-)|=|Q_1(i,-)|=1$ in the case $|Q_0(-,i)|\ge2$.
   If there were a vertex $j'\notin \{j,q,q'\}$ such that $|Q_1(j',i)|\geq 1$, then we may again consider the (not necessarily full) subquiver $Q''$ of $Q$ with vertices $\{i,j,j',q,q'\}$ which will again be of extended Dynkin type $\tilde D_4$ with middle vertex $i$, only now there are three incoming and a single outgoing arrow.
   Then for an indecomposable imaginary root representation $X$ of $Q''$ of dimension $\delta=j+j'+q+q'+2i$ which lies in a homogeneous tube, we again have $\Hom(S_i,X)\neq 0$.
-  As in the previous case, we may again apply Lemma~\ref{lem:non-preinjective} to conclude that $S_i$ is not preinjective.
+  As in the previous case, we may again apply Lemma~\ref{lem: non-preinjective} to conclude that $S_i$ is not preinjective.
 
-  Thus we may assume that there does not exist such a vertex $j'$ and so $i$ has precisely three neighbors $q$, $q'$, and $j$.
+  When $|Q_0(-,i)|\ge2$, it remains to consider the case where vertex $i$ has precisely the three neighbors $q$, $q'$, and $j$.
   Note that, as $Q'$ is of Dynkin type, $q$ is not connected to $q'$.
-	
-  If $j$ is connected to $q$ (or analogously to $q'$) by a sequence $j=q_1,q_2,\ldots,q_r=q$ with $q_i\neq q'$, the root $\beta=i+\sum_{t=1}^rq_t$ is imaginary.
+  If $j\in Q'_0$, then vertex $j$ is connected to $q$ (or analogously to $q'$) by a sequence $j=q_1,q_2,\ldots,q_r=q$ with $q_t\neq q',i$ and the root $\beta=i+\sum_{t=1}^r q_t$ is imaginary.
   Denoting the arrow from $i$ to $j$ by $\rho$, there exists a Schurian representation of dimension $\beta$ with $X_\rho=0$ which implies $\Hom(S_i,X_\rho)\neq 0$. 
-  Thus Lemma \ref{lem: non-preinjective} yields the claim in this case.  
+  Thus Lemma~\ref{lem: non-preinjective} again yields the claim in this case.
 
-  Thus we may additionally assume that there exists precisely one path from each of the vertices $q,q'$ to $j$.
+  Thus we may additionally assume that $j\notin Q'_0$ and so there exists precisely one path from each of the vertices $q,q'$ to $j$, namely the path passing through vertex $i$.
   If there exists vertex $i'\in Q_0$ different from $i$ such that $|Q_0(i,-)\cup Q_0(-,i)|\geq 3$, it is straightforward to check that $Q$ has a subquiver of extended Dynkin type $D$.
   In this subquiver precisely two vertices out of $\{q,q',j\}$ are leaves.
   With this observation, it is straightforward to reduce to the case $\tilde D_4$ treated before.
@@ -351,12 +351,6 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
 The consideration from above give that we can assume that $Q'$ is of Dynkin type $D$ or $E$ (with leaf $i$). Moreover, we can assume that removing $\gamma$ yields precisely two connected components, the one of $\ell$ and the one of $i$. Applying reflection functors we can assume that all arrows in $Q'$ are oriented towards $\ell$, i.e. $\ell$ is a sink of $Q'$. By assumption, we either have $|Q_0(-,\ell)|=2$ or there is a vertex $\ell'\in Q'_0$ such that $|Q_0(-,\ell')|=2$ and $|Q_0(\ell',-)|=1$. Moreover, there is a unique path from $\ell'$ to $i$ where we denote the vertices in between by $q_1,\ldots,q_r$. Now let $Q(\ell',i)$ be the quiver obtained from $Q$ when identifying $\ell'$ and $i$ and removing all arrows and vertices along the path from $\ell'$ to $i$. Denote the vertex obtained via this identification by $(\ell',i)$. It is straightforward to check that roots $\beta$ of $Q$ with $\beta_i=\beta_{q_l}=\beta_\ell'$ for $l=1,\ldots,r$ are imaginary if and only if the corresponding root of $Q(\ell',i)$ with $\beta_{(\ell',i)}=\beta_i$ is imaginary. Thus if $Q(\ell',i)$ is not of Dynkin type, we can make use of the observations in the case $|Q(-,i)|=2$. Note that $|Q(\ell',i)_1(-,(\ell',i))|\geq 2$.
 
  Thus we may finally assume that $Q(\ell',i)$ is of Dynkin type and $Q$ is not. This is only possible if $Q$ is of type $E$. But then for the imaginary Schur root $\delta$ we have $\delta_i<\delta_\ell$. But this yields $\hom(i,\delta)\neq 0$ and thus the claim.
-
-
-%Let $M$ be any indecomposable representation of $Q'$ such that $\beta=\udim M$ is an imaginary root of $Q'$ and thus of $Q$. We can naturally identify $M$ with a representation of $Q$ when setting $M_\alpha=0$ for all $\alpha\in Q_1(i,-)$. This yields $\Hom_Q(S_i,M)\neq 0$. Thus Lemma \ref{lem: non-preinjective} yields the claim.
-  
-	 
-
 \end{proof}
 
 \begin{corollary}
