@@ -325,6 +325,7 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
 
   Thus we may assume that $|Q_0(i,-)|=|Q_1(i,-)|=1$ in the case $|Q_0(-,i)|\ge2$.
   If there were a vertex $j'\notin \{j,q,q'\}$ such that $|Q_1(j',i)|\geq 1$, then we may again consider the (not necessarily full) subquiver $Q''$ of $Q$ with vertices $\{i,j,j',q,q'\}$ which will again be of extended Dynkin type $\tilde D_4$ with middle vertex $i$, only now there are three incoming and a single outgoing arrow.
+  \sayD{In this case, $S_i$ is preprojective as a representation of $Q''$, so the statement of the argument needed to be modified slightly.}
   Then for an indecomposable imaginary root representation $X$ of $Q''$ of dimension $\delta=j+j'+q+q'+2i$ which lies in a homogeneous tube, we again have $\Hom(S_i,X)\neq 0$.
   As in the previous case, we may again apply Lemma~\ref{lem: non-preinjective} to conclude that $S_i$ is not preinjective.
 
@@ -335,9 +336,8 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
   Thus Lemma~\ref{lem: non-preinjective} again yields the claim in this case.
 
   Thus we may additionally assume that $j\notin Q'_0$ and so there exists precisely one path from each of the vertices $q,q'$ to $j$, namely the path passing through vertex $i$.
-  If there exists vertex $i'\in Q_0$ different from $i$ such that $|Q_0(i,-)\cup Q_0(-,i)|\geq 3$, it is straightforward to check that $Q$ has a subquiver of extended Dynkin type $D$.
-  In this subquiver precisely two vertices out of $\{q,q',j\}$ are leaves.
-  With this observation, it is straightforward to reduce to the case $\tilde D_4$ treated before.
+  If there exists $i'\in Q_0$ different from vertex~$i$ such that $|Q_0(i',-)\cup Q_0(-,i')|\geq 3$, then $Q$ will contain a subquiver $Q''$ of extended Dynkin type $D$ in which precisely two vertices out of $\{q,q',j\}$ are leaves.
+  Arguing as in the $\tilde D_4$ cases above, we may again find an indecomposable imaginary root representation $X$ of $Q''$ with $\Hom(S_i,X)\neq 0$ and apply Lemma~\ref{lem: non-preinjective} to conclude that $S_i$ is not preinjective.
 
   Thus it remains to consider the case when $Q$ is a flag quiver with central vertex $i$.
   If $Q$ is not a tree, i.e. there exist vertices $s,s'$ with $|Q_1(s,s')|\geq 2$, the root 
