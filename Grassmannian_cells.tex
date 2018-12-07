@@ -303,8 +303,8 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
   Let $Q'$ be the connected component containing $i$ after removing all arrows in $Q_1(i,-)$ from the quiver $Q$.
   Note that vertex $i$ is a sink in $Q'$.
 
-  If $Q'$ is wild or of extended Dynkin type, let $M$ be any indecomposable representation of $Q'$ such that $\beta=\udim M$ is an imaginary root of $Q'$, and hence an imaginary root of $Q$.
-  \sayD{We should probably be a little more careful here to guarantee that vertex $i$ lies in the support of $M$.}
+  If $Q'$ is wild or of extended Dynkin type, let $M$ be any indecomposable representation of $Q'$ with $M_i\neq 0$ such that $\beta=\udim M$ is an imaginary root of $Q'$, and hence an imaginary root of $Q$. 
+  \sayD{We should probably be a little more careful here to guarantee that vertex $i$ lies in the support of $M$.}\sayT{modified, is this clear or shall we write something concerning the existence of such a root?}
   We can naturally identify $M$ with a representation of $Q$ by setting $M_j=0$ for all $j\in Q_0\setminus Q'_0$ (in particular, $M_\alpha=0$ for all $\alpha\in Q_1(i,-)$).
   This yields $\Hom_Q(S_i,M)\neq 0$ and thus the claim follows from Lemma \ref{lem: non-preinjective} in this case. 
 
@@ -346,7 +346,7 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
   
 	Thus assume that $Q$ is a tree. As it is not of Dynkin type, it contains an extended Dynkin quiver of type $E$ as a full subquiver. But then it is straightforward that $\hom(i,\delta)\neq 0$ for the respective imaginary Schur roots $\delta$, see \cite[Section 4]{CB} for a list. Thus again Lemma \ref{lem: non-preinjective} applies.
 	
-        \sayD{I don't see why this paragraph is necessary.}
+        \sayD{I don't see why this paragraph is necessary.}\sayT{it is to get if and only if in (2)?!}
 	It remains to consider the case when $|Q_0(-,i)|=1$ and $\ell\in Q_0(-,i)$ is a limb vertex such that corresponding leaf is not equal to $i$. Let $\gamma:\ell\to i$ denote the unique arrow with sink $i$. 
 The consideration from above give that we can assume that $Q'$ is of Dynkin type $D$ or $E$ (with leaf $i$). Moreover, we can assume that removing $\gamma$ yields precisely two connected components, the one of $\ell$ and the one of $i$. Applying reflection functors we can assume that all arrows in $Q'$ are oriented towards $\ell$, i.e. $\ell$ is a sink of $Q'$. By assumption, we either have $|Q_0(-,\ell)|=2$ or there is a vertex $\ell'\in Q'_0$ such that $|Q_0(-,\ell')|=2$ and $|Q_0(\ell',-)|=1$. Moreover, there is a unique path from $\ell'$ to $i$ where we denote the vertices in between by $q_1,\ldots,q_r$. Now let $Q(\ell',i)$ be the quiver obtained from $Q$ when identifying $\ell'$ and $i$ and removing all arrows and vertices along the path from $\ell'$ to $i$. Denote the vertex obtained via this identification by $(\ell',i)$. It is straightforward to check that roots $\beta$ of $Q$ with $\beta_i=\beta_{q_l}=\beta_\ell'$ for $l=1,\ldots,r$ are imaginary if and only if the corresponding root of $Q(\ell',i)$ with $\beta_{(\ell',i)}=\beta_i$ is imaginary. Thus if $Q(\ell',i)$ is not of Dynkin type, we can make use of the observations in the case $|Q(-,i)|=2$. Note that $|Q(\ell',i)_1(-,(\ell',i))|\geq 2$.
 
