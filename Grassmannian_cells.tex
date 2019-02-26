@@ -150,7 +150,7 @@ We would like to thank Giovanni Cerulli Irelli, Hans Franzen, Oliver Lorscheid a
 A representation $X$ is \emph{exceptional} if $X$ is indecomposable and rigid, i.e.\ $\Ext(X,X)=0$.
 A sequence of exceptional representations $(X_1,\ldots,X_k)$ is \emph{exceptional} itself if $\Hom(X_i,X_j)=0=\Ext(X_i,X_j)$ for $i<j$.
 An immediate consequence of the definition is that an exceptional sequence must consist of non-isomorphic representations. 
-An exceptional sequence $(X_1,\ldots,X_k)$ is \emph{$\Ext$-orthogonal} (resp.\ \emph{$\Hom$-orthogonal}) if $\Ext(X_i,X_j)=0$ (resp. $\Hom(X_i,X_j)=0$) for all $i,j$.
+An exceptional sequence $(X_1,\ldots,X_k)$ is \emph{$\Ext$-orthogonal} (resp.\ \emph{$\Hom$-orthogonal}) if $\Ext(X_i,X_j)=0$ (resp. $\Hom(X_i,X_j)=0$) for all $i,j$, it is \emph{pairwise-orthogonal} if it is both $\Hom$- and $\Ext$-orthogonal.
 
 An exceptional sequence $(X_1,\ldots,X_n)$ consisting of $n=|Q_0|$ exceptional representations is called \emph{complete}.
 A (non-)complete $\Ext$-orthogonal exceptional sequence $(X_1,\ldots,X_k)$ determines a (partial) tilting representation $X_1\oplus\cdots\oplus X_k$. 
@@ -170,7 +170,7 @@ The braid group action is then given by either replacing an odd slice by an even
 \subsection{Quiver Grassmannian Fibrations from Exceptional Sequences}
 
 Fix a complete exceptional sequence $(X_1,\ldots,X_n)$.
-Write $S_1^{(i)}$ and $S_2^{(i)}$ for the simple projective and simple injective repectively in the category $\cC(X_i,X_{i+1})$.
+Write $S_1^{(i)}$ and $S_2^{(i)}$ for the simple projective and simple injective respectively in the category $\cC(X_i,X_{i+1})$.
 Given a representation $X\in\cC(X_i,X_{i+1})$, write $\Gr^{(i)}_{e_1,e_2}(X)$ for the projective variety of subrepresentations $E\subset X$ with $E\in\cC(X_i,X_{i+1})$.
 Then there is a map
 \[\Gr_\bfe(X)\to\bigsqcup_{e_1,e_2} \Gr^{(i)}_{e_1,e_2}(X)\]
@@ -182,11 +182,12 @@ What can we say about the fibers of this map?
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{General statements}
 \begin{lemma}\label{lem:indecomposable}
-Let $M_1,\ldots,M_n$ be pairwise orthogonal exceptional representations, i.e. $\Hom(M_i,M_j)=\Ext(M_i,M_j)=0$ if $i\neq j$. Let $N\in {^\perp} M_i$ for $i=1,\ldots,n$ and let $\Hom(M_i,N)=\langle f_i\rangle=\kk$. Let $f=(f_1,\ldots,f_n):\bigoplus_{i=1}^n M_i\to N$. Then $f$ is either surjective or injective. In the first case $\ker(f)$ is exceptional, in the second case $\mathrm{coker}(f)$ is exceptional. 
+  Let $M_1,\ldots,M_n$ be pairwise orthogonal exceptional representations, i.e. $\Hom(M_i,M_j)=\Ext(M_i,M_j)=0$ if $i\neq j$.
+  Let $N\in {^\perp} M_i$ for $i=1,\ldots,n$ and let $\Hom(M_i,N)=\langle f_i\rangle=\kk$. 
+  Let $f=(f_1,\ldots,f_n):\bigoplus_{i=1}^n M_i\to N$.
+  Then $f$ is either surjective or injective. In the first case $\ker(f)$ is exceptional, in the second case $\mathrm{coker}(f)$ is exceptional. 
 
-Finally, $f$ is injective if and only if $\sum_{i=1}^n\udim M_i\geq \udim N$.
-
-
+  Finally, $f$ is injective if and only if $\sum_{i=1}^n\udim M_i\geq \udim N$.
 \end{lemma}
 \begin{proof}
 We proceed by induction on $n$. Let $n=1$. As $\Ext(N,M_1)=0$, the map $f_1$ is either surjective or injective by the Happel-Ringel lemma. In the first case, we obtain a short exact sequence $\ses{K}{M_1}{N}$ such that $\Hom(K,N)=0$ as the induced map $\Hom(M_1,M_1)\to\Hom(M_1,N)$ is an isomorphism. Applying $\Hom(-,M_1)$ shows $\Ext(K,M_1)=0$ as $M_1$ is exceptional. Thus applying $\Ext(K,-)$ shows that $K$ is exceptional. The second case follows in the same way.
@@ -281,9 +282,7 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
   For $i\in Q_0$, the vertex simple $S_i$ is preinjective if and only if one of the following holds: 
   \begin{enumerate}
     \item $|Q_1(-,i)|=0$;
-    \item $|Q_1(-,i)|=1$ and $\ell\in Q_0(-,i)$ is a limb vertex with respect to vertex $i$. %such that the associated leaf is not equal to $i$.
-      \sayT{If the quiver is of extended Dynkin type $A$, the simples corresponding to vertices which are neither sink nor source are regular, but are limb vertices. Probably we want to exclude this cases by definition?!}
-      \sayD{The definition requires that removing a limb arrow creates more than one component, I believe this already excludes this possibility.}
+    \item $|Q_1(-,i)|=1$ and $\ell\in Q_0(-,i)$ is a limb vertex with respect to vertex $i$.
   \end{enumerate}
   In particular, the vertex simple $S_i$ is not preinjective if $|Q_1(-,i)|\geq 2$.			
 \end{proposition}
@@ -291,13 +290,13 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
   If $Q_1(-,i)=0$, then vertex $i$ is a source of $Q$ and so $S_i$ is injective.
 
   Assume $|Q_1(-,i)|=1$, say $\ell\in Q_0(-,i)$, and that $\ell$ is a limb vertex with respect to $i$ with associated leaf $\ell'$ in $Q(\ell)$.
-  We work by induction on $h(\ell)\ge1$ to show that $S_i=\tau^{-h(\ell)}I_{\ell',0}$ is preinjective.
+  We work by induction on $h(\ell)\ge1$ to show that $S_i=\tau^{h(\ell)}I_{\ell',0}$ is preinjective.
   Indeed, when $h(\ell)=1$, the quiver $Q(\ell)$ has the form
   \[\xymatrix{\bullet^{\ell'} & \hdots \ar[l] & \bullet^{\ell''} \ar[l] & \bullet^{\ell} \ar[l] \ar[r] & \bullet^{i} }\]
-  An easy calculation shows that $S_i=\tau^{-1}I_{\ell',0}$ in this case.
+  An easy calculation shows that $S_i=\tau I_{\ell',0}$ in this case.
   Now for $h(\ell)>1$, there are two possibilities.
-  If $\ell$ is not a source, then by induction $S_\ell=\tau^{-h(\ell)+1}I_{\ell',0}$ is preinjective, but $S_\ell=\tau S_i$ in this case and so $S_i=\tau^{-h(\ell)}I_{\ell',0}$ as desired.
-  If $\ell$ is a source, then there exists a vertex $i'$ in $Q(\ell)$ so that $\tau^2 S_i=S_{i'}$ with $S_{i'}=\tau^{-h(\ell)+2} I_{\ell',0}$ by induction, this again gives $S_i=\tau^{-h(\ell)} I_{\ell',0}$ in this case.
+  If $\ell$ is not a source, then by induction $S_\ell=\tau^{h(\ell)-1}I_{\ell',0}$ is preinjective, but $S_i=\tau S_\ell$ in this case and so $S_i=\tau^{h(\ell)}I_{\ell',0}$ as desired.
+  If $\ell$ is a source, then there exists a vertex $i'$ in $Q(\ell)$ so that $S_i=\tau^2 S_{i'}$ with $S_{i'}=\tau^{h(\ell)-2} I_{\ell',0}$ by induction, this again gives $S_i=\tau^{h(\ell)} I_{\ell',0}$ in this case.
 
   To finish, we aim to show in the remaining cases, namely when $|Q_1(-,i)|\ge2$ or when $|Q_1(-,i)|=1$ but $\ell\in Q_0(-,i)$ is not a limb vertex with respect to vertex $i$, that $S_i$ is not preinjective by applying Lemma~\ref{lem: non-preinjective}. 
   Let $Q'$ be the connected component containing $i$ after removing all arrows in $Q_1(i,-)$ from the quiver $Q$.
