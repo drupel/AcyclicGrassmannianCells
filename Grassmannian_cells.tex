@@ -293,7 +293,7 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
   We work by induction on $h(\ell)\ge1$ to show that $S_i=\tau^{h(\ell)}I_{\ell',0}$ is preinjective.
   Indeed, when $h(\ell)=1$, the quiver $Q(\ell)$ has the form
   \[\xymatrix{\bullet^{\ell'} & \hdots \ar[l] & \bullet^{\ell''} \ar[l] & \bullet^{\ell} \ar[l] \ar[r] & \bullet^{i} }\]
-  An easy calculation shows that $S_i=\tau I_{\ell',0}$ in this case.
+  and an easy calculation shows that $S_i=\tau I_{\ell',0}$ in this case.
   Now for $h(\ell)>1$, there are two possibilities.
   If $\ell$ is not a source, then by induction $S_\ell=\tau^{h(\ell)-1}I_{\ell',0}$ is preinjective, but $S_i=\tau S_\ell$ in this case and so $S_i=\tau^{h(\ell)}I_{\ell',0}$ as desired.
   If $\ell$ is a source, then there exists a vertex $i'$ in $Q(\ell)$ so that $S_i=\tau^2 S_{i'}$ with $S_{i'}=\tau^{h(\ell)-2} I_{\ell',0}$ by induction, this again gives $S_i=\tau^{h(\ell)} I_{\ell',0}$ in this case.
@@ -303,7 +303,6 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
   Note that vertex $i$ is a sink in $Q'$.
 
   If $Q'$ is wild or of extended Dynkin type, let $M$ be any indecomposable representation of $Q'$ with $M_i\neq 0$ such that $\beta=\udim M$ is an imaginary root of $Q'$, and hence an imaginary root of $Q$. 
-  \sayD{We should probably be a little more careful here to guarantee that vertex $i$ lies in the support of $M$.}\sayT{modified, is this clear or shall we write something concerning the existence of such a root?}
   We can naturally identify $M$ with a representation of $Q$ by setting $M_j=0$ for all $j\in Q_0\setminus Q'_0$ (in particular, $M_\alpha=0$ for all $\alpha\in Q_1(i,-)$).
   This yields $\Hom_Q(S_i,M)\neq 0$ and thus the claim follows from Lemma \ref{lem: non-preinjective} in this case. 
 
@@ -319,22 +318,21 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
 
   If $|Q_0(i,-)|\ge2$, i.e.~there exists $j'\in Q_0(i,-)$ distinct from vertex $j$, then there would exists a (not necessarily full) subquiver $Q''$ of $Q$ with vertices $\{i,j,j',q,q'\}$ of extended Dynkin type $\tilde D_4$ with middle vertex $i$ and two each of incoming/outgoing arrows.
   Then $S_i$ is regular as a representation of $Q''$.
-  Indeed, in this case there exists an indecomposable imaginary root representation $X$ of $Q''$ in the same tube as $S_i$ which is of dimension $\delta=j+j'+q+q'+2i$ and such that $\Hom(S_i,X)\neq 0$.
+  Indeed, in this case there exists an indecomposable imaginary root representation $X$ of $Q''$ in the same tube as $S_i$ which is of dimension $\delta=q+q'+2i+j+j'$ and such that $\Hom(S_i,X)\neq 0$.
   As we have $\dim\Ext_Q(X,X)\geq\dim\Ext_{Q''}(X,X)\neq 0$, $X$ is also an imaginary root representation of $Q$ and we can again apply Lemma~\ref{lem: non-preinjective} to conclude that $S_i$ is not preinjective.
 
   Thus we may assume that $|Q_0(i,-)|=|Q_1(i,-)|=1$ in the case $|Q_0(-,i)|\ge2$.
-  If there were a vertex $j'\notin \{j,q,q'\}$ such that $|Q_1(j',i)|\geq 1$, then we may again consider the (not necessarily full) subquiver $Q''$ of $Q$ with vertices $\{i,j,j',q,q'\}$ which will again be of extended Dynkin type $\tilde D_4$ with middle vertex $i$, only now there are three incoming and a single outgoing arrow.
-  \sayD{In this case, $S_i$ is preprojective as a representation of $Q''$, so the statement of the argument needed to be modified slightly.}
-  Then for an indecomposable imaginary root representation $X$ of $Q''$ of dimension $\delta=j+j'+q+q'+2i$ which lies in a homogeneous tube, we again have $\Hom(S_i,X)\neq 0$.
+  If there were a vertex $q''\notin \{j,q,q'\}$ such that $|Q_1(q'',i)|\geq 1$, then we may again consider the (not necessarily full) subquiver $Q''$ of $Q$ with vertices $\{i,j,q,q',q''\}$ which will again be of extended Dynkin type $\tilde D_4$ with middle vertex $i$, only now there are three incoming arrows and a single outgoing arrow.
+  Then for an indecomposable imaginary root representation $X$ of $Q''$ of dimension $\delta=q+q'+q''+2i+j$ which lies in a homogeneous tube, we again have $\Hom(S_i,X)\neq 0$.
   As in the previous case, we may again apply Lemma~\ref{lem: non-preinjective} to conclude that $S_i$ is not preinjective.
 
   When $|Q_0(-,i)|\ge2$, it remains to consider the case where vertex $i$ has precisely the three neighbors $q$, $q'$, and $j$.
   Note that, as $Q'$ is of Dynkin type, $q$ is not connected to $q'$.
-  If $j\in Q'_0$, then vertex $j$ is connected to $q$ (or analogously to $q'$) by a sequence $j=q_1,q_2,\ldots,q_r=q$ with $q_t\neq q',i$ and the root $\beta=i+\sum_{t=1}^r q_t$ is imaginary.
-  Denoting the arrow from $i$ to $j$ by $\rho$, there exists a Schurian representation of dimension $\beta$ with $X_\rho=0$ which implies $\Hom(S_i,X_\rho)\neq 0$. 
+  If $j\in Q'_0$, then vertex $j$ is connected to $q$ (or analogously to $q'$) by a sequence $j=q_1,q_2,\ldots,q_r=q$ with each $q_t\notin\{q',i\}$ and the root $\beta=i+\sum_{t=1}^r q_t$ is imaginary.
+  Denoting the arrow from $i$ to $j$ by $\alpha$, there exists a Schurian representation of dimension $\beta$ with $X_\alpha=0$ which implies $\Hom(S_i,X_\alpha)\neq 0$. 
   Thus Lemma~\ref{lem: non-preinjective} again yields the claim in this case.
 
-  Thus we may additionally assume that $j\notin Q'_0$ and so there exists precisely one path from each of the vertices $q,q'$ to $j$, namely the path passing through vertex $i$.
+  Thus we may additionally assume that $j\notin Q'_0$ and so there exists precisely one path from each of the vertices $q$ or $q'$ to $j$, namely the path passing through vertex $i$.
   If there exists $i'\in Q_0$ different from vertex~$i$ such that $|Q_0(i',-)\cup Q_0(-,i')|\geq 3$, then $Q$ will contain a subquiver $Q''$ of extended Dynkin type $D$ in which precisely two vertices out of $\{q,q',j\}$ are leaves.
   Arguing as in the $\tilde D_4$ cases above, we may again find an indecomposable imaginary root representation $X$ of $Q''$ with $\Hom(S_i,X)\neq 0$ and apply Lemma~\ref{lem: non-preinjective} to conclude that $S_i$ is not preinjective.
 
@@ -343,13 +341,27 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
   $$\beta=2i+\sum_{q\in Q_0\backslash\{i\}}q$$
   is imaginary with $\hom(i,\beta)\neq 0$ and Lemma \ref{lem: non-preinjective} applies.
   
-	Thus assume that $Q$ is a tree. As it is not of Dynkin type, it contains an extended Dynkin quiver of type $E$ as a full subquiver. But then it is straightforward that $\hom(i,\delta)\neq 0$ for the respective imaginary Schur roots $\delta$, see \cite[Section 4]{CB} for a list. Thus again Lemma \ref{lem: non-preinjective} applies.
+  Thus assume that $Q$ is a tree.
+  As it is not of Dynkin type, it contains an extended Dynkin quiver of type $E$ as a full subquiver.
+  But then it is straightforward that $\hom(i,\delta)\neq 0$ for the respective imaginary Schur roots $\delta$, see \cite[Section 4]{CB} for a list.
+  Thus again Lemma \ref{lem: non-preinjective} applies and we see that $S_i$ is not preinjective.
 	
-        \sayD{I don't see why this paragraph is necessary.}\sayT{it is to get if and only if in (2)?!}
-	It remains to consider the case when $|Q_0(-,i)|=1$ and $\ell\in Q_0(-,i)$ is a limb vertex such that corresponding leaf is not equal to $i$. Let $\gamma:\ell\to i$ denote the unique arrow with sink $i$. 
-The consideration from above give that we can assume that $Q'$ is of Dynkin type $D$ or $E$ (with leaf $i$). Moreover, we can assume that removing $\gamma$ yields precisely two connected components, the one of $\ell$ and the one of $i$. Applying reflection functors we can assume that all arrows in $Q'$ are oriented towards $\ell$, i.e. $\ell$ is a sink of $Q'$. By assumption, we either have $|Q_0(-,\ell)|=2$ or there is a vertex $\ell'\in Q'_0$ such that $|Q_0(-,\ell')|=2$ and $|Q_0(\ell',-)|=1$. Moreover, there is a unique path from $\ell'$ to $i$ where we denote the vertices in between by $q_1,\ldots,q_r$. Now let $Q(\ell',i)$ be the quiver obtained from $Q$ when identifying $\ell'$ and $i$ and removing all arrows and vertices along the path from $\ell'$ to $i$. Denote the vertex obtained via this identification by $(\ell',i)$. It is straightforward to check that roots $\beta$ of $Q$ with $\beta_i=\beta_{q_l}=\beta_\ell'$ for $l=1,\ldots,r$ are imaginary if and only if the corresponding root of $Q(\ell',i)$ with $\beta_{(\ell',i)}=\beta_i$ is imaginary. Thus if $Q(\ell',i)$ is not of Dynkin type, we can make use of the observations in the case $|Q(-,i)|=2$. Note that $|Q(\ell',i)_1(-,(\ell',i))|\geq 2$.
+  It remains to consider the case when $|Q_0(-,i)|=1$ and $\ell\in Q_0(-,i)$ is not a limb with respect to vertex~$i$.
+  From above, we can assume that $Q'$ is of Dynkin type $D$ or $E$ (with leaf $i$).
+  Applying reflection functors we can assume that all arrows in $Q'$ are oriented towards $\ell$, i.e. $\ell$ is a sink of $Q'$.
+  Let $\gamma:\ell\to i$ denote the unique arrow with sink $i$. 
+By assumption, we either have $|Q_0(-,\ell)|=2$ or there is a vertex $\ell'\in Q'_0$ such that $|Q_0(-,\ell')|=2$ and $|Q_0(\ell',-)|=1$.
+Moreover, there is a unique path from $\ell'$ to $i$ where we denote the vertices in between by $q_1,\ldots,q_r$.
+Now let $Q(\ell',i)$ be the quiver obtained from $Q$ when identifying $\ell'$ and $i$ and removing all arrows and vertices along the path from $\ell'$ to $i$.
+Denote the vertex obtained via this identification by $(\ell',i)$.
+It is straightforward to check that roots $\beta$ of $Q$ with $\beta_i=\beta_{q_t}=\beta_\ell'$ for $t=1,\ldots,r$ are imaginary if and only if the corresponding root of $Q(\ell',i)$ with $\beta_{(\ell',i)}=\beta_i$ is imaginary.
+Thus if $Q(\ell',i)$ is not of Dynkin type, we can make use of the observations in the case $|Q(-,i)|=2$.
+Note that $|Q(\ell',i)_1(-,(\ell',i))|\geq 2$.
 
- Thus we may finally assume that $Q(\ell',i)$ is of Dynkin type and $Q$ is not. This is only possible if $Q$ is of type $E$. But then for the imaginary Schur root $\delta$ we have $\delta_i<\delta_\ell$. But this yields $\hom(i,\delta)\neq 0$ and thus the claim.
+Thus we may finally assume that $Q(\ell',i)$ is of Dynkin type and $Q$ is not.
+This is only possible if $Q$ is of type $E$.
+But then for the imaginary Schur root $\delta$ we have $\delta_i<\delta_\ell$.
+But this yields $\hom(i,\delta)\neq 0$ and thus the claim.
 \end{proof}
 
 \begin{corollary}
@@ -654,7 +666,7 @@ The following result is crucial to the constructions to follow.
 
   There are two cases to consider.
   \begin{itemize}
-    \item Assume $\bigoplus\limits_{j\in Q_0(i,-)} P_{j,0}\otimes\big(\Irr(P_{j,0},P_{i,0})/V_j\big)$ contains a summand $P_{\ell,0}$ for $\ell\in Q_0(n,-)$ which is not a limb with reprect to the source vertex $n$.
+    \item Assume $\bigoplus\limits_{j\in Q_0(i,-)} P_{j,0}\otimes\big(\Irr(P_{j,0},P_{i,0})/V_j\big)$ contains a summand $P_{\ell,0}$ for $\ell\in Q_0(n,-)$ which is not a limb with respect to the source vertex $n$.
       Then the result follows by induction using Lemma~\ref{le:nonlimb extensions} and Lemma~\ref{le:nonpreinjective extensions}.
     \item Assume all summands of $\bigoplus\limits_{j\in Q_0(i,-)} P_{j,0}\otimes\big(\Irr(P_{j,0},P_{i,0})/V_j\big)$ correspond to vertices which are limbs with respect to $n$, say $V_j=0$ exactly for $j\in\{i_1,\ldots,i_q\}$.
       Since $\cV$ is admissible, we must have $q\ge2$.
@@ -677,18 +689,7 @@ The following result is crucial to the constructions to follow.
   Thus, by taking pullbacks, we obtain a commutative diagram 
   \[\xymatrix{0 \ar[r] & P_{i,m}\ar@{=}[d]\ar[r] & P_{i,m}\oplus \cP_{i,m}\bullet\cV \ar@{}[dr]|(.7){\lrcorner} \ar[r]\ar[d]_{(\iota_{i,m},\mathrm{id}_{\cP_{i,m}}\bullet\iota_\cV)} & \cP_{i,m}\bullet\cV \ar[r]\ar_{ev_\cV}[d] & 0\\
   0 \ar[r] & P_{i,m}\ar[r]^{\iota_{i,m}} & \cP_{i,m}\bullet \cI_{i,m} \ar[r]^{ev} & P_{i,m+1} \ar[r] & 0}\]
-  in which we set $P_0=0$ and $I_l=0$ for $l\leq 0$.
-  Since $\mathrm{id}_{P_1}\otimes \iota_V$ is injective, the snake lemma shows that $\ker(ev_V)=0$ for $m=1$ and thus $ev_V$ is injective in this case.
   
-  In view of Remark~\ref{rem:reflection recursion}, it is enough for the case $m>1$ to show that the cokernel of $ev_V$ does not have a preinjective direct summand when $m=1$.
-  Clearly the cokernel of $\mathrm{id}_{P_1}\otimes \iota_V$ is isomorphic to $P_1\otimes \cH_1/V$.
-  Thus we obtain the following commutative diagram induced by the cokernels of the above vertical maps, note that the vertical maps below are surjective:
-  \[\xymatrix{0 \ar[r]  & P_1\otimes \cH_1 \ar[d]\ar[r]^{ev} &P_{2}\ar[d] \ar[r] & I_{1}\ar@{=}[d]\ar[r]&0\\ 0\ar[r] & P_1\otimes \cH_1/V \ar[r] &K\ar[r]& I_{1}\ar[r]&0.}\]
-
-  We need to show that $K$ has no preinjective direct summand.
-  As $\Hom(P_2,P_1)=0$ and as the vertical maps are surjective, the representation $K$ has no direct summand which is isomorphic to $P_1=S_1$.
-  But this already shows that $K$ is indecomposable as $\udim K=(\dim \cH_1/V,1)$.
-  Since $V$ is a proper subspace of $\cH_1$, $\udim K$ is not the dimension vector of a preinjective representation and the claim follows.
 \end{proof}
 
 \begin{definition}
@@ -712,11 +713,13 @@ The following result is crucial to the constructions to follow.
 \end{proof}
 
 \section{Truncated preprojective representations of tree quivers}
-\noindent In this section, we consider truncated preprojective representations of those quivers whose underlying graph is a tree. We first consider bipartite quivers, i.e. every vertex is either sink or source. Actually, it will turn out that the general situation can be reduced to this case.
+  \noindent In this section, we consider truncated preprojective representations of those quivers whose underlying graph is a tree.
+  We first consider bipartite quivers, i.e. every vertex is either sink or source.
+  Actually, it will turn out that the general situation can be reduced to this case.
 
-
-
-Let $Q$ be a bipartite tree quiver with sources $\cT$ and sinks $\cH$. For a source $t\in\cT$, the corresponding projective representation $P_t$ (resp. injective representation $I_t$) is the exceptional representation with dimension vector $t+\sum_{h\in Q_0(t,-)}h$ (resp. $t$). Dually, the projective (resp. injective) representation of a sink $h\in\cH$ is given by $h$ is given by the dimension vector $h$ (resp. $h+\sum_{t\in Q_0(-,h)} t$).
+  Let $Q$ be a bipartite tree quiver with sources $\cT$ and sinks $\cH$.
+  For a source $t\in\cT$, the corresponding projective representation $P_t$ (resp. injective representation $I_t$) is the exceptional representation with dimension vector $t+\sum_{h\in Q_0(t,-)}h$ (resp. $t$).
+  Dually, the projective (resp. injective) representation of a sink $h\in\cH$ has dimension vector $h$ (resp. $h+\sum_{t\in Q_0(-,h)} t$).
 
 For every $h\in Q_0(t,-)$, there exists a unique irreducible morphism $f_{h,t}^m:P_{h,m}\to P_{t,m}$ and the corresponding Auslander-Reiten sequence
 $$\ses{P_{t,m-1}}{\bigoplus_{h\in Q_0(t,-)}P_{h,m}}{P_{t,m}}.$$ 
