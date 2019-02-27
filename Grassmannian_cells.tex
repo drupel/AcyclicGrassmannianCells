@@ -96,6 +96,9 @@
 \newcommand{\Sc}[2]{\langle #1,#2\rangle}
 \newcommand{\ses}[3]{\xymatrix@C15pt{0\ar[r] & #1\ar[r] & #2\ar[r] & #3 \ar[r] & 0}}
 \newcommand{\sesm}[4]{\xymatrix{0\ar[r] & #1\ar[r] & #2\ar^{#4}[r] & #3 \ar[r] & 0}}
+\newcommand{\sesM}[4]{\xymatrix{0\ar[r] & #1\ar^{#4}[r] & #2\ar[r] & #3 \ar[r] & 0}}
+\newcommand{\Ses}[5]{\xymatrix{0\ar[r] & #1\ar^{#4}[r] & #2\ar^{#5}[r] & #3 \ar[r] & 0}}
+
 \newcommand{\spn}{\operatorname{span}}
 \newcommand{\supp}{\operatorname{supp}}
 \newcommand{\vs}{\vspace{0.2cm}}
@@ -212,6 +215,10 @@ When applying reflection functors again, the general statement is obtained.
 
 
 \end{proof}
+
+
+
+
 
 \section{Truncated Preprojectives}
 
@@ -713,7 +720,96 @@ The following result is crucial to the constructions to follow.
 \end{proof}
 
 \section{Truncated preprojective representations of tree quivers}
+
+Recall that, for two indecomposable representations $M$ and $N$, a morphism $f:M\to N$ is called \emph{sectional} if it can be decomposed as $f=f_1\circ\ldots\circ f_r$ where each morphism $f_i:M_{i-1}\to M_i$ is an irreducible morphism between indecomposable representations and, furthermore, $M_i\ncong \tau^{-1}M_{i-2}$. In other words, $f$ is given as a path in oriented path in the Auslander-Reiten quiver of $Q$. If $M$ and $N$ are preprojective, it follows by the Happel-Ringel lemma that a sectional morphism is either injective or surjective. 
+
+As before we write $P_{i,m}=\tau^{-m}P_i$ where $P_i$ is the projective representation corresponding to $i\in Q_0$.
+
+
+\begin{lemma}\label{le:irreducible morphisms}
+Let $i\in Q_0(j,-)$. Then there exists an irreducible morphism $(i,j)_m:P_{i,m}\to P_{j,m}$ which is surjective for all $m\geq h(\ell)+1$  \sayT{check $\pm 1$} if and only if $j$ is a limb vertex with $i\neq \ell\in N_j$.
+%either $j$ is a source or if $|Q_0(-,j)|=1$ and $\ell\in Q_0(-,j)$ is a limb vertex. 
+
+Let $i\in Q_0(-,j)$. Then there exists an irreducible morphism $(i,j)^m:P_{i,m-1}\to P_{j,m}$ which is surjective for all $m\geq h(\ell)+1$ if and only if $j$ is a limb vertex with $i\neq \ell\in N_j$. 
+
+%if $j$ is not a limb. If $j$ is a limb vertex, $(i,j)^m$ is injective if and only if $i$ is a limb vertex with respect to $j$.
+
+\end{lemma}
+\begin{proof}
+
+We consider the case $m=0$ and $i\in Q_0(j,-)$. Then there exists an injective irreducible morphism $(i,j)_0:P_{i}\to P_j$ with cokernel $C$. If $|Q_0(j,-)|\geq 2$, we can proceed as we did in Proposition \ref{pro:simpleregular}, i.e. we apply a series of reflections to ''transform $C$ into $S_j$'', in order to show that $C$ is preinjective if and only if we have $|Q_0(-,j)|=0$, $|Q_0(j,-)|=2$ and $i\neq \ell\in Q_0(j,-)$ is a limb vertex. In any other case, we have $S_j\cong C$.
+
+By Proposition \ref{pro:simpleregular}, $S_j$ is preinjective if and only if $|Q_0(-,j)|\leq 1$ and if $\ell\in Q_0(-,j)$, it is a limb vertex with respect to $j$. If $|Q_0(-,j)|=0$, it follows that $P_{i,m}\to P_{j,m}$ is surjective for each $m\geq 1$. In the second case, we have $\tau^{-h(\ell)-1}S_j=0$ and it follows that $P_{i,h(\ell)+1}\to P_{j,h(\ell)+1}$   is surjective. In every other case, $S_j$ is either preprojective or regular and thus we have $\tau^{-m}S_j\neq 0$ for every $m\geq 0$ which means that $P_{i,m}\to P_{j,m}$ is injective for each $m\geq 0$. This shows the first statement.
+
+The second part follows from the first one.
+
+
+
+\end{proof}
+
+
+For a fixed pair of vertices $i,j\in Q_0$, there exists a unique (non-oriented) path from $i$ to $j$ in $Q$ which we denote by $p_{i,j}$. The number of arrows passed through in non-opposite direction is denoted by $n_{i,j}$. This path induces sectional morphisms
+$$f_{i,j}^m:P_{i,m}\to P_{j,m+n_{i,j}}$$
+where we write $P_{i,j}^m:=P_{j,m+n_{i,j}}$ in the following.
+If $|p_{i,j}|=n$, we set $i_0=i$ and $i_n=j$ and recursively define $m_0=m$ and $$m_l=\begin{cases}m_{l-1}\text{ if $i_{l}\to i_l$}\\m_{l-1}+1\text{ if $i_{l-1}\to i_l$}\end{cases}$$
+for $l=1,\ldots,n-1$. Then we have $$f_{i,j}^m=\prod_{l=0}^{n-1} f_{i_l,i_{l+1}}^{m_l}$$ 
+
+
+\begin{corollary}
+The morphism $f_{i,j}^m$ is surjective if $i_1$ is a limb. It is injective if $i_n$ is not a limb.\sayT{what about $m$?}
+\end{corollary}
+\begin{proof}
+Obviously, $f_{i,j}^m$ is surjective if $f_{i_0,i_1}^m$ is surjective and injective if $f_{i_{n-1},i_n}^{m_{n-1}}$ is injective. Thus the statement follows from Lemma \ref{le:irreducible morphisms}.
+\end{proof}
+
+For 
+$$\cP_{i,m}=\big(P_{i,k}^m\big)_{k\in N_i},$$
+there exists an Auslander-Reiten sequence
+$$\Ses{P_{i,m}}{\cP_{i,m}}{P_{i,m+1}}{f}{g}.$$
+with $f=(f_{i,k}^m)_{k\in N_i}$ and $g=(g_{k,i}^{m+1})_{k\in N_i}$ where $g^{m+1}_{k,i}=f_{k,i}^m$ if $k\in Q_0(-,i)$ and $g^{m+1}_{k,i}=f_{k,i}^{m+1}$ if $k\in Q_0(i,-)$.
+
+Note that,  we analogously obtain a sectional morphism $g_{i,j}^m:P_{i,m-n_{i,j}}\to P_{j,m}$.
+
+
+
+
+\subsection{Generalized Auslander-Reiten sequences}
+Let $Q$ be a quiver whose underlying graph is a tree. The set of vertices decomposes as 
+$Q_0=L\coprod V$ where $L$ denotes the set of vertices which are limbs. For a limb $l$ we denote by $b_l$ the corresponding leaf. For a vertex $i\in Q_0$, write 
+$N_i$ for the set of neighbors which decomposes into $L_i\coprod V_i$ where $L_i=L\cap N_i$ and $V_i=V\cap N_i$. 
+
+For a path $p$ denoted by $i_0i_1\ldots i_n$, we define $V_p=\{i_0,\ldots,i_n\}$ and 
+$$N_p=\left(\bigcup_{i\in V_p}N_i\right)\backslash V_p,$$
+i.e. all neighbors of the vertices on the path which do not lie on the path itself.
+
+\begin{proposition}
+For every pair of vertices $(i,j)$ of $Q$ and every $m\geq 0$, there exists a short exact sequence
+$$E_{i,j}^m:\ses{P_{i,m}}{\bigoplus_{k\in N_{p_{i,j}}}P_{i,k}^m}{P_{i,j}^{m+1}}.$$
+
+\end{proposition}
+PROPERTIES OF THESE SEQUENCES.
+\begin{proof}We proceed by induction on the length of the path. For $i=j$, we have that $E_{i,i}^m$ is the Auslander-Reiten sequence considered above. Let $p_{i,j}=i_0\ldots i_n$. In the present notation, the Auslander-Reiten sequences can be written as
+$$\ses{P_{i,j}^m}{\left(\bigoplus_{k\in N_j\backslash \{i_{n-1}\}}P_{i,k}^m\right)\oplus P_{i,i_{n-1}}^{m+1}}{P_{i,j}^{m+1}}.$$
+As $j\in N_{i_{n-1}}$, $P_{i,j}^m$ appears as a direct summand of the middle term of the exact sequence
+$$E_{i,i_{n-1}}^m:\ses{P_{i,m}}{\bigoplus_{k\in N_{p_{i,i_{n-1}}}}P_{i,k}^m}{P_{i,i_{n-1}}^{m+1}},$$
+which exists by induction hypothesis. Thus the second part of Corollary \ref{cor:sequence reducing} gives the claim.
+\end{proof}
+\begin{corollary}\begin{enumerate}
+\item If each $k\in N_{p_{i,j}}$ is not a limb, the sequence $E_{i,j}^m$ is reduced. 
+\item If $i$ is a limb, $E_{i,j}^m$ is reduced if and only if $i$ is a leaf.
+ \end{enumerate}
+\end{corollary}
+
+Assume that $(E_{ij}^m,I)$ is reduced with $I=\{k_1,\ldots,k_r\}$. This induces a series of short exact sequences and a filtration of $P_{ij}^{m+1}$:
+$$\ses{P_{i,k_l}^m}{P_{i,j}^{m,I_{l-1}}}{P_{i,j}^{m,I_l}}$$
+where $I_l=\{k_1,\ldots,k_l\}$. By Lemma \ref{le:quotients}, we have
+$$P_{i,j}^{m,I}\cong P_{i,k_r}^m/P_{i,j}^m.$$
+If we choose $k_r$ in such a way that $j\in N_{p_{i,k_r}}$, this shows that $P_{i,j}^{m,I}$ appears as a quotient of induced by a filtration of $P_{i,k_r}^m\cong P_{k_r,m'}$ for an appropriate $m'$. Here we can take any path $p$ ending in $k_r$ with $j\in N_p$ which clearly exists as $j\neq k_r$.
+
+
+\section{Results on bipartite quivers}
 \noindent In this section, we consider truncated preprojective representations of those quivers whose underlying graph is a tree. We first consider bipartite quivers, i.e. every vertex is either sink or source. Actually, it will turn out that the general situation can be reduced to this case.
+
 
 
 
@@ -885,6 +981,45 @@ $$\udim P_{h,1}=|Q_0(h,-)-1|h+\sum_{t\in Q_0(h,-)}\left(t+\sum_{h'\in Q_0(-,t)}h
   The middle vertical sequence is naturally split which induces the upper horizontal morphism and shows that it is injective.
   Since the lower horizontal morphism is an equality, the upper left square is a pushout.
   It follows that the cokernel of the upper horizontal morphism coincides with the cokernel in the middle horizontal sequence, giving the claim.
+\end{proof}
+
+
+If $A\oplus B$ is a direct sum of certain suitable objects, we write $\iota_A$ and $\pi_A$ for the natural embedding and projection respectively. 
+\begin{corollary}
+  \label{cor:sequence reducing}
+  Suppose there is an exact sequence   \[\sesM{A}{X\oplus B}{C}{f}\].
+	\begin{enumerate}
+	\item If there is an exact sequence $\sesm{K}{A\oplus D}{X}{g}$ with $\pi_X\circ f=g\circ\iota_A$, then there is an induced short exact sequence $\ses{K}{D\oplus B}{C}.$
+	\item If there is an exact sequence $\ses{X}{C\oplus D}{K}$, then there is an induced short exact sequence $\ses{A}{B\oplus D}{K}.$
+     \end{enumerate}
+\end{corollary}
+\begin{proof}
+Due to duality, we only prove the first part. Consider the following exact commutative diagram with splitting vertical sequences induced by the given exact sequences:
+  \[\xymatrix{
+      & 0 \ar[d] & 0 \ar[d] & \\
+      0 \ar[r] & A \ar^{\iota_A}[d]\ar^f[r]\ar@{}[dr]|(.2){\ulcorner}& X\oplus B \ar^{\iota_{X\oplus B}}[d]\ar[r] &C\ar@{=}[d]\ar[r] &0 \\
+      0 \ar[r] & A\oplus D \ar[d]\ar^{\scriptsize{\begin{pmatrix}g\\\pi_D\end{pmatrix}}}[r] & X\oplus B\oplus D \ar[d]\ar[r] & C \ar[r] & 0\\
+      & D \ar@{=}[r]\ar[d] & D \ar[d] & \\
+      & 0 & 0 & }\]
+ As $g$ is surjective, we can apply Lemma \ref{le:sequence reducing}.
+\end{proof}
+\begin{definition}
+We call pair consisting of a short exact sequence $$e:\sesM{X}{\bigoplus_{i=1}^rB_i}{Y}{f}$$ with indecomposable representations $X,Y$ and $B_i$ for $i=1,\ldots,r$ and a subset $I\subset\{1,\ldots,r\}$ with $|I|\leq r-1$  \emph{reduced}\sayT{better name} if the induced morphism $f\circ\iota_{B_I}:B_I\to Y$ is injective where $B_I=\oplus_{i\in I}B_i$.
+
+If $(e,I)$ is reduced for all $I\subset \{1,\ldots,r\}$ with $|I|=r-1$, we call $e$ reduced.
+\end{definition}
+
+\begin{lemma}\label{le:quotients}
+Let $(\sesM{X}{\bigoplus_{i=1}^rB_i}{Y}{f},I)$ be reduced where $I=\{i_1,\ldots, i_{r-1}\}\subset \{1,\ldots,r\}$ with $|I|=r-1$. Then we have $Y/B_I\cong B_{i_r}/X$.
+\end{lemma}
+\begin{proof}It is verified straightforwardly that we obtain the following commutative diagram with the natural vertical morphisms:
+  \[\xymatrix{
+      & & 0 \ar[d] & 0 \ar[d] \\
+      & & B_I \ar[d]\ar@{=}[r] & B_I\ar[d] \\
+      0 \ar[r] & X \ar[r]\ar@{=}[d] & \bigoplus_{i=1}^rB_i \ar[d]\ar[r] & Y \ar[r]\ar[d] & 0\\
+      0 \ar[r] & X \ar[r] & B_{i_r}\ar[r]\ar[d] & Y/B_I\ar[r]\ar[d] & 0 \\
+      & & 0 & 0}\]
+			
 \end{proof}
 
 
