@@ -826,10 +826,13 @@ which exists by induction hypothesis. Thus the second part of Corollary \ref{cor
 \end{corollary}
 
 Assume that $(E_{ij}^m,I)$ is reduced with $I=\{k_1,\ldots,k_r\}$. This induces a series of short exact sequences and a filtration of $P_{ij}^{m+1}$:
-$$\ses{P_{i,k_l}^m}{P_{i,j}^{m,I_{l-1}}}{P_{i,j}^{m,I_l}}$$
+\begin{equation}\label{ses}\ses{P_{i,k_l}^m}{P_{i,j}^{m,I_{l-1}}}{P_{i,j}^{m,I_l}}\end{equation}
 where $I_l=\{k_1,\ldots,k_l\}$. By Lemma \ref{le:quotients}, we have
 $$P_{i,j}^{m,I}\cong P_{i,k_r}^m/P_{i,j}^m.$$
 If we choose $k_r$ in such a way that $j\in N_{p_{i,k_r}}$, this shows that $P_{i,j}^{m,I}$ appears as a quotient of induced by a filtration of $P_{i,k_r}^m\cong P_{k_r,m'}$ for an appropriate $m'$. Here we can take any path $p$ ending in $k_r$ with $j\in N_p$ which clearly exists as $j\neq k_r$.
+
+
+Every short exact sequence (\ref{ses}) induces a morphism $P_{i,k_l}^m\to \tau  P_{i,j}^{m,I_l}$ and its $\tau^{-1}$-translate which we are interested in. In particular, we need to know its kernel and its image.
 
 
 \section{Results on bipartite quivers}
@@ -1057,7 +1060,19 @@ If $A\oplus B$ is a direct sum, we write $\iota_A:A\into A\oplus B$ and $\pi_A:A
       0 \ar[r] & X \ar[r] & B_j\ar[r]\ar[d] & Y/B_I\ar[r]\ar[d] & 0 \\
       & & 0 & 0}\]
 \end{proof}
+\begin{lemma}
+Let $0=P_0\subset P_1\subset P_2\subset \ldots \subset P_r$ be a $\tau$-stable chain of representations such that the induced map $\phi_{i,i+1}:P_i\to \tau P_{i+1}/P_i$ is surjective and such that $P_{i-1}$ is a direct summand of $\ker(\phi_{i,i+1})$. Then we have $\phi_{i,j,k}(P_j/P_i)=\tau P_{j+1}/P_j$ for the induced map $\phi_{i,j,k}:P_j/P_i\to \tau P_k/P_j$.
+\end{lemma}
+\begin{proof}For $0\leq i< j< k\leq r$ we have $\tau$-stable short exact sequences
+$$\ses{P_j/P_i}{P_k/P_i}{P_k/P_j}$$
+ Auslander-Reiten theory induces a morphism $\phi_{i,j,k}:P_j/P_i\to\tau (P_k/P_j)$.
+Moreover, as $\ker(\phi_{0,j,j+1})=P_{j-1}\oplus K_{j,j+1}$, there exists a short exact sequence
+$$\ses{K_{j,j+1}}{P_j/P_{j-1}}{\tau P_{j+1}/P_j}.$$
 
+Thus we end up with an exact sequence
+$$0\rightarrow P_{j-1}/P_{i}\oplus K_{j,j+1}\to P_{j}/P_i\to\tau P_k/P_j\to\tau P_k/P_{j+1}\to 0$$
+In particular, we have $\phi_{i,j,k}(P_j/P_i)=\tau P_{j+1}/P_j$.
+\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
