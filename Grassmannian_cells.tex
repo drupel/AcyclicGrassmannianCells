@@ -720,14 +720,14 @@ The following result is crucial to the constructions to follow.
 \end{proof}
 
 \begin{lemma}
-  For $i\in Q_0$, write $L_-\subset Q_0(-,i)$ and $L_+\subset Q_0(i,-)$ for the subsets of leaves.
-  Then for any $m\ge1$ and any subset $L\subset L_-\sqcup L_+$ with $|L|=2$, the following representations are isomorphic:
+  For $i\in Q_0$, write $L_-\subset Q_0(-,i)$ and $L_+\subset Q_0(i,-)$ for the subsets of limbs.
+  Then for any subset $L=\{\ell,\ell'\}\subset L_-\sqcup L_+$ and $m\ge h(\ell')$ for the element $\ell'\in L$ with associated leaf $\ell''$, the truncated preprojective representation
   \[
-    P_{i,m+1}/\Big( \bigoplus_{k\in Q_0(-,i)\setminus L} P_{k,m}\otimes \Irr(P_{k,m},P_{i,m+1}) \oplus \bigoplus_{j\in Q_0(i,-)\setminus L} P_{j,m+1}\otimes \Irr(P_{j,m+1},P_{i,m+1}) \Big)
+    P_{i,m+1}/\left( \bigoplus_{k\in Q_0(-,i)\setminus L} P_{k,m}\otimes \Irr(P_{k,m},P_{i,m+1}) \oplus \bigoplus_{j\in Q_0(i,-)\setminus L} P_{j,m+1}\otimes \Irr(P_{j,m+1},P_{i,m+1}) \right)
   \]
-  and
+  is isomorphic to $P_{\ell,m}/P_{\ell'',m-h(\ell')}$.
   \[
-    P_{i,m}/\Big( \bigoplus_{\ell\in L_-\cap L} P_{\ell,m-1}\otimes \Irr(P_{\ell,m-1},P_{i,m}) \oplus \bigoplus_{\ell\in L_+\cap L} P_{\ell,m}\otimes \Irr(P_{\ell,m},P_{i,m}) \Big).
+    %P_{i,m}/ \Big( \bigoplus_{\ell\in L_-\cap L} P_{\ell,m-1}\otimes \Irr(P_{\ell,m-1},P_{i,m}) \oplus \bigoplus_{\ell\in L_+\cap L} P_{\ell,m}\otimes \Irr(P_{\ell,m},P_{i,m}) \Big).
   \]
 \end{lemma}
 \begin{proof}
@@ -736,11 +736,7 @@ The following result is crucial to the constructions to follow.
     \Big( \bigoplus_{\ell\in L_-\cap L} P_{\ell,m}\otimes \Irr(P_{\ell,m},P_{i,m+1}) \oplus \bigoplus_{\ell\in L_+\cap L} P_{\ell,m+1}\otimes \Irr(P_{\ell,m+1},P_{i,m+1}) \Big)/P_{i,m}.
   \]
   Note that these multiplicity spaces are each 1-dimensional.
-  The result should then follow by applying an analogue of Corollary~\ref{cor:sequence reducing} using the sequences
-  \[\ses{P_{\ell,m-1}}{P_{i,m}}{P_{\ell,m}}\]
-  for $\ell\in L_-$ and
-  \[\ses{P_{\ell,m}}{P_{i,m}}{P_{\ell,m+1}}\]
-  for $\ell\in L_+$.
+  The result then follows by applying Lemma~\ref{le:sequence reducing} using an appropriate sequence from Corollary~\ref{cor:thin sequences}.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
