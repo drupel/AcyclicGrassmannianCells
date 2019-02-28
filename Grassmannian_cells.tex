@@ -719,8 +719,32 @@ The following result is crucial to the constructions to follow.
   It follows that we may identify $P_{i,m+1}^\cV$ with a truncated preprojective $P_{\ell,n}^{\overline{\cV}}$.
 \end{proof}
 
+\begin{lemma}
+  For $i\in Q_0$, write $L_-\subset Q_0(-,i)$ and $L_+\subset Q_0(i,-)$ for the subsets of limbs with respect to vertex $i$.
+  Then for any $m\ge1$ and any subset $L\subset L_-\sqcup L_+$ with $|L|=2$, the following representations are isomorphic:
+  \[
+    P_{i,m+1}/\Big( \bigoplus_{k\in Q_0(-,i)\setminus L} P_{k,m}\otimes \Irr(P_{k,m},P_{i,m+1}) \oplus \bigoplus_{j\in Q_0(i,-)\setminus L} P_{j,m+1}\otimes \Irr(P_{j,m+1},P_{i,m+1}) \Big)
+  \]
+  and
+  \[
+    P_{i,m}/\Big( \bigoplus_{\ell\in L_-\cap L} P_{\ell,m-1}\otimes \Irr(P_{\ell,m-1},P_{i,m}) \oplus \bigoplus_{\ell\in L_+\cap L} P_{\ell,m}\otimes \Irr(P_{\ell,m},P_{i,m}) \Big).
+  \]
+\end{lemma}
+\begin{proof}
+  Using an analogue of Lemma~\ref{le:quotients} with the sequence \eqref{eq:preprojective AR} we get an isomorphism of the first representation with the representation
+  \[
+    \Big( \bigoplus_{\ell\in L_-\cap L} P_{\ell,m}\otimes \Irr(P_{\ell,m},P_{i,m+1}) \oplus \bigoplus_{\ell\in L_+\cap L} P_{\ell,m+1}\otimes \Irr(P_{\ell,m+1},P_{i,m+1}) \Big)/P_{i,m}.
+  \]
+  Note that these multiplicity spaces are each 1-dimensional.
+  The result should then follow by applying an analogue of Corollary~\ref{cor:sequence reducing} using the sequences
+  \[\ses{P_{\ell,m-1}}{P_{i,m}}{P_{\ell,m}}\]
+  for $\ell\in L_-$ and
+  \[\ses{P_{\ell,m}}{P_{i,m}}{P_{\ell,m+1}}\]
+  for $\ell\in L_+$.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Truncated preprojective representations of tree quivers}
-<<<<<<< HEAD
 
 Recall that, for two indecomposable representations $M$ and $N$, a morphism $f:M\to N$ is called \emph{sectional} if it can be decomposed as $f=f_1\circ\ldots\circ f_r$ where each morphism $f_i:M_{i-1}\to M_i$ is an irreducible morphism between indecomposable representations and, furthermore, $M_i\ncong \tau^{-1}M_{i-2}$. In other words, $f$ is given as a path in oriented path in the Auslander-Reiten quiver of $Q$. If $M$ and $N$ are preprojective, it follows by the Happel-Ringel lemma that a sectional morphism is either injective or surjective. 
 
@@ -809,13 +833,6 @@ If we choose $k_r$ in such a way that $j\in N_{p_{i,k_r}}$, this shows that $P_{
 
 
 \section{Results on bipartite quivers}
-\noindent In this section, we consider truncated preprojective representations of those quivers whose underlying graph is a tree. We first consider bipartite quivers, i.e. every vertex is either sink or source. Actually, it will turn out that the general situation can be reduced to this case.
-
-
-
-
-Let $Q$ be a bipartite tree quiver with sources $\cT$ and sinks $\cH$. For a source $t\in\cT$, the corresponding projective representation $P_t$ (resp. injective representation $I_t$) is the exceptional representation with dimension vector $t+\sum_{h\in Q_0(t,-)}h$ (resp. $t$). Dually, the projective (resp. injective) representation of a sink $h\in\cH$ is given by $h$ is given by the dimension vector $h$ (resp. $h+\sum_{t\in Q_0(-,h)} t$).
-=======
   \noindent In this section, we consider truncated preprojective representations of those quivers whose underlying graph is a tree.
   We first consider bipartite quivers, i.e. every vertex is either sink or source.
   Actually, it will turn out that the general situation can be reduced to this case.
@@ -823,7 +840,6 @@ Let $Q$ be a bipartite tree quiver with sources $\cT$ and sinks $\cH$. For a sou
   Let $Q$ be a bipartite tree quiver with sources $\cT$ and sinks $\cH$.
   For a source $t\in\cT$, the corresponding projective representation $P_t$ (resp. injective representation $I_t$) is the exceptional representation with dimension vector $t+\sum_{h\in Q_0(t,-)}h$ (resp. $t$).
   Dually, the projective (resp. injective) representation of a sink $h\in\cH$ has dimension vector $h$ (resp. $h+\sum_{t\in Q_0(-,h)} t$).
->>>>>>> origin/master
 
 For every $h\in Q_0(t,-)$, there exists a unique irreducible morphism $f_{h,t}^m:P_{h,m}\to P_{t,m}$ and the corresponding Auslander-Reiten sequence
 $$\ses{P_{t,m-1}}{\bigoplus_{h\in Q_0(t,-)}P_{h,m}}{P_{t,m}}.$$ 
@@ -971,11 +987,13 @@ $$\udim P_{h,1}=|Q_0(h,-)-1|h+\sum_{t\in Q_0(h,-)}\left(t+\sum_{h'\in Q_0(-,t)}h
 
 \section{Appendix: Homological Lemmas}
 
+If $A\oplus B$ is a direct sum, we write $\iota_A:A\into A\oplus B$ and $\pi_A:A\oplus B\onto A$ for the natural embedding and the natural projection. 
+
 \begin{lemma}
   \label{le:sequence reducing}
   Suppose there is an exact sequence 
   \[\ses{A}{X\oplus B}{C}\]
-  for which the induced map $f:A\to B$ given by composing the left hand morphism with the natural projection is surjective.
+  for which the induced map $f:A\to B$ given by composing the left hand morphism with the natural projection $\pi_B$ is surjective.
   Then there is an induced short exact sequence 
   \[\ses{K}{X}{C},\]
   where $K=\ker(f)$.
@@ -993,43 +1011,51 @@ $$\udim P_{h,1}=|Q_0(h,-)-1|h+\sum_{t\in Q_0(h,-)}\left(t+\sum_{h'\in Q_0(-,t)}h
   It follows that the cokernel of the upper horizontal morphism coincides with the cokernel in the middle horizontal sequence, giving the claim.
 \end{proof}
 
-
-If $A\oplus B$ is a direct sum of certain suitable objects, we write $\iota_A$ and $\pi_A$ for the natural embedding and projection respectively. 
 \begin{corollary}
   \label{cor:sequence reducing}
-  Suppose there is an exact sequence   \[\sesM{A}{X\oplus B}{C}{f}\].
-	\begin{enumerate}
-	\item If there is an exact sequence $\sesm{K}{A\oplus D}{X}{g}$ with $\pi_X\circ f=g\circ\iota_A$, then there is an induced short exact sequence $\ses{K}{D\oplus B}{C}.$
-	\item If there is an exact sequence $\ses{X}{C\oplus D}{K}$, then there is an induced short exact sequence $\ses{A}{B\oplus D}{K}.$
-     \end{enumerate}
+  Suppose there is an exact sequence
+  \[\sesM{A}{B\oplus X}{C}{f}\].
+  \begin{enumerate}
+    \item If there is an exact sequence $\sesm{K}{A\oplus D}{X}{g}$ with $\pi_X\circ f=g\circ\iota_A$, then there is an induced short exact sequence $\ses{K}{B\oplus D}{C}.$
+    \item If there is an exact sequence $\ses{X}{C\oplus D}{K}$, then there is an induced short exact sequence $\ses{A}{B\oplus D}{K}.$
+  \end{enumerate}
 \end{corollary}
 \begin{proof}
-Due to duality, we only prove the first part. Consider the following exact commutative diagram with splitting vertical sequences induced by the given exact sequences:
+  Due to duality, we only prove the first part.
+  Consider the following exact commutative diagram with split vertical sequences induced by the given exact sequences:
   \[\xymatrix{
       & 0 \ar[d] & 0 \ar[d] & \\
       0 \ar[r] & A \ar^{\iota_A}[d]\ar^f[r]\ar@{}[dr]|(.2){\ulcorner}& X\oplus B \ar^{\iota_{X\oplus B}}[d]\ar[r] &C\ar@{=}[d]\ar[r] &0 \\
-      0 \ar[r] & A\oplus D \ar[d]\ar^{\scriptsize{\begin{pmatrix}g\\\pi_D\end{pmatrix}}}[r] & X\oplus B\oplus D \ar[d]\ar[r] & C \ar[r] & 0\\
+      0 \ar[r] & A\oplus D \ar[d]\ar^{\scriptsize{\begin{pmatrix}g\\0\\\pi_D\end{pmatrix}}}[r] & X\oplus B\oplus D \ar[d]\ar[r] & C \ar[r] & 0\\
       & D \ar@{=}[r]\ar[d] & D \ar[d] & \\
       & 0 & 0 & }\]
  As $g$ is surjective, we can apply Lemma \ref{le:sequence reducing}.
 \end{proof}
 \begin{definition}
-We call pair consisting of a short exact sequence $$e:\sesM{X}{\bigoplus_{i=1}^rB_i}{Y}{f}$$ with indecomposable representations $X,Y$ and $B_i$ for $i=1,\ldots,r$ and a subset $I\subset\{1,\ldots,r\}$ with $|I|\leq r-1$  \emph{reduced}\sayT{better name} if the induced morphism $f\circ\iota_{B_I}:B_I\to Y$ is injective where $B_I=\oplus_{i\in I}B_i$.
+  A pair $(e,I)$ consisting of 
+  \begin{itemize}
+    \item a short exact sequence
+      $$e:\sesm{X}{\bigoplus\limits_{i=1}^rB_i}{Y}{g}$$
+      with indecomposable representations $X$, $Y$, and $B_i$ for $i=1,\ldots,r$;
+    \item a subset $I\subset\{1,\ldots,r\}$ with $|I|\leq r-1$;
+  \end{itemize}
+  is called \emph{reduced} if the induced morphism $g\circ\iota_{B_I}:B_I\to Y$ is injective where we write $B_I:=\oplus_{i\in I}B_i$.
 
-If $(e,I)$ is reduced for all $I\subset \{1,\ldots,r\}$ with $|I|=r-1$, we call $e$ reduced.
+  If $(e,I)$ is reduced for every $I\subset \{1,\ldots,r\}$ with $|I|=r-1$, we call the sequence $e$ \emph{reduced}.
 \end{definition}
 
 \begin{lemma}\label{le:quotients}
-Let $(\sesM{X}{\bigoplus_{i=1}^rB_i}{Y}{f},I)$ be reduced where $I=\{i_1,\ldots, i_{r-1}\}\subset \{1,\ldots,r\}$ with $|I|=r-1$. Then we have $Y/B_I\cong B_{i_r}/X$.
+  Let $(\ses{X}{\bigoplus_{i=1}^rB_i}{Y},I)$ be reduced with $\{1,\ldots,r\}\setminus I=\{j\}$.
+  Then we have $Y/B_I\cong B_j/X$.
 \end{lemma}
-\begin{proof}It is verified straightforwardly that we obtain the following commutative diagram with the natural vertical morphisms:
+\begin{proof}
+  It is verified straightforwardly that we obtain the following commutative diagram with the natural vertical morphisms:
   \[\xymatrix{
       & & 0 \ar[d] & 0 \ar[d] \\
       & & B_I \ar[d]\ar@{=}[r] & B_I\ar[d] \\
       0 \ar[r] & X \ar[r]\ar@{=}[d] & \bigoplus_{i=1}^rB_i \ar[d]\ar[r] & Y \ar[r]\ar[d] & 0\\
-      0 \ar[r] & X \ar[r] & B_{i_r}\ar[r]\ar[d] & Y/B_I\ar[r]\ar[d] & 0 \\
+      0 \ar[r] & X \ar[r] & B_j\ar[r]\ar[d] & Y/B_I\ar[r]\ar[d] & 0 \\
       & & 0 & 0}\]
-			
 \end{proof}
 
 
