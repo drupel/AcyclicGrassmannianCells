@@ -184,6 +184,8 @@ What can we say about the fibers of this map?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{General statements}
+For two representations $M$ and $N$ write $[M,N]=\dim\Hom(M,N)$ and $[M,N]^1=\dim\Ext(N,M)=1$
+
 \begin{lemma}\label{lem:indecomposable}
   Let $M_1,\ldots,M_n$ be pairwise orthogonal exceptional representations, i.e. $\Hom(M_i,M_j)=\Ext(M_i,M_j)=0$ if $i\neq j$.
   Let $N\in {^\perp} M_i$ for $i=1,\ldots,n$ and let $\Hom(M_i,N)=\langle f_i\rangle=\kk$. 
@@ -217,7 +219,45 @@ When applying reflection functors again, the general statement is obtained.
 
 \end{proof}
 
+\section{Results on Quiver Grassmannians}
 
+\noindent We recall several results concerning  quiver Grassmannians which are needed to construct cell decompositions.
+\subsection{Torus action}
+  
+\subsection{Caldero-Chapoton map}
+
+Let $e:\ses{M}{B}{N}$ be a short exact sequence of representations.
+For a fixed dimension vector $\tbfe$, this induces the so-called ``Caldero-Chapoton map'' between quiver Grassmannians
+\begin{align*}
+  \Psi:\Gr_\tbfe(B)&\to\bigsqcup_{\tbff+\tbfg=\tbfe} \Gr_\tbff(M)\times \Gr_\tbfg(N)\\
+  E&\mapsto \big(E\cap M,(E+M)/M\big).
+\end{align*}
+Following \cite[Section 3]{cc}, any non-empty fiber of $\Psi$ satisfies $\Psi^{-1}(U,W)\cong\mathbb{A}^{\dim\Hom(W,M/U)}$.
+
+For $\cG_{\tbff,\tbfg}:=\Psi^{-1}\big(\Gr_\tbff(M)\times \Gr_\tbfg(N)\big)$, we have 
+\begin{equation}
+  \label{eq:grassmannian decomposition}
+  \Gr_\tbfe(B)=\bigsqcup_{\tbff+\tbfg=\tbfe} \cG_{\tbff,\tbfg}.
+\end{equation}
+Then $\Psi$ restricts to a map
+\[\Psi_{\tbff,\tbfg}:\cG_{\tbff,\tbfg}\to \Gr_\tbff(M)\times \Gr_\tbfg(N).\]
+The following results are proven in \cite[Section 3]{cefr}.
+\begin{theorem}
+  \label{vb}
+  If $\Im\big(\Psi_{\tbff,\tbfg}\big)$ is locally closed and the fiber dimension of $\Psi_{\tbff,\tbfg}$ is constant over $\Im\big(\Psi_{\tbff,\tbfg}\big)$, then $\Psi_{\tbff,\tbfg}:\cG_{\tbff,\tbfg}\to\Im\big(\Psi_{\tbff,\tbfg}\big)$ is an affine bundle.
+  In particular, the existence of a cell decomposition of $\Im\big(\Psi_{\tbff,\tbfg}\big)$ implies a cell decomposition of $\cG_{\tbff,\tbfg}$ in this case.
+\end{theorem}
+
+ For two representations $M$ and $N$ we define
+$$M_N=\max\{U\subset M\mid [N,M/U]^1=1\},\quad N^M=\min\{W\subset N\mid [W,M]^1=1\}.$$
+\begin{lemma} Let $M$ and $N$ be representations such that $[N,M]=1$ and let $f:M\to \tau N$ be the induced morphism. Then we have $M_N=\ker(f)$ and $N^M=\Im(\tau^{-1}f:\tau^{-1}M\to N)$. 
+\end{lemma}
+Note that we have natural embeddings $\Gr_{\tbff}(M_N)\subset\Gr_{\tbff}(M)$ and $\Gr_{\tbfg-\udim N^M}(N/N^M)\subset \Gr_{\tbfg}(N)$.
+
+\begin{theorem}
+If $[N,M]^1=1$ and $e$ does not split, we have
+$$\Im\big(\Psi_{\tbff,\tbfg}\big)=\{(U,W)\mid \Ext(W,M/U)=0\}=\Gr_\tbff(M)\times \Gr_\tbfg(N)\backslash(\Gr_\tbff(M_N)\times\Gr_{\tbfg-\udim N^M}(N/N^M))$$. In particular, $\Psi_{\tbff,\tbfg}:\cG_{\tbff,\tbfg}\to\Im\big(\Psi_{\tbff,\tbfg}\big)$ is an affine bundle
+of rank $\Sc{\tbff}{\udim B-\tbfg}$.\end{theorem}
 
 
 
@@ -1056,18 +1096,51 @@ If $A\oplus B$ is a direct sum, we write $\iota_A:A\into A\oplus B$ and $\pi_A:A
       0 \ar[r] & X \ar[r] & B_j\ar[r]\ar[d] & Y/B_I\ar[r]\ar[d] & 0 \\
       & & 0 & 0}\]
 \end{proof}
-\begin{lemma}
-Let $0=P_0\subset P_1\subset P_2\subset \ldots \subset P_r$ be a $\tau$-stable chain of representations such that the induced map $\phi_{i,i+1}:P_i\to \tau P_{i+1}/P_i$ is surjective and such that $P_{i-1}$ is a direct summand of $\ker(\phi_{i,i+1})$. Then we have $\phi_{i,j,k}(P_j/P_i)=\tau P_{j+1}/P_j$ for the induced map $\phi_{i,j,k}:P_j/P_i\to \tau P_k/P_j$.
+Let $0=M_0\subset M_1\subset M_2\subset \ldots \subset M_r$ be a $\tau$-stable chain of representations. For $0\leq i< j< k\leq r$, we have $\tau$-stable short exact sequences
+$$\ses{M_j/M_i}{M_k/M_i}{M_k/M_j}$$ and thus Auslander-Reiten theory induces a morphisms $\phi_{i,j,k}:M_j/M_i\to\tau (M_k/M_j)$.
+ 
+\begin{lemma}\label{lem:mochain}
+Let $0=M_0\subset M_1\subset M_2\subset \ldots \subset M_r$ be a $\tau$-stable chain of representations such that the induced map $\phi_{0,j,j+1}:M_j\to \tau M_{j+1}/M_j$ is surjective and such that $\ker(\phi_{j,j+1})=M_{j-1}\oplus K_j$ for some representation $K_j$. Then we have $\Im(\phi_{i,j,k})=\tau M_{j+1}/M_j$, $\ker(\phi_{i,j,k})= M_{j-1}/M_{i}\oplus K_{j}$ and $\mathrm{coker}(\phi_{i,j,k})=\tau M_k/M_{j+1}$.
 \end{lemma}
-\begin{proof}For $0\leq i< j< k\leq r$ we have $\tau$-stable short exact sequences
-$$\ses{P_j/P_i}{P_k/P_i}{P_k/P_j}$$
- Auslander-Reiten theory induces a morphism $\phi_{i,j,k}:P_j/P_i\to\tau (P_k/P_j)$.
-Moreover, as $\ker(\phi_{0,j,j+1})=P_{j-1}\oplus K_{j,j+1}$, there exists a short exact sequence
-$$\ses{K_{j,j+1}}{P_j/P_{j-1}}{\tau P_{j+1}/P_j}.$$
+\begin{proof}
+As $\ker(\phi_{0,j,j+1})=M_{j-1}\oplus K_{j}$ for some representation $K_{j}$, there exists a short exact sequence
+$$\ses{K_{j}}{M_j/M_{j-1}}{\tau M_{j+1}/M_j}.$$
+Taking into account that we have a short exact sequence
+$$\ses{M_{j-1}/M_i}{M_j/M_i}{M_j/M_{j-1}}$$, this gives an embedding $M_{j-1}/M_i\oplus K_j\subset M_j/M_i$ with cokernel $\tau M_{j+1}/M_j$. As we have an exact sequence
+$$\ses{\tau M_{j+1}/M_j}{M_k/M_j}{M_k/M_{j+1}},$$
+ we end up with an exact sequence
+$$0\rightarrow M_{j-1}/M_{i}\oplus K_{j}\to M_{j}/M_i\xrightarrow{\phi_{i,j,k}}\tau M_k/M_j\to\tau M_k/M_{j+1}\to 0$$
+In particular, we have $\Im(\phi_{i,j,k})=\tau M_{j+1}/M_j$, $\ker(\phi_{i,j,k})= M_{j-1}/M_{i}\oplus K_{j}$ and $\mathrm{coker}(\phi_{i,j,k})=\tau M_k/M_{j+1}$.
+\end{proof}
 
-Thus we end up with an exact sequence
-$$0\rightarrow P_{j-1}/P_{i}\oplus K_{j,j+1}\to P_{j}/P_i\to\tau P_k/P_j\to\tau P_k/P_{j+1}\to 0$$
-In particular, we have $\phi_{i,j,k}(P_j/P_i)=\tau P_{j+1}/P_j$.
+Let $M_1\xrightarrow{f_1} M_2\xrightarrow{f_2}\ldots\xrightarrow{f_{r-1}} M_r$ be a chain of irreducible monomorphisms between exceptional representations $M_i$ which means that $\Hom(M_i,M_j)=0$ for $j>i$ and $\Ext(M_i,M_j)=0$\sayT{check if this is always this true? In the preprojective component it is}. Then we have Auslander-Reiten sequences
+$$\ses{M_i}{ \bigoplus_{j=1}^{l_i}N_{i,j}\oplus M_{i+1}}{\tau^{-1}M_i}$$ with indecomposables $N_{i,j}$. Write $N_i=\bigoplus_{j=1}^{l_i}N_{i,j}$.  Note that $\tau^{-1}M_{i-1}$ is isomorphic to precisely one of the $N_{i,j}$.
+
+\begin{corollary}We have:
+\begin{enumerate}
+\item The induced map $\phi_i:M_i\to \tau M_{i+1}/M_i$ is surjective with $\ker(\phi_i)=\tau N_i$.
+\item Let $V\subset M_r$ such that $V\cap M_{r-1}=\{0\}$ and assume that all irreducible morphisms are unique up to scalars.\sayT{tree case}
+ For the induced map $\psi_i:M_i/M_{i-1}\to\tau M_r/(V\oplus M_{i-1})$, we have $\Im(\psi_i)=\tau(M_{i+1}/M_i)$ and $\ker(\psi_i)=\tau(N_i)/M_{i-1}$ for $i\leq r-1$. Furthermore, $\Im(\psi_r)$ is surjective with $\ker(\psi_r)= \tau N_{r-1}/M_{r-1}$\sayT{check $\psi_r$}.
+\end{enumerate}
+
+
+\end{corollary}
+\begin{proof}The first part follows by Lemma \ref{lem:mochain}. 
+
+The maps $\psi_i$ and $\tau^{-1}\psi_i$ are induced by the short exact sequence
+$$\ses{M_{i}/M_{i-1}}{M_r/(V\oplus M_i)}{M_r/(V\oplus M_{i-1})}.$$
+Together with the short exact sequence
+$$\ses{N_{i}}{\tau^{-1}M_{i}}{M_{i+1}/M_{i}}$$
+obtained with the first part and the assumption that $V\cap M_{r-1}=\{0\}$, we obtain a  diagram
+  \[\xymatrix{
+      & & \tau^{-1}(M_{i}/M_{i-1}) \ar^{\tau^{-1}\psi_i}[r] & M_r/(V\oplus M_{i-1}) \\
+			&&\tau^{-1}M_{i}\ar^{\pi}[u]\ar^{g}[r]&M_{i+1}/M_{i}\ar[u]
+		}\]
+		with the natural vertical morphisms. Now we have $\Hom(\tau^{-1}M_i,M_r/(V\oplus M_{i-1}))=\Ext(M_r/(V\oplus M_{i-1}),M_i)=\kk$, which can be seen when applying $\Hom(-,M_i)$ to the exact sequence $$\ses{M_{i-1}}{M_r/V}{M_r/(V\oplus M_{i-1})}.$$ Indeed, we have $\kk\cong\Hom(M_{i-1},M_i)=\Ext(M_r/(V\oplus M_{i-1},M_i)$ as $\Hom(M_r/V,M_i)=0$ and $\Ext(M_r/V,M_i)=0$. Thus the diagram is forced to commute (up to scalars). As the right hand vertical map is injective and the left hand vertical and the bottom map are surjective, it follows that $\Im(\tau^{-1}\psi_i)=M_{i+1}/M_{i}$ as claimed. Moreover, it follows that 
+		
+$$\ker(\tau^{-1}\psi_i)\cong \ker(g)/\ker(\pi)=N_{i}/\tau^{-1}M_{i-1}.$$
+		
+
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1130,8 +1203,10 @@ William Crawley-Boevey. Lectures on representations of quivers. Unpublished lect
 \bibitem{rin1} 
   C.~M.~Ringel. Exceptional modules are tree modules. Linear algebra and its Applications \textbf{275/276}, 471-493 (1998).
 
-\bibitem{rupel} 
+\bibitem{rupel}          
   D.~Rupel: Rank Two Non-Commutative Laurent Phenomenon and Pseudo-Positivity. Preprint 2017, arXiv:1707.02696.
+\bibitem{rw}
+D.~Rupel, T.~Weist: Cell decomposition for Rank Two Quiver Grassmannians. Preprint 2018, arXiv:1803.06590.
 
 \bibitem{sch} 
   A.~Schofield: General representations of quivers. Proceedings of the London Mathematical Society (3) \textbf{65}(1), 46-64 (1992).
