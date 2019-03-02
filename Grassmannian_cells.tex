@@ -782,7 +782,7 @@ The following result is crucial to the constructions to follow.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Truncated preprojective representations of tree quivers}
 
-Recall that, for two indecomposable representations $M$ and $N$, a morphism $f:M\to N$ is called \emph{sectional} if it can be decomposed as $f=f_1\circ\ldots\circ f_r$ where each morphism $f_i:M_{i-1}\to M_i$ is an irreducible morphism between indecomposable representations and, furthermore, $M_i\ncong \tau^{-1}M_{i-2}$. In other words, $f$ is given as a path in oriented path in the Auslander-Reiten quiver of $Q$. If $M$ and $N$ are preprojective, it follows by the Happel-Ringel lemma that a sectional morphism is either injective or surjective. 
+Recall that, for two indecomposable representations $M$ and $N$, a morphism $f:M\to N$ is called \emph{sectional} if it can be decomposed as $f=f_1\circ\ldots\circ f_r$ where each morphism $f_i:M_{i-1}\to M_i$ is an irreducible morphism between indecomposable representations and, furthermore, $M_i\ncong \tau^{-1}M_{i-2}$. In other words, $f$ is given as an oriented path in the Auslander-Reiten quiver of $Q$. If $M$ and $N$ are preprojective, it follows by the Happel-Ringel lemma that a sectional morphism is either injective or surjective. 
 
 As before we write $P_{i,m}=\tau^{-m}P_i$ where $P_i$ is the projective representation corresponding to $i\in Q_0$.
 
@@ -1080,12 +1080,12 @@ If $A\oplus B$ is a direct sum, we write $\iota_A:A\into A\oplus B$ and $\pi_A:A
   \end{itemize}
   is called \emph{reduced} if the induced morphism $g\circ\iota_{B_I}:B_I\to Y$ is injective where we write $B_I:=\oplus_{i\in I}B_i$.
 
-  If $(e,I)$ is reduced for every $I\subset \{1,\ldots,r\}$ with $|I|=r-1$, we call the sequence $e$ \emph{reduced}.
+  If $(e,I)$ is reduced for every $I\subset \{1,\ldots,r\}$ with $|I|\le r-1$, we call the sequence $e$ \emph{reduced}.
 \end{definition}
 
 \begin{lemma}\label{le:quotients}
-  Let $(\ses{X}{\bigoplus_{i=1}^rB_i}{Y},I)$ be reduced with $\{1,\ldots,r\}\setminus I=\{j\}$.
-  Then we have $Y/B_I\cong B_j/X$.
+  Let $(\ses{X}{\bigoplus_{i=1}^rB_i}{Y},I)$ be reduced with $\{1,\ldots,r\}\setminus I=J$.
+  Then we have $Y/B_I\cong B_J/X$.
 \end{lemma}
 \begin{proof}
   It is verified straightforwardly that we obtain the following commutative diagram with the natural vertical morphisms:
@@ -1093,9 +1093,10 @@ If $A\oplus B$ is a direct sum, we write $\iota_A:A\into A\oplus B$ and $\pi_A:A
       & & 0 \ar[d] & 0 \ar[d] \\
       & & B_I \ar[d]\ar@{=}[r] & B_I\ar[d] \\
       0 \ar[r] & X \ar[r]\ar@{=}[d] & \bigoplus_{i=1}^rB_i \ar[d]\ar[r] & Y \ar[r]\ar[d] & 0\\
-      0 \ar[r] & X \ar[r] & B_j\ar[r]\ar[d] & Y/B_I\ar[r]\ar[d] & 0 \\
+      0 \ar[r] & X \ar[r] & B_J\ar[r]\ar[d] & Y/B_I\ar[r]\ar[d] & 0 \\
       & & 0 & 0}\]
 \end{proof}
+
 Let $0=M_0\subset M_1\subset M_2\subset \ldots \subset M_r$ be a $\tau$-stable chain of representations. For $0\leq i< j< k\leq r$, we have $\tau$-stable short exact sequences
 $$\ses{M_j/M_i}{M_k/M_i}{M_k/M_j}$$ and thus Auslander-Reiten theory induces a morphisms $\phi_{i,j,k}:M_j/M_i\to\tau (M_k/M_j)$.
  
