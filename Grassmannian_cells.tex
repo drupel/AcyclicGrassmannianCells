@@ -1097,26 +1097,29 @@ If $A\oplus B$ is a direct sum, we write $\iota_A:A\into A\oplus B$ and $\pi_A:A
       & & 0 & 0}\]
 \end{proof}
 Let $0=M_0\subset M_1\subset M_2\subset \ldots \subset M_r$ be a $\tau$-stable chain of representations. For $0\leq i< j< k\leq r$, we have $\tau$-stable short exact sequences
-$$\ses{M_j/M_i}{M_k/M_i}{M_k/M_j}$$ and thus Auslander-Reiten theory induces a morphisms $\phi_{i,j,k}:M_j/M_i\to\tau (M_k/M_j)$.
+$$\ses{M_j/M_i}{M_k/M_i}{M_k/M_j}$$ and thus Auslander-Reiten theory induces morphisms $\phi_{i,j,k}:M_j/M_i\to\tau (M_k/M_j)$ and $\tau^{-1}\phi_{i,j,k}:\tau^{-1}M_j/M_i\to M_k/M_j$. 
+
+We mostly deal with the case when $M_1\xrightarrow{f_1} M_2\xrightarrow{f_2}\ldots\xrightarrow{f_{r-1}} M_r$ is a chain of irreducible monomorphisms between exceptional representations $M_i$ which means that $\Hom(M_i,M_j)=0$ for $j>i$ and $\Ext(M_i,M_j)=0$\sayT{double-check if this is always this true? In the preprojective component it is} and $\Hom(M_i,M_{i+1})=\kk$. Then the maps $\phi_{i,j,k}$ are unique up to scalars. Furthermore, we have Auslander-Reiten sequences
+$$\ses{M_i}{ \tau^{-1}M_{i-1}\oplus\bigoplus_{j=1}^{l_i}N_{i,j}\oplus M_{i+1}}{\tau^{-1}M_i}$$ with indecomposables $N_{i,j}$. Write $N_i=\bigoplus_{j=1}^{l_i}N_{i,j}$. 
+
+
  
 \begin{lemma}\label{lem:mochain}
-Let $0=M_0\subset M_1\subset M_2\subset \ldots \subset M_r$ be a $\tau$-stable chain of representations such that the induced map $\phi_{0,j,j+1}:M_j\to \tau M_{j+1}/M_j$ is surjective and such that $\ker(\phi_{j,j+1})=M_{j-1}\oplus K_j$ for some representation $K_j$. Then we have $\Im(\phi_{i,j,k})=\tau M_{j+1}/M_j$, $\ker(\phi_{i,j,k})= M_{j-1}/M_{i}\oplus K_{j}$ and $\mathrm{coker}(\phi_{i,j,k})=\tau M_k/M_{j+1}$.
+Let $0=M_0\subset M_1\subset M_2\subset \ldots \subset M_r$ be a $\tau$-stable chain of representations such that for $j=1,\ldots,r-1$ the induced map $\phi_{0,j,j+1}:M_j\to \tau M_{j+1}/M_j$ is surjective and such that $\ker(\phi_{0,j,j+1})=M_{j-1}\oplus K_j$ for some representation $K_j$. For $0\leq i<j<k\leq r$, we have $\Im(\phi_{i,j,k})=\tau (M_{j+1}/M_j)$, $\ker(\phi_{i,j,k})= M_{j-1}/M_{i}\oplus K_{j}$ and $\mathrm{coker}(\phi_{i,j,k})=\tau M_k/M_{j+1}$.
 \end{lemma}
 \begin{proof}
 As $\ker(\phi_{0,j,j+1})=M_{j-1}\oplus K_{j}$ for some representation $K_{j}$, there exists a short exact sequence
-$$\ses{K_{j}}{M_j/M_{j-1}}{\tau M_{j+1}/M_j}.$$
+$$\ses{K_{j}}{M_j/M_{j-1}}{\tau (M_{j+1}/M_j)}.$$
 Taking into account that we have a short exact sequence
-$$\ses{M_{j-1}/M_i}{M_j/M_i}{M_j/M_{j-1}}$$, this gives an embedding $M_{j-1}/M_i\oplus K_j\subset M_j/M_i$ with cokernel $\tau M_{j+1}/M_j$. As we have an exact sequence
-$$\ses{\tau M_{j+1}/M_j}{M_k/M_j}{M_k/M_{j+1}},$$
+$$\ses{M_{j-1}/M_i}{M_j/M_i}{M_j/M_{j-1}},$$ we obtain a short exact sequence $$\ses{M_{j-1}/M_i\oplus K_j}{ M_j/M_i}{\tau( M_{j+1}/M_j)}.$$ As we have an exact sequence
+$$\ses{\tau (M_{j+1}/M_j)}{\tau(M_k/M_j)}{\tau(M_k/M_{j+1})},$$
  we end up with an exact sequence
-$$0\rightarrow M_{j-1}/M_{i}\oplus K_{j}\to M_{j}/M_i\xrightarrow{\phi_{i,j,k}}\tau M_k/M_j\to\tau M_k/M_{j+1}\to 0$$
-In particular, we have $\Im(\phi_{i,j,k})=\tau M_{j+1}/M_j$, $\ker(\phi_{i,j,k})= M_{j-1}/M_{i}\oplus K_{j}$ and $\mathrm{coker}(\phi_{i,j,k})=\tau M_k/M_{j+1}$.
+$$0\rightarrow M_{j-1}/M_{i}\oplus K_{j}\to M_{j}/M_i\xrightarrow{\phi_{i,j,k}}\tau( M_k/M_j)\to\tau (M_k/M_{j+1})\to 0.$$\sayT{check why the induced morphism is $\phi_{i,j,k}$. Uniqueness?}
+In particular, we have $\Im(\phi_{i,j,k})=\tau (M_{j+1}/M_j)$, $\ker(\phi_{i,j,k})= M_{j-1}/M_{i}\oplus K_{j}$ and $\mathrm{coker}(\phi_{i,j,k})=\tau (M_k/M_{j+1})$.
 \end{proof}
 
-Let $M_1\xrightarrow{f_1} M_2\xrightarrow{f_2}\ldots\xrightarrow{f_{r-1}} M_r$ be a chain of irreducible monomorphisms between exceptional representations $M_i$ which means that $\Hom(M_i,M_j)=0$ for $j>i$ and $\Ext(M_i,M_j)=0$\sayT{check if this is always this true? In the preprojective component it is}. Then we have Auslander-Reiten sequences
-$$\ses{M_i}{ \bigoplus_{j=1}^{l_i}N_{i,j}\oplus M_{i+1}}{\tau^{-1}M_i}$$ with indecomposables $N_{i,j}$. Write $N_i=\bigoplus_{j=1}^{l_i}N_{i,j}$.  Note that $\tau^{-1}M_{i-1}$ is isomorphic to precisely one of the $N_{i,j}$.
 
-\begin{corollary}We have:
+\begin{lemma}We have:
 \begin{enumerate}
 \item The induced map $\phi_i:M_i\to \tau M_{i+1}/M_i$ is surjective with $\ker(\phi_i)=\tau N_i$.
 \item Let $V\subset M_r$ such that $V\cap M_{r-1}=\{0\}$ and assume that all irreducible morphisms are unique up to scalars.\sayT{tree case}
@@ -1124,7 +1127,7 @@ $$\ses{M_i}{ \bigoplus_{j=1}^{l_i}N_{i,j}\oplus M_{i+1}}{\tau^{-1}M_i}$$ with in
 \end{enumerate}
 
 
-\end{corollary}
+\end{lemma}
 \begin{proof}The first part follows by Lemma \ref{lem:mochain}. 
 
 The maps $\psi_i$ and $\tau^{-1}\psi_i$ are induced by the short exact sequence
