@@ -223,45 +223,70 @@ When applying reflection functors again, the general statement is obtained.
 
 \section{Results on Quiver Grassmannians}
 
-\noindent We recall several results concerning  quiver Grassmannians which are needed to construct cell decompositions.
+\noindent We recall several results concerning Grassmannians which are needed to construct cell decompositions.
+\begin{definition}
+We say that a representation $M$ has \emph{property (C)} if every non-empty quiver Grassmannian $\Gr_\bfe(M)$ admits a cell decomposition into affine spaces.
+
+
+\end{definition}
+
+
 \subsection{Torus action}
   
 \subsection{Caldero-Chapoton map}
 
 Let $e:\ses{M}{B}{N}$ be a short exact sequence of representations.
-For a fixed dimension vector $\tbfe$, this induces the so-called ``Caldero-Chapoton map'' between quiver Grassmannians
+For a fixed dimension vector $\bfe$, this induces the so-called ``Caldero-Chapoton map'' between quiver Grassmannians
 \begin{align*}
-  \Psi:\Gr_\tbfe(B)&\to\bigsqcup_{\tbff+\tbfg=\tbfe} \Gr_\tbff(M)\times \Gr_\tbfg(N)\\
+  \Psi:\Gr_\bfe(B)&\to\bigsqcup_{\bff+\bfg=\bfe} \Gr_\bff(M)\times \Gr_\bfg(N)\\
   E&\mapsto \big(E\cap M,(E+M)/M\big).
 \end{align*}
 Following \cite[Section 3]{cc}, any non-empty fiber of $\Psi$ satisfies $\Psi^{-1}(U,W)\cong\mathbb{A}^{\dim\Hom(W,M/U)}$.
 
-For $\cG_{\tbff,\tbfg}:=\Psi^{-1}\big(\Gr_\tbff(M)\times \Gr_\tbfg(N)\big)$, we have 
+For $\cG_{\bff,\bfg}:=\Psi^{-1}\big(\Gr_\bff(M)\times \Gr_\bfg(N)\big)$, we have 
 \begin{equation}
   \label{eq:grassmannian decomposition}
-  \Gr_\tbfe(B)=\bigsqcup_{\tbff+\tbfg=\tbfe} \cG_{\tbff,\tbfg}.
+  \Gr_\bfe(B)=\bigsqcup_{\bff+\bfg=\bfe} \cG_{\bff,\bfg}.
 \end{equation}
 Then $\Psi$ restricts to a map
-\[\Psi_{\tbff,\tbfg}:\cG_{\tbff,\tbfg}\to \Gr_\tbff(M)\times \Gr_\tbfg(N).\]
+\[\Psi_{\bff,\bfg}:\cG_{\bff,\bfg}\to \Gr_\bff(M)\times \Gr_\bfg(N).\]
 The following results are proven in \cite[Section 3]{cefr}.
-\begin{theorem}
+\begin{theorem}\label{thm:ccbundle}
   \label{vb}
-  If $\im\big(\Psi_{\tbff,\tbfg}\big)$ is locally closed and the fiber dimension of $\Psi_{\tbff,\tbfg}$ is constant over $\im\big(\Psi_{\tbff,\tbfg}\big)$, then $\Psi_{\tbff,\tbfg}:\cG_{\tbff,\tbfg}\to\im\big(\Psi_{\tbff,\tbfg}\big)$ is an affine bundle.
-  In particular, the existence of a cell decomposition of $\im\big(\Psi_{\tbff,\tbfg}\big)$ implies a cell decomposition of $\cG_{\tbff,\tbfg}$ in this case.
+  If $\im\big(\Psi_{\bff,\bfg}\big)$ is locally closed and the fiber dimension of $\Psi_{\bff,\bfg}$ is constant over $\im\big(\Psi_{\bff,\bfg}\big)$, then $\Psi_{\bff,\bfg}:\cG_{\bff,\bfg}\to\im\big(\Psi_{\bff,\bfg}\big)$ is an affine bundle.
+  In particular, the existence of a cell decomposition of $\im\big(\Psi_{\bff,\bfg}\big)$ implies a cell decomposition of $\cG_{\bff,\bfg}$ in this case.
 \end{theorem}
 
  For two representations $M$ and $N$ we define
 $$M_N=\max\{U\subset M\mid [N,M/U]^1=1\},\quad N^M=\min\{W\subset N\mid [W,M]^1=1\}.$$
-\begin{lemma} Let $M$ and $N$ be representations such that $[N,M]=1$ and let $f:M\to \tau N$ be the induced morphism. Then we have $M_N=\ker(f)$ and $N^M=\im(\tau^{-1}f:\tau^{-1}M\to N)$. 
+\begin{lemma}\label{lem:ccbundle} Let $M$ and $N$ be representations such that $[N,M]=1$ and let $f:M\to \tau N$ be the induced morphism. Then we have $M_N=\ker(f)$ and $N^M=\im(\tau^{-1}f:\tau^{-1}M\to N)$. 
 \end{lemma}
-Note that we have natural embeddings $\Gr_{\tbff}(M_N)\subset\Gr_{\tbff}(M)$ and $\Gr_{\tbfg-\udim N^M}(N/N^M)\subset \Gr_{\tbfg}(N)$.
+Note that we have natural embeddings $\Gr_{\bff}(M_N)\subset\Gr_{\bff}(M)$ and $\Gr_{\bfg-\udim N^M}(N/N^M)\subset \Gr_{\bfg}(N)$.
 
-\begin{theorem}
+\begin{theorem}\label{thm:ccbundle2}
 If $[N,M]^1=1$ and $e$ does not split, we have
-$$\im\big(\Psi_{\tbff,\tbfg}\big)=\{(U,W)\mid \Ext(W,M/U)=0\}=\Gr_\tbff(M)\times \Gr_\tbfg(N)\backslash(\Gr_\tbff(M_N)\times\Gr_{\tbfg-\udim N^M}(N/N^M))$$. In particular, $\Psi_{\tbff,\tbfg}:\cG_{\tbff,\tbfg}\to\im\big(\Psi_{\tbff,\tbfg}\big)$ is an affine bundle
-of rank $\Sc{\tbff}{\udim B-\tbfg}$.\end{theorem}
+$$\im\big(\Psi_{\bff,\bfg}\big)=\{(U,W)\mid \Ext(W,M/U)=0\}=\Gr_\bff(M)\times \Gr_\bfg(N)\backslash(\Gr_\bff(M_N)\times\Gr_{\bfg-\udim N^M}(N/N^M))$$. In particular, $\Psi_{\bff,\bfg}:\cG_{\bff,\bfg}\to\im\big(\Psi_{\bff,\bfg}\big)$ is an affine bundle
+of rank $\Sc{\bff}{\udim B-\bfg}$.\end{theorem}
+
+\begin{definition}Let $B$ be a representation with property (C) and $M\subset B$. We call the pair $(M,B)$ \emph{compatible} if $M$ and $B/M$ have property (C), $\im(\Psi_{\bff,\bfg})\subset \Gr_\bff(M)\times\Gr_\bfg(B/M)$ is a union of cells and the fibre dimension is constant over $\im(\Psi_{\bff,\bfg})$ for each $\bff,\bfg$.
+\end{definition}
+We will frequently make use of the following version of these results.
+\begin{corollary}\label{cor:ccbundle}\sayT{this should be the version we need}
+Let $M$ and $N$ be representations with property (C) such that $[N,M]=1$, i.e. there exists  a unique $\ses{M}{B}{N}$ non-split exact sequence. If $(M,M_N)$ and $(N,N^M)$ are compatible pairs, then $B$ has property (C). Furthermore, $(M,B)$ is a compatible pair.
+\end{corollary}
+\begin{proof}For $\bfe=\bff+\bfg$, consider the maps $$\Psi_{\bff,\bfg}:\cG_{\bff,\bfg}\to\Gr_\bff(M)\times\Gr_\bfg(N),\quad \Psi_{\bff',\bff''}:\cH_{\bff',\bff''}\to\Gr_{\bff'}(M_N)\times\Gr_{\bff''}(M/M_N),$$$$\Psi_{\bfg',\bfg''}:\cI_{\bfg',\bfg''}\to\Gr_{\bfg'}(N^M)\times\Gr_{\bfg''}(N/N^M)$$
+and let
+ $$\Gr_\bfe(B)=\bigsqcup_{\bff+\bfg=\bfe} \cG_{\bff,\bfg},\quad \Gr_\bff(M)=\bigsqcup_{\bff'+\bff''=\bff} \cH_{\bff',\bff''},\quad \Gr_\bfe(N)=\bigsqcup_{\bfg'+\bfg''=\bfg} \cI_{\bfg',\bfg''}$$
+be the corresponding decompositions.
+
+By Theorem \ref{thm:ccbundle2}, we have 
+$$\im(\Psi_{\bff,\bfg})=\left(\bigsqcup_{\substack{\bff'+\bff''=\bff\\\bff'\neq \bff}} \cH_{\bff',\bff''}\right)\times\left(\bigsqcup_{\substack{\bfg'+\bfg''=\bfg\\\bfg'\neq\udim N^M}} \cI_{\bfg',\bfg''}\right).$$
+As $(M,M_N)$ and $(N,N^M)$ are compatible pairs, each $\cH_{\bff',\bff''}$ and each $\cI_{\bfg',\bfg''}$ has a cell decomposition into affine spaces.
+
+Again by Theorem \ref{thm:ccbundle2}, we see that each $\cG_{\bff,\bfg}$ has a cell decomposition into affine spaces. Furthermore, $B$ has property (C) and by construction $(M,B)$ is a compatible pair.
 
 
+\end{proof}
 
 \section{Truncated Preprojectives}
 
@@ -863,16 +888,37 @@ which exists by induction hypothesis. Thus the second part of Corollary \ref{cor
  \end{enumerate}
 \end{corollary}
 
-Assume that $(E_{ij}^m,I)$ is reduced with $I=\{k_1,\ldots,k_r\}$. This induces a series of short exact sequences and a filtration of $P_{ij}^{m+1}$:
+Assume that $(E_{ij}^m,I)$ is reduced with $I=\{k_1,\ldots,k_{r+1}\}$. This induces a series of short exact sequences and a filtration of $P_{ij}^{m+1}$:
 \begin{equation}\label{ses}\ses{P_{i,k_l}^m}{P_{i,j}^{m,I_{l-1}}}{P_{i,j}^{m,I_l}}\end{equation}
 where $I_l=\{k_1,\ldots,k_l\}$. By Lemma \ref{le:quotients}, we have
-$$P_{i,j}^{m,I}\cong P_{i,k_r}^m/P_{i,j}^m.$$
-If we choose $k_r$ in such a way that $j\in N_{p_{i,k_r}}$, this shows that $P_{i,j}^{m,I}$ appears as a quotient of induced by a filtration of $P_{i,k_r}^m\cong P_{k_r,m'}$ for an appropriate $m'$. Here we can take any path $p$ ending in $k_r$ with $j\in N_p$ which clearly exists as $j\neq k_r$.
+$$P_{i,j}^{m,I_{r}}\cong P_{i,k_{r+1}}^m/P_{i,j}^m.$$
+If we choose $k_{r+1}$ in such a way that $j\in N_{p_{i,k_{r+1}}}$, this shows that $P_{i,j}^{m,I}$ appears as a quotient of induced by a filtration of $P_{i,k_{r+1}}^m\cong P_{k_{r+1},m'}$ for an appropriate $m'$. Here we can take any path $p$ ending in $k_{r+1}$ with $j\in N_p$ which clearly exists as $j\neq k_{r+1}$.
 
 
 Every short exact sequence (\ref{ses}) induces a morphism $P_{i,k_l}^m\to \tau  P_{i,j}^{m,I_l}$ and its $\tau^{-1}$-translate which we are interested in. In particular, we need to know its kernel and its image.
 
 
+\begin{proposition}\label{pro:cell decompositions}
+Let $(E_{i^j}^m,I)$ be a reduced with $I=\{k_1,\ldots,k_{r+1}\}$ and let $k_l=k_l^1,\ldots,k_l^{t_l}=j$ be the vertices on the path $p_{k_l,j}$. Then $P_{ij}^{m+1}$ has property (C) if $P_{i,k_l}^m$, $P^{m,I_{r}}_{i,j}$, $P_{i,k^{s}_l}^m/P_{i,k^{s-1}_l}^m$ and its $\tau$-translates have property (C) for $l=1,\ldots,r$ and $s=1,\ldots,t_l$ where we set $P_{i,k^{0}_l}^m=0$.
+\end{proposition}
+\begin{proof}\sayT{this is the general strategy and roughly the induction step, there are assumptions missing, e.g. we need $\tau$-stability (induction basis)}
+For each $l$, there exists a chain of irreducible monomorphisms \say{to have monos later here we need assumptions on the reps}
+$$P^m_{i,k^0_l}\subset P_{i,k^1_l}^m\subset\ldots\subset P_{i,k_l^{t_l}}^m\subset P_{i,j}^{m+1}.$$
+If we write $V_u=\bigoplus_{l=u}^rP_{i,k_l}^m$ for $u=2,\ldots, r$, we may consider the exact sequences\say{make a choice such that the cokernel is not zero for $l=1$ and $s=t_l$?!}
+$$\ses{P_{i,k_l^s}/P_{i,k_l^{s-1}}}{P_{i,j}^{m+1}/(V_{l}\oplus P_{i,k_l^{s-1}}^m)}{P_{i,j}^{m+1}/(V_l\oplus P_{i,k_l^{s}}^m)}$$
+for $l=1,\ldots r$ and $s=t_l,\ldots,1$. Note that we have $P_{i,j}^{m+1}/V_1=P^{m,I_{r}}_{i,j}.$
+
+Consider $\psi_{s,l}:P_{i,k_l^s}/P_{i,k_l^{s-1}}\to \tau (P_{i,j}^{m+1}/(V_l\oplus P_{i,k_l^{s}}^m))$. By Lemma \ref{lem:mochain2}, we have 
+$$\ker(\psi_{s,l})=\tau(N(P_{i,k_l^s})),\quad\im(\psi_{s,l})=\tau(P_{i,k_l^{s+1}}/P_{i,k_l^{s}})$$
+where $N(P_{i,k_l^s})$ are direct summmands of the middle terms of the Auslander-Reiten sequence 
+$$\ses{P_{i,k_l^s}}{\tau^{-1}P_{i,k_l^{s-1}}\oplus N(P_{i,k_l^s})\oplus P_{i,k_l^{s+1}}}{\tau^{-1}P_{i,k_l^s}}$$
+and where $P_{i,k_l^{s+1}}=P_{i,j}^{m+1}$.
+
+By induction, we see that $(P_{i,k_l^{s+1}}/P_{i,k_l^{s}},P_{i,j}^{m+1}/(V_l\oplus P_{i,k_l^{s}}^m))$ is a compatible pair.
+Finally, $(N(P_{i,k_l^s}),P_{i,k_l^s})$ is also compatible by assumption.\sayT{why can we assume this?}.
+
+
+\end{proof}
 \section{Results on bipartite quivers}
   \noindent In this section, we consider truncated preprojective representations of those quivers whose underlying graph is a tree.
   We first consider bipartite quivers, i.e. every vertex is either sink or source.
@@ -1177,10 +1223,11 @@ We mostly deal with the case when $M_1\xrightarrow{f_1} M_2\xrightarrow{f_2}\ldo
 
 Furthermore, we have Auslander-Reiten sequences
 $$\ses{M_i}{ \tau^{-1}M_{i-1}\oplus\bigoplus_{j=1}^{l_i}N_{i,j}\oplus M_{i+1}}{\tau^{-1}M_i}$$ with $M_{r+1}:=0$ and indecomposables $N_{i,j}$. Write $N_i=\bigoplus_{j=1}^{l_i}N_{i,j}$. 
-\begin{lemma}Let $\cF(M)$ be an irreducible orthogonal $\tau$-stable filtration. We have:
+\begin{lemma}\label{lem:mochain2}\sayT{the case $i=j$ is different and must be treated}
+Let $\cF(M)$ be an irreducible orthogonal $\tau$-stable filtration. We have:
 \begin{enumerate}
 \item The induced map $\phi_i:M_i\to \tau(M_{i+1}/M_i)$ is surjective with $\ker(\phi_i)=M_{i-1}\oplus \tau N_i$.
-\item Let $V\subset M_r$ be an exceptional\sayT{do we need this?} subrepresentation with $\Hom(V,M_r)=\kk$ such that $V\cap M_{r-1}=\{0\}$ and such that $(V,M_i)$ is orthogonal for each $i=1,\ldots,r-1$. For $i\leq r-1$ there exist unique (up to scalars) non-zero induced maps $\psi_i:M_i/M_{i-1}\to\tau (M_r/(V\oplus M_{i}))$, for which we have $\im(\psi_i)=\tau(M_{i+1}/M_i)$ and $\ker(\psi_i)=\tau(N_i)$. 
+\item Let $V\subset M_r$ be an exceptional\sayT{is probably not necessary} subrepresentation with $\Hom(V,M_r)=\kk$ and assume that there exists $j\in\{1,\ldots,r-1\}$ such that $V\cap M_{j}=\{0\}$ and such that $(V,M_i)$ is orthogonal for each $1\le i\le j$. Then for each $1\leq i\leq j$ there exist unique (up to scalars) non-zero induced maps $\psi_i:M_i/M_{i-1}\to\tau (M_r/(V\oplus M_{i}))$, for which we have $\im(\psi_i)=\tau(M_{i+1}/M_i)$ and $\ker(\psi_i)=\tau(N_i)$. 
 %Furthermore, $\psi_r$ is surjective with $\ker(\psi_r)= \tau N_r$.
 \end{enumerate}
 
@@ -1199,7 +1246,7 @@ As $\tau M_{i+1}$ is a direct summand of the middle term of the Auslander-Reiten
 $K=M_{i-1}\oplus \tau N_i$, the first part follows by Lemma \ref{lem:mochain}. 
 
 
- As $V\cap M_{r-1}=\{0\}$, there is an exact sequence
+ As $V\cap M_{j}=\{0\}$, for $1\leq i\leq j$ there is an exact sequence
 $$e_i:\ses{M_i}{M_r/V}{M_r/(V\oplus M_i)}.$$ 
 Applying $\Hom(-,M_i/M_{i-1})$, the assumptions yield $\Hom(M_r/V,M_i/M_{i-1})=0$ and $\Ext(M_r/V,M_i/M_{i-1})=0$. Thus we obtain
 $$\kk=\Hom(M_i,M_i/M_{i-1})\cong \Ext(M_r/(V\oplus M_i),M_i/M_{i-1}).$$
@@ -1208,7 +1255,7 @@ Thus there are unique maps $\psi_i:M_i/M_{i-1}\to\tau (M_r/(V\oplus M_{i}))$ and
 $$\ses{M_{i}/M_{i-1}}{M_r/(V\oplus M_{i-1})}{M_r/(V\oplus M_{i})}.$$
 Together with the natural short exact sequence
 $$\sesm{N_{i}\oplus \tau^{-1}M_{i-1}}{\tau^{-1}M_{i}}{M_{i+1}/M_{i}}{g_i}$$
-obtained with the first part and the assumption that $V\cap M_{r-1}=\{0\}$, we obtain a  diagram
+obtained with the first part and the assumption that $V\cap M_{j}=\{0\}$, we obtain a  diagram
   \[\xymatrix{
       & & \tau^{-1}(M_{i}/M_{i-1}) \ar^{\tau^{-1}\psi_i}[r] & M_r/(V\oplus M_{i}) \\
 			&&\tau^{-1}M_{i}\ar^{\pi_i}[u]\ar^{g_i}[r]&M_{i+1}/M_{i}\ar[u]
