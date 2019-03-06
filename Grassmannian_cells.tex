@@ -448,6 +448,8 @@ But this yields $\hom(i,\delta)\neq 0$ and thus the claim.
   In particular, the vertex simple $S_i$ is not preprojective if $|Q_1(i,-)|\geq 2$.
 \end{corollary}
 
+
+
 \begin{lemma}
   \label{le:nonlimb extensions}
   Suppose $\ell\in Q_0(n,-)$ is not a limb vertex with respect to the source vertex $n$.
@@ -809,45 +811,66 @@ The following result is crucial to the constructions to follow.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Truncated preprojective representations of tree quivers}
 
-Recall that, for two indecomposable representations $M$ and $N$, a morphism $f:M\to N$ is called \emph{sectional} if it can be decomposed as $f=f_1\circ\ldots\circ f_r$ where each morphism $f_i:M_{i-1}\to M_i$ is an irreducible morphism between indecomposable representations and, furthermore, $M_i\ncong \tau^{-1}M_{i-2}$. In other words, $f$ is given as an oriented path in the Auslander-Reiten quiver of $Q$. If $M$ and $N$ are preprojective, it follows by the Happel-Ringel lemma that a sectional morphism is either injective or surjective. 
+\noindent In this section we assume that the underlying graph of $Q$ is connected tree. 
+Recall that, for two indecomposable representations $M$ and $N$, a morphism $f:M\to N$ is called \emph{sectional} if it can be decomposed as $f=f_1\circ\ldots\circ f_r$ where each morphism $f_i:M_{i-1}\to M_i$ is an irreducible morphism between indecomposable representations and, furthermore, $M_i\ncong \tau^{-1}M_{i-2}$. In other words, $f$ is given as an oriented path in the Auslander-Reiten quiver of $Q$. If $M$ and $N$ are preprojective, it follows by the Happel-Ringel lemma that a sectional morphism is either injective or surjective. In particular, irreducible morphisms are always injective or surjective. Note that each sectional morphism corresponds to a (non-oriented) path in $Q$.
 
-As before we write $P_{i,m}=\tau^{-m}P_i$ where $P_i$ is the projective representation corresponding to $i\in Q_0$.
-
-
-\begin{lemma}\label{le:irreducible morphisms}
-Let $i\in Q_0(j,-)$. Then there exists an irreducible morphism $(i,j)_m:P_{i,m}\to P_{j,m}$ which is surjective for all $m\geq h(\ell)+1$  \sayT{check $\pm 1$} if and only if $j$ is a limb vertex with $i\neq \ell\in N_j$.
-%either $j$ is a source or if $|Q_0(-,j)|=1$ and $\ell\in Q_0(-,j)$ is a limb vertex. 
-
-Let $i\in Q_0(-,j)$. Then there exists an irreducible morphism $(i,j)^m:P_{i,m-1}\to P_{j,m}$ which is surjective for all $m\geq h(\ell)+1$ if and only if $j$ is a limb vertex with $i\neq \ell\in N_j$. 
-
-%if $j$ is not a limb. If $j$ is a limb vertex, $(i,j)^m$ is injective if and only if $i$ is a limb vertex with respect to $j$.
-
+As before we write $P_{i,m}=\tau^{-m}P_i$ where $P_i$ is the projective representation corresponding to $i\in Q_0$. 
+\begin{lemma}\label{lem:preinjective quotients}
+\begin{enumerate}
+\item Let $j\in Q_0(-,i)$. Then $P_j/P_i$ is preinjective if and only if $j$ is a limb with respect to $i$. Furthermore, we have $\tau^{-h(j)}(P_j/P_i)=0$ in this case.
+\item Let $j\in Q_0(i,-)$. Then $P_{j,1}/P_i$ is preinjective if and only if $j$ is a limb with respect to $i$. Furthermore, we have $\tau^{-h(j)-1}(P_j/P_i)=0$ in this case.
+\end{enumerate}
 \end{lemma}
-\begin{proof}
+\begin{proof} As $Q$ is a tree, deleting the arrow $j\to i$, yields two connected components $Q(i)$ and $Q(j)$ containing $i$ and $j$ respectively. As we did in Proposition \ref{pro:simpleregular}, we may successively apply reflection functors to sinks of $Q(j)$ in such a way that we can without loss of generality assume that $Q_0(j,-)=\{i\}$. This yields $P_j/P_i\cong S_j$. By Proposition \ref{pro:simpleregular}, $S_j$ is preinjective if and only if $j$ is a limb with respect to $i$. 
+Now $\tau^{-h(j)}(P_j/P_i)=0$ can be checked straightforwardly.\sayT{we should do this somewhere as we use it frequently}This shows the first part.
 
-We consider the case $m=0$ and $i\in Q_0(j,-)$. Then there exists an injective irreducible morphism $(i,j)_0:P_{i}\to P_j$ with cokernel $C$. If $|Q_0(j,-)|\geq 2$, we can proceed as we did in Proposition \ref{pro:simpleregular}, i.e. we apply a series of reflections to ''transform $C$ into $S_j$'', in order to show that $C$ is preinjective if and only if we have $|Q_0(-,j)|=0$, $|Q_0(j,-)|=2$ and $i\neq \ell\in Q_0(j,-)$ is a limb vertex. In any other case, we have $S_j\cong C$.
-
-By Proposition \ref{pro:simpleregular}, $S_j$ is preinjective if and only if $|Q_0(-,j)|\leq 1$ and if $\ell\in Q_0(-,j)$, it is a limb vertex with respect to $j$. If $|Q_0(-,j)|=0$, it follows that $P_{i,m}\to P_{j,m}$ is surjective for each $m\geq 1$. In the second case, we have $\tau^{-h(\ell)-1}S_j=0$ and it follows that $P_{i,h(\ell)+1}\to P_{j,h(\ell)+1}$   is surjective. In every other case, $S_j$ is either preprojective or regular and thus we have $\tau^{-m}S_j\neq 0$ for every $m\geq 0$ which means that $P_{i,m}\to P_{j,m}$ is injective for each $m\geq 0$. This shows the first statement.
-
-The second part follows from the first one.
-
+Similar to the proof of the first part, in a first step we may assume that $Q_0(j,-)=\emptyset$. But this means that $j$ is a sink. After reflecting at $j$, the result follows from the first part. 
 
 
 \end{proof}
 
 
+\begin{lemma}\label{lem:irreducible morphisms}\begin{enumerate}
+\item Let $i\in Q_0(j,-)$. Then there exists an irreducible morphism $(i,j)_m:P_{i,m}\to P_{j,m}$ which is surjective for all $m\geq h(j)$ if and only if $j$ is a limb with respect to $i$. 
+%either $j$ is a source or if $|Q_0(-,j)|=1$ and $\ell\in Q_0(-,j)$ is a limb vertex. 
+\item Let $i\in Q_0(-,j)$. Then there exists an irreducible morphism $(i,j)^m:P_{i,m-1}\to P_{j,m}$ which is surjective for all $m\geq h(j)+1$ if and only if $j$ is a limb with respect to $i$.
+\end{enumerate}
+%if $j$ is not a limb. If $j$ is a limb vertex, $(i,j)^m$ is injective if and only if $i$ is a limb vertex with respect to $j$.
+
+\end{lemma}
+\begin{proof}
+
+We consider the case $m=0$ and $i\in Q_0(j,-)$. Then there exists an injective irreducible morphism $(i,j)_0:P_{i}\to P_j$.  Now the claim follows when combining Lemma \ref{lem:indecomposable2} and Lemma \ref{lem:preinjective quotients}.
+
+
+%If $|Q_0(j,-)|\geq 2$, we can proceed as we did in Proposition \ref{pro:simpleregular}, i.e. we apply a series of reflections to ''transform $C$ into $S_j$'', in order to show that $C$ is preinjective if and only if we have $|Q_0(-,j)|=0$, $|Q_0(j,-)|=2$ and $i\neq \ell\in Q_0(j,-)$ is a limb vertex. In any other case, we have $S_j\cong C$.
+
+%By Proposition \ref{pro:simpleregular}, $S_j$ is preinjective if and only if $|Q_0(-,j)|\leq 1$ and if $\ell\in Q_0(-,j)$, it is a limb vertex with respect to $j$. If $|Q_0(-,j)|=0$, it follows that $P_{i,m}\to P_{j,m}$ is surjective for each $m\geq 1$. In the second case, we have $\tau^{-h(\ell)-1}S_j=0$ and it follows that $P_{i,h(\ell)+1}\to P_{j,h(\ell)+1}$   is surjective. In every other case, $S_j$ is either preprojective or regular and thus we have $\tau^{-m}S_j\neq 0$ for every $m\geq 0$ which means that $P_{i,m}\to P_{j,m}$ is injective for each $m\geq 0$. This shows the first statement.
+
+The second part follows in the same way when considering the irreducible morphism $(i,j)^1:P_{i,0}\to P_{j,1}$.
+
+
+
+\end{proof}
+\begin{remark}Let $i\in Q_0(j,-)$ (resp. $i\in Q_0(-,j)$). Note that if $i$ and $j$ are both limbs $P_{i,m}\to P_{j,m}$ (resp. $P_{i,m-1}\to P_{j,m}$) becomes surjective for big enough $m$ if and only if $j$ is closer to the leave of the corresponding subquiver of type $A$. The maps $P_{j,m}\to P_{i,m+1}$ (resp. $P_{j,m}\to P_{i,m}$) are always injective if $j$ is a limb with respect to $i$.
+
+If $j$ is not a limb, then all irreducible maps ending in $P_{j,m}$ are injective. If $i$ is a leaf, then all maps starting in $P_{i,m}$ are injective.
+\end{remark}
+
 For a fixed pair of vertices $i,j\in Q_0$, there exists a unique (non-oriented) path from $i$ to $j$ in $Q$ which we denote by $p_{i,j}$. The number of arrows passed through in non-opposite direction is denoted by $n_{i,j}$. This path induces sectional morphisms
 $$f_{i,j}^m:P_{i,m}\to P_{j,m+n_{i,j}}$$
 where we write $P_{i,j}^m:=P_{j,m+n_{i,j}}$ in the following.
 If $|p_{i,j}|=n$, we set $i_0=i$ and $i_n=j$ and recursively define $m_0=m$ and $$m_l=\begin{cases}m_{l-1}\text{ if $i_{l}\to i_l$}\\m_{l-1}+1\text{ if $i_{l-1}\to i_l$}\end{cases}$$
-for $l=1,\ldots,n-1$. Then we have $$f_{i,j}^m=\prod_{l=0}^{n-1} f_{i_l,i_{l+1}}^{m_l}$$ 
+for $l=1,\ldots,n-1$. Then we have $$f_{i,j}^m=\prod_{l=0}^{n-1} f_{i_l,i_{l+1}}^{m_l}.$$
+As $\Ext(P_{j,m+n_{i,j}},P_{i,m})=0$, the Happel-Ringel lemma yields that  $f_{i,j}^m$ is either surjective or injective\sayT{more details on vanishing $\Ext$}. 
 
 
-\begin{corollary}
-The morphism $f_{i,j}^m$ is surjective if $i_1$ is a limb. It is injective if $i_n$ is not a limb.\sayT{what about $m$?}
+\begin{corollary}\label{cor:sectional morphisms}
+The morphism $f_{i,j}^m$ is surjective if  $i_1$ is a limb with respect to $i$. If $j$ is not a limb, then $f_{i,j}^m$ is injective.\sayT{this is the general case, conditions on $m$?!}
 \end{corollary}
-\begin{proof}
-Obviously, $f_{i,j}^m$ is surjective if $f_{i_0,i_1}^m$ is surjective and injective if $f_{i_{n-1},i_n}^{m_{n-1}}$ is injective. Thus the statement follows from Lemma \ref{le:irreducible morphisms}.
+\begin{proof} The statement follows from Lemma \ref{lem:irreducible morphisms}. 
+
+If $i_1$ is a limb (then $i$ is not a limb), $f_{i,j}^m$ is forced to be surjective as $f_{i_0,i_1}^m$ is surjective. If $j$ is not a limb, then $f_{i_{n-1},i_n}^{m_{n-1}}$ is injective which means that $f_{i,j}^m$ is forced to be injective. 
 \end{proof}
 
 For 
@@ -870,25 +893,35 @@ For a path $p$ denoted by $i_0i_1\ldots i_n$, we define $V_p=\{i_0,\ldots,i_n\}$
 $$N_p=\left(\bigcup_{i\in V_p}N_i\right)\backslash V_p,$$
 i.e. all neighbors of the vertices on the path which do not lie on the path itself.
 
-\begin{proposition}
+\begin{lemma}
 For every pair of vertices $(i,j)$ of $Q$ and every $m\geq 0$, there exists a short exact sequence
 $$E_{i,j}^m:\ses{P_{i,m}}{\bigoplus_{k\in N_{p_{i,j}}}P_{i,k}^m}{P_{i,j}^{m+1}}.$$
 
-\end{proposition}
-PROPERTIES OF THESE SEQUENCES.
+\end{lemma}
 \begin{proof}We proceed by induction on the length of the path. For $i=j$, we have that $E_{i,i}^m$ is the Auslander-Reiten sequence considered above. Let $p_{i,j}=i_0\ldots i_n$. In the present notation, the Auslander-Reiten sequences can be written as
 $$\ses{P_{i,j}^m}{\left(\bigoplus_{k\in N_j\backslash \{i_{n-1}\}}P_{i,k}^m\right)\oplus P_{i,i_{n-1}}^{m+1}}{P_{i,j}^{m+1}}.$$
 As $j\in N_{i_{n-1}}$, $P_{i,j}^m$ appears as a direct summand of the middle term of the exact sequence
 $$E_{i,i_{n-1}}^m:\ses{P_{i,m}}{\bigoplus_{k\in N_{p_{i,i_{n-1}}}}P_{i,k}^m}{P_{i,i_{n-1}}^{m+1}},$$
 which exists by induction hypothesis. Thus the second part of Corollary \ref{cor:sequence reducing} gives the claim.
 \end{proof}
-\begin{corollary}\begin{enumerate}
-\item If each $k\in N_{p_{i,j}}$ is not a limb, the sequence $E_{i,j}^m$ is reduced. 
-\item If $i$ is a limb, $E_{i,j}^m$ is reduced if and only if $i$ is a leaf.
- \end{enumerate}
-\end{corollary}
 
-Assume that $(E_{ij}^m,I)$ is reduced with $I=\{k_1,\ldots,k_{r+1}\}$. This induces a series of short exact sequences and a filtration of $P_{ij}^{m+1}$:
+
+\begin{lemma}Let $i\in Q_0$ be not a limb. The pair $(E_{i,j}^m,I)$ with $I\neq\emptyset$ is reduced if $|I|\leq |N_{p_{i,j}}|-2$ or if $I=|N_{p_{i,j}}|-1$ and $q\in N_{p_{i,j}}\backslash I$ is no limb with respect to $i$. 
+
+\end{lemma}      
+\begin{proof}The pair $(E_{i,j}^m,I)$ is reduced if $\sum_{k\in I}\udim P_{i,k}^m<\udim P_{i,j}^{m+1}$ which is if and only if 
+$$\udim P_{i,m}< \sum_{k\in N_{p_{i,j}}\backslash I}\udim P_{i,k}^m.$$
+If $|I|=|N_{p_{i,j}}|-1|$, this means that the morphism $P_{i,m}\to P_{q,m}$ is surjective which is the case if and only if $q$ is a limb by Corollary \ref{cor:sectional morphisms}.
+\sayT{to be continued}
+\end{proof}
+\begin{comment}
+\begin{lemma}\begin{enumerate}
+\item If $j$ is not a leaf, there exists a vertex $i$ such that the exact sequence $E_{i,j}^m$ is reduced.
+\item If $j$ is a leaf, every representation $P_{j}^m$ appears as an appropriate quotient.
+\end{enumerate}
+\end{lemma}
+\end{comment}
+Assume that $(E_{i,j}^m,I)$ is reduced with $I=\{k_1,\ldots,k_{r+1}\}$. This induces a series of short exact sequences and a filtration of $P_{ij}^{m+1}$:
 \begin{equation}\label{ses}\ses{P_{i,k_l}^m}{P_{i,j}^{m,I_{l-1}}}{P_{i,j}^{m,I_l}}\end{equation}
 where $I_l=\{k_1,\ldots,k_l\}$. By Lemma \ref{le:quotients}, we have
 $$P_{i,j}^{m,I_{r}}\cong P_{i,k_{r+1}}^m/P_{i,j}^m.$$
@@ -899,18 +932,18 @@ Every short exact sequence (\ref{ses}) induces a morphism $P_{i,k_l}^m\to \tau  
 
 
 \begin{proposition}\label{pro:cell decompositions}
-Let $(E_{i^j}^m,I)$ be a reduced with $I=\{k_1,\ldots,k_{r+1}\}$ and let $k_l=k_l^1,\ldots,k_l^{t_l}=j$ be the vertices on the path $p_{k_l,j}$. Then $P_{ij}^{m+1}$ has property (C) if $P_{i,k_l}^m$, $P^{m,I_{r}}_{i,j}$, $P_{i,k^{s}_l}^m/P_{i,k^{s-1}_l}^m$ and its $\tau$-translates have property (C) for $l=1,\ldots,r$ and $s=1,\ldots,t_l$ where we set $P_{i,k^{0}_l}^m=0$.
+Let $(E_{i,j}^m,I)$ be a reduced with $I=\{k_1,\ldots,k_{r+1}\}$ and let $k_l=k_l^1,\ldots,k_l^{t_l}=j$ be the vertices on the path $p_{k_l,j}$. Then $P_{ij}^{m+1}$ has property (C) if $P_{i,k_l}^m$, $P^{m,I_{r}}_{i,j}$, $P_{i,k^{s}_l}^m/P_{i,k^{s-1}_l}^m$ and its $\tau$-translates have property (C) for $l=1,\ldots,r$ and $s=1,\ldots,t_l$ where we set $P_{i,k^{0}_l}^m=0$.
 \end{proposition}
 \begin{proof}\sayT{this is the general strategy and roughly the induction step, there are assumptions missing, e.g. we need $\tau$-stability (induction basis)}
 For each $l$, there exists a chain of irreducible monomorphisms \say{to have monos later here we need assumptions on the reps}
 $$P^m_{i,k^0_l}\subset P_{i,k^1_l}^m\subset\ldots\subset P_{i,k_l^{t_l}}^m\subset P_{i,j}^{m+1}.$$
-If we write $V_u=\bigoplus_{l=u}^rP_{i,k_l}^m$ for $u=2,\ldots, r$, we may consider the exact sequences\say{make a choice such that the cokernel is not zero for $l=1$ and $s=t_l$?!}
+If we write $V_u=\bigoplus_{l=u}^rP_{i,k_l}^m$ for $u=2,\ldots, r$, we may consider the exact sequences\say{make a choice such that the cokernel is not zero for $l=1$ and $s=t_l$?!}\sayT{include modified version of 8.7}
 $$\ses{P_{i,k_l^s}/P_{i,k_l^{s-1}}}{P_{i,j}^{m+1}/(V_{l}\oplus P_{i,k_l^{s-1}}^m)}{P_{i,j}^{m+1}/(V_l\oplus P_{i,k_l^{s}}^m)}$$
 for $l=1,\ldots r$ and $s=t_l,\ldots,1$. Note that we have $P_{i,j}^{m+1}/V_1=P^{m,I_{r}}_{i,j}.$
 
 Consider $\psi_{s,l}:P_{i,k_l^s}/P_{i,k_l^{s-1}}\to \tau (P_{i,j}^{m+1}/(V_l\oplus P_{i,k_l^{s}}^m))$. By Lemma \ref{lem:mochain2}, we have 
 $$\ker(\psi_{s,l})=\tau(N(P_{i,k_l^s})),\quad\im(\psi_{s,l})=\tau(P_{i,k_l^{s+1}}/P_{i,k_l^{s}})$$
-where $N(P_{i,k_l^s})$ are direct summmands of the middle terms of the Auslander-Reiten sequence 
+where $N(P_{i,k_l^s})$ are direct summands of the middle terms of the Auslander-Reiten sequence 
 $$\ses{P_{i,k_l^s}}{\tau^{-1}P_{i,k_l^{s-1}}\oplus N(P_{i,k_l^s})\oplus P_{i,k_l^{s+1}}}{\tau^{-1}P_{i,k_l^s}}$$
 and where $P_{i,k_l^{s+1}}=P_{i,j}^{m+1}$.
 
@@ -1124,11 +1157,11 @@ If $A\oplus B$ is a direct sum, we write $\iota_A:A\into A\oplus B$ and $\pi_A:A
     \item a short exact sequence
       $$e:\sesm{X}{\bigoplus\limits_{i=1}^rB_i}{Y}{g}$$
       with indecomposable representations $X$, $Y$, and $B_i$ for $i=1,\ldots,r$;
-    \item a subset $I\subset\{1,\ldots,r\}$ with $|I|\leq r-1$;
+    \item a subset $\emptyset\neq I\subset\{1,\ldots,r\}$ with $|I|\leq r-1$;
   \end{itemize}
   is called \emph{reduced} if the induced morphism $g\circ\iota_{B_I}:B_I\to Y$ is injective where we write $B_I:=\oplus_{i\in I}B_i$.
 
-  If $(e,I)$ is reduced for every $I\subset \{1,\ldots,r\}$ with $|I|\le r-1$, we call the sequence $e$ \emph{reduced}.
+  If $(e,I)$ is reduced for every $\emptyset\neq I\subset \{1,\ldots,r\}$ with $|I|\le r-1$, we call the sequence $e$ \emph{reduced}.
 \end{definition}
 
 \begin{lemma}\label{le:quotients}
@@ -1223,11 +1256,11 @@ We mostly deal with the case when $M_1\xrightarrow{f_1} M_2\xrightarrow{f_2}\ldo
 
 Furthermore, we have Auslander-Reiten sequences
 $$\ses{M_i}{ \tau^{-1}M_{i-1}\oplus\bigoplus_{j=1}^{l_i}N_{i,j}\oplus M_{i+1}}{\tau^{-1}M_i}$$ with $M_{r+1}:=0$ and indecomposables $N_{i,j}$. Write $N_i=\bigoplus_{j=1}^{l_i}N_{i,j}$. 
-\begin{lemma}\label{lem:mochain2}\sayT{the case $i=j$ is different and must be treated}
+\begin{lemma}\label{lem:mochain2}
 Let $\cF(M)$ be an irreducible orthogonal $\tau$-stable filtration. We have:
 \begin{enumerate}
 \item The induced map $\phi_i:M_i\to \tau(M_{i+1}/M_i)$ is surjective with $\ker(\phi_i)=M_{i-1}\oplus \tau N_i$.
-\item Let $V\subset M_r$ be an exceptional\sayT{is probably not necessary} subrepresentation with $\Hom(V,M_r)=\kk$ and assume that there exists $j\in\{1,\ldots,r-1\}$ such that $V\cap M_{j}=\{0\}$ and such that $(V,M_i)$ is orthogonal for each $1\le i\le j$. Then for each $1\leq i\leq j$ there exist unique (up to scalars) non-zero induced maps $\psi_i:M_i/M_{i-1}\to\tau (M_r/(V\oplus M_{i}))$, for which we have $\im(\psi_i)=\tau(M_{i+1}/M_i)$ and $\ker(\psi_i)=\tau(N_i)$. 
+\item Let $V\subset M_r$ be an exceptional\sayT{is probably not necessary} subrepresentation with $\Hom(V,M_r)=\kk$ and assume that there exists $j\in\{1,\ldots,r-1\}$ such that $V\cap M_{j}=\{0\}$ and such that $(V,M_i)$ is orthogonal for each $1\le i\le j$. Then for each $1\leq i\leq j$ there exist unique (up to scalars) non-zero induced maps $\psi_i:M_i/M_{i-1}\to\tau (M_r/(V\oplus M_{i}))$, for which we have $\im(\psi_i)=\tau(M_{i+1}/M_i)$ and $\ker(\psi_i)=\tau(N_i)$ if $i<j$. If $i=j\leq r-2$, the map $\psi_j$ is surjective with $\ker(\psi_j)=\tau(V\cap M_{j+1})\oplus\tau(N_{j})$.  
 %Furthermore, $\psi_r$ is surjective with $\ker(\psi_r)= \tau N_r$.
 \end{enumerate}
 
@@ -1255,14 +1288,27 @@ Thus there are unique maps $\psi_i:M_i/M_{i-1}\to\tau (M_r/(V\oplus M_{i}))$ and
 $$\ses{M_{i}/M_{i-1}}{M_r/(V\oplus M_{i-1})}{M_r/(V\oplus M_{i})}.$$
 Together with the natural short exact sequence
 $$\sesm{N_{i}\oplus \tau^{-1}M_{i-1}}{\tau^{-1}M_{i}}{M_{i+1}/M_{i}}{g_i}$$
-obtained with the first part and the assumption that $V\cap M_{j}=\{0\}$, we obtain a  diagram
+obtained with the first part and the assumption that $V\cap M_{j}=\{0\}$, for $i\le j-1$ we obtain a  diagram
   \[\xymatrix{
       & & \tau^{-1}(M_{i}/M_{i-1}) \ar^{\tau^{-1}\psi_i}[r] & M_r/(V\oplus M_{i}) \\
-			&&\tau^{-1}M_{i}\ar^{\pi_i}[u]\ar^{g_i}[r]&M_{i+1}/M_{i}\ar[u]
+			&&\tau^{-1}M_{i}\ar^{\pi_i}[u]\ar^{g_i}[r]&M_{i+1}/M_{i}\ar^{f_i}[u]
 		}\]
 		with the natural vertical morphisms. Now we have $\Hom(\tau^{-1}M_i,M_r/(V\oplus M_{i}))=\Ext(M_r/(V\oplus M_{i}),M_i)=\kk$, which can be seen when applying $\Hom(-,M_i)$ to the exact sequence $e_i$ from above. Indeed, we have $$\kk=\Hom(M_{i},M_i)\cong\Ext(M_r/(V\oplus M_{i}),M_i)$$ as $\Hom(M_r/V,M_i)=0$ and $\Ext(M_r/V,M_i)=0$. Thus the diagram is forced to commute (up to scalars). As the right hand vertical map is injective and the left hand vertical and the bottom map are surjective, it follows that $\im(\tau^{-1}\psi_i)=M_{i+1}/M_{i}$ as claimed. Moreover, it follows that 
 		
 $$\ker(\tau^{-1}\psi_i)\cong \ker(g_i)/\ker(\pi_i)= (N_i\oplus \tau^{-1}M_{i-1})/ \tau^{-1}M_{i-1}\cong N_i.$$
+
+If $i=j$, consider the exact sequence
+$$\ses{M_j}{M_{j+1}}{M_{j+1}/M_j}$$
+and the corresponding Caldero-Chapoton map. As $M_j\cap V=\{0\}$, we see that $M_{j+1}\cap V\cong (M_{j+1}\cap V+M_j)/M_j\subset M_{j+1}/M_j$ which yields $M_{j+1}\cap V \subset (M_{j+1}/M_j)\cap V$. For dimension reasons, we obtain $M_{j+1}\cap V \cong (M_{j+1}/M_j)\cap V$. 
+
+\sayT{maybe this part is slightly inaccurate as we should deal with images of morphisms (or leave the check to the reader...)}
+Finally, consider 
+$$\sesm{V}{M_r/M_{j}}{M_r/(V\oplus M_{j})}{\pi}$$
+and the corresponding Caldero-Chapoton map together with the natural embedding $\iota: M_{j+1}/M_j\to M_r/M_{j+1}$. Then we have $\ker(\pi\circ\iota)=\iota(M_{j+1}/M_j)\cap V\cong M_{j+1}\cap V$. 
+
+In this case, all morphism in the commutative diagram are surjective and together with the first part we have 
+$$\ker(f_j\circ g_j)\cong\ker(f_j)\oplus\ker(g_j)=(\tau^{-1}M_{j-1}\oplus N_j)\oplus (M_{j+1}\cap V).$$
+As $\ker(\pi_j)=\tau^{-1}M_{j-1}$, we end up with $\ker(\tau^{-1}\psi_j)=N_j\oplus M_{j+1}\cap V$. 
 		
 
 \end{proof}
