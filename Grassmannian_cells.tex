@@ -813,12 +813,11 @@ The following result is crucial to the constructions to follow.
 
 \noindent In this section we assume that the underlying graph of $Q$ is connected tree. 
 Recall that, for two indecomposable representations $M$ and $N$, a morphism $f:M\to N$ is called \emph{sectional} if it can be decomposed as $f=f_1\circ\ldots\circ f_r$ where each morphism $f_i:M_{i-1}\to M_i$ is an irreducible morphism between indecomposable representations and, furthermore, $M_i\ncong \tau^{-1}M_{i-2}$. In other words, $f$ is given as an oriented path in the Auslander-Reiten quiver of $Q$. If $M$ and $N$ are preprojective, it follows by the Happel-Ringel lemma that a sectional morphism is either injective or surjective. In particular, irreducible morphisms are always injective or surjective. Note that each sectional morphism corresponds to a (non-oriented) path in $Q$.
-
 As before we write $P_{i,m}=\tau^{-m}P_i$ where $P_i$ is the projective representation corresponding to $i\in Q_0$. 
 \begin{lemma}\label{lem:preinjective quotients}
 \begin{enumerate}
 \item Let $j\in Q_0(-,i)$. Then $P_j/P_i$ is preinjective if and only if $j$ is a limb with respect to $i$. Furthermore, we have $\tau^{-h(j)}(P_j/P_i)=0$ in this case.
-\item Let $j\in Q_0(i,-)$. Then $P_{j,1}/P_i$ is preinjective if and only if $j$ is a limb with respect to $i$. Furthermore, we have $\tau^{-h(j)-1}(P_j/P_i)=0$ in this case.
+\item Let $j\in Q_0(i,-)$. Then $P_{j,1}/P_i$ is preinjective if and only if $j$ is a limb with respect to $i$. Furthermore, we have $\tau^{-h(j)-1}(P_{j,1}/P_i)=0$ in this case.
 \end{enumerate}
 \end{lemma}
 \begin{proof} As $Q$ is a tree, deleting the arrow $j\to i$, yields two connected components $Q(i)$ and $Q(j)$ containing $i$ and $j$ respectively. As we did in Proposition \ref{pro:simpleregular}, we may successively apply reflection functors to sinks of $Q(j)$ in such a way that we can without loss of generality assume that $Q_0(j,-)=\{i\}$. This yields $P_j/P_i\cong S_j$. By Proposition \ref{pro:simpleregular}, $S_j$ is preinjective if and only if $j$ is a limb with respect to $i$. 
@@ -828,6 +827,40 @@ Similar to the proof of the first part, in a first step we may assume that $Q_0(
 
 
 \end{proof}
+
+
+\begin{lemma}\label{lem:quotients projectives}
+Let $j\in Q_0(-,i)$ and $P_j/P_i$ not injective\sayT{condition in terms of limbs}. Then there exists a long exact sequence
+$$0\to\bigoplus_{k\in Q_0(i,-)}P_k\to P_i\to\tau P_j/P_i\to\bigoplus_{\substack{k\in Q_0(-,i)\\k\neq j}}I_k \to 0$$
+inducing two short exact sequences
+$$0\to\bigoplus_{k\in Q_0(i,-)}P_k\to P_i\to S_i\to 0,\quad 0\to S_i\to \tau P_j/P_i\to\bigoplus_{\substack{k\in Q_0(-,i)\\k\neq i}}I_k\to 0.$$
+\end{lemma}
+\begin{proof}
+Consider the (unique) short exact sequence
+$$\ses{P_i}{P_j}{P_j/P_i}$$
+and the induced map $f:P_i\to\tau(P_j/P_i)$. Since $P_j$ and $P_i$ are projective, we have 
+$$\udim \tau(P_j/P_i)=\udim I_i-\udim I_j.$$
+In particular, we have $\supp\tau(P_j/P_i)\cap P_i=\{i\}$ and it follows that $\im(f)=S_i$. When considering the epimorphism $P_i\to S_i$ and the monomorphism $S_i\to\tau(P_j/P_i)$, the claim is straightforward.
+
+\end{proof}
+\begin{lemma}\label{lem:quotients projectives2}
+Let $j\in Q_0(i,-)$ and $P_{j,1}/P_i$ not injective\sayT{condition in terms of limbs}. Then there exists a long exact sequence
+$$0\to\bigoplus_{\substack{k\in Q_0(i,-)\\k\neq j}}P_k\to P_i\to \tau(P_{j,1}/ P_i)\to\bigoplus_{k\in Q_0(-,i)}I_k\ \to 0$$
+inducing two short exact sequences
+$$0\to\bigoplus_{\substack{k\in Q_0(i,-)\\k\neq j}}\to P_i\to C_{ij}\to 0,\quad 0\to C_{ij}\to \tau(P_{j,1}/ P_i)\to\bigoplus_{k\in Q_0(-,i)}I_k\to 0$$
+where $C_{ij}$ is the middle term of the unique exact sequence $\ses{P_j}{C_{ij}}{S_i}$.
+\end{lemma}
+\begin{proof}
+Consider the (unique) short exact sequence
+$$\ses{P_i}{P_{j,1}}{P_{j,1}/P_i}$$
+and the induced map $f:P_i\to\tau(\tau^{-1}P_j/P_i)$. We have 
+$$\udim \tau(P_{j,1}/P_i)=\udim I_i+\udim P_j.$$
+In particular, we have $\supp \tau(P_{j,1}/P_i)\cap P_i=\supp(C_ij)$ and it follows that $\im(f)=C_{ij}$. When considering the epimorphism $P_i\to C_{ij}$ and the monomorphism $C_{ij}\to\tau(P_{j,1}/P_i)$, the claim is straightforward.
+
+\end{proof}
+
+
+
 
 
 \begin{lemma}\label{lem:irreducible morphisms}\begin{enumerate}
@@ -852,7 +885,7 @@ The second part follows in the same way when considering the irreducible morphis
 
 
 \end{proof}
-\begin{remark}Let $i\in Q_0(j,-)$ (resp. $i\in Q_0(-,j)$). Note that if $i$ and $j$ are both limbs $P_{i,m}\to P_{j,m}$ (resp. $P_{i,m-1}\to P_{j,m}$) becomes surjective for big enough $m$ if and only if $j$ is closer to the leave of the corresponding subquiver of type $A$. The maps $P_{j,m}\to P_{i,m+1}$ (resp. $P_{j,m}\to P_{i,m}$) are always injective if $j$ is a limb with respect to $i$.
+\begin{remark}Let $i\in Q_0(j,-)$ (resp. $i\in Q_0(-,j)$). Note that if $i$ and $j$ are both limbs on the type $A$ subquiver $P_{i,m}\to P_{j,m}$ (resp. $P_{i,m-1}\to P_{j,m}$) becomes surjective for big enough $m$ if and only if $j$ is closer to the leave of the corresponding subquiver of type $A$. The maps $P_{j,m}\to P_{i,m+1}$ (resp. $P_{j,m}\to P_{i,m}$) are always injective if $j$ is a limb with respect to $i$.
 
 If $j$ is not a limb, then all irreducible maps ending in $P_{j,m}$ are injective. If $i$ is a leaf, then all maps starting in $P_{i,m}$ are injective.
 \end{remark}
@@ -902,14 +935,35 @@ $$E_{i,j}^m:\ses{P_{i,m}}{\bigoplus_{k\in N_{p_{i,j}}}P_{i,k}^m}{P_{i,j}^{m+1}}.
 $$\ses{P_{i,j}^m}{\left(\bigoplus_{k\in N_j\backslash \{i_{n-1}\}}P_{i,k}^m\right)\oplus P_{i,i_{n-1}}^{m+1}}{P_{i,j}^{m+1}}.$$
 As $j\in N_{i_{n-1}}$, $P_{i,j}^m$ appears as a direct summand of the middle term of the exact sequence
 $$E_{i,i_{n-1}}^m:\ses{P_{i,m}}{\bigoplus_{k\in N_{p_{i,i_{n-1}}}}P_{i,k}^m}{P_{i,i_{n-1}}^{m+1}},$$
-which exists by induction hypothesis. Thus the second part of Corollary \ref{cor:sequence reducing} gives the claim.
+which exists by induction hypothesis, the second part of Corollary \ref{cor:sequence reducing} gives the claim.
+\end{proof}
+
+
+
+\begin{corollary}\sayT{we should try to make one statement out of the first two}\label{cor:injsur} \begin{enumerate}\item Let $j\in Q_0(-,i)$. For $m\geq 1$, the map
+$$\bigoplus_{k\in Q_0(i,-)}P_{k,m}\oplus \bigoplus_{\substack{k\in Q_0(-,i)\\k\neq j}}P_{k,m-1}\to P_{i,m}$$ is injective if $j$ is not a limb with respect to $i$.
+For $m\geq h(j)$, the map is surjective if $j$ is a limb with respect to $i$.
+\item Let $j\in Q_0(i,-)$. For $m\geq 1$, the map
+$$\bigoplus_{k\in Q_0(i,-)}P_{k,m}\oplus \bigoplus_{\substack{k\in Q_0(-,i)\\k\neq j}}P_{k,m-1}\to P_{i,m}$$ is injective if $j$ is not a limb with respect to $i$.
+For $m\geq h(j)+1$, the map is surjective if $j$ is a limb with respect to $i$.
+\item Let  $i\in Q_0$ and $I\subset N_i$ with $|I|\leq |N_i|-2$. Then the map
+$$\bigoplus_{k\in I}P_{k,m_k}\to P_{i,m}$$
+is injective where $m_k=m$ if $k\in Q_0(i,-)$ and $m_k=m-1$ if $k\in Q_0(-,i)$.
+\end{enumerate}
+\end{corollary}
+\begin{proof}
+The first two parts of the statement follow directly from Lemmas \ref{lem:preinjective quotients}, \ref{lem:quotients projectives} and \ref{lem:quotients projectives2}.
+
+We may assume that $I=N_{i}\backslash\{j_1,j_2\}$.
 \end{proof}
 
 
 \begin{lemma}Let $i\in Q_0$ be not a limb. The pair $(E_{i,j}^m,I)$ with $I\neq\emptyset$ is reduced if $|I|\leq |N_{p_{i,j}}|-2$ or if $I=|N_{p_{i,j}}|-1$ and $q\in N_{p_{i,j}}\backslash I$ is no limb with respect to $i$. 
 
 \end{lemma}      
-\begin{proof}The pair $(E_{i,j}^m,I)$ is reduced if $\sum_{k\in I}\udim P_{i,k}^m<\udim P_{i,j}^{m+1}$ which is if and only if 
+\begin{proof}We proceed by induction on the length of $p_{ij}$. If $i=j$,
+
+The pair $(E_{i,j}^m,I)$ is reduced if $\sum_{k\in I}\udim P_{i,k}^m<\udim P_{i,j}^{m+1}$ which is if and only if 
 $$\udim P_{i,m}< \sum_{k\in N_{p_{i,j}}\backslash I}\udim P_{i,k}^m.$$
 If $|I|=|N_{p_{i,j}}|-1|$, this means that the morphism $P_{i,m}\to P_{q,m}$ is surjective which is the case if and only if $q$ is a limb by Corollary \ref{cor:sectional morphisms}.
 \sayT{to be continued}
