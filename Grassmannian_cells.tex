@@ -349,7 +349,6 @@ For two dimension vectors $\alpha$ and $\beta$ we denote by $\hom(\alpha,\beta)$
 
   Finally, if $\beta$ is a Schur root, then a general representation is indecomposable which gives the second part.
 \end{proof}
-
 For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\alpha_q q$.
 \begin{proposition}
   \label{pro:simpleregular}
@@ -449,6 +448,13 @@ But this yields $\hom(i,\delta)\neq 0$ and thus the claim.
 \end{corollary}
 
 
+
+
+\begin{lemma}\label{lem:regular support}
+If $\alpha\in\NN Q_0$ is a regular root of $\supp(\alpha)$, then it is a regular root of $Q$.
+\end{lemma}
+\begin{proof}Idea: For every regular representation $M$ of $\supp(\alpha)$ there is a regular representation $N$ of $\supp(\alpha)$ with $\Hom(M,N)\neq 0$. But $N$ can be naturally extended to a regular representation $\tilde N$ of $Q$ with $\Hom_Q(M,\tilde N)\neq 0$ which shows that $M$ is regular.
+\end{proof}
 
 \begin{lemma}
   \label{le:nonlimb extensions}
@@ -814,6 +820,39 @@ The following result is crucial to the constructions to follow.
 \noindent In this section we assume that the underlying graph of $Q$ is connected tree. 
 Recall that, for two indecomposable representations $M$ and $N$, a morphism $f:M\to N$ is called \emph{sectional} if it can be decomposed as $f=f_1\circ\ldots\circ f_r$ where each morphism $f_i:M_{i-1}\to M_i$ is an irreducible morphism between indecomposable representations and, furthermore, $M_i\ncong \tau^{-1}M_{i-2}$. In other words, $f$ is given as an oriented path in the Auslander-Reiten quiver of $Q$. If $M$ and $N$ are preprojective, it follows by the Happel-Ringel lemma that a sectional morphism is either injective or surjective. In particular, irreducible morphisms are always injective or surjective. Note that each sectional morphism corresponds to a (non-oriented) path in $Q$.
 As before we write $P_{i,m}=\tau^{-m}P_i$ where $P_i$ is the projective representation corresponding to $i\in Q_0$. 
+\begin{lemma}\sayT{maybe statement is not quite correct}
+Consider the unique filtration $P_{i_0,m_0}\subset P_{i_1,m_1}\subset\ldots\subset P_{i_k,m_k}$ where $m_0=0$ and $m_j=m_{j-1}+1$ if $i_j\in Q_0(i_{j-1},-)$ and $m_j=m_{j-1}$ otherwise. Then $P_{i_k,m_k}/P_{i_0,0}$ is preinjective if and only if $i_1$ is a limb, or if $|N_{i_1}|=3$, $i_2$ and the other neighbor $q_1\neq i_0$ of $i_1$ are limbs limb and $i_k$ a leaf. 
+\end{lemma}
+\begin{proof}
+We may without loss of generality assume that that all arrows are oriented towards $i_0$. In particular, we have $i_j\in Q_0(-,i_{j-1})$ for $j=1,\ldots,k$, $m_k=0$ and
+$$\alpha:=\udim P_{i_k}/P_{i_0}=\sum_{j=1}^{k}i_j.$$
+Assume that there are two vertices $i_s$ and $i_t$ with $1\leq s,t\leq k$ and $$|Q_0(-,i_s)\backslash\{i_{s+1}\}\cup Q_0(-,i_t)\backslash\{i_{t+1}\}|\geq 2.$$
+Let $\{q_1,q_2\}\in Q_0(-,i_s)\backslash\{i_{s+1}\}\cup Q_0(-,i_t)\backslash\{i_{t+1}\}$.
+If $s,t\neq k$, then  $\delta=\sum_{j=0}^ki_j+\sum_{j=s}^ti_j+q_1+q_2$ is a regular root such that $\Sc{\delta}{\alpha}<0$ which means that $\Ext(M_\delta,M_\alpha)\neq 0$ for all representations of dimension $\delta$ and $\alpha$ respectively. Thus $\alpha$ cannot be a regular root.
+
+%similar to the proof of \ref{pro:simpleregular} it is straightforward to construct a regular representation $M$ of dimension $\delta$ with $\Hom(P_{i_k}/P_{i_0},M)\neq 0$ which yields that $P_{i_k}/P_{i_0}$ is not preinjective.
+
+If $i_k$ is not a limb, then $S_{i_k}$ is quotient of $P_{i_k}/P_{i_0}$ which is regular by Proposition \ref{pro:simpleregular}. Thus $P_{i_k}/P_{i_0}$ is not preinjective.
+
+Thus assume that $t=k$ and $s\neq k$. The unique exceptional representation of dimension 
+$\alpha:=\sum_{j=s}^ki_j$ is a factor of $P_{i_k}/P_{i_0}$. Consider the full subquiver with vertices $Q_0\backslash\{i_{k+1},\ldots,i_n\}$. When reflecting successively at the sources $i_k,\ldots,i_{s-1}$ the representation $P_{i_k}/P_{i_0}$ transforms into the simple representation $S_s$ of a quiver $Q'$. By Proposition \ref{pro:simpleregular}, the representation $S_s$ is a preinjective representation of $Q'$ if and only if $q_1$ is a limb with respect to $s$. By Lemma \ref{lem:regular support} and the argument from above, this shows that $P_{i_k}/P_{i_0}$ is regular if $q_1$ is not limb. 
+
+
+But this also shows that $P_{i_k}/P_{i_0}$ is preinjective if $i_k$ is a leaf, $s=1$ and $q_1$ is a limb with respect to $i_1$. 
+
+
+If $i_1$ is a limb, as in the preceding case, it can be checked straightforwardly that $P_{i_k}/P_{i_0}$ is preinjective as it can be transformed to a simple preinjective representation.\sayT{do this direct check}
+%Thus if
+%$$|\bigcup_{j=1}^kQ_0(-,i_j)\backslash\{i_{j+1}\}|=T=:c\leq 1,$$
+%the representation $P_{i_k}/P_{i_0}$ is preinjective if and only if the single neighbor is a limb.
+
+ Consider the case when $c=2$, $2 \leq s\neq k$ arbitrary, i.e. $t=k$, $q_1$ is a limb with respect to $i_s$ and $q_2$ is a limb with respect to $i_k$. Idea: Show that the root $\delta$ from above is regular. As $\Sc{\delta}{\alpha}<0$, it again follows that $\alpha$ is regular. It follows that $i_k$ is a leaf if the quotient is preinjective.
+
+It remains to consider the cases when $c=1$ and $k\neq s\geq 2$, i.e. $i_k$ is a leaf and $q_1$ is a limb with respect to $i_s$.
+%Thus assume that $T=\{q\}\subset Q_0(-,i_s)$ for some $s\in\{1,\ldots,k-1\}$. Then the unique exceptional representation of dimension 
+
+
+\end{proof}
 \begin{lemma}\label{lem:preinjective quotients}
 \begin{enumerate}
 \item Let $j\in Q_0(-,i)$. Then $P_j/P_i$ is preinjective if and only if $j$ is a limb with respect to $i$. Furthermore, we have $\tau^{-h(j)}(P_j/P_i)=0$ in this case.
@@ -986,7 +1025,7 @@ Every short exact sequence (\ref{ses}) induces a morphism $P_{i,k_l}^m\to \tau  
 
 
 \begin{proposition}\label{pro:cell decompositions}
-Let $(E_{i,j}^m,I)$ be a reduced with $I=\{k_1,\ldots,k_{r+1}\}$ and let $k_l=k_l^1,\ldots,k_l^{t_l}=j$ be the vertices on the path $p_{k_l,j}$. Then $P_{ij}^{m+1}$ has property (C) if $P_{i,k_l}^m$, $P^{m,I_{r}}_{i,j}$, $P_{i,k^{s}_l}^m/P_{i,k^{s-1}_l}^m$ and its $\tau$-translates have property (C) for $l=1,\ldots,r$ and $s=1,\ldots,t_l$ where we set $P_{i,k^{0}_l}^m=0$.
+Let $(E_{i,j}^m,I)$ be a reduced with $I=\{k_1,\ldots,k_{r+1}\}$ and let $k_l=k_l^1,\ldots,k_l^{t_l}=j$ be the vertices on the path $p_{k_l,j}$. Then $P_{ij}^{m+1}$ has property (C) if $P_{i,k_l}^m$, $P^{m,I_{r}}_{i,j}$, $P_{i,k^{s}_l}^m/P_{i,k^{s-1}_l}^m$ and its $\tau$-translates have property (C) for $l=1,\ldots,r$ and $s=1,\ldots,t_l$ where we set $P_{i,k^{0}_l}^m=0$.\sayT{the vertices on the path from $k_l$ to $j$ are certain vertices on the path from $i\to j$}
 \end{proposition}
 \begin{proof}\sayT{this is the general strategy and roughly the induction step, there are assumptions missing, e.g. we need $\tau$-stability (induction basis)}
 For each $l$, there exists a chain of irreducible monomorphisms \say{to have monos later here we need assumptions on the reps}
