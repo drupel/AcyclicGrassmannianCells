@@ -87,7 +87,7 @@
 \newcommand{\Gr}{\mathrm{Gr}}
 \newcommand{\GL}{\mathrm{GL}}
 \newcommand{\Hom}{\operatorname{Hom}}
-\newcommand{\im}{\operatorname{im}}
+\newcommand{\im}{\mathrm{im}}
 \newcommand{\Ind}{\mathrm{Ind}}
 \newcommand{\Irr}{\operatorname{Irr}}
 \newcommand{\pt}{\mathrm{pt}}
@@ -184,7 +184,7 @@ given by forgetting the summands of a subrepresentation $E\subset X$ which do no
 What can we say about the fibers of this map?
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{General statements}
 For two representations $M$ and $N$ write $[M,N]=\dim\Hom(M,N)$ and $[M,N]^1=\dim\Ext(N,M)=1$
 
@@ -221,6 +221,8 @@ When applying reflection functors again, the general statement is obtained.
 
 \end{proof}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results on Quiver Grassmannians}
 
 \noindent We recall several results concerning Grassmannians which are needed to construct cell decompositions.
@@ -235,59 +237,83 @@ We say that a representation $M$ has \emph{property (C)} if every non-empty quiv
   
 \subsection{Caldero-Chapoton map}
 
-Let $e:\ses{M}{B}{N}$ be a short exact sequence of representations.
+Let $\xi:\ses{M}{B}{N}$ be a short exact sequence of representations.
 For a fixed dimension vector $\bfe$, this induces the so-called ``Caldero-Chapoton map'' between quiver Grassmannians
 \begin{align*}
   \Psi:\Gr_\bfe(B)&\to\bigsqcup_{\bff+\bfg=\bfe} \Gr_\bff(M)\times \Gr_\bfg(N)\\
   E&\mapsto \big(E\cap M,(E+M)/M\big).
 \end{align*}
-Following \cite[Section 3]{cc}, any non-empty fiber of $\Psi$ satisfies $\Psi^{-1}(U,W)\cong\mathbb{A}^{\dim\Hom(W,M/U)}$.
+Following \cite[Section 3]{cc}, any non-empty fiber of $\Psi$ satisfies $\Psi^{-1}(U,W)\cong\Hom(W,M/U)$, in particular each non-empty fiber is an affine space.%\mathbb{A}^{\dim\Hom(W,M/U)}$.
 
-For $\cG_{\bff,\bfg}:=\Psi^{-1}\big(\Gr_\bff(M)\times \Gr_\bfg(N)\big)$, we have 
+For $\cG_{\bff,\bfg}:=\Psi^{-1}\big(\Gr_\bff(M)\times \Gr_\bfg(N)\big)$, we have the stratification
 \begin{equation}
   \label{eq:grassmannian decomposition}
   \Gr_\bfe(B)=\bigsqcup_{\bff+\bfg=\bfe} \cG_{\bff,\bfg}.
 \end{equation}
+\sayD{ToDo: Identify closure order.}
 Then $\Psi$ restricts to a map
 \[\Psi_{\bff,\bfg}:\cG_{\bff,\bfg}\to \Gr_\bff(M)\times \Gr_\bfg(N).\]
 The following results are proven in \cite[Section 3]{cefr}.
 \begin{theorem}\label{thm:ccbundle}
   \label{vb}
   If $\im\big(\Psi_{\bff,\bfg}\big)$ is locally closed and the fiber dimension of $\Psi_{\bff,\bfg}$ is constant over $\im\big(\Psi_{\bff,\bfg}\big)$, then $\Psi_{\bff,\bfg}:\cG_{\bff,\bfg}\to\im\big(\Psi_{\bff,\bfg}\big)$ is an affine bundle.
+  \sayD{Random question: Can the identification maps between adjacent fibers $\Hom(W,M/U)$ and $\Hom(W',M/U')$ be realized in terms of maps relating $W,W'$ or $M/U,M/U'$?}
   In particular, the existence of a cell decomposition of $\im\big(\Psi_{\bff,\bfg}\big)$ implies a cell decomposition of $\cG_{\bff,\bfg}$ in this case.
 \end{theorem}
 
- For two representations $M$ and $N$ we define
+For two representations $M$ and $N$ with $[N,M]=1$, we define
 $$M_N=\max\{U\subset M\mid [N,M/U]^1=1\},\quad N^M=\min\{W\subset N\mid [W,M]^1=1\}.$$
-\begin{lemma}\label{lem:ccbundle} Let $M$ and $N$ be representations such that $[N,M]=1$ and let $f:M\to \tau N$ be the induced morphism. Then we have $M_N=\ker(f)$ and $N^M=\im(\tau^{-1}f:\tau^{-1}M\to N)$. 
+By \cite[Lemma 27]{cefr}, these representations are well-defined.
+\begin{lemma}
+  \label{lem:ccbundle}
+  Let $M$ and $N$ be representations such that $[N,M]=1$ and let $f:M\to \tau N$ be the induced morphism.
+  Then we have $M_N=\ker(f)$ and $N^M=\im(\tau^{-1}f:\tau^{-1}M\to N)$. 
 \end{lemma}
+
 Note that we have natural embeddings $\Gr_{\bff}(M_N)\subset\Gr_{\bff}(M)$ and $\Gr_{\bfg-\udim N^M}(N/N^M)\subset \Gr_{\bfg}(N)$.
+Using the homological diagram
+\[
+  \xymatrix{ \Ext(N,M) \ar[r]\ar[d] & \Ext(N,M/U) \ar[r]\ar[d] & 0\\
+    \Ext(W,M) \ar[r]\ar[d] & \Ext(W,M/U) \ar[r]\ar[d] & 0\\
+    0 & 0 & }
+\]
+we see that $\Gr_\bff(M_N)\times\Gr_{\bfg-\udim N^M}(N/N^M)$ is precisely the locus of points $(U,W)$ inside $\Gr_\bff(M)\times\Gr_\bfg(N)$ over which the dimension of $\Hom(W,M/U)$ jumps by 1 from its generic value.
+\sayD{These points are not actually in the image of $\Psi$, but it elicits the right geometric picture.  What geometric understanding can be gained by completing the quiver Grassmannian using such an auxiliary affine bundle over $\Gr_\bff(M_N)\times\Gr_{\bfg-\udim N^M}(N/N^M)$?  Does this say anything about closure order of cells?}
 
-\begin{theorem}\label{thm:ccbundle2}
-If $[N,M]^1=1$ and $e$ does not split, we have
-$$\im\big(\Psi_{\bff,\bfg}\big)=\{(U,W)\mid \Ext(W,M/U)=0\}=\Gr_\bff(M)\times \Gr_\bfg(N)\backslash(\Gr_\bff(M_N)\times\Gr_{\bfg-\udim N^M}(N/N^M))$$. In particular, $\Psi_{\bff,\bfg}:\cG_{\bff,\bfg}\to\im\big(\Psi_{\bff,\bfg}\big)$ is an affine bundle
-of rank $\Sc{\bff}{\udim B-\bfg}$.\end{theorem}
+\begin{theorem}
+  \label{thm:ccbundle2}
+  If $[N,M]^1=1$ and $\xi\in\Ext(N,M)$ does not split, we have
+  $$\im\big(\Psi_{\bff,\bfg}\big)=\{(U,W)\mid \Ext(W,M/U)=0\}=\Gr_\bff(M)\times \Gr_\bfg(N)\backslash(\Gr_\bff(M_N)\times\Gr_{\bfg-\udim N^M}(N/N^M)).$$
+  Moreover, $\Psi_{\bff,\bfg}:\cG_{\bff,\bfg}\to\im\big(\Psi_{\bff,\bfg}\big)$ is an affine bundle of rank $\Sc{\bfg}{\udim M-\bff}$.
+\end{theorem}
 
-\begin{definition}Let $B$ be a representation with property (C) and $M\subset B$. We call the pair $(M,B)$ \emph{compatible} if $M$ and $B/M$ have property (C), $\im(\Psi_{\bff,\bfg})\subset \Gr_\bff(M)\times\Gr_\bfg(B/M)$ is a union of cells and the fibre dimension is constant over $\im(\Psi_{\bff,\bfg})$ for each $\bff,\bfg$.
+\begin{definition}
+  Let $B$ be a representation with property (C) and $M\subset B$.
+  We call the pair $(M,B)$ \emph{compatible} if $M$ and $B/M$ have property (C), $\im(\Psi_{\bff,\bfg})\subset \Gr_\bff(M)\times\Gr_\bfg(B/M)$ is a union of cells and the fiber dimension is constant over $\im(\Psi_{\bff,\bfg})$ for each $\bff,\bfg$.
 \end{definition}
 We will frequently make use of the following version of these results.
-\begin{corollary}\label{cor:ccbundle}\sayT{this should be the version we need}
-Let $M$ and $N$ be representations with property (C) such that $[N,M]=1$, i.e. there exists  a unique $\ses{M}{B}{N}$ non-split exact sequence. If $(M,M_N)$ and $(N,N^M)$ are compatible pairs, then $B$ has property (C). Furthermore, $(M,B)$ is a compatible pair.
+\begin{corollary}
+  \label{cor:ccbundle}
+  \sayT{this should be the version we need}
+  Let $M$ and $N$ be representations with property (C) such that $[N,M]=1$, i.e. there exists a unique non-split exact sequence $\ses{M}{B}{N}$.
+  If $(M_N,M)$ and $(N^M,N)$ are compatible pairs, then $B$ has property (C).
+  Furthermore, $(M,B)$ is a compatible pair.
 \end{corollary}
-\begin{proof}For $\bfe=\bff+\bfg$, consider the maps $$\Psi_{\bff,\bfg}:\cG_{\bff,\bfg}\to\Gr_\bff(M)\times\Gr_\bfg(N),\quad \Psi_{\bff',\bff''}:\cH_{\bff',\bff''}\to\Gr_{\bff'}(M_N)\times\Gr_{\bff''}(M/M_N),$$$$\Psi_{\bfg',\bfg''}:\cI_{\bfg',\bfg''}\to\Gr_{\bfg'}(N^M)\times\Gr_{\bfg''}(N/N^M)$$
-and let
- $$\Gr_\bfe(B)=\bigsqcup_{\bff+\bfg=\bfe} \cG_{\bff,\bfg},\quad \Gr_\bff(M)=\bigsqcup_{\bff'+\bff''=\bff} \cH_{\bff',\bff''},\quad \Gr_\bfe(N)=\bigsqcup_{\bfg'+\bfg''=\bfg} \cI_{\bfg',\bfg''}$$
-be the corresponding decompositions.
+\begin{proof}
+  For $\bfe=\bff+\bfg$, consider the maps $$\Psi_{\bff,\bfg}:\cG_{\bff,\bfg}\to\Gr_\bff(M)\times\Gr_\bfg(N),\quad \Psi_{\bff',\bff''}:\cH_{\bff',\bff''}\to\Gr_{\bff'}(M_N)\times\Gr_{\bff''}(M/M_N),$$$$\Psi_{\bfg',\bfg''}:\cI_{\bfg',\bfg''}\to\Gr_{\bfg'}(N^M)\times\Gr_{\bfg''}(N/N^M)$$
+  and let
+  $$\Gr_\bfe(B)=\bigsqcup_{\bff+\bfg=\bfe} \cG_{\bff,\bfg},\quad \Gr_\bff(M)=\bigsqcup_{\bff'+\bff''=\bff} \cH_{\bff',\bff''},\quad \Gr_\bfe(N)=\bigsqcup_{\bfg'+\bfg''=\bfg} \cI_{\bfg',\bfg''}$$
+  be the corresponding decompositions.
 
-By Theorem \ref{thm:ccbundle2}, we have 
-$$\im(\Psi_{\bff,\bfg})=\left(\bigsqcup_{\substack{\bff'+\bff''=\bff\\\bff'\neq \bff}} \cH_{\bff',\bff''}\right)\times\left(\bigsqcup_{\substack{\bfg'+\bfg''=\bfg\\\bfg'\neq\udim N^M}} \cI_{\bfg',\bfg''}\right).$$
-As $(M,M_N)$ and $(N,N^M)$ are compatible pairs, each $\cH_{\bff',\bff''}$ and each $\cI_{\bfg',\bfg''}$ has a cell decomposition into affine spaces.
+  By Theorem \ref{thm:ccbundle2}, we have 
+  $$\im(\Psi_{\bff,\bfg})=\left(\bigsqcup_{\substack{\bff'+\bff''=\bff\\\bff'\neq \bff}} \cH_{\bff',\bff''}\right)\times\left(\bigsqcup_{\substack{\bfg'+\bfg''=\bfg\\\bfg'\neq\udim N^M}} \cI_{\bfg',\bfg''}\right).$$
+  As $(M_N,M)$ and $(N^M,N)$ are compatible pairs, each $\cH_{\bff',\bff''}$ and each $\cI_{\bfg',\bfg''}$ has a cell decomposition into affine spaces.
 
-Again by Theorem \ref{thm:ccbundle2}, we see that each $\cG_{\bff,\bfg}$ has a cell decomposition into affine spaces. Furthermore, $B$ has property (C) and by construction $(M,B)$ is a compatible pair.
-
-
+  Again by Theorem \ref{thm:ccbundle2}, we see that each $\cG_{\bff,\bfg}$ has a cell decomposition into affine spaces. Furthermore, $B$ has property (C) and by construction $(M,B)$ is a compatible pair.
 \end{proof}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Truncated Preprojectives}
 
 Let $Q=(Q_0,Q_1,s,t)$ be a connected acyclic quiver, to avoid special cases we assume $Q$ is not of finite representation type.
