@@ -1098,8 +1098,10 @@ and where $P_{i,k_l^{s+1}}=P_{i,j}^{m+1}$.
 By induction, we see that $(P_{i,k_l^{s+1}}/P_{i,k_l^{s}},P_{i,j}^{m+1}/(V_l\oplus P_{i,k_l^{s}}^m))$ is a compatible pair.
 Finally, $(N(P_{i,k_l^s}),P_{i,k_l^s})$ is also compatible by assumption.\sayT{why can we assume this?}.
 
-
 \end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results on bipartite quivers}
   \noindent In this section, we consider truncated preprojective representations of those quivers whose underlying graph is a tree.
   We first consider bipartite quivers, i.e. every vertex is either sink or source.
@@ -1252,7 +1254,7 @@ $$\udim P_{h,1}=|Q_0(h,-)-1|h+\sum_{t\in Q_0(h,-)}\left(t+\sum_{h'\in Q_0(-,t)}h
 
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Appendix: Homological Lemmas}
 
 If $A\oplus B$ is a direct sum, we write $\iota_A:A\into A\oplus B$ and $\pi_A:A\oplus B\onto A$ for the natural embedding and the natural projection. 
@@ -1356,7 +1358,7 @@ It is called $\tau$-\emph{stable} (resp. $\tau^{-1}$-stable) if the $\tau$-trans
  
 \end{definition}
 Let $\cF(M)$ be a $\tau$-stable filtration of $M$. For $0\leq i< j< k\leq r$, we have $\tau$-stable short exact sequences
-$$\ses{M_j/M_i}{M_k/M_i}{M_k/M_j}$$ and thus Auslander-Reiten theory induces morphisms $\phi_{i,j,k}:M_j/M_i\to\tau (M_k/M_j)$ and $\tau^{-1}\phi_{i,j,k}:\tau^{-1}M_j/M_i\to M_k/M_j$.
+$$\ses{M_j/M_i}{M_k/M_i}{M_k/M_j}$$ and thus Auslander-Reiten theory induces morphisms $\phi_{i,j,k}:M_j/M_i\to\tau (M_k/M_j)$ and $\tau^{-1}(\phi_{i,j,k}):\tau^{-1}(M_j/M_i)\to M_k/M_j$.
 
 
 
@@ -1366,7 +1368,7 @@ $$\ses{M_j/M_i}{M_k/M_i}{M_k/M_j}$$ and thus Auslander-Reiten theory induces mor
   \label{lem:mochain}
   Let $0=M_0\subset M_1\subset M_2\subset \ldots \subset M_r=M$ be an orthogonal $\tau$-stable filtration of $M$ such that the induced map $\phi_{0,j,j+1}:M_j\to \tau (M_{j+1}/M_j)$ is surjective and such that $\ker(\phi_{0,j,j+1})=M_{j-1}\oplus K_j$ for some representations $K_j$.
   Then for $0\le i<j<k\le r$, we have 
-  \[\im(\phi_{i,j,k})=\tau M_{j+1}/M_j,\qquad \ker(\phi_{i,j,k})= M_{j-1}/M_{i}\oplus K_{j},\qquad \mathrm{coker}(\phi_{i,j,k})=\tau M_k/M_{j+1}.\]
+  \[\im(\phi_{i,j,k})=\tau(M_{j+1}/M_j),\qquad \ker(\phi_{i,j,k})= M_{j-1}/M_{i}\oplus K_{j},\qquad \mathrm{coker}(\phi_{i,j,k})=\tau(M_k/M_{j+1}).\]
 \end{lemma}
 \begin{proof}
 As the filtration is orthogonal, we have $\Hom(M_j/M_i,M_j)=0$ for $i\le j$. Applying $\Hom(-,M_j)$ to the exact sequence induced by $M_i\subset M_j$, we thus see that $\Ext(M_j/M_i,M_j)=0$. Now applying $\Hom(M_j/M_i,-)$ to the same sequence, we obtain $\kk=\Hom(M_j/M_i,M_j/M_i)\cong \Ext(M_j/M_i,M_i)$ and $\Ext(M_j/M_i,M_j/M_i)=0$. Note that applying $\Hom(M_j,-)$ and then $\Hom(-,M_j/M_i)$ to the same sequence we immediately see that
@@ -1388,15 +1390,15 @@ $$0\to\kk=\Hom(M_k/M_j,M_k/M_j)\to\Ext(M_k/M_j,M_j/M_i)\to \Ext(M_k/M_j,M_j/M_i)
       0 \ar[r] & M_{j-1}\oplus K_j \ar[r]\ar[d] & M_j \ar[d]\ar[r] & \tau(M_{j+1}/M_j) \ar[r]\ar[d] & 0\\
       0 \ar[r] & (M_{j-1}/M_i)\oplus K_j \ar[r]\ar[d] & M_j/M_i \ar[r]\ar[d] & X \ar[r] & 0 \\
       & 0 & 0 & }\]
-  in which an easy diagram chase shows that the right hand morphism is an isomorphism.
+  in which an easy diagram chase shows that the right hand vertical morphism is an isomorphism.
   As the exact sequence
 	$$\ses{M_{j+1}/M_j}{M_k/M_j}{M_k/M_{j+1}}$$
-  is $\tau$-stable and as $\Hom(M_j/M_i,\tau(M_k/M_j))=\kk=\kk$, we end up with an exact sequence
-  $$0\rightarrow M_{j-1}/M_{i}\oplus K_{j}\to M_{j}/M_i\xrightarrow{\phi_{i,j,k}}\tau(M_k/M_j)\to\tau(M_k/M_{j+1})\to 0.$$
+  is $\tau$-stable and as $\Hom(M_j/M_i,\tau(M_k/M_j))=\kk$, we end up with an exact sequence
+  $$0\rightarrow (M_{j-1}/M_{i})\oplus K_{j}\to M_{j}/M_i\xrightarrow{\phi_{i,j,k}}\tau(M_k/M_j)\to\tau(M_k/M_{j+1})\to 0.$$
   \sayD{I see that there is an induced map $M_j/M_i\to\tau(M_k/M_i)$ but why does this have to be the same as $\phi_{i,j,k}$?}
 	\sayT{I missed out some conditions on the chain, nevertheless I think this lemma holds in a more general setting}
   In particular, we have
-  \[\im(\phi_{i,j,k})=\tau M_{j+1}/M_j,\qquad \ker(\phi_{i,j,k})= M_{j-1}/M_{i}\oplus K_{j},\qquad \mathrm{coker}(\phi_{i,j,k})=\tau M_k/M_{j+1}.\]
+  \[\im(\phi_{i,j,k})=\tau(M_{j+1}/M_j),\qquad \ker(\phi_{i,j,k})= M_{j-1}/M_{i}\oplus K_{j},\qquad \mathrm{coker}(\phi_{i,j,k})=\tau(M_k/M_{j+1}).\]
 
 \end{proof}
 
