@@ -476,8 +476,9 @@ But this yields $\hom(i,\delta)\neq 0$ and thus the claim.
 
 
 
-\begin{lemma}\label{lem:regular support}
-If $\alpha\in\NN Q_0$ is a regular root of $\supp(\alpha)$, then it is a regular root of $Q$.
+\begin{lemma}
+  \label{lem:regular support}
+  If $\alpha\in\NN Q_0$ is a regular root of the subquiver $\supp(\alpha)\subset Q$, then it is a regular root of $Q$.
 \end{lemma}
 \begin{proof}Idea: For every regular representation $M$ of $\supp(\alpha)$ there is a regular representation $N$ of $\supp(\alpha)$ with $\Hom(M,N)\neq 0$. But $N$ can be naturally extended to a regular representation $\tilde N$ of $Q$ with $\Hom_Q(M,\tilde N)\neq 0$ which shows that $M$ is regular.
 \end{proof}
@@ -804,6 +805,12 @@ The following result is crucial to the constructions to follow.
   For $i\in Q_0$, $m\in\ZZ_{\ge0}$, and $\cV\subsetneq\cI_{i,m}$, define the \emph{truncated preprojective} representation $P_{i,m+1}^\cV=P_{i,m+1}/\cP_{i,m}\bullet\cV$.
 \end{definition}
 
+\begin{theorem}
+  The quiver Grassmannians of the truncated preprojective $P_{i,m+1}^\cV$ only depend on the dimensions of the subspaces $V_j$ of irreducible morphisms.
+\end{theorem}
+\begin{proof}
+  Idea: use $GL_{b_{ij}}(\CC)$-actions on the spaces of irreducible morphisms as in the Kronecker cases. 
+\end{proof}
 
 \begin{proposition}
   Consider $\cV\subsetneq\cI_{i,m}$ with $\codim_{\cI_{i,m}}(\cV)=1$, say $(\cP_{i,m}\bullet\cI_{i,m})/(\cP_{i,m}\bullet\cV)\cong P_{\ell,n}$ with $n=m$ or $n=m+1$.
@@ -822,17 +829,21 @@ The following result is crucial to the constructions to follow.
 
 \begin{lemma}
   For $i\in Q_0$, write $L_-\subset Q_0(-,i)$ and $L_+\subset Q_0(i,-)$ for the subsets of limbs.
-  Then for any subset $L=\{\ell,\ell'\}\subset L_-\sqcup L_+$ and $m\ge h(\ell')$ for the element $\ell'\in L$ with associated leaf $\ell''$, the truncated preprojective representation
+  Then given any subset $L=\{\ell,\ell''\}\subset L_-\sqcup L_+$ and $m\ge h(\ell)$, the truncated preprojective representation
   \[
-    P_{i,m+1}/\left( \bigoplus_{k\in Q_0(-,i)\setminus L} P_{k,m}\otimes \Irr(P_{k,m},P_{i,m+1}) \oplus \bigoplus_{j\in Q_0(i,-)\setminus L} P_{j,m+1}\otimes \Irr(P_{j,m+1},P_{i,m+1}) \right)
+    P_{i,m+1}^{\hat L}:=P_{i,m+1}/\left( \bigoplus_{k\in Q_0(-,i)\setminus L} P_{k,m}\otimes \Irr(P_{k,m},P_{i,m+1}) \oplus \bigoplus_{j\in Q_0(i,-)\setminus L} P_{j,m+1}\otimes \Irr(P_{j,m+1},P_{i,m+1}) \right)
   \]
-  is isomorphic to $P_{\ell,m}/P_{\ell'',m-h(\ell')}$.
+  is isomorphic to 
   \[
-    %P_{i,m}/ \Big( \bigoplus_{\ell\in L_-\cap L} P_{\ell,m-1}\otimes \Irr(P_{\ell,m-1},P_{i,m}) \oplus \bigoplus_{\ell\in L_+\cap L} P_{\ell,m}\otimes \Irr(P_{\ell,m},P_{i,m}) \Big).
+    \begin{cases}
+      P_{\ell'',m}/P_{\ell',m-h(\ell)} & \text{if $\ell''\in Q_0(-,i)$;}\\
+      P_{\ell'',m+1}/P_{\ell',m-h(\ell)} & \text{if $\ell''\in Q_0(i,-)$;}\\
+    \end{cases}
   \]
+  where $\ell'$ is the leaf associated to the limb $\ell\in L$.
 \end{lemma}
 \begin{proof}
-  Using an analogue of Lemma~\ref{le:quotients} with the sequence \eqref{eq:preprojective AR} we get an isomorphism of the first representation with the representation
+  Using an analogue of Lemma~\ref{le:quotients} with the sequence \eqref{eq:preprojective AR}, we get an isomorphism of the truncated preprojective $P_{i,m+1}^{\hat L}$ with the representation
   \[
     \Big( \bigoplus_{\ell\in L_-\cap L} P_{\ell,m}\otimes \Irr(P_{\ell,m},P_{i,m+1}) \oplus \bigoplus_{\ell\in L_+\cap L} P_{\ell,m+1}\otimes \Irr(P_{\ell,m+1},P_{i,m+1}) \Big)/P_{i,m}.
   \]
@@ -843,22 +854,33 @@ The following result is crucial to the constructions to follow.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Truncated preprojective representations of tree quivers}
 
-\noindent In this section we assume that the underlying graph of $Q$ is connected tree. 
-Recall that, for two indecomposable representations $M$ and $N$, a morphism $f:M\to N$ is called \emph{sectional} if it can be decomposed as $f=f_1\circ\ldots\circ f_r$ where each morphism $f_i:M_{i-1}\to M_i$ is an irreducible morphism between indecomposable representations and, furthermore, $M_i\ncong \tau^{-1}M_{i-2}$. In other words, $f$ is given as an oriented path in the Auslander-Reiten quiver of $Q$. If $M$ and $N$ are preprojective, it follows by the Happel-Ringel lemma that a sectional morphism is either injective or surjective. In particular, irreducible morphisms are always injective or surjective. Note that each sectional morphism corresponds to a (non-oriented) path in $Q$.
-As before we write $P_{i,m}=\tau^{-m}P_i$ where $P_i$ is the projective representation corresponding to $i\in Q_0$. 
-\begin{lemma}\sayT{maybe statement is not quite correct}
-Consider the unique filtration $P_{i_0,m_0}\subset P_{i_1,m_1}\subset\ldots\subset P_{i_k,m_k}$ where $m_0=0$ and $m_j=m_{j-1}+1$ if $i_j\in Q_0(i_{j-1},-)$ and $m_j=m_{j-1}$ otherwise. Then $P_{i_k,m_k}/P_{i_0,0}$ is preinjective if and only if $i_1$ is a limb, or if $|N_{i_1}|=3$, $i_2$ and the other neighbor $q_1\neq i_0$ of $i_1$ are limbs limb and $i_k$ a leaf. 
+  \noindent In this section we assume that the underlying graph of $Q$ is connected tree. 
+  Recall that, for two indecomposable representations $M$ and $N$, a morphism $f:M\to N$ is called \emph{sectional} if it can be decomposed as $f=f_1\circ\ldots\circ f_r$, where each morphism $f_i:M_{i-1}\to M_i$ is an irreducible morphism between indecomposable representations and, furthermore, $M_i\ncong \tau^{-1}M_{i-2}$.
+  In other words, $f$ is given as an oriented path in the Auslander-Reiten quiver of $Q$ which avoids traveling along meshes.
+  \sayD{Does this have a useful interpretation as a representation of the Auslander-Reiten quiver?}
+  If $M$ and $N$ are preprojective, it follows by the Happel-Ringel Lemma that a sectional morphism is either injective or surjective.
+  In particular, irreducible morphisms are always injective or surjective.
+  Note that each sectional morphism corresponds to a (non-oriented) path in $Q$.
+  
+  As before, for $i\in Q_0$, we write $P_{i,m}=\tau^{-m}P_i$, where $P_i$ is the projective cover of the vertex simple $S_i$. 
+  \begin{lemma}
+    \sayT{maybe statement is not quite correct}
+    Consider the unique filtration $P_{i_0,m_0}\subset P_{i_1,m_1}\subset\ldots\subset P_{i_k,m_k}$, where $m_0=0$ and $m_j=m_{j-1}+1$ if $i_j\in Q_0(i_{j-1},-)$ and $m_j=m_{j-1}$ otherwise.
+    Then $P_{i_k,m_k}/P_{i_0,m_0}$ is preinjective if and only if $i_1$ is a limb \sayD{with respect to\dots}, or if $|N_{i_1}|=3$, $i_2$ and the other neighbor $q_1\neq i_0$ of $i_1$ are limbs and $i_k$ a leaf. 
 \end{lemma}
 \begin{proof}
-We may without loss of generality assume that that all arrows are oriented towards $i_0$. In particular, we have $i_j\in Q_0(-,i_{j-1})$ for $j=1,\ldots,k$, $m_k=0$ and
-$$\alpha:=\udim P_{i_k}/P_{i_0}=\sum_{j=1}^{k}i_j.$$
-Assume that there are two vertices $i_s$ and $i_t$ with $1\leq s,t\leq k$ and $$|Q_0(-,i_s)\backslash\{i_{s+1}\}\cup Q_0(-,i_t)\backslash\{i_{t+1}\}|\geq 2.$$
-Let $\{q_1,q_2\}\in Q_0(-,i_s)\backslash\{i_{s+1}\}\cup Q_0(-,i_t)\backslash\{i_{t+1}\}$.
-If $s,t\neq k$, then  $\delta=\sum_{j=0}^ki_j+\sum_{j=s}^ti_j+q_1+q_2$ is a regular root such that $\Sc{\delta}{\alpha}<0$ which means that $\Ext(M_\delta,M_\alpha)\neq 0$ for all representations of dimension $\delta$ and $\alpha$ respectively. Thus $\alpha$ cannot be a regular root.
+  We may without loss of generality assume that that all arrows are oriented towards $i_0$.
+  In particular, we have $i_j\in Q_0(-,i_{j-1})$ for $j=1,\ldots,k$, $m_k=0$ and
+  $$\alpha:=\udim P_{i_k}/P_{i_0}=\sum_{j=1}^{k}i_j.$$
+  Assume that there are two vertices $i_s$ and $i_t$ with $1\leq s,t\leq k$ and
+  $$|Q_0(-,i_s)\backslash\{i_{s+1}\}\cup Q_0(-,i_t)\backslash\{i_{t+1}\}|\geq 2.$$
+  Let $\{q_1,q_2\}\in Q_0(-,i_s)\backslash\{i_{s+1}\}\cup Q_0(-,i_t)\backslash\{i_{t+1}\}$.
+  If $s,t\neq k$, then  $\delta=\sum_{j=0}^ki_j+\sum_{j=s}^ti_j+q_1+q_2$ is a regular root such that $\Sc{\delta}{\alpha}<0$ which means that $\Ext(M_\delta,M_\alpha)\neq 0$ for all representations of dimension $\delta$ and $\alpha$ respectively.
+  Thus $\alpha$ cannot be a regular root.
 
 %similar to the proof of \ref{pro:simpleregular} it is straightforward to construct a regular representation $M$ of dimension $\delta$ with $\Hom(P_{i_k}/P_{i_0},M)\neq 0$ which yields that $P_{i_k}/P_{i_0}$ is not preinjective.
 
-If $i_k$ is not a limb, then $S_{i_k}$ is quotient of $P_{i_k}/P_{i_0}$ which is regular by Proposition \ref{pro:simpleregular}. Thus $P_{i_k}/P_{i_0}$ is not preinjective.
+  If $i_k$ is not a limb, then $S_{i_k}$ is a quotient of $P_{i_k}/P_{i_0}$ which is regular by Proposition \ref{pro:simpleregular}. Thus $P_{i_k}/P_{i_0}$ is not preinjective.
 
 Thus assume that $t=k$ and $s\neq k$. The unique exceptional representation of dimension 
 $\alpha:=\sum_{j=s}^ki_j$ is a factor of $P_{i_k}/P_{i_0}$. Consider the full subquiver with vertices $Q_0\backslash\{i_{k+1},\ldots,i_n\}$. When reflecting successively at the sources $i_k,\ldots,i_{s-1}$ the representation $P_{i_k}/P_{i_0}$ transforms into the simple representation $S_s$ of a quiver $Q'$. By Proposition \ref{pro:simpleregular}, the representation $S_s$ is a preinjective representation of $Q'$ if and only if $q_1$ is a limb with respect to $s$. By Lemma \ref{lem:regular support} and the argument from above, this shows that $P_{i_k}/P_{i_0}$ is regular if $q_1$ is not limb. 
@@ -879,7 +901,9 @@ It remains to consider the cases when $c=1$ and $k\neq s\geq 2$, i.e. $i_k$ is a
 
 
 \end{proof}
-\begin{lemma}\label{lem:preinjective quotients}
+\begin{lemma}
+  \label{lem:preinjective quotients}
+  \mbox{}
 \begin{enumerate}
 \item Let $j\in Q_0(-,i)$. Then $P_j/P_i$ is preinjective if and only if $j$ is a limb with respect to $i$. Furthermore, we have $\tau^{-h(j)}(P_j/P_i)=0$ in this case.
 \item Let $j\in Q_0(i,-)$. Then $P_{j,1}/P_i$ is preinjective if and only if $j$ is a limb with respect to $i$. Furthermore, we have $\tau^{-h(j)-1}(P_{j,1}/P_i)=0$ in this case.
@@ -896,14 +920,14 @@ Similar to the proof of the first part, in a first step we may assume that $Q_0(
 
 \begin{lemma}\label{lem:quotients projectives}
 Let $j\in Q_0(-,i)$ and $P_j/P_i$ not injective\sayT{condition in terms of limbs}. Then there exists a long exact sequence
-$$0\to\bigoplus_{k\in Q_0(i,-)}P_k\to P_i\to\tau P_j/P_i\to\bigoplus_{\substack{k\in Q_0(-,i)\\k\neq j}}I_k \to 0$$
+$$0\to\bigoplus_{k\in Q_0(i,-)}P_k\to P_i\to\tau(P_j/P_i)\to\bigoplus_{\substack{k\in Q_0(-,i)\\k\neq j}}I_k \to 0$$
 inducing two short exact sequences
-$$0\to\bigoplus_{k\in Q_0(i,-)}P_k\to P_i\to S_i\to 0,\quad 0\to S_i\to \tau P_j/P_i\to\bigoplus_{\substack{k\in Q_0(-,i)\\k\neq i}}I_k\to 0.$$
+$$0\to\bigoplus_{k\in Q_0(i,-)}P_k\to P_i\to S_i\to 0,\qquad 0\to S_i\to \tau(P_j/P_i)\to\bigoplus_{\substack{k\in Q_0(-,i)\\k\neq i}}I_k\to 0.$$
 \end{lemma}
 \begin{proof}
 Consider the (unique) short exact sequence
 $$\ses{P_i}{P_j}{P_j/P_i}$$
-and the induced map $f:P_i\to\tau(P_j/P_i)$. Since $P_j$ and $P_i$ are projective, we have 
+and the induced non-zero map $f:P_i\to\tau(P_j/P_i)$. Since $P_j$ and $P_i$ are projective, we have 
 $$\udim \tau(P_j/P_i)=\udim I_i-\udim I_j.$$
 In particular, we have $\supp\tau(P_j/P_i)\cap P_i=\{i\}$ and it follows that $\im(f)=S_i$. When considering the epimorphism $P_i\to S_i$ and the monomorphism $S_i\to\tau(P_j/P_i)$, the claim is straightforward.
 
@@ -912,7 +936,7 @@ In particular, we have $\supp\tau(P_j/P_i)\cap P_i=\{i\}$ and it follows that $\
 Let $j\in Q_0(i,-)$ and $P_{j,1}/P_i$ not injective\sayT{condition in terms of limbs}. Then there exists a long exact sequence
 $$0\to\bigoplus_{\substack{k\in Q_0(i,-)\\k\neq j}}P_k\to P_i\to \tau(P_{j,1}/ P_i)\to\bigoplus_{k\in Q_0(-,i)}I_k\ \to 0$$
 inducing two short exact sequences
-$$0\to\bigoplus_{\substack{k\in Q_0(i,-)\\k\neq j}}\to P_i\to C_{ij}\to 0,\quad 0\to C_{ij}\to \tau(P_{j,1}/ P_i)\to\bigoplus_{k\in Q_0(-,i)}I_k\to 0$$
+$$0\to\bigoplus_{\substack{k\in Q_0(i,-)\\k\neq j}}P_k \to P_i\to C_{ij}\to 0,\quad 0\to C_{ij}\to \tau(P_{j,1}/ P_i)\to\bigoplus_{k\in Q_0(-,i)}I_k\to 0$$
 where $C_{ij}$ is the middle term of the unique exact sequence $\ses{P_j}{C_{ij}}{S_i}$.
 \end{lemma}
 \begin{proof}
@@ -920,7 +944,7 @@ Consider the (unique) short exact sequence
 $$\ses{P_i}{P_{j,1}}{P_{j,1}/P_i}$$
 and the induced map $f:P_i\to\tau(\tau^{-1}P_j/P_i)$. We have 
 $$\udim \tau(P_{j,1}/P_i)=\udim I_i+\udim P_j.$$
-In particular, we have $\supp \tau(P_{j,1}/P_i)\cap P_i=\supp(C_ij)$ and it follows that $\im(f)=C_{ij}$. When considering the epimorphism $P_i\to C_{ij}$ and the monomorphism $C_{ij}\to\tau(P_{j,1}/P_i)$, the claim is straightforward.
+In particular, we have $\supp \tau(P_{j,1}/P_i)\cap P_i=\supp(C_{ij})$ and it follows that $\im(f)=C_{ij}$. When considering the epimorphism $P_i\to C_{ij}$ and the monomorphism $C_{ij}\to\tau(P_{j,1}/P_i)$, the claim is straightforward.
 
 \end{proof}
 
@@ -928,13 +952,15 @@ In particular, we have $\supp \tau(P_{j,1}/P_i)\cap P_i=\supp(C_ij)$ and it foll
 
 
 
-\begin{lemma}\label{lem:irreducible morphisms}\begin{enumerate}
-\item Let $i\in Q_0(j,-)$. Then there exists an irreducible morphism $(i,j)_m:P_{i,m}\to P_{j,m}$ which is surjective for all $m\geq h(j)$ if and only if $j$ is a limb with respect to $i$. 
-%either $j$ is a source or if $|Q_0(-,j)|=1$ and $\ell\in Q_0(-,j)$ is a limb vertex. 
-\item Let $i\in Q_0(-,j)$. Then there exists an irreducible morphism $(i,j)^m:P_{i,m-1}\to P_{j,m}$ which is surjective for all $m\geq h(j)+1$ if and only if $j$ is a limb with respect to $i$.
-\end{enumerate}
-%if $j$ is not a limb. If $j$ is a limb vertex, $(i,j)^m$ is injective if and only if $i$ is a limb vertex with respect to $j$.
-
+\begin{lemma}
+  \label{lem:irreducible morphisms}
+  \mbox{}
+  \begin{enumerate}
+    \item For $j\in Q_0(-,i)$, an irreducible morphism $(i,j)_m:P_{i,m}\to P_{j,m}$ is surjective if and only if $j$ is a limb with respect to $i$ and $m\geq h(j)$. 
+    %either $j$ is a source or if $|Q_0(-,j)|=1$ and $\ell\in Q_0(-,j)$ is a limb vertex. 
+    \item For $j\in Q_0(i,-)$, an irreducible morphism $(i,j)^m:P_{i,m}\to P_{j,m+1}$ is surjective if and only if $j$ is a limb with respect to $i$ and $m\geq h(j)$.
+    %if $j$ is not a limb. If $j$ is a limb vertex, $(i,j)^m$ is injective if and only if $i$ is a limb vertex with respect to $j$.
+  \end{enumerate}
 \end{lemma}
 \begin{proof}
 
@@ -947,10 +973,12 @@ We consider the case $m=0$ and $i\in Q_0(j,-)$. Then there exists an injective i
 
 The second part follows in the same way when considering the irreducible morphism $(i,j)^1:P_{i,0}\to P_{j,1}$.
 
-
-
 \end{proof}
-\begin{remark}Let $i\in Q_0(j,-)$ (resp. $i\in Q_0(-,j)$). Note that if $i$ and $j$ are both limbs on the type $A$ subquiver $P_{i,m}\to P_{j,m}$ (resp. $P_{i,m-1}\to P_{j,m}$) becomes surjective for big enough $m$ if and only if $j$ is closer to the leave of the corresponding subquiver of type $A$. The maps $P_{j,m}\to P_{i,m+1}$ (resp. $P_{j,m}\to P_{i,m}$) are always injective if $j$ is a limb with respect to $i$.
+
+\begin{remark}
+  Let $i\in Q_0(j,-)$ (resp. $i\in Q_0(-,j)$).
+  Note that if $i$ and $j$ are both limbs on the type $A$ subquiver $P_{i,m}\to P_{j,m}$ (resp. $P_{i,m-1}\to P_{j,m}$) becomes surjective for big enough $m$ if and only if $j$ is closer to the leaf of the corresponding subquiver of type $A$.
+  The maps $P_{j,m}\to P_{i,m+1}$ (resp. $P_{j,m}\to P_{i,m}$) are always injective if $j$ is a limb with respect to $i$.
 
 If $j$ is not a limb, then all irreducible maps ending in $P_{j,m}$ are injective. If $i$ is a leaf, then all maps starting in $P_{i,m}$ are injective.
 \end{remark}
@@ -958,9 +986,10 @@ If $j$ is not a limb, then all irreducible maps ending in $P_{j,m}$ are injectiv
 For a fixed pair of vertices $i,j\in Q_0$, there exists a unique (non-oriented) path from $i$ to $j$ in $Q$ which we denote by $p_{i,j}$. The number of arrows passed through in non-opposite direction is denoted by $n_{i,j}$. This path induces sectional morphisms
 $$f_{i,j}^m:P_{i,m}\to P_{j,m+n_{i,j}}$$
 where we write $P_{i,j}^m:=P_{j,m+n_{i,j}}$ in the following.
-If $|p_{i,j}|=n$, we set $i_0=i$ and $i_n=j$ and recursively define $m_0=m$ and $$m_l=\begin{cases}m_{l-1}\text{ if $i_{l}\to i_l$}\\m_{l-1}+1\text{ if $i_{l-1}\to i_l$}\end{cases}$$
+If $|p_{i,j}|=n$, we set $i_0=i$ and $i_n=j$ and recursively define $m_0=m$ and 
+$$m_l=\begin{cases}m_{l-1}\text{ if $i_{l}\to i_{l-1}$}\\m_{l-1}+1\text{ if $i_{l-1}\to i_l$}\end{cases}$$
 for $l=1,\ldots,n-1$. Then we have $$f_{i,j}^m=\prod_{l=0}^{n-1} f_{i_l,i_{l+1}}^{m_l}.$$
-As $\Ext(P_{j,m+n_{i,j}},P_{i,m})=0$, the Happel-Ringel lemma yields that  $f_{i,j}^m$ is either surjective or injective\sayT{more details on vanishing $\Ext$}. 
+As $\Ext(P_{j,m+n_{i,j}},P_{i,m})=0$, the Happel-Ringel Lemma yields that  $f_{i,j}^m$ is either surjective or injective\sayT{more details on vanishing $\Ext$}. 
 
 
 \begin{corollary}\label{cor:sectional morphisms}
@@ -1432,11 +1461,14 @@ As $\ker(\pi_j)=\tau^{-1}M_{j-1}$, we end up with $\ker(\tau^{-1}\psi_j)=N_j\opl
 
 \end{proof}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{$\CC^*$-equivariant Caldero-Chapoton Maps}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{$\CC^*$-equivariant Caldero-Chapoton maps}
 The ideas presented here assume that we have already constructed a cell decomposition by combining the Bia\l{}ynicki-Birula cells coming from $\CC^*$-actions with the inductive construction of cell decompositions for lifts to the universal covering quiver.
 
+
+%%%%%%%%%%%%%%%%%%%%%%
+\section{$2$-quivers}
 
 
 
