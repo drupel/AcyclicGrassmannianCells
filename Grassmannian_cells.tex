@@ -350,7 +350,9 @@ These representations are constructed inductively via $P_i=\Sigma_1\cdots\Sigma_
 %  For $i,j\in Q_0$, we have $\dim\Irr(P_j,P_i)=b_{ij}$.
 %\end{lemma}
 The \emph{preprojective} (resp.~\emph{preinjective}) representations $P_{i,m}$ (resp.~$I_{i,m}$) for $i\in Q_0$ and $m\in\ZZ_{\ge0}$ are defined inductively by
-\[P_{i,0}=P_i,\qquad P_{i,m+1}=\tau^{-1} P_{i,m},\qquad I_{i,0}=I_i,\qquad I_{i,m+1}=\tau I_{i,m}.\]
+\[
+  P_{i,0}:=P_i,\qquad P_{i,m+1}:=\tau^{-1} P_{i,m},\qquad I_{i,0}:=I_i,\qquad I_{i,m+1}:=\tau I_{i,m}.
+\]
 More generally, we say a representation $M\in\rep Q$ is \emph{preprojective} (resp.~\emph{preinjective}) if $\tau^r M=0$ (resp. if~$\tau^{-r} M=0$) for some $r>0$.
 
 \begin{lemma}
@@ -391,11 +393,13 @@ For a dimension vector $\alpha\in\NN^{Q_0}$, we write $\alpha=\sum_{q\in Q_0}\al
   Assume $|Q_1(-,i)|=1$, say $\ell\in Q_0(-,i)$, and that $\ell$ is a limb vertex with respect to $i$ with associated leaf $\ell'$ in $Q(\ell)$.
   We work by induction on $h(\ell)\ge1$ to show that $S_i=\tau^{h(\ell)}I_{\ell',0}$ is preinjective.
   Indeed, when $h(\ell)=1$, the quiver $Q(\ell)$ has the form
-  \[\xymatrix{\bullet^{\ell'} & \hdots \ar[l] & \bullet^{\ell''} \ar[l] & \bullet^{\ell} \ar[l] \ar[r] & \bullet^{i} }\]
+  \[\xymatrix{\bullet^{\ell'} & \hdots \ar[l] & \bullet^{\ell} \ar[l] \ar[r] & \bullet^{i} }\]
   and an easy calculation shows that $S_i=\tau I_{\ell',0}$ in this case.
   Now for $h(\ell)>1$, there are two possibilities.
   If $\ell$ is not a source, then by induction $S_\ell=\tau^{h(\ell)-1}I_{\ell',0}$ is preinjective, but $S_i=\tau S_\ell$ in this case and so $S_i=\tau^{h(\ell)}I_{\ell',0}$ as desired.
-  If $\ell$ is a source, then there exists a vertex $i'$ in $Q(\ell)$ so that $S_i=\tau^2 S_{i'}$ with $S_{i'}=\tau^{h(\ell)-2} I_{\ell',0}$ by induction, this again gives $S_i=\tau^{h(\ell)} I_{\ell',0}$ in this case.
+  If $\ell$ is a source, then $Q(\ell)$ has the form
+  \[\xymatrix{\hdots \ar@{-}[r] & \bullet^{i'} \ar[r] & \bullet & \hdots \ar[l] & \bullet^{\ell} \ar[l] \ar[r] & \bullet^{i} }\]
+  so that $S_i=\tau^2 S_{i'}$ with $S_{i'}=\tau^{h(\ell)-2} I_{\ell',0}$ by induction, this again gives $S_i=\tau^{h(\ell)} I_{\ell',0}$ in this case.
 
   To finish, we aim to show in the remaining cases, namely when $|Q_1(-,i)|\ge2$ or when $|Q_1(-,i)|=1$ but $\ell\in Q_0(-,i)$ is not a limb vertex with respect to vertex $i$, that $S_i$ is not preinjective by applying Lemma~\ref{lem: non-preinjective}. 
   Let $Q'$ be the connected component containing $i$ after removing all arrows in $Q_1(i,-)$ from the quiver $Q$.
@@ -665,17 +669,31 @@ The next results describe situations when this will occur and provide the correc
 \begin{corollary}
   \label{cor:thin sequences}
   Suppose $i\in Q_0$ is adjacent to a limb vertex $\ell$ with associated leaf $\ell'$.
+  Enumerate the vertices $Q(\ell)_0:=\{\ell'=i_0,\ldots,i_{h(\ell)-1}=\ell,i_{h(\ell)}=i\}$ of the type $A$ component associated to $\ell$ so that $|Q_1(i_l,i_{l+1})\sqcup Q_1(i_{l+1},i_l)|=1$ for $1\le l\le k$.  
   \begin{enumerate}
-    \item If $\ell\in Q_0(i,-)$, then for any $m\ge h(\ell)$, we have an exact sequence
+    \item If $\ell\in Q_0(i,-)$, then for any $m\ge 1$ and $[h(\ell)-m]_+ \le r < h(\ell)$, we have an exact sequence
       \begin{equation}
         \label{eq:thin limb sequence 1}
-        \ses{P_{\ell',m-h(\ell)}}{P_{i,m}}{P_{\ell,m+1}}.
+        \sesM{P_{i_r,m_r}}{P_{i,m}}{P_{i_{h(\ell)-1-r},m_r+h(\ell)+1}}{f}
       \end{equation}
+      where $m_0=m-h(\ell)$ and 
+      $m_{r+1}=
+        \begin{cases}
+          m_r & \text{if $i_{r+1} \to i_r$;}\\
+          m_r+1 & \text{if $i_r \to i_{r+1}$.}
+        \end{cases}$
+
+      \begin{equation}
+        \label{eq:thin limb sequence 1}
+        \sesM{P_{\ell',m-h(\ell)}}{P_{i,m}}{P_{\ell,m+1}}{f}
+      \end{equation}
+      with $f=:f_{i,\ell}^m$ a sectional monomorphism.
     \item If $\ell\in Q_0(-,i)$, then for any $m\ge h(\ell)$, we have an exact sequence
       \begin{equation}
         \label{eq:thin source sequence}
-        \ses{P_{\ell',m-h(\ell)}}{P_{i,m}}{P_{\ell,m}}.
+        \sesM{P_{\ell',m-h(\ell)}}{P_{i,m}}{P_{\ell,m}}{f}
       \end{equation}
+      with $f$ a sectional monomorphism.
   \end{enumerate}
 \end{corollary}
 \begin{proof}
@@ -727,6 +745,13 @@ The next results describe situations when this will occur and provide the correc
       \[\ses{P_{\ell,m-1}}{P_{i,m}\oplus P_{\ell'',m-1}}{P_{\ell,m}}\]
       which reduces to the desired sequence using Lemma~\ref{le:sequence reducing}.
   \end{itemize}
+\end{proof}
+
+\begin{lemma}
+  Suppose $i\in Q_0$ is adjacent to a limb vertex $\ell$ with associated leaf $\ell'$.
+  For $m\ge h(\ell)$, the representation $P_{i,m}/P_{\ell',m-h(\ell)}$ is preinjective if and only if 
+\end{lemma}
+\begin{proof}
 \end{proof}
 
 For $i\in Q_0$ and $m\ge0$, given $\ell\in Q_0(-,i)\cup Q_0(i,-)$ we write $\cI_{i,m}^{\{\ell\}}\subset\cI_{i,m}$ for the tuple of subspaces with the only proper subspace at position $\ell$ and the zero subspace in that component.
@@ -964,7 +989,9 @@ $$\udim \tau(P_j/P_i)=\udim I_i-\udim I_j.$$
 In particular, we have $\supp\tau(P_j/P_i)\cap P_i=\{i\}$ and it follows that $\im(f)=S_i$. When considering the epimorphism $P_i\to S_i$ and the monomorphism $S_i\to\tau(P_j/P_i)$, the claim is straightforward.
 
 \end{proof}
-\begin{lemma}\label{lem:quotients projectives2}
+
+\begin{lemma}
+  \label{lem:quotients projectives2}
 Let $j\in Q_0(i,-)$ and $P_{j,1}/P_i$ not injective\sayT{condition in terms of limbs}. Then there exists a long exact sequence
 $$0\to\bigoplus_{\substack{k\in Q_0(i,-)\\k\neq j}}P_k\to P_i\to \tau(P_{j,1}/ P_i)\to\bigoplus_{k\in Q_0(-,i)}I_k\ \to 0$$
 inducing two short exact sequences
@@ -1024,10 +1051,12 @@ for $l=1,\ldots,n-1$. Then we have $$f_{i,j}^m=\prod_{l=0}^{n-1} f_{i_l,i_{l+1}}
 As $\Ext(P_{j,m+n_{i,j}},P_{i,m})=0$, the Happel-Ringel Lemma yields that  $f_{i,j}^m$ is either surjective or injective\sayT{more details on vanishing $\Ext$}. 
 
 
-\begin{corollary}\label{cor:sectional morphisms}
+\begin{corollary}
+  \label{cor:sectional morphisms}
 The morphism $f_{i,j}^m$ is surjective if  $i_1$ is a limb with respect to $i$. If $j$ is not a limb, then $f_{i,j}^m$ is injective.\sayT{this is the general case, conditions on $m$?!}
 \end{corollary}
-\begin{proof} The statement follows from Lemma \ref{lem:irreducible morphisms}. 
+\begin{proof} 
+  The statement follows from Lemma \ref{lem:irreducible morphisms}. 
 
 If $i_1$ is a limb (then $i$ is not a limb), $f_{i,j}^m$ is forced to be surjective as $f_{i_0,i_1}^m$ is surjective. If $j$ is not a limb, then $f_{i_{n-1},i_n}^{m_{n-1}}$ is injective which means that $f_{i,j}^m$ is forced to be injective. 
 \end{proof}
@@ -1038,7 +1067,7 @@ there exists an Auslander-Reiten sequence
 $$\Ses{P_{i,m}}{\cP_{i,m}}{P_{i,m+1}}{f}{g}.$$
 with $f=(f_{i,k}^m)_{k\in N_i}$ and $g=(g_{k,i}^{m+1})_{k\in N_i}$ where $g^{m+1}_{k,i}=f_{k,i}^m$ if $k\in Q_0(-,i)$ and $g^{m+1}_{k,i}=f_{k,i}^{m+1}$ if $k\in Q_0(i,-)$.
 
-Note that,  we analogously obtain a sectional morphism $g_{i,j}^m:P_{i,m-n_{i,j}}\to P_{j,m}$.
+Note that we analogously obtain a sectional morphism $g_{i,j}^m:P_{i,m-n_{i,j}}\to P_{j,m}$.
 
 
 
@@ -1054,19 +1083,25 @@ i.e. all neighbors of the vertices on the path which do not lie on the path itse
 
 \begin{lemma}
 For every pair of vertices $(i,j)$ of $Q$ and every $m\geq 0$, there exists a short exact sequence
-$$E_{i,j}^m:\ses{P_{i,m}}{\bigoplus_{k\in N_{p_{i,j}}}P_{i,k}^m}{P_{i,j}^{m+1}}.$$
+$$\xi_{i,j}^m:\ses{P_{i,m}}{\bigoplus_{k\in N_{p_{i,j}}}P_{i,k}^m}{P_{i,j}^{m+1}}.$$
 
 \end{lemma}
-\begin{proof}We proceed by induction on the length of the path. For $i=j$, we have that $E_{i,i}^m$ is the Auslander-Reiten sequence considered above. Let $p_{i,j}=i_0\ldots i_n$. In the present notation, the Auslander-Reiten sequences can be written as
+\begin{proof}
+  We proceed by induction on the length of the path. For $i=j$, we have that $E_{i,i}^m$ is the Auslander-Reiten sequence considered above. Let $p_{i,j}=i_0\ldots i_n$. In the present notation, the Auslander-Reiten sequences can be written as
 $$\ses{P_{i,j}^m}{\left(\bigoplus_{k\in N_j\backslash \{i_{n-1}\}}P_{i,k}^m\right)\oplus P_{i,i_{n-1}}^{m+1}}{P_{i,j}^{m+1}}.$$
 As $j\in N_{i_{n-1}}$, $P_{i,j}^m$ appears as a direct summand of the middle term of the exact sequence
-$$E_{i,i_{n-1}}^m:\ses{P_{i,m}}{\bigoplus_{k\in N_{p_{i,i_{n-1}}}}P_{i,k}^m}{P_{i,i_{n-1}}^{m+1}},$$
+$$\xi_{i,i_{n-1}}^m:\ses{P_{i,m}}{\bigoplus_{k\in N_{p_{i,i_{n-1}}}}P_{i,k}^m}{P_{i,i_{n-1}}^{m+1}},$$
 which exists by induction hypothesis, the second part of Corollary \ref{cor:sequence reducing} gives the claim.
 \end{proof}
 
 
 
-\begin{corollary}\sayT{we should try to make one statement out of the first two}\label{cor:injsur} \begin{enumerate}\item Let $j\in Q_0(-,i)$. For $m\geq 1$, the map
+\begin{corollary}
+  \sayT{we should try to make one statement out of the first two}
+  \label{cor:injsur}
+  \mbox{}
+  \begin{enumerate}
+    \item Let $j\in Q_0(-,i)$. For $m\geq 1$, the map
 $$\bigoplus_{k\in Q_0(i,-)}P_{k,m}\oplus \bigoplus_{\substack{k\in Q_0(-,i)\\k\neq j}}P_{k,m-1}\to P_{i,m}$$ is injective if $j$ is not a limb with respect to $i$.
 For $m\geq h(j)$, the map is surjective if $j$ is a limb with respect to $i$.
 \item Let $j\in Q_0(i,-)$. For $m\geq 1$, the map
@@ -1084,16 +1119,18 @@ We may assume that $I=N_{i}\backslash\{j_1,j_2\}$.
 \end{proof}
 
 
-\begin{lemma}Let $i\in Q_0$ be not a limb. The pair $(E_{i,j}^m,I)$ with $I\neq\emptyset$ is reduced if $|I|\leq |N_{p_{i,j}}|-2$ or if $I=|N_{p_{i,j}}|-1$ and $q\in N_{p_{i,j}}\backslash I$ is no limb with respect to $i$. 
-
+\begin{lemma}
+  Let $i\in Q_0$ be not a limb. The pair $(\xi_{i,j}^m,I)$ with $I\neq\emptyset$ is reduced if $|I|\leq |N_{p_{i,j}}|-2$ or if $I=|N_{p_{i,j}}|-1$ and $q\in N_{p_{i,j}}\backslash I$ is not a limb with respect to $i$. 
 \end{lemma}      
-\begin{proof}We proceed by induction on the length of $p_{ij}$. If $i=j$,
+\begin{proof}
+  We proceed by induction on the length of $p_{ij}$. If $i=j$,
 
-The pair $(E_{i,j}^m,I)$ is reduced if $\sum_{k\in I}\udim P_{i,k}^m<\udim P_{i,j}^{m+1}$ which is if and only if 
+The pair $(\xi_{i,j}^m,I)$ is reduced if $\sum_{k\in I}\udim P_{i,k}^m<\udim P_{i,j}^{m+1}$ which is if and only if 
 $$\udim P_{i,m}< \sum_{k\in N_{p_{i,j}}\backslash I}\udim P_{i,k}^m.$$
 If $|I|=|N_{p_{i,j}}|-1|$, this means that the morphism $P_{i,m}\to P_{q,m}$ is surjective which is the case if and only if $q$ is a limb by Corollary \ref{cor:sectional morphisms}.
 \sayT{to be continued}
 \end{proof}
+
 \begin{comment}
 \begin{lemma}\begin{enumerate}
 \item If $j$ is not a leaf, there exists a vertex $i$ such that the exact sequence $E_{i,j}^m$ is reduced.
@@ -1101,8 +1138,11 @@ If $|I|=|N_{p_{i,j}}|-1|$, this means that the morphism $P_{i,m}\to P_{q,m}$ is 
 \end{enumerate}
 \end{lemma}
 \end{comment}
-Assume that $(E_{i,j}^m,I)$ is reduced with $I=\{k_1,\ldots,k_{r+1}\}$. This induces a series of short exact sequences and a filtration of $P_{ij}^{m+1}$:
-\begin{equation}\label{ses}\ses{P_{i,k_l}^m}{P_{i,j}^{m,I_{l-1}}}{P_{i,j}^{m,I_l}}\end{equation}
+Assume that $(\xi_{i,j}^m,I)$ is reduced with $I=\{k_1,\ldots,k_{r+1}\}$. This induces a series of short exact sequences and a filtration of $P_{ij}^{m+1}$:
+\begin{equation}
+  \label{ses}
+  \ses{P_{i,k_l}^m}{P_{i,j}^{m,I_{l-1}}}{P_{i,j}^{m,I_l}}
+\end{equation}
 where $I_l=\{k_1,\ldots,k_l\}$. By Lemma \ref{le:quotients}, we have
 $$P_{i,j}^{m,I_{r}}\cong P_{i,k_{r+1}}^m/P_{i,j}^m.$$
 If we choose $k_{r+1}$ in such a way that $j\in N_{p_{i,k_{r+1}}}$, this shows that $P_{i,j}^{m,I}$ appears as a quotient of induced by a filtration of $P_{i,k_{r+1}}^m\cong P_{k_{r+1},m'}$ for an appropriate $m'$. Here we can take any path $p$ ending in $k_{r+1}$ with $j\in N_p$ which clearly exists as $j\neq k_{r+1}$.
@@ -1111,10 +1151,12 @@ If we choose $k_{r+1}$ in such a way that $j\in N_{p_{i,k_{r+1}}}$, this shows t
 Every short exact sequence (\ref{ses}) induces a morphism $P_{i,k_l}^m\to \tau  P_{i,j}^{m,I_l}$ and its $\tau^{-1}$-translate which we are interested in. In particular, we need to know its kernel and its image.
 
 
-\begin{proposition}\label{pro:cell decompositions}
+\begin{proposition}
+  \label{pro:cell decompositions}
 Let $(E_{i,j}^m,I)$ be a reduced with $I=\{k_1,\ldots,k_{r+1}\}$ and let $k_l=k_l^1,\ldots,k_l^{t_l}=j$ be the vertices on the path $p_{k_l,j}$. Then $P_{ij}^{m+1}$ has property (C) if $P_{i,k_l}^m$, $P^{m,I_{r}}_{i,j}$, $P_{i,k^{s}_l}^m/P_{i,k^{s-1}_l}^m$ and its $\tau$-translates have property (C) for $l=1,\ldots,r$ and $s=1,\ldots,t_l$ where we set $P_{i,k^{0}_l}^m=0$.\sayT{the vertices on the path from $k_l$ to $j$ are certain vertices on the path from $i\to j$}
 \end{proposition}
-\begin{proof}\sayT{this is the general strategy and roughly the induction step, there are assumptions missing, e.g. we need $\tau$-stability (induction basis)}
+\begin{proof}
+  \sayT{this is the general strategy and roughly the induction step, there are assumptions missing, e.g. we need $\tau$-stability (induction basis)}
 For each $l$, there exists a chain of irreducible monomorphisms \say{to have monos later here we need assumptions on the reps}
 $$P^m_{i,k^0_l}\subset P_{i,k^1_l}^m\subset\ldots\subset P_{i,k_l^{t_l}}^m\subset P_{i,j}^{m+1}.$$
 If we write $V_u=\bigoplus_{l=u}^rP_{i,k_l}^m$ for $u=2,\ldots, r$, we may consider the exact sequences\say{make a choice such that the cokernel is not zero for $l=1$ and $s=t_l$?!}\sayT{include modified version of 8.7}
