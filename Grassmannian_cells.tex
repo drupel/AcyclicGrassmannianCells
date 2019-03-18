@@ -864,64 +864,90 @@ The following result is crucial to the constructions to follow.
   
   As before, for $i\in Q_0$, we write $P_{i,m}=\tau^{-m}P_i$, where $P_i$ is the projective cover of the vertex simple $S_i$.  
   \begin{lemma}
-    \sayT{ statement should be (close to) correct now, proof must be adjusted}
+   % \sayT{ statement should be (close to) correct now, proof must be adjusted}
     Consider the unique filtration $P_{i_0,m_0}\subset P_{i_1,m_1}\subset\ldots\subset P_{i_k,m_k}$, where $m_0=0$ and $m_j=m_{j-1}+1$ if $i_j\in Q_0(i_{j-1},-)$ and $m_j=m_{j-1}$ otherwise.
-    Then $P_{i_k,m_k}/P_{i_0,m_0}$ is preinjective if and only if $i_1$ is a limb with respect to $i_0$ or if there exists at most one vertex $i_s$ for $s=1,\ldots, k$  which is not a limb with $N_{i_s}=\{i_{s-1},i_{s+1}, q\}$  such that one of the following conditions holds. 
+    Then $P_{i_k,m_k}/P_{i_0,m_0}$ is preinjective if and only if $i_1$ is a limb with respect to $i_0$ or if there exists at most one vertex $i_s$ with $s=1,\ldots, k-1$  which is not a limb with $N_{i_s}=\{i_{s-1},i_{s+1}, q\}$ and, additionally, one of the following conditions holds: 
 		\begin{enumerate}
 		
-		\item If $s=1$, then $i_k$ is a leaf and $q$ is a limb;
-		\item If $s=2$, then $i_k$ and $q$ are both leaves.
-		\item If $s=3$, then $Q$ has is a flag quiver with precisely one $3$-valent vertex and, furthermore, $q$ and $i_k$ are leaves and $k=5$. 
-		\item If $s=k-1$, then $q$ and $i_k$ are leaves.
-		\item If $s=k$, then $i_1$ is a limb and $q=i_{k+1}$.
+		\item $s=1$ and, furthermore, $i_k$ is a leaf and $q$ is a limb;
+		\item $s=2$ and, furthermore, $i_k$ and $q$ are both leaves.
+		\item $Q$ is a flag quiver and has one $3$-valent vertex $i_s$ where $s=3$, $k=5$ and, furthermore, $i_k$ and $q$ are both leaves. 
+		\item $s=k-1$ and, furthermore, $i_k$ and $q$ are both leaves.
+		%\item If $s=k$, then $i_1$ is a limb, i.e. $q=i_{k+1}$.
 		\end{enumerate}
 \end{lemma}
 \begin{proof}
-  We may without loss of generality assume that that all arrows are oriented towards $i_0$.
-	  If $i_k$ is not a limb, then $S_{i_k}$ is a quotient of $P_{i_k}/P_{i_0}$ which is regular by Proposition \ref{pro:simpleregular}. Thus $P_{i_k}/P_{i_0}$ is not preinjective. Thus in the following assume that $i_k$ is limb.
-
-	  In particular, we have $i_j\in Q_0(-,i_{j-1})$ for $j=1,\ldots,k$, $m_k=0$ and
+  We may without loss of generality assume that that all arrows are oriented towards $i_0$. Then we have $i_j\in Q_0(-,i_{j-1})$ for $j=1,\ldots,k$, $m_k=0$ and
   $$\alpha:=\udim P_{i_k}/P_{i_0}=\sum_{j=1}^{k}i_j.$$
+	  If $i_k$ is not a limb with respect to $i_{k-1}$,  Proposition \ref{pro:simpleregular} shows that $S_{i_k}$ is a regular quotient of $P_{i_k}/P_{i_0}$. In turn, $P_{i_k}/P_{i_0}$ is not preinjective. Thus in the following assume that $i_k$ is limb.
+
+
 	For any root $\delta$, we have 
-$$\Sc{\delta}{\alpha}=\sum_{j=1}^k\delta_i-\sum_{j=1}^k\sum_{l\in Q(-,j)}\delta_l.$$
-Recall that if $\delta$ is regular with $\Sc{\delta}{\alpha}<0$, we have $\Ext(M_\delta,M_\alpha)\neq 0$ for all representations of dimension $\delta$ and $\alpha$, and thus $\alpha$ cannot be a preinjective root.
+$$\Sc{\delta}{\alpha}=\sum_{j=1}^k\delta_j-\sum_{j=1}^k\sum_{l\in Q(-,j)}\delta_l.$$
+Recall that if $\delta$ is a regular root with $\Sc{\delta}{\alpha}<0$, we have $\Ext(M_\delta,M_\alpha)\neq 0$ for all representations of dimension $\delta$ and $\alpha$, and thus $\alpha$ cannot be a preinjective root.
 
-	Assume that there are two vertices $i_s$ and $i_t$ with $1\leq s,t\leq k-1$ and
+	Assume that there are two vertices $i_s$ and $i_t$ with $1\leq s,t\leq k$ and
   $$c=|Q_0(-,i_s)\backslash\{i_{s+1}\}\cup Q_0(-,i_t)\backslash\{i_{t+1}\}|\geq 2.$$
-  Let $\{q_1,q_2\}\in Q_0(-,i_s)\backslash\{i_{s+1}\}\cup Q_0(-,i_t)\backslash\{i_{t+1}\}$.
-  If $s,t\neq k$, then  $\delta=\sum_{j=0}^ki_j+\sum_{j=s}^ti_j+q_1+q_2$ is a regular root such that $\Sc{\delta}{\alpha}<0$.
+	Here $i_{k+1}$ is any neighbor of $i_k$ except $i_{k-1}$. Let $\{q_1,q_2\}\in Q_0(-,i_s)\backslash\{i_{s+1}\}\cup Q_0(-,i_t)\backslash\{i_{t+1}\}$.
+  If $s,t\neq k$, then  $\delta=\sum_{j=0}^ki_j+\sum_{j=s}^ti_j+q_1+q_2$ is a regular root such that $\Sc{\delta}{\alpha}<0$. Indeed, $\delta$ is the unique imaginary Schur of a subquiver of type $\tilde D$ which is a regular root of $Q$ by Lemma \ref{lem:regular support}.	
 	
-	
+Thus assume that $t=k$ and $s\neq k$. 
+Then we have
+$$\Sc{\delta}{\alpha}\leq \delta_{i_1}-\delta_{q_1}-\delta_{q_2}.$$
 
-%similar to the proof of \ref{pro:simpleregular} it is straightforward to construct a regular representation $M$ of dimension $\delta$ with $\Hom(P_{i_k}/P_{i_0},M)\neq 0$ which yields that $P_{i_k}/P_{i_0}$ is not preinjective.
 
+As $Q$ is wild or of extended Dynkin type such that $i_k$ is not a leaf and $i_s$ (and thus $i_1$) is not a limb with respect to $i_0$, there exists a regular root with $\delta_{i_1}<\delta_{q_1}+\delta_{q_2}$. Indeed, if $i_s$ is a $3$-valent vertex and, moreover, the only $n$-valent vertex with $n\geq 3$, then $Q$ has a subquiver of extended Dynkin type $\tilde E_n$ which includes all vertices under consideration and thus the unique imaginary Schur root $\delta$ satisfies the condition, see \cite[Section 4]{CB} for a list. If $Q$ has more than one $n$-valent vertex with $n\geq 3$, then it is rather straightforward to construct a sufficient regular root $\delta$.\sayT{details here or below?}
+\begin{comment}
+The unique exceptional representation of dimension 
+$\alpha:=\sum_{j=s}^ki_j$ is a factor of $P_{i_k}/P_{i_0}$. Consider the full subquiver $Q'$ with vertices $Q_0\backslash\{i_{k+1},\ldots,i_n\}$. When reflecting successively at the sources $i_k,\ldots,i_{s-1}$ the representation $P_{i_k}/P_{i_0}$ transforms into the simple representation $S_s$ of the corresponding transformation of $Q'$. By Proposition \ref{pro:simpleregular}, the representation $S_s$ is a preinjective representation of $Q'$ if and only if $q_1$ is a limb with respect to $s$. By Lemma \ref{lem:regular support} and the argument from above, this shows that $P_{i_k}/P_{i_0}$ is regular if $q_1$ is not limb.
+\end{comment}
 
-Thus assume that $t=k$ and $s\neq k$. The unique exceptional representation of dimension 
-$\alpha:=\sum_{j=s}^ki_j$ is a factor of $P_{i_k}/P_{i_0}$. Consider the full subquiver $Q'$ with vertices $Q_0\backslash\{i_{k+1},\ldots,i_n\}$. When reflecting successively at the sources $i_k,\ldots,i_{s-1}$ the representation $P_{i_k}/P_{i_0}$ transforms into the simple representation $S_s$ of the corresponding transformation of $Q'$. By Proposition \ref{pro:simpleregular}, the representation $S_s$ is a preinjective representation of $Q'$ if and only if $q_1$ is a limb with respect to $s$. By Lemma \ref{lem:regular support} and the argument from above, this shows that $P_{i_k}/P_{i_0}$ is regular if $q_1$ is not limb. Thus we have shown so far that $\alpha$ can only be preinjective if $c=2$, $q_1$ is a limb with respect to one of the vertices $i_1,\ldots, i_{k-1}$ and $q_2$ is a limb with respect to $i_k$. In the following we assume that this is the case.
+ 
 
-First assume that $s=1$. The preceding argument shows that $P_{i_k}/P_{i_0}$ is preinjective if $i_k$ is a leaf and $q_1$ is a limb with respect to $i_1$. 
+Thus we have shown so far that $\alpha$ can only be preinjective if $c=1$.  A similar argument as the last one shows that $q_1$ is forced to be a limb. Note that if $q$ were no limb, then either $i_k$ is no limb or there exists more than one $n$-valent vertex with $n\geq 3$.
 
-If $q_1$ and $i_k$ are leaves and $s=k-1$, it is again straightforward to check that $P_{i_k}/P_{i_0}$ is preinjective as it can be transformed into $S_s$ (with $s$ having one ingoing arrow) by reflection functors.
+Thus we assume that $c=1$ and that $q:=q_1$ is a limb. We first collect conditions which ensure $\alpha$ is preinjective.
 
-A similar argument shows that this is true if $s=3$, $k=5$ and $q_1$ is a leaf and $Q$ has only one $3$-valent vertex and, furthermore, if $s=2$ and $q_1$ is a leaf. 
+If $i_1$ is a limb with respect to $i_0$ (whence $i_k$ is a limb, but not necessarily a leaf), it can be checked straightforwardly that $P_{i_k}/P_{i_0}$ is preinjective as it the Auslander-Reiten translate of the indecomposable injective representation corresponding to one of the vertices of the type $A$ subquiver with leaf $i_1$.
 
-If $i_1$ is a limb with respect to $i_0$ (whence $i_k$ is a limb, but not necessarily a leaf), as in the preceding case, it can be checked straightforwardly that $P_{i_k}/P_{i_0}$ is preinjective as it can be transformed to a simple preinjective representation.\sayT{details}
+If $s=1$, $i_k$ is a leaf and $q$ is a limb with respect to $i_1$, applying reflection functors successively to the vertices $i_k,\ldots, i_2$, the representation $P_{i_k}/P_{i_0}$ can be transformed into the simple representation $S_s$ which is a preinjective representation of the transformed quiver following Proposition \ref{pro:simpleregular}. 
+
+If $s=2$ and, moreover, $i_k$ and $q$ are leaves, we have $\tau^{-2}\alpha=i_3$ which is preinjective by Proposition \ref{pro:simpleregular}. Thus $\alpha$ is preinjective.
+
+If $i_s$ is the only $3$-valent vertex, $s=3$, $k=5$ and, moreover, $q$ and $i_k$ are leaves, then $\tau^{-3}\alpha$ is the injective root corresponding to the unique leaf other than $q$ and $i_k$ which means that $\alpha$ is preinjective.
+
+If $q$ and $i_k$ are leaves and $s=k-1$, we have $\tau^{-s}\alpha=i_k$ if $s$ is odd and $\tau^{-s}\alpha=q$ if $s$ is even. Thus $P_{i_k}/P_{i_0}$ is preinjective as it is the translate of an injective representation.
+
 %Thus if
 %$$|\bigcup_{j=1}^kQ_0(-,i_j)\backslash\{i_{j+1}\}|=T=:c\leq 1,$$
 %the representation $P_{i_k}/P_{i_0}$ is preinjective if and only if the single neighbor is a limb.
 
-It remains to show that $\alpha$ is regular in the remaining cases where we may assume that $c=2$, $2 \leq s\neq k$ arbitrary, i.e. $t=k$, $q_1$ is a limb with respect to $i_s$ and $q_2$ is a limb with respect to $i_k$. Then we have
-$$\Sc{\delta}{\alpha}=\delta_{i_1}-\delta_{q_1}-\delta_{q_2}.$$
+In particular, $\alpha$ can only be preinjective if $i_k$ is a leaf or $i_1$ is a limb with respect to $i_0$.  As the preceding observations included the last case, we have to deal with the case that $c=1$, $k\geq s\geq 2$, $q=q_1$ is a limb with respect to $i_s$ and $i_k$ is a leaf. Moreover, we can assume that $q$ is not a leaf if $s=k-1$ or $s=2$. If $s=3$ and $k=5$, then $Q$ can be assumed to have more than one $n$-valent vertex with $n\geq 3$. 
+%This means that there exists no subquiver $Q'$ of extended Dynkin type including the vertices $i_k$ and $q$ which is of type $D$.\sayT{do we need this last remark?} 
 
-As $Q$ is wild or of extended Dynkin type such that $i_k$ is not a leaf and $i_s$ (and thus $i_1$) is not a limb with respect to $i_0$, there exists a regular root with $\delta_1<\delta_{q_1}+\delta_{q_2}$. This is rather straightforward as $Q$ has a subquiver of extended Dynkin type $\tilde E_n$ which includes all vertices under consideration and thus the unique imaginary Schur root $\delta$ satisfies the condition, see \cite[Section 7, Lemma 2]{CB} for a list. 
+%It remains to show that $\alpha$ is regular in the remaining cases where we may assume that $c\leq 2$, $2 \leq s\neq k$, $t=k$ and, furthermore, that $q_1$ is a limb with respect to $i_s$ and $q_2$ is a limb with respect to $i_k$. Then we have
+%$$\Sc{\delta}{\alpha}=\delta_{i_1}-\delta_{q_1}-\delta_{q_2}.$$
 
-Thus $\alpha$ can only be preinjective if $i_k$ is a leaf or $i_1$ is a limb with respect to $i_0$.  As we already considered the last case, taking into account the observations from above we have to deal with the case that $c=1$, $k>s\geq 2$, $q=q_1$ is a limb with respect to $i_s$ and $i_k$ is a leaf. Then we have 
+Then we have 
 $$\Sc{\delta}{\alpha}=\delta_{i_1}-\delta_q.$$
-Moreover, we can assume that $q$ is not a leaf if $s=k-1$ or $s=2$. If $Q'$ is the minimal
- which means that there exists no subquiver $Q'$ of extended Dynkin type including the vertices $i_k$ and $q$ which is of type $D$.\sayT{do we need this remark?} 
-If $Q$ has a $n$-valent vertex other than $i_s$ with $n\geq 3$, then it is straightforward to check that  there exists a regular root which satisfies this condition. \sayT{carry this out}
 
-Thus assume that $i_s$ is the only $n$-valent vertex of $Q$ with $n\geq 3$. Then $Q$ has a subquiver which is of extended Dynkin type $\tilde E$. We first assume that $Q$ itself is of extended Dynkin type.\sayT{continue here, the rest are notes which are maybe not entirely correct}
+If $Q$ has a $n$-valent vertex other than $i_s$ with $n\geq 3$, in all these cases it is again straightforward to check that there exists a regular root $\delta$ which satisfies the condition $\Sc{\delta}{\alpha}<0$. \sayT{double-check from here on}
+
+Thus assume that $i_s$ is the only $n$-valent vertex of $Q$ with $n\geq 3$. Then $Q$ has a subquiver which is of extended Dynkin type $\tilde E$. If we have $\Sc{\delta}{\alpha}= 0$ for the imaginary Schur root $\delta$ of this subquiver, \cite[Section 7, Lemma 2]{CB} shows that $\alpha$ is regular and in turn a regular root of $Q$.
+
+If $k\geq s+2$ and if $q$ is not a leaf, then having in mind the regular roots of \cite[Section 4]{CB}, this argument can be used to show that $\alpha$ is a regular root.
+
+Thus two cases remain to be considered: $k=s+1,\,s\geq 2$, and $q$ is not a leaf, and $3\leq s\leq k-2$ and $q$ is a leaf (the case $s=2$ and $q$ a leaf was treated before). 
+As $Q$ has a subquiver of extended Dynkin type $\tilde E_7$ or $\tilde E_8$ and as $q$ is not a leaf, in the first case, the same argument shows that $\alpha$ is a regular root.
+
+Thus assume that $q$ is a leaf and $3\leq s\leq k-2$ . If $k\geq s+3$, then $\alpha$ can be checked to be regular as before. Thus assume that $k=s+2$. As the case $s=3$ was treated before, we also assume that $s\geq 4$. But as $Q$ contains a subquiver of type $\tilde E_8$, as before $\alpha$ can be shown to be a regular root of this subquiver and thus it is a regular root of $Q$.
+
+%If $Q$ is of type $\tilde E_8$, then we have  $\Sc{\delta}{\alpha}=1$ if $s=3$ for the imaginary Schur root. Thus $\alpha$ is preinjective in this case, see \cite[Section 7, Lemma 2]{CB} for the argument and \cite[Section 4]{CB} for a list of the imaginary Schur roots of extended Dynkin quivers. Moreover, is regular if $s\geq 4$.
+
+%Thus let $s=3$ and assume that $Q$ contains a proper subquiver of type $\tilde E_8$. If $k=5$, then it can be checked with help of Proposition \ref{pro:simpleregular} that $\alpha$ is preinjective. If $k\geq 6$, then $\alpha$ is regular.
+
+\begin{comment}
+We first assume that $Q$ itself is of extended Dynkin type.\sayT{continue here, the rest are notes which are maybe not entirely correct}
 
 If $ Q=\tilde E_6$, the root $\alpha$ is regular in any case as $\Sc{\delta}{\alpha}=0$, see \cite[Section 7, Lemma 2]{CB} for the argument and \cite[Section 4]{CB} for a list of the imaginary Schur roots of extended Dynkin quivers.
 If $Q=\tilde E_7$, the same argument shows that the root $\alpha$ is regular if $k=3$ and $s=2$ and preinjective if $k=5$, $s=2$ and $q$ is a leaf (which are the only possibilities and where the last case was considered before).
@@ -929,7 +955,7 @@ If $Q=\tilde E_8$, the same argument shows that the root $\alpha$ is regular if 
 This shows that $\alpha$ is preinjective if $q_1$ is a leaf of $i_s$ in the case $Q$ is of extended Dynkin type $\tilde D_n$, $\tilde E_6$ or $\tilde E_7$. If $Q$ is of type $\tilde E_8$, it is a limb whose neighbor is a leaf or it is a leaf itself.
 
 Assume that $Q$ is wild with $s\geq 3$ and that either $q_1$ is not a leaf or that $s<k-1$. In this case $\alpha$ is regular. If $q_1$ is not a leaf, we already proved that $\alpha$ is regular ($Q$ has a subquiver of extended Dynkin type). Thus assume that $q_1$ is a leaf and $3\leq s\leq k-2$. Moreover, we have $k\geq 6$ if $Q$ has only one $3$-valent vertex. First assume that $k\geq 6$. Then it has a subquiver of type $\tilde E_7$ and the imaginary Schur root does the job.
- 
+ \end{comment}
 
 
 %To see this construct a regular root $\delta$ with $\Sc{\delta}{\alpha}<0$.
