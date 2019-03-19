@@ -675,11 +675,11 @@ A vertex $i\in Q_0$ which is adjacent to a limb vertex $\ell$ determines a \emph
 \[
   \xymatrixcolsep{0.6pc}\xymatrix{
     & & & & & P_{i,m} \ar[dr] & & P_{i,m+1} \ar[dr] & & \cdots \ar[dr] \\
-    & & & & P_{i_k,m_k} \ar[ur]\ar[dr] & & P_{i_k,m'_k} \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & \cdots \\
+    & & & & P_{i_k,m_k} \ar[ur]\ar[dr] & & P_{i_k,m^*_k} \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & \cdots \\
     & & & \cdots \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] \\
-    & & P_{i_2,m_2} \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & P_{i_2,m'_2} \ar[dr]\ar[ur] & & \cdots \\
-    & P_{i_1,m_1} \ar[ur]\ar[dr] & & P_{i_1,m_1+1} \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & P_{i_1,m'_1-1} \ar[ur]\ar[dr] & & P_{i_1,m'_1} \ar[ur]\ar[dr]\\
-    P_{i_0,m_0} \ar[ur] & & P_{i_0,m_0+1} \ar[ur] & & P_{i_0,m_0+2} \ar[ur] & & \cdots \ar[ur] & & P_{i_0,m'_0-1} \ar[ur] & & P_{i_0,m'_0}
+    & & P_{i_2,m_2} \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & P_{i_2,m^*_2} \ar[dr]\ar[ur] & & \cdots \\
+    & P_{i_1,m_1} \ar[ur]\ar[dr] & & P_{i_1,m_1+1} \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & P_{i_1,m^*_1-1} \ar[ur]\ar[dr] & & P_{i_1,m^*_1} \ar[ur]\ar[dr]\\
+    P_{i_0,m_0} \ar[ur] & & P_{i_0,m_0+1} \ar[ur] & & P_{i_0,m_0+2} \ar[ur] & & \cdots \ar[ur] & & P_{i_0,m^*_0-1} \ar[ur] & & P_{i_0,m^*_0}
   }
 \]
 The following establishes the homological structure of a fin, a result well-known to the experts.
@@ -687,7 +687,7 @@ The following establishes the homological structure of a fin, a result well-know
   \label{cor:limb sequences}
   Suppose $i\in Q_0$ is adjacent to a limb vertex $\ell$ with associated leaf $\ell'$.
   Enumerate the vertices $Q(\ell)_0:=\{\ell'=i_0,\ldots,i_k=\ell,i_{k+1}=i\}$ of the type $A$ component associated to $\ell$ so that $|Q_1(i_l,i_{l+1})\sqcup Q_1(i_{l+1},i_l)|=1$ for $0\le l\le k$.
-  Given $m\ge0$, set $m_{k+1}:=m=:m'_{k+1}$ and recursively define
+  Given $m\ge0$, set $m_{k+1}:=m=:m^*_{k+1}$ and recursively define
   \[
     m_{r-1}:=
     \begin{cases}
@@ -695,23 +695,23 @@ The following establishes the homological structure of a fin, a result well-know
       m_r & \text{if $i_r \to i_{r-1}$;}
     \end{cases}
     \qquad
-    m'_{r-1}:=
+    m^*_{r-1}:=
     \begin{cases}
-      m'_r & \text{if $i_{r-1} \to i_r$;}\\
-      m'_r+1 & \text{if $i_r \to i_{r-1}$.}
+      m^*_r & \text{if $i_{r-1} \to i_r$;}\\
+      m^*_r+1 & \text{if $i_r \to i_{r-1}$.}
     \end{cases}
   \]
   \begin{enumerate}
     \item Given $m\ge0$, $0\le r\le k$, and $k-r\le s\le k$, if $m_r\ge0$, then we have an exact sequence
       \begin{equation}
         \label{eq:limb sequence}
-        \ses{P_{i_r,m_r}}{P_{i,m} \oplus P_{i_{r+s-k-1},m''_{r+s-k-1}}}{P_{i_s,m'_s}},
+        \ses{P_{i_r,m_r}}{P_{i,m} \oplus P_{i_{r+s-k-1},m^{**}_{r+s-k-1}}}{P_{i_s,m^*_s}},
       \end{equation}
-      where $m''_{r+s-k-1}=m_{r+s-k-1}+k+1-s=m'_{r+s-k-1}+r-k-1$ and the second summand in the middle is omitted when $r+s=k$.
+      where $m^{**}_{r+s-k-1}=m_{r+s-k-1}+k+1-s=m^*_{r+s-k-1}+r-k-1$ and the second summand in the middle is omitted when $r+s=k$.
     \item Given $m\ge0$ and $0\le r\le k$, if $m_r\ge0$, then we have an exact sequence
       \begin{equation}
         \label{eq:thin limb sequence}
-        \Ses{P_{i_r,m_r}}{P_{i,m}}{P_{i_{k-r},m'_{k-r}}}{f}{g}.
+        \Ses{P_{i_r,m_r}}{P_{i,m}}{P_{i_{k-r},m^*_{k-r}}}{f}{g}.
       \end{equation}
       Moreover, $f=:f_{i,i_r}^{(m)}$ is a sectional monomorphism and $g=:g_{i_{k-r},i}^{(m)}$ is a sectional epimorphism.
       That is, if $m_r\ge0$, then 
@@ -720,46 +720,37 @@ The following establishes the homological structure of a fin, a result well-know
           \[P_{i_r,m_r} \subset P_{i_{r+1},m_{r+1}} \subset \cdots \subset P_{i_k,m_k} \subset P_{i,m}\]
           with each inclusion $P_{i_s,m_s}\into P_{i_{s+1},m_{s+1}}$ for $r\le s\le k$ an irreducible morphism factoring $f_{i,i_r}^{(m)}$;
         \item there exists a string of epimorphisms
-          \[P_{i,m} \onto P_{i_{k-r},m'_{k-r}} \onto \cdots \onto P_{i_1,m'_1} \onto P_{i_0,m'_0}\]
-          with each surjection $P_{i_s,m'_s}\onto P_{i_{s-1},m'_{s-1}}$ for $1\le s\le k-r$ an irreducible morphism factoring $g_{i_{k-r},i}^{(m)}$.
+          \[P_{i,m} \onto P_{i_{k-r},m^*_{k-r}} \onto \cdots \onto P_{i_1,m^*_1} \onto P_{i_0,m^*_0}\]
+          with each surjection $P_{i_s,m^*_s}\onto P_{i_{s-1},m^*_{s-1}}$ for $1\le s\le k-r$ an irreducible morphism factoring $g_{i_{k-r},i}^{(m)}$.
       \end{itemize}
     \item Given $m\ge0$, if there exists $0\le r\le k$ with $m_r=0$ and $m_{r-1}=-1$, then there exists a filtration
-      \[P_{i,m} \subset P_{i_k,m'_k} \subset P_{i_{k-1},m'_{k-1}} \subset \cdots \subset P_{i_{k+1-r},m'_{k+1-r}}\]
-      with each inclusion $P_{i_{s+1},m'_{s+1}}\into P_{i_s,m'_s}$ for $k-r+1\le s\le k$ an irreducible morphism.
-      Moreover, in this case, each quotient $P_{i_s,m'_s}/P_{i_{s+1},m'_{s+1}}$ for $k-r+1\le s\le k$ is preinjective.
+      \[P_{i,m} \subset P_{i_k,m^*_k} \subset P_{i_{k-1},m^*_{k-1}} \subset \cdots \subset P_{i_{k+1-r},m^*_{k+1-r}}\]
+      with each inclusion $P_{i_{s+1},m^*_{s+1}}\into P_{i_s,m^*_s}$ for $k-r+1\le s\le k$ an irreducible morphism.
+      Moreover, in this case, each quotient $P_{i_s,m^*_s}/P_{i_{s+1},m^*_{s+1}}$ for $k-r+1\le s\le k$ is preinjective.
   \end{enumerate}
-
-  %\begin{enumerate}
-  %  \item If $\ell\in Q_0(i,-)$, then for any $m\ge h(\ell)$, we have an exact sequence
-  %    \begin{equation}
-  %      \label{eq:thin limb sequence 1}
-  %      \sesM{P_{\ell',m-h(\ell)}}{P_{i,m}}{P_{\ell,m+1}}{f}
-  %    \end{equation}
-  %    with $f=:f_{i,\ell}^m$ a sectional monomorphism.
-  %  \item If $\ell\in Q_0(-,i)$, then for any $m\ge h(\ell)$, we have an exact sequence
-  %    \begin{equation}
-  %      \label{eq:thin source sequence}
-  %      \sesM{P_{\ell',m-h(\ell)}}{P_{i,m}}{P_{\ell,m}}{f}
-  %    \end{equation}
-  %    with $f$ a sectional monomorphism.
-  %\end{enumerate}
 \end{corollary}
 \begin{remark}
-  It may be useful to note that $m'_0-m_0=h(\ell)+h'(\ell)=k+1$.
+  It may be useful to note that $m^*_0-m_0=h(\ell)+h'(\ell)=k+1$.
 \end{remark}
 \begin{proof}
   We establish (1) by simultaneous induction on $k$ and reverse induction on $|r+s|$.
   When $r=k=0$, we must have $s=0$ and $i_0=\ell=\ell'$. 
   Then, for $m\ge0$ with $m_0\ge0$, Lemma~\ref{le:standard AR sequences} gives the desired exact sequence
-  \[\ses{P_{i_0,m_0}}{P_{i,m}}{P_{i_0,m'_0}}.\]
+  \[\ses{P_{i_0,m_0}}{P_{i,m}}{P_{i_0,m^*_0}}.\]
   More generally, when $r=s=k$, for $m\ge0$ with $m_k\ge0$, Lemma~\ref{le:standard AR sequences} gives the desired exact sequence
-  \[\ses{P_{i_k,m_k}}{P_{i,m} \oplus P_{i_{k-1},m_{k-1}+1}}{P_{i_k,m'_k}}.\]
+  \[\ses{P_{i_k,m_k}}{P_{i,m} \oplus P_{i_{k-1},m_{k-1}+1}}{P_{i_k,m^*_k}}.\]
   
   By induction, for $0\le r\le k$ and $k-r\le s\le k$, we have exact sequences 
-  \[\ses{P_{i_r,m_r}}{P_{i,m} \oplus P_{i_{r+s-k},m_{r+s-k}+k-s}}{P_{i_{s+1},m'_{s+1}}}\]
+  \[\ses{P_{i_r,m_r}}{P_{i,m} \oplus P_{i_{r+s-k},m_{r+s-k}+k-s}}{P_{i_{s+1},m^*_{s+1}}}\]
   and
-  \[\ses{P_{i_{r+s-k},m_{r+s-k}+k-s}}{P_{i_{s+1},m'_{s+1}} \oplus P_{i_{r+s-k-1},m_{r+s-k-1}+k+1-s}}{P_{i_s,m'_s}}\]
-  which combine using Lemma~\ref{le:sequence reducing} to give \eqref{eq:limb sequence}.
+  \[\ses{P_{i_{r+s-k},m_{r+s-k}+k-s}}{P_{i_{s+1},m^*_{s+1}} \oplus P_{i_{r+s-k-1},m_{r+s-k-1}+k+1-s}}{P_{i_s,m^*_s}}\]
+  which combine using Corollary~\ref{cor:sequence reducing} to give \eqref{eq:limb sequence} with $m^{**}_{r+s-k-1}=m_{r+s-k-1}+k+1-s$.
+  Similarly, for $0\le r\le k$ and $k-r\le s\le k$, we have by induction exact sequences 
+  \[\ses{ P_{i_r,m_r} }{ P_{i_{r+1},m_{r+1}} \oplus P_{i_{r+s-k-1},m^*_{r+s-k-1}+r-k-1} }{ P_{i_{r+s-k},m^*_{r+s-k}+r-k} }\]
+  and
+  \[\ses{P_{i_{r+1},m_{r+1}}}{P_{i,m} \oplus P_{i_{r+s-k},m^*_{r+s-k}+r-k}}{P_{i_s,m^*_s}}\]
+  which again combine using Corollary~\ref{cor:sequence reducing} to give \eqref{eq:limb sequence} with $m^{**}_{r+s-k-1}=m^*_{r+s-k-1}+r-k-1$.
+
 
   Part (2) is the special case of (1) when $r+s=k$, the statements about sectional morphisms are immediate from the construction of the sequences \eqref{eq:thin limb sequence}.
 
