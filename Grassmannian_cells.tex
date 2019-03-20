@@ -683,8 +683,8 @@ A vertex $i\in Q_0$ which is adjacent to a limb vertex $\ell$ determines a \emph
   }
 \]
 The following establishes the homological structure of a fin, a result well-known to the experts.
-\begin{corollary}
-  \label{cor:limb sequences}
+\begin{proposition}
+  \label{prop:limb sequences}
   Suppose $i\in Q_0$ is adjacent to a limb vertex $\ell$ with associated leaf $\ell'$.
   Enumerate the vertices $Q(\ell)_0:=\{\ell'=i_0,\ldots,i_k=\ell,i_{k+1}=i\}$ of the type $A$ component associated to $\ell$ so that $|Q_1(i_l,i_{l+1})\sqcup Q_1(i_{l+1},i_l)|=1$ for $0\le l\le k$.
   Given $m\ge0$, set $m_{k+1}:=m=:m^*_{k+1}$ and recursively define
@@ -723,12 +723,12 @@ The following establishes the homological structure of a fin, a result well-know
           \[P_{i,m} \onto P_{i_{k-r},m^*_{k-r}} \onto \cdots \onto P_{i_1,m^*_1} \onto P_{i_0,m^*_0}\]
           with each surjection $P_{i_s,m^*_s}\onto P_{i_{s-1},m^*_{s-1}}$ for $1\le s\le k-r$ an irreducible morphism factoring $g_{i_{k-r},i}^{(m)}$.
       \end{itemize}
-    \item Given $m\ge0$, if there exists $0\le r\le k$ with $m_r=0$ and $m_{r-1}=-1$, then there exists a filtration
+    \item Given $m\ge0$, if there exists $0\le r\le k+1$ with $m_r=0$ and $m_{r-1}=-1$, then there exists a filtration
       \[P_{i,m} \subset P_{i_k,m^*_k} \subset P_{i_{k-1},m^*_{k-1}} \subset \cdots \subset P_{i_{k+1-r},m^*_{k+1-r}}\]
-      with each inclusion $P_{i_{s+1},m^*_{s+1}}\into P_{i_s,m^*_s}$ for $k-r+1\le s\le k$ an irreducible morphism.
-      Moreover, in this case, each quotient $P_{i_s,m^*_s}/P_{i_{s+1},m^*_{s+1}}$ for $k-r+1\le s\le k$ is preinjective.
+      with each inclusion $P_{i_{s+1},m^*_{s+1}}\into P_{i_s,m^*_s}$ for $k+1-r\le s\le k$ an irreducible morphism.
+      Moreover, in this case, we have $P_{i_s,m^*_s}/P_{i_t,m^*_t} \cong I_{i_{t-s-1},-m_{t-s-1}-1}$ is preinjective for $k+1-r \le s < t \le k+1$.
   \end{enumerate}
-\end{corollary}
+\end{proposition}
 \begin{remark}
   It may be useful to note that $m^*_0-m_0=h(\ell)+h'(\ell)=k+1$.
 \end{remark}
@@ -755,13 +755,6 @@ The following establishes the homological structure of a fin, a result well-know
   Part (2) is the special case of (1) when $r+s=k$, the statements about sectional morphisms are immediate from the construction of the sequences \eqref{eq:thin limb sequence}.
 
   To see part (3)\dots
-\end{proof}
-
-\begin{lemma}
-  Suppose $i\in Q_0$ is adjacent to a limb vertex $\ell$ with associated leaf $\ell'$.
-  For $m\ge h(\ell)$, the representation $P_{i,m}/P_{\ell',m-h(\ell)}$ is preinjective if and only if 
-\end{lemma}
-\begin{proof}
 \end{proof}
 
 For $i\in Q_0$ and $m\ge0$, given $\ell\in Q_0(-,i)\cup Q_0(i,-)$ we write $\cI_{i,m}^{\{\ell\}}\subset\cI_{i,m}$ for the tuple of subspaces with the only proper subspace at position $\ell$ and the zero subspace in that component.
