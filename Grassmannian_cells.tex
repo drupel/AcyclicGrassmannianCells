@@ -863,7 +863,8 @@ The following result is crucial to the constructions to follow.
   Note that each sectional morphism corresponds to a (non-oriented) path in $Q$.
   
   As before, for $i\in Q_0$, we write $P_{i,m}=\tau^{-m}P_i$, where $P_i$ is the projective cover of the vertex simple $S_i$.  
-  \begin{lemma}
+  \begin{proposition}\label{pro: injective quotients}
+	Let $i_0,i_1,\ldots,i_k$ be the unique path from $i_0$ to $i_k$ in $Q$.
    % \sayT{ statement should be (close to) correct now, proof must be adjusted}
     Consider the unique filtration $P_{i_0,m_0}\subset P_{i_1,m_1}\subset\ldots\subset P_{i_k,m_k}$, where $m_0=0$ and $m_j=m_{j-1}+1$ if $i_j\in Q_0(i_{j-1},-)$ and $m_j=m_{j-1}$ otherwise.
     Then $P_{i_k,m_k}/P_{i_0,m_0}$ is preinjective if and only if $i_1$ is a limb with respect to $i_0$ or if there exists at most one vertex $i_s$ with $s=1,\ldots, k-1$  which is not a limb with $N_{i_s}=\{i_{s-1},i_{s+1}, q\}$ and, additionally, one of the following conditions holds: 
@@ -875,7 +876,7 @@ The following result is crucial to the constructions to follow.
 		\item $s=k-1$ and, furthermore, $i_k$ and $q$ are both leaves.
 		%\item If $s=k$, then $i_1$ is a limb, i.e. $q=i_{k+1}$.
 		\end{enumerate}
-\end{lemma}
+\end{proposition}
 \begin{proof}
   We may without loss of generality assume that that all arrows are oriented towards $i_0$. Then we have $i_j\in Q_0(-,i_{j-1})$ for $j=1,\ldots,k$, $m_k=0$ and
   $$\alpha:=\udim P_{i_k}/P_{i_0}=\sum_{j=1}^{k}i_j.$$
@@ -966,6 +967,42 @@ Assume that $Q$ is wild with $s\geq 3$ and that either $q_1$ is not a leaf or th
 %Let us assume that this quiver is of type $\tilde E_8$. Then $q_1$ 
 
 \end{proof}
+
+\begin{lemma}\sayT{this holds for arbitrary orientations, check statement, do we need this?}
+	Let $i,j,l\in Q_0$ pairwise different such that $i\in p_{j,l}$ and assume that all arrows are oriented towards $i$.  Then $(P_{j,0}\oplus P_{l,0})/P_{i,0}$ is not preinjective and thus $P_{i,m}\to P_{j,m}\oplus P_{l,m}$ is injective for all $m\geq 0$ if and only if $i$ is $3$-valent, $j$ and $k$ are leaves and, moreover, $Q$ is flag quiver.
+\end{lemma}
+\begin{proof}
+If $i$ is the only $3$-valent vertex of a flag quiver and $j$ and $k$ are leaves of $Q$, we have 
+$$\alpha:=\udim (P_{j,0}\oplus P_{l,0})/P_{i,0}=\sum_{q\in p_{l,k}}q.$$
+By successively reflecting at all sinks on this path (i.e. all vertices on $p_{l,k}$ but $i$), the quotient can be transformed into $S_i$ with one ingoing arrow. Proposition \ref{pro:simpleregular} together with the assumptions yields the claim.  
+
+Thus assume that $\alpha$ is preinjective. If $i$ is $n$-valent with $n\geq 4$ or if there exists $k\in N_i\backslash\{j,l\}$ which is not limb, then the same argument shows that $\alpha$ is regular as it is regular as a representation of its support.  Thus we can assume that $i$ is either $2$-valent or $3$-valent with $k\in N_i\backslash\{j,l\}$ being a limb with respect to $i$.
+There is an exact sequence
+$$\ses{P_{j,0}}{(P_{j,0}\oplus P_{l,0})/P_{i,0}}{P_{l,0}/P_{i,0}}.$$
+If the representation on the right hand side is regular, the middle term cannot be preinjective. This shows that both $(i,j)$ and $(i,k)$ cannot be good pairs if the quotient is preinjective.
+
+Let $j_1\in N_i\cap p_{j,i}$ and $k_1\in N_{i}\cap p_{k,i}$. If $j_1$ is not a limb, then $j$ is a leaf and the same holds for $k_1$ and $k$.
+
+\sayT{to be continued}
+
+\end{proof}
+
+
+In the following, we call a pair $(i_0,i_k)\in Q_0\times Q_0$ \emph{good} if the quotient $P_{i_k,m_k}/P_{i_0,0}$ is not preinjective, with $m_k$ as defined in Proposition \ref{pro: injective quotients}.
+
+We collect several sufficient conditions for $(i,j)\in Q_0\times Q_0$ being a good pair which follow directly from Proposition \ref{pro: injective quotients}.
+\begin{corollary}
+Let $(i,j)\in Q_0\times Q_0$.
+\begin{enumerate}
+\item If $j$ is not a limb, then $(i,j)$ is a good pair.
+\item If $j$ is not a leaf and there exist two vertices which are not limbs on the path from $i$ to $j$, then $(i,j)$ is a good pair.
+\item If $i$ is a leaf, then $(i,j)$ is a good pair.
+\item If $i$ and $j$ are limbs which lie on the same type $A$ subquiver, then $(i,j)$ is not good pair.
+
+\end{enumerate}
+\end{corollary}
+
+
 \begin{lemma}
   \label{lem:preinjective quotients}
   \mbox{}
@@ -1050,19 +1087,23 @@ If $j$ is not a limb, then all irreducible maps ending in $P_{j,m}$ are injectiv
 
 For a fixed pair of vertices $i,j\in Q_0$, there exists a unique (non-oriented) path from $i$ to $j$ in $Q$ which we denote by $p_{i,j}$. The number of arrows passed through in non-opposite direction is denoted by $n_{i,j}$. This path induces sectional morphisms
 $$f_{i,j}^m:P_{i,m}\to P_{j,m+n_{i,j}}$$
-where we write $P_{i,j}^m:=P_{j,m+n_{i,j}}$ in the following.
+where we write $P_{i,j}^m:=P_{j,m+n_{i,j}}$ and $P_{m+n_{i,j}}^{i,j}:=P_{i,m}$ in the following.
+
+
 If $|p_{i,j}|=n$, we set $i_0=i$ and $i_n=j$ and recursively define $m_0=m$ and 
 $$m_l=\begin{cases}m_{l-1}\text{ if $i_{l}\to i_{l-1}$}\\m_{l-1}+1\text{ if $i_{l-1}\to i_l$}\end{cases}$$
 for $l=1,\ldots,n-1$. Then we have $$f_{i,j}^m=\prod_{l=0}^{n-1} f_{i_l,i_{l+1}}^{m_l}.$$
 As $\Ext(P_{j,m+n_{i,j}},P_{i,m})=0$, the Happel-Ringel Lemma yields that  $f_{i,j}^m$ is either surjective or injective\sayT{more details on vanishing $\Ext$}. 
 
 
-\begin{corollary}\label{cor:sectional morphisms}
-The morphism $f_{i,j}^m$ is surjective if  $i_1$ is a limb with respect to $i$. If $j$ is not a limb, then $f_{i,j}^m$ is injective.\sayT{this is the general case, conditions on $m$?!}
-\end{corollary}
-\begin{proof} The statement follows from Lemma \ref{lem:irreducible morphisms}. 
+\begin{corollary}\label{cor:sectional morphisms}Let $m\gg 0$. The morphism $f_{i,j}^m$ is injective if and only if $(i,j)$ is a good pair. If $j$ is not a limb, then $f_{i,j}^m$ is injective.
 
-If $i_1$ is a limb (then $i$ is not a limb), $f_{i,j}^m$ is forced to be surjective as $f_{i_0,i_1}^m$ is surjective. If $j$ is not a limb, then $f_{i_{n-1},i_n}^{m_{n-1}}$ is injective which means that $f_{i,j}^m$ is forced to be injective. 
+
+\end{corollary}
+\begin{proof} The statement follows from Proposition \ref{pro: injective quotients}. 
+
+
+%If $i_1$ is a limb (then $i$ is not a limb), $f_{i,j}^m$ is forced to be surjective as $f_{i_0,i_1}^m$ is surjective. If $j$ is not a limb, then $f_{i_{n-1},i_n}^{m_{n-1}}$ is injective which means that $f_{i,j}^m$ is forced to be injective. 
 \end{proof}
 
 For 
@@ -1105,7 +1146,7 @@ For $m\geq h(j)$, the map is surjective if $j$ is a limb with respect to $i$.
 \item Let $j\in Q_0(i,-)$. For $m\geq 1$, the map
 $$\bigoplus_{k\in Q_0(i,-)}P_{k,m}\oplus \bigoplus_{\substack{k\in Q_0(-,i)\\k\neq j}}P_{k,m-1}\to P_{i,m}$$ is injective if $j$ is not a limb with respect to $i$.
 For $m\geq h(j)+1$, the map is surjective if $j$ is a limb with respect to $i$.
-\item Let  $i\in Q_0$ and $I\subset N_i$ with $|I|\leq |N_i|-2$. Then the map
+\item\sayT{assumptions missing} Let  $i\in Q_0$ and $I\subset N_i$ with $|I|\leq |N_i|-2$. Then the map
 $$\bigoplus_{k\in I}P_{k,m_k}\to P_{i,m}$$
 is injective where $m_k=m$ if $k\in Q_0(i,-)$ and $m_k=m-1$ if $k\in Q_0(-,i)$.
 \end{enumerate}
@@ -1116,7 +1157,7 @@ The first two parts of the statement follow directly from Lemmas \ref{lem:preinj
 We may assume that $I=N_{i}\backslash\{j_1,j_2\}$.
 \end{proof}
 
-
+\begin{comment}
 \begin{lemma}Let $i\in Q_0$ be not a limb. The pair $(E_{i,j}^m,I)$ with $I\neq\emptyset$ is reduced if $|I|\leq |N_{p_{i,j}}|-2$ or if $I=|N_{p_{i,j}}|-1$ and $q\in N_{p_{i,j}}\backslash I$ is no limb with respect to $i$. 
 
 \end{lemma}      
@@ -1127,18 +1168,53 @@ $$\udim P_{i,m}< \sum_{k\in N_{p_{i,j}}\backslash I}\udim P_{i,k}^m.$$
 If $|I|=|N_{p_{i,j}}|-1|$, this means that the morphism $P_{i,m}\to P_{q,m}$ is surjective which is the case if and only if $q$ is a limb by Corollary \ref{cor:sectional morphisms}.
 \sayT{to be continued}
 \end{proof}
-\begin{comment}
+
 \begin{lemma}\begin{enumerate}
 \item If $j$ is not a leaf, there exists a vertex $i$ such that the exact sequence $E_{i,j}^m$ is reduced.
 \item If $j$ is a leaf, every representation $P_{j}^m$ appears as an appropriate quotient.
 \end{enumerate}
 \end{lemma}
 \end{comment}
-Assume that $(E_{i,j}^m,I)$ is reduced with $I=\{k_1,\ldots,k_{r+1}\}$. This induces a series of short exact sequences and a filtration of $P_{ij}^{m+1}$:
+For two vertices $p,q\in Q_0$ with $p\in N_q$,  when deleting the unique arrow between $p$ and $q$, we $Q$ splits up into two subquivers which we denote by $K_p$ and $K_q$.
+Write for short $N_{i,j}:=N_{p_{i,j}}$
+\begin{definition} We call a pair $(E_{i,j}^m,I)$ where $I\subset N_{i,j}$ with $N_{i,j}\backslash I=\{q\}$ \emph{strong reduced}\sayT{maybe we should call it reduced} if the following conditions are satisfied:
+\begin{enumerate}
+\item $(E_{i,j}^m,I)$ is reduced;
+\item If $q,j\in N_p$, then $q$ is not a leaf if $j$ is a limb;
+\item If $q\in N_j$, then $K_q$ is not of Dynkin type $D$.
+\end{enumerate}
+\end{definition}
+
+
+
+We call a quiver \emph{$3$-valent} if it is a flag quiver with one $3$-valent vertex.
+
+\begin{proposition}Let $Q$ be a tree quiver which is not $3$-valent. Let $i,j\in Q_0$ with $i\neq j$ such that $(E_{i,j}^m,I)$ is strong reduced with $N_{i,j}\backslash I=\{q\}$. Then there exists a vertex $l\in Q_0$ and $J\subset N_{l,q}$ with $i\in J$ and $N_{l,q}\backslash J=\{t\}$ such that $(E^m_{l,q},J)$ is strong reduced.
+
+\end{proposition}
+
+\begin{proof}\sayT{base cases?!, first try}
+We consider the three cases $q\in N_i,\,q\in N_j$ and $q\in N_{i,j}\backslash (N_i\cup N_j)$. Write $i=s_0,s_1,\ldots, s_r=j$ for the vertices on $p_{i,j}$.
+
+Let $q\in N_i$. Since $(i,q)$ is a good pair, $q$ is not a limb with respect to $i$. Thus there exist $l_1,l_2\in K_q$ such that they $l_1$ and $l_2$ are no limbs with respect to each other (in $Q$). First assume that $l_1\notin N_q$ (or $l_2\notin N_{q}$). Then as $Q$ is not $3$-valent, Proposition \ref{pro: injective quotients} guarantees that $(l_1,l_2)$ is a good pair which means that $(E_{l_1,q}^m, N_{l_1,q}\backslash\{l_2\})$ is reduced. Actually, it is strong reduced as $q$ is not a limb with respect to any vertex. 
+
+If $(K_q)_0=\{q,l_1,l_2\}$, then $K_{l_2}$ is just a point and not of Dynkin type $D$ which means that $(E_{l_1,q}^m, N_{l_1,q}\backslash\{l_2\})$ is also strong reduced.
+
+
+
+Let $q\in N_j$, thus $j$ is not a limb with respect to any vertex. Thus either $q$ is not a limb with respect to $j$ or there exists $t\in N_{j}$ with $t\neq q$. In the second case, $t$ is not a leaf if $q$ is a leaf because $(i,q)$ is a good pair (part (4) of Proposition \ref{pro: injective quotients}). If $q$ is not a limb with respect to $j$, then for $t\in N_q\backslash\{j\}$ arbitrarily, the pair $(s_1,t)$ is good as $t$ is not a limb with respect to $s_1$ and as $K_q$ is not of type $D$. Moreover, $K_t$ is not of type $D$. In summary, $(E_{s_1,q}^m, N_{s_1,q}\backslash\{t\})$ is strong reduced. 
+  
+Finally, let $q\in N_{s_u}$ for some $u\in\{1,\ldots,r-1\}$. If $u=r-1$, then $q$ is not a leaf if $j$ is a limb which also ensures that $K_{s_{u}}$ is not of type $D$ in this case. Then $(E_{s_1,q}^m, N_{s_1,q}\backslash\{j\})$ is strong reduced as $(s_1,j)$ is a good pair as $j$ is not a limb or $q$ not a leaf if $j$ is a limb.\sayT{DT condition}
+
+Thus assume that $u\neq r-1$ and consider $(E_{s_1,q}^m, N_{s_1,q}\backslash\{s_{u+1}\})$.  
+
+\end{proof}
+
+This induces a series of short exact sequences and a filtration of $P_{ij}^{m+1}$:
 \begin{equation}\label{ses}\ses{P_{i,k_l}^m}{P_{i,j}^{m,I_{l-1}}}{P_{i,j}^{m,I_l}}\end{equation}
 where $I_l=\{k_1,\ldots,k_l\}$. By Lemma \ref{le:quotients}, we have
-$$P_{i,j}^{m,I_{r}}\cong P_{i,k_{r+1}}^m/P_{i,j}^m.$$
-If we choose $k_{r+1}$ in such a way that $j\in N_{p_{i,k_{r+1}}}$, this shows that $P_{i,j}^{m,I}$ appears as a quotient of induced by a filtration of $P_{i,k_{r+1}}^m\cong P_{k_{r+1},m'}$ for an appropriate $m'$. Here we can take any path $p$ ending in $k_{r+1}$ with $j\in N_p$ which clearly exists as $j\neq k_{r+1}$.
+$$P_{i,j}^{m,I_{r}}\cong P_{i,k_{r+1}}^m/P_{i,m}.$$
+If we choose $k_{r+1}$ in such a way that $j\in N_{p_{i,k_{r+1}}}$, this shows that $P_{i,j}^{m,I}$ appears as a quotient induced by a filtration of $P_{i,k_{r+1}}^m\cong P_{k_{r+1},m'}$ for an appropriate $m'$. 
 
 
 Every short exact sequence (\ref{ses}) induces a morphism $P_{i,k_l}^m\to \tau  P_{i,j}^{m,I_l}$ and its $\tau^{-1}$-translate which we are interested in. In particular, we need to know its kernel and its image.
