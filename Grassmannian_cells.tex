@@ -350,11 +350,14 @@ These representations are constructed inductively via $P_i=\Sigma_1\cdots\Sigma_
 %\begin{lemma}
 %  For $i,j\in Q_0$, we have $\dim\Irr(P_j,P_i)=b_{ij}$.
 %\end{lemma}
-The \emph{preprojective} (resp.~\emph{preinjective}) representations $P_{i,m}$ (resp.~$I_{i,m}$) for $i\in Q_0$ and $m\in\ZZ_{\ge0}$ are defined inductively by
+The \emph{preprojective} (resp.~\emph{preinjective}) representations $P_{i,m}$ (resp.~$I_{i,m}$) for $i\in Q_0$ and $m\in\ZZ_{\ge0}$ (resp. $m\in\ZZ_{\le-1}$) are defined inductively by
 \[
-  P_{i,0}:=P_i,\qquad P_{i,m+1}:=\tau^{-1} P_{i,m},\qquad I_{i,0}:=I_i,\qquad I_{i,m+1}:=\tau I_{i,m}.
+  P_{i,0}:=P_i,\qquad P_{i,m+1}:=\tau^{-1} P_{i,m},\qquad I_{i,-1}:=I_i,\qquad I_{i,m-1}:=\tau I_{i,m}.
 \]
 More generally, we say a representation $M\in\rep Q$ is \emph{preprojective} (resp.~\emph{preinjective}) if $\tau^r M=0$ (resp. if~$\tau^{-r} M=0$) for some $r>0$.
+\begin{remark}
+  The choice of indexing for preprojective and preinjective indecomposables mirrors the structure of the AR quiver for the derived category of $\rep Q$.
+\end{remark}
 
 \begin{lemma}
   \label{le:preprojective ext groups}
@@ -689,7 +692,7 @@ The following establishes the homological structure of a fin, a result well-know
 \begin{proposition}
   \label{prop:limb sequences}
   Suppose $i\in Q_0$ is adjacent to a limb vertex $\ell$ with associated leaf $\ell'$.
-  Enumerate the vertices $Q(\ell)_0:=\{\ell'=i_0,\ldots,i_k=\ell,i_{k+1}=i\}$ of the type $A$ component associated to $\ell$ so that $|Q_1(i_l,i_{l+1})\sqcup Q_1(i_{l+1},i_l)|=1$ for $0\le l\le k$.
+  Enumerate the vertices $Q(\ell)_0:=\{i_0=\ell',\ldots,i_k=\ell,i_{k+1}=i\}$ of the type $A$ component associated to $\ell$ so that $|Q_1(i_l,i_{l+1})\sqcup Q_1(i_{l+1},i_l)|=1$ for $0\le l\le k$.
   Given $m\ge0$, set $m_{k+1}:=m=:m^*_{k+1}$ and recursively define
   \[
     m_{r-1}:=
@@ -726,10 +729,12 @@ The following establishes the homological structure of a fin, a result well-know
           \[P_{i,m} \onto P_{i_{k-r},m^*_{k-r}} \onto \cdots \onto P_{i_1,m^*_1} \onto P_{i_0,m^*_0}\]
           with each surjection $P_{i_s,m^*_s}\onto P_{i_{s-1},m^*_{s-1}}$ for $1\le s\le k-r$ an irreducible morphism factoring $g_{i_{k-r},i}^{(m)}$.
       \end{itemize}
-    \item Given $m\ge0$, if there exists $0\le r\le k+1$ with $m_r=0$ and $m_{r-1}=-1$, then there exists a filtration
-      \[P_{i,m} \subset P_{i_k,m^*_k} \subset P_{i_{k-1},m^*_{k-1}} \subset \cdots \subset P_{i_{k+1-r},m^*_{k+1-r}}\]
-      with each inclusion $P_{i_{s+1},m^*_{s+1}}\into P_{i_s,m^*_s}$ for $k+1-r\le s\le k$ an irreducible morphism.
-      Moreover, in this case, we have $P_{i_s,m^*_s}/P_{i_t,m^*_t} \cong I_{i_{t-s-1},-m_{t-s-1}-1}$ is preinjective for $k+1-r \le s < t \le k+1$.
+    \item Given $m\ge0$, if there exists $0\le r\le k+1$ with $m_{r+1}=0$ and $m_r=-1$, then each sectional morphism $P_{i,m}\to P_{i_s,m^*_s}$ is injective for $k-r\le s\le k$ and in this case there is a short exact sequence
+      \[\ses{P_{i,m}}{P_{i_s,m^*_s}}{I_{i_{k-s},m_{k-s}}}.\]
+      %there exists a filtration
+      %\[P_{i,m} \subset P_{i_k,m^*_k} \subset P_{i_{k-1},m^*_{k-1}} \subset \cdots \subset P_{i_{k-r},m^*_{k-r}}\]
+      %with each inclusion $P_{i_{s+1},m^*_{s+1}}\into P_{i_s,m^*_s}$ for $k+1-r\le s\le k$ an irreducible morphism.
+      %Moreover, in this case, we have $P_{i_s,m^*_s}/P_{i_t,m^*_t} \cong I_{i_{t-s-1},-m_{t-s-1}-1}$ is preinjective for $k+1-r \le s < t \le k+1$.
   \end{enumerate}
 \end{proposition}
 \begin{remark}
@@ -790,12 +795,27 @@ The results above fully describe the structure of limbs we will need when $|L_-\
   The following hold.
   
   \begin{enumerate}
-    \item If $m_r\ge0$, there exists a filtration
-      \[P_{i_r,m_r} \subset P_{i_{r+1},m_{r+1}} \subset \cdots \subset P_{i_k,m_k} \subset P_{i'_{k'},{m'}^*_{\! k'}}\]
-      and, if $m'_{r'}\ge0$, there exists a filtration
-      \[P_{i'_{r'},m'_{r'}} \subset P_{i'_{r'+1},m'_{r'+1}} \subset \cdots \subset P_{i'_{k'},m'_{k'}} \subset P_{i_k,m^*_k}.\]
+    \item Suppose $m_r\ge0$ and $m'_{r'}\ge0$.
+      \begin{enumerate}
+        \item There exists a filtration
+          \[P_{i_r,m_r} \subset P_{i_{r+1},m_{r+1}} \subset \cdots \subset P_{i_k,m_k} \subset P_{i'_{k'-r'},{m'}^*_{\! k'-r'}}\]
+          with each inclusion $P_{i_s,m_s}\into P_{i'_{k'-r'},{m'}^*_{\! k'-r'}}$ for $r\le s\le k$ factoring through the projection ${g'}^{(m)}_{i'_{k'-r'},i'_{s'}}:P_{i'_{s'},{m'}^*_{\! s'}}\onto P_{i'_{k'-r'},{m'}^*_{\! k'-r'}}$ for $r'\le s'\le k'$.
+        \item There exists a filtration
+          \[P_{i'_{r'},m'_{r'}} \subset P_{i'_{r'+1},m'_{r'+1}} \subset \cdots \subset P_{i'_{k'},m'_{k'}} \subset P_{i_{k-r},m^*_{k-r}}.\]
+      \end{enumerate}
     \item 
     \item If $m_r\ge0$ and $m'_{r'}\ge0$, then there is an isomorphism $P_{i_{k-r},m^*_{k-r}}/P_{i'_{r'},m'_{r'}} \cong P_{i'_{k'-r'},{m'}^*_{\! k'-r'}}/P_{i_r,m_r}$.
+    \item Suppose $|Q_1(i,-)\sqcup Q_1(-,i)|=3$ and write $Q_0(i,-)\sqcup Q_0(-,i)=\{\ell,\ell',q\}$.
+      Then
+      \begin{enumerate}
+        \item If $q$ is a leaf and $m_0\ge0$, then there exists an exact sequence
+          \[\ses{P_{i_0,m_0}}{P_{i'_{k'},m'_{k'}}}{P_{q,m^*(q)+1}},\]
+          where there exists an irreducible morphism $P_{i,m}\to P_{q,m^*(q)}$.
+        \item 
+          If $q$ is a leaf and $m^*(q)\ge1$, then there exists an exact sequence
+          \[\ses{P_{q,m^*(q)-1}}{P_{i'_{k'},m'_{k'}+1}}{P_{i_0,m^*_0+1}},\]
+          where there exists an irreducible morphism $P_{i,m}\onto P_{q,m^*(q)}$.
+      \end{enumerate}
     \item Suppose $|Q_1(i,-)\sqcup Q_1(-,i)|\ge4$.
       Then
       \begin{enumerate}
@@ -1319,13 +1339,12 @@ Thus assume that $u\neq r-1$ and consider $(E_{s_1,q}^m, N_{s_1,q}\backslash\{s_
 
 This induces a series of short exact sequences and a filtration of $P_{ij}^{m+1}$:
 \begin{equation}\label{ses}\ses{P_{i,k_l}^m}{P_{i,j}^{m,I_{l-1}}}{P_{i,j}^{m,I_l}}\end{equation}
-=======
+
 Assume that $(\xi_{i,j}^m,I)$ is reduced with $I=\{k_1,\ldots,k_{r+1}\}$. This induces a series of short exact sequences and a filtration of $P_{ij}^{m+1}$:
 \begin{equation}
   \label{ses}
   \ses{P_{i,k_l}^m}{P_{i,j}^{m,I_{l-1}}}{P_{i,j}^{m,I_l}}
 \end{equation}
->>>>>>> origin/master
 where $I_l=\{k_1,\ldots,k_l\}$. By Lemma \ref{le:quotients}, we have
 $$P_{i,j}^{m,I_{r}}\cong P_{i,k_{r+1}}^m/P_{i,m}.$$
 If we choose $k_{r+1}$ in such a way that $j\in N_{p_{i,k_{r+1}}}$, this shows that $P_{i,j}^{m,I}$ appears as a quotient induced by a filtration of $P_{i,k_{r+1}}^m\cong P_{k_{r+1},m'}$ for an appropriate $m'$. 
