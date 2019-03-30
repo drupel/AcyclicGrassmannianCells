@@ -678,8 +678,8 @@ A vertex $i\in Q_0$ which is adjacent to a limb vertex $\ell$ determines a \emph
 \begin{figure}
   \[
     \xymatrixcolsep{0.6pc}\xymatrix{
-      & & & & & P_{i,m} \ar[dr] & & P_{i,m+1} \ar[dr] & & \cdots \ar[dr] \\
-      & & & & P_{i_k,m_k} \ar[ur]\ar[dr] & & P_{i_k,m^*_k} \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & \cdots \\
+      & & & & & P_{i,m} \ar[dr]\ar[r] & \cdots \ar[r] & P_{i,m+1} \ar[dr]\ar[r] & \cdots \ar[r] & \cdots \ar[dr]\ar[r] & \cdots \\
+      & & & & P_{i_t,m_t} \ar[ur]\ar[dr] & & P_{i_t,m^*_t} \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & \cdots \\
       & & & \cdots \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] \\
       & & P_{i_2,m_2} \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & P_{i_2,m^*_2} \ar[dr]\ar[ur] & & \cdots \\
       & P_{i_1,m_1} \ar[ur]\ar[dr] & & P_{i_1,m_1+1} \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & P_{i_1,m^*_1-1} \ar[ur]\ar[dr] & & P_{i_1,m^*_1} \ar[ur]\ar[dr]\\
@@ -692,8 +692,8 @@ The following establishes the homological structure of a fin, a result well-know
 \begin{proposition}
   \label{prop:limb sequences}
   Suppose $i\in Q_0$ is adjacent to a limb vertex $\ell$ with associated leaf $\ell'$.
-  Enumerate the vertices $Q(\ell)_0:=\{i_0=\ell',\ldots,i_k=\ell,i_{k+1}=i\}$ of the type $A$ component associated to $\ell$ so that $|Q_1(i_l,i_{l+1})\sqcup Q_1(i_{l+1},i_l)|=1$ for $0\le l\le k$.
-  Given $m\ge0$, set $m_{k+1}:=m=:m^*_{k+1}$ and recursively define
+  Enumerate the vertices $Q(\ell)_0:=\{i_0=\ell',\ldots,i_t=\ell,i_{t+1}=i\}$ of the type $A$ component associated to $\ell$ so that $|Q_1(i_l,i_{l+1})\sqcup Q_1(i_{l+1},i_l)|=1$ for $0\le l\le t$.
+  Given $m\ge0$, set $m_{t+1}:=m=:m^*_{t+1}$ and recursively define
   \[
     m_{r-1}:=
     \begin{cases}
@@ -708,59 +708,59 @@ The following establishes the homological structure of a fin, a result well-know
     \end{cases}
   \]
   \begin{enumerate}
-    \item Given $m\ge0$, $0\le r\le k$, and $k-r\le s\le k$, if $m_r\ge0$, then we have an exact sequence
+    \item Given $m\ge0$, $0\le r\le t$, and $t-r\le s\le t$, if $m_r\ge0$, then we have an exact sequence
       \begin{equation}
         \label{eq:limb sequence}
-        \ses{P_{i_r,m_r}}{P_{i,m} \oplus P_{i_{r+s-k-1},m^{**}_{r+s-k-1}}}{P_{i_s,m^*_s}},
+        \ses{P_{i_r,m_r}}{P_{i,m} \oplus P_{i_{r+s-t-1},m^{**}_{r+s-t-1}}}{P_{i_s,m^*_s}},
       \end{equation}
-      where $m^{**}_{r+s-k-1}=m_{r+s-k-1}+k+1-s=m^*_{r+s-k-1}+r-k-1$ and the second summand in the middle is omitted when $r+s=k$.
-    \item Given $m\ge0$ and $0\le r\le k$, if $m_r\ge0$, then we have an exact sequence
+      where $m^{**}_{r+s-t-1}=m_{r+s-t-1}+(t+1-s)=m^*_{r+s-t-1}-(t+1-r)$ and the second summand in the middle is omitted when $r+s=t$.
+    \item Given $m\ge0$ and $0\le r\le t$, if $m_r\ge0$, then we have an exact sequence
       \begin{equation}
         \label{eq:thin limb sequence}
-        \Ses{P_{i_r,m_r}}{P_{i,m}}{P_{i_{k-r},m^*_{k-r}}}{f}{g}.
+        \Ses{P_{i_r,m_r}}{P_{i,m}}{P_{i_{t-r},m^*_{t-r}}}{f}{g}.
       \end{equation}
-      Moreover, $f=:f_{i,i_r}^{(m)}$ is a sectional monomorphism and $g=:g_{i_{k-r},i}^{(m)}$ is a sectional epimorphism.
+      Moreover, $f=:f_{i,i_r}^{(m)}$ is a sectional monomorphism and $g=:g_{i_{t-r},i}^{(m)}$ is a sectional epimorphism.
       That is, if $m_r\ge0$, then 
       \begin{itemize}
         \item there exists a filtration
-          \[P_{i_r,m_r} \subset P_{i_{r+1},m_{r+1}} \subset \cdots \subset P_{i_k,m_k} \subset P_{i,m}\]
-          with each inclusion $P_{i_s,m_s}\into P_{i_{s+1},m_{s+1}}$ for $r\le s\le k$ an irreducible morphism factoring $f_{i,i_r}^{(m)}$;
+          \[P_{i_r,m_r} \subset P_{i_{r+1},m_{r+1}} \subset \cdots \subset P_{i_t,m_t} \subset P_{i,m}\]
+          with each inclusion $P_{i_s,m_s}\into P_{i_{s+1},m_{s+1}}$ for $r\le s\le t$ an irreducible morphism factoring $f_{i,i_r}^{(m)}$;
         \item there exists a string of epimorphisms
-          \[P_{i,m} \onto P_{i_{k-r},m^*_{k-r}} \onto \cdots \onto P_{i_1,m^*_1} \onto P_{i_0,m^*_0}\]
-          with each surjection $P_{i_s,m^*_s}\onto P_{i_{s-1},m^*_{s-1}}$ for $1\le s\le k-r$ an irreducible morphism factoring $g_{i_{k-r},i}^{(m)}$.
+          \[P_{i,m} \onto P_{i_{t-r},m^*_{t-r}} \onto \cdots \onto P_{i_1,m^*_1} \onto P_{i_0,m^*_0}\]
+          with each surjection $P_{i_s,m^*_s}\onto P_{i_{s-1},m^*_{s-1}}$ for $1\le s\le t-r$ an irreducible morphism factoring $g_{i_{t-r},i}^{(m)}$.
       \end{itemize}
-    \item Given $m\ge0$, if there exists $0\le r\le k+1$ with $m_{r+1}=0$ and $m_r=-1$, then each sectional morphism $P_{i,m}\to P_{i_s,m^*_s}$ is injective for $k-r\le s\le k$ and in this case there is a short exact sequence
-      \[\ses{P_{i,m}}{P_{i_s,m^*_s}}{I_{i_{k-s},m_{k-s}}}.\]
+    \item Given $m\ge0$, if there exists $0\le r\le t+1$ with $m_{r+1}=0$ and $m_r=-1$, then each sectional morphism $P_{i,m}\to P_{i_s,m^*_s}$ is injective for $t-r\le s\le t$ and in this case there is a short exact sequence
+      \[\ses{P_{i,m}}{P_{i_s,m^*_s}}{I_{i_{t-s},m_{t-s}}}.\]
       %there exists a filtration
-      %\[P_{i,m} \subset P_{i_k,m^*_k} \subset P_{i_{k-1},m^*_{k-1}} \subset \cdots \subset P_{i_{k-r},m^*_{k-r}}\]
-      %with each inclusion $P_{i_{s+1},m^*_{s+1}}\into P_{i_s,m^*_s}$ for $k+1-r\le s\le k$ an irreducible morphism.
-      %Moreover, in this case, we have $P_{i_s,m^*_s}/P_{i_t,m^*_t} \cong I_{i_{t-s-1},-m_{t-s-1}-1}$ is preinjective for $k+1-r \le s < t \le k+1$.
+      %\[P_{i,m} \subset P_{i_t,m^*_t} \subset P_{i_{t-1},m^*_{t-1}} \subset \cdots \subset P_{i_{t-r},m^*_{t-r}}\]
+      %with each inclusion $P_{i_{s+1},m^*_{s+1}}\into P_{i_s,m^*_s}$ for $t+1-r\le s\le t$ an irreducible morphism.
+      %Moreover, in this case, we have $P_{i_s,m^*_s}/P_{i_t,m^*_t} \cong I_{i_{t-s-1},-m_{t-s-1}-1}$ is preinjective for $t+1-r \le s < t \le t+1$.
   \end{enumerate}
 \end{proposition}
 \begin{remark}
-  It may be useful to note that $m^*_0-m_0=h(\ell)+h'(\ell)=k+1$.
+  It may be useful to note that $m^*_0-m_0=h(\ell)+h'(\ell)=t+1$.
 \end{remark}
 \begin{proof}
-  We establish (1) by simultaneous induction on $k$ and reverse induction on $|r+s|$.
-  When $r=k=0$, we must have $s=0$ and $i_0=\ell=\ell'$. 
+  We establish (1) by simultaneous induction on $t$ and reverse induction on $|r+s|$.
+  When $r=t=0$, we must have $s=0$ and $i_0=\ell=\ell'$. 
   Then, for $m\ge0$ with $m_0\ge0$, Lemma~\ref{le:standard AR sequences} gives the desired exact sequence
   \[\ses{P_{i_0,m_0}}{P_{i,m}}{P_{i_0,m^*_0}}.\]
-  More generally, when $r=s=k$, for $m\ge0$ with $m_k\ge0$, Lemma~\ref{le:standard AR sequences} gives the desired exact sequence
-  \[\ses{P_{i_k,m_k}}{P_{i,m} \oplus P_{i_{k-1},m_{k-1}+1}}{P_{i_k,m^*_k}}.\]
+  More generally, when $r=s=t$, for $m\ge0$ with $m_t\ge0$, Lemma~\ref{le:standard AR sequences} gives the desired exact sequence
+  \[\ses{P_{i_t,m_t}}{P_{i,m} \oplus P_{i_{t-1},m_{t-1}+1}}{P_{i_t,m^*_t}}.\]
   
-  By induction, for $0\le r\le k$ and $k-r\le s\le k$, we have exact sequences 
-  \[\ses{P_{i_r,m_r}}{P_{i,m} \oplus P_{i_{r+s-k},m_{r+s-k}+k-s}}{P_{i_{s+1},m^*_{s+1}}}\]
+  By induction, for $0\le r\le t$ and $t-r\le s\le t$, we have exact sequences 
+  \[\ses{P_{i_r,m_r}}{P_{i,m} \oplus P_{i_{r+s-t},m_{r+s-t}+(t-s)}}{P_{i_{s+1},m^*_{s+1}}}\]
   and
-  \[\ses{P_{i_{r+s-k},m_{r+s-k}+k-s}}{P_{i_{s+1},m^*_{s+1}} \oplus P_{i_{r+s-k-1},m_{r+s-k-1}+k+1-s}}{P_{i_s,m^*_s}}\]
-  which combine using Corollary~\ref{cor:sequence reducing} to give \eqref{eq:limb sequence} with $m^{**}_{r+s-k-1}=m_{r+s-k-1}+k+1-s$.
-  Similarly, for $0\le r\le k$ and $k-r\le s\le k$, we have by induction exact sequences 
-  \[\ses{ P_{i_r,m_r} }{ P_{i_{r+1},m_{r+1}} \oplus P_{i_{r+s-k-1},m^*_{r+s-k-1}+r-k-1} }{ P_{i_{r+s-k},m^*_{r+s-k}+r-k} }\]
+  \[\ses{P_{i_{r+s-t},m_{r+s-t}+(t-s)}}{P_{i_{s+1},m^*_{s+1}} \oplus P_{i_{r+s-t-1},m_{r+s-t-1}+(t+1-s)}}{P_{i_s,m^*_s}}\]
+  which combine using Corollary~\ref{cor:sequence reducing} to give \eqref{eq:limb sequence} with $m^{**}_{r+s-t-1}=m_{r+s-t-1}+(t+1-s)$.
+  Similarly, for $0\le r\le t$ and $t-r\le s\le t$, we have by induction exact sequences 
+  \[\ses{ P_{i_r,m_r} }{ P_{i_{r+1},m_{r+1}} \oplus P_{i_{r+s-t-1},m^*_{r+s-t-1}+(t+1-r)} }{ P_{i_{r+s-t},m^*_{r+s-t}+(t-r)} }\]
   and
-  \[\ses{P_{i_{r+1},m_{r+1}}}{P_{i,m} \oplus P_{i_{r+s-k},m^*_{r+s-k}+r-k}}{P_{i_s,m^*_s}}\]
-  which again combine using Corollary~\ref{cor:sequence reducing} to give \eqref{eq:limb sequence} with $m^{**}_{r+s-k-1}=m^*_{r+s-k-1}+r-k-1$.
+  \[\ses{P_{i_{r+1},m_{r+1}}}{P_{i,m} \oplus P_{i_{r+s-t},m^*_{r+s-t}+(t-r)}}{P_{i_s,m^*_s}}\]
+  which again combine using Corollary~\ref{cor:sequence reducing} to give \eqref{eq:limb sequence} with $m^{**}_{r+s-t-1}=m^*_{r+s-t-1}-(t+1-r)$.
 
 
-  Part (2) is the special case of (1) when $r+s=k$, the statements about sectional morphisms are immediate from the construction of the sequences \eqref{eq:thin limb sequence}.
+  Part (2) is the special case of (1) when $r+s=t$, the statements about sectional morphisms are immediate from the construction of the sequences \eqref{eq:thin limb sequence}.
 
   To see part (3)\dots
   \sayD{I can see this most clearly using the derived category, is there a clean way to not use it?}
@@ -776,9 +776,9 @@ The results above fully describe the structure of limbs we will need when $|L_-\
       & P_{i'_1,m'_1} \ar[ur]\ar[dr] & & P_{i'_1,m'_1+1} \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & P_{i'_1,{m'}^*_{\! 1}-1} \ar[ur]\ar[dr] & & P_{i'_1,{m'}^*_{\! 1}} \ar[ur]\ar[dr]\\
       & & P_{i'_2,m'_2} \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & P_{i'_2,{m'}^*_{\! 2}} \ar[dr]\ar[ur] & & \cdots \\
       & & & \cdots \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] \\
-      & & & & P_{i'_{k'},m'_{k'}} \ar[ur]\ar[dr] & & P_{i'_{k'},{m'}^*_{\! k'}} \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & \cdots \\
+      & & & & P_{i'_{t'},m'_{t'}} \ar[ur]\ar[dr] & & P_{i'_{t'},{m'}^*_{\! t'}} \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & \cdots \\
       & & & & & P_{i,m} \ar[ur]\ar[dr]\ar[r] & \cdots \ar[r] & P_{i,m+1} \ar[ur]\ar[dr]\ar[r] & \cdots \ar[r] & \cdots \ar[ur]\ar[dr]\ar[r] & \cdots \\
-      & & & & P_{i_k,m_k} \ar[ur]\ar[dr] & & P_{i_k,m^*_k} \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & \cdots \\
+      & & & & P_{i_t,m_t} \ar[ur]\ar[dr] & & P_{i_t,m^*_t} \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & \cdots \\
       & & & \cdots \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] \\
       & & P_{i_2,m_2} \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & P_{i_2,m^*_2} \ar[dr]\ar[ur] & & \cdots \\
       & P_{i_1,m_1} \ar[ur]\ar[dr] & & P_{i_1,m_1+1} \ar[ur]\ar[dr] & & \cdots \ar[ur]\ar[dr] & & P_{i_1,m^*_1-1} \ar[ur]\ar[dr] & & P_{i_1,m^*_1} \ar[ur]\ar[dr]\\
@@ -789,58 +789,108 @@ The results above fully describe the structure of limbs we will need when $|L_-\
 \end{figure}
 
 \begin{proposition}
-  For $i\in Q_0$, consider a subset $L=\{\ell,\ell'\}\subset L_-\sqcup L_+$.
-  Write $Q(\ell)_0=\{i_0,i_1\ldots,i_k=\ell,i_{k+1}=i\}$ and $Q(\ell')_0=\{i'_0,i'_1,\ldots,i'_{k'}=\ell',i'_{k'+1}=i\}$ for the vertices of the associated limb quivers $Q(\ell)$ and $Q(\ell')$.
-  For $m\ge0$, define $m_r$, $m^*_r$ for $0\le r\le k$ (resp. $m'_r$, ${m'}^*_{\! r}$ for $0\le r'\le k'$) as above for the quiver $Q(\ell)$ (resp. $Q(\ell')$).
+  For $i\in Q_0$, consider a subset $L=\{\ell,\ell'\}\subset L_-\sqcup L_+$ with $|L|=2$.
+  Write 
+  \[Q(\ell)_0=\{i_0,i_1\ldots,i_t=\ell,i_{t+1}=i\} \qquad \text{and} \qquad Q(\ell')_0=\{i'_0,i'_1,\ldots,i'_{t'}=\ell',i'_{t'+1}=i\}\]
+  for the vertices of the associated limb quivers $Q(\ell)$ and $Q(\ell')$.
+  For $m\ge0$, define $m_r$, $m^*_r$ for $0\le r\le t$ (resp. $m'_{r'}$, ${m'}^*_{\! r'}$ for $0\le r'\le t'$) as above for the quiver $Q(\ell)$ (resp. $Q(\ell')$).
   The following hold.
   
   \begin{enumerate}
-    \item Suppose $m_r\ge0$ and $m'_{r'}\ge0$.
-      \begin{enumerate}
-        \item There exists a filtration
-          \[P_{i_r,m_r} \subset P_{i_{r+1},m_{r+1}} \subset \cdots \subset P_{i_k,m_k} \subset P_{i'_{k'-r'},{m'}^*_{\! k'-r'}}\]
-          with each inclusion $P_{i_s,m_s}\into P_{i'_{k'-r'},{m'}^*_{\! k'-r'}}$ for $r\le s\le k$ factoring through the projection ${g'}^{(m)}_{i'_{k'-r'},i'_{s'}}:P_{i'_{s'},{m'}^*_{\! s'}}\onto P_{i'_{k'-r'},{m'}^*_{\! k'-r'}}$ for $r'\le s'\le k'$.
-        \item There exists a filtration
-          \[P_{i'_{r'},m'_{r'}} \subset P_{i'_{r'+1},m'_{r'+1}} \subset \cdots \subset P_{i'_{k'},m'_{k'}} \subset P_{i_{k-r},m^*_{k-r}}.\]
-      \end{enumerate}
-    \item 
-    \item If $m_r\ge0$ and $m'_{r'}\ge0$, then there is an isomorphism $P_{i_{k-r},m^*_{k-r}}/P_{i'_{r'},m'_{r'}} \cong P_{i'_{k'-r'},{m'}^*_{\! k'-r'}}/P_{i_r,m_r}$.
-    \item Suppose $|Q_1(i,-)\sqcup Q_1(-,i)|=3$ and write $Q_0(i,-)\sqcup Q_0(-,i)=\{\ell,\ell',q\}$.
+    \item If $m_r\ge0$ and $m'_{r'}\ge0$, then there exists a filtration
+      \[P_{i_r,m_r} \subset P_{i_{r+1},m_{r+1}} \subset \cdots \subset P_{i_t,m_t} \subset P_{i'_{t'-r'},{m'}^*_{\! t'-r'}}\]
+      with each inclusion $P_{i_s,m_s}\into P_{i'_{t'-r'},{m'}^*_{\! t'-r'}}$ for $r\le s\le t$ factoring through the projection ${g'}^{(m)}_{i'_{t'-r'},i'_{s'}}:P_{i'_{s'},{m'}^*_{\! s'}}\onto P_{i'_{t'-r'},{m'}^*_{\! t'-r'}}$ for $r'\le s'\le t'$.
+      In this case, there is an isomorphism $P_{i_{t-r},m^*_{t-r}}/P_{i'_{r'},m'_{r'}} \cong P_{i'_{t'-r'},{m'}^*_{\! t'-r'}}/P_{i_r,m_r}$.
+    \item Suppose $|Q_1(i,-)\sqcup Q_1(-,i)|=3$ with $Q_0(i,-)\sqcup Q_0(-,i)=\{\ell,\ell',\ell''\}$.
+      Write $Q(\ell'')$ for the longest type $A$ subquiver of $Q$ containing $i$ and $\ell''$ (i.e. each non-leaf vertex of $Q(\ell'')$ has only two adjacent arrows in $Q$ itself).
+      Enumerate the vertices of $Q(\ell'')$ as $Q(\ell'')_0=\{i''_0,i''_1,\ldots,i''_{t''}=\ell'',i''_{t''+1}=i\}$ and as above define $m''_{r''}$, ${m''}^*_{\! r''}$ for $0\le r''\le t''$.
       Then
       \begin{enumerate}
-        \item If $q$ is a leaf and $m_0\ge0$, then there exists an exact sequence
-          \[\ses{P_{i_0,m_0}}{P_{i'_{k'},m'_{k'}}}{P_{q,m^*(q)+1}},\]
-          where there exists an irreducible morphism $P_{i,m}\to P_{q,m^*(q)}$.
-        \item 
-          If $q$ is a leaf and $m^*(q)\ge1$, then there exists an exact sequence
-          \[\ses{P_{q,m^*(q)-1}}{P_{i'_{k'},m'_{k'}+1}}{P_{i_0,m^*_0+1}},\]
-          where there exists an irreducible morphism $P_{i,m}\onto P_{q,m^*(q)}$.
+        \item \mbox{}
+          \begin{enumerate}
+            \item If $m_0\ge0$ (resp. $m'_0\ge0$), then there exists a short exact sequence
+              \[\ses{P_{i_0,m_0}}{P_{i''_{t''},{m''}^*_{\! t''}}}{P_{i'_0,{m'}^*_{\! 0}+1}}\]
+              (resp. a short exact sequence
+              \[\ses{P_{i'_0,m'_0}}{P_{i''_{t''},{m''}^*_{\! t''}}}{P_{i_0,m^*_0+1}}\text{).}\]
+            \item If $m_0<0$ (resp. $m'_0<0$), then there exists a short exact sequence
+              \[\ses{P_{i''_{t''},{m''}^*_{\! t''}}}{P_{i'_0,{m'}^*_{\! 0}+1}}{I_{i_0,m_0}}\]
+              (resp. a short exact sequence
+              \[\ses{P_{i''_{t''},{m''}^*_{\! t''}}}{P_{i_0,m^*_0+1}}{I_{i'_0,m'_0}}\text{).}\]
+          \end{enumerate}
+        \item \mbox{}
+          \begin{enumerate}
+            \item If $m_0\ge0$, $t'=0$, and $t''>0$, then there exists a short exact sequence
+              \[\ses{P_{i_0,m_0}}{P_{i''_{t''-1},{m''}^*_{\! t''-1}}}{P_{i_0,m^*_0+2}}.\]
+            \item If $m_0<0$, $t'=0$, and $t''>0$, then there exists a short exact sequence
+              \[\ses{P_{i''_{t''-1},{m''}^*_{\! t''-1}}}{P_{i_0,m^*_0+2}}{I_{i_0,m_0}}.\]
+          \end{enumerate}
+        \item Suppose $t=t'=0$ (i.e. $\ell$ and $\ell'$ are both leaves).
+          \begin{enumerate}
+            \item If $m_0\ge0$ (resp. $m'_0\ge0$), then for $0\le r''\le t''$ with $t''-r''$ even there exists a short exact sequence
+              \[\ses{P_{i_0,m_0}}{P_{i''_{r''},{m''}^*_{\! r''}}}{P_{i'_0,{m'}^*_{\! 0}+t''+1-r''}}\]
+              (resp. a short exact sequence
+              \[\ses{P_{i'_0,m'_0}}{P_{i''_{r''},{m''}^*_{\! r''}}}{P_{i_0,m^*_0+t''+1-r''}}\text{).}\]
+            \item If $m_0<0$ (resp. $m'_0<0$), then for $0\le r''\le t''$ with $t''-r''$ even there exists a short exact sequence
+              \[\ses{P_{i''_{r''},{m''}^*_{\! r''}}}{P_{i'_0,{m'}^*_{\! 0}+t''+1-r''}}{I_{i_0,m_0}}\]
+              (resp. a short exact sequence
+              \[\ses{P_{i''_{r''},{m''}^*_{\! r''}}}{P_{i_0,m^*_0+t''+1-r''}}{I_{i'_0,m'_0}}\text{).}\]
+            \item If $m_0\ge0$ (resp. $m'_0\ge0$), then for $0\le r''\le t''$ with $t''-r''$ odd there exists a short exact sequence
+              \[\ses{P_{i_0,m_0}}{P_{i''_{r''},{m''}^*_{\! r''}}}{P_{i_0,m^*_0+t''+1-r''}}\]
+              (resp. a short exact sequence
+              \[\ses{P_{i'_0,m'_0}}{P_{i''_{r''},{m''}^*_{\! r''}}}{P_{i'_0,{m'}^*_{\! 0}+t''+1-r''}}\text{).}\]
+            \item If $m_0<0$ (resp. $m'_0<0$), then for $0\le r''\le t''$ with $t''-r''$ odd there exists a short exact sequence
+              \[\ses{P_{i''_{r''},{m''}^*_{\! r''}}}{P_{i_0,m^*_0+t''+1-r''}}{I_{i_0,m_0}}\]
+              (resp. a short exact sequence
+              \[\ses{P_{i''_{r''},{m''}^*_{\! r''}}}{P_{i'_0,{m'}^*_{\! 0}+t''+1-r''}}{I_{i'_0,m'_0}}\text{).}\]
+          \end{enumerate}
       \end{enumerate}
     \item Suppose $|Q_1(i,-)\sqcup Q_1(-,i)|\ge4$.
       Then
       \begin{enumerate}
-        \item The map $P_{i_k,m_k}\oplus P_{i'_{k'},m'_{k'}}\to P_{i,m}$ is injective.
+        \item The map $P_{i_t,m_t}\oplus P_{i'_{t'},m'_{t'}}\to P_{i,m}$ is injective.
       \end{enumerate}
     \item there exists an exact sequence 
-      \[\ses{P_{i,m}}{P_{i_k,m_k} \oplus P_{i'_{k'},m'_{k'}}}{P_{i,m+1}^{\hat L}}\]
+      \[\ses{P_{i,m}}{P_{i_t,m_t} \oplus P_{i'_{t'},m'_{t'}}}{P_{i,m+1}^{\hat L}}\]
       for the truncated preprojective representation
       \[
         P_{i,m+1}^L:=P_{i,m+1}/\left( \bigoplus_{k\in Q_0(-,i)\setminus L} P_{k,m}\otimes \Irr(P_{k,m},P_{i,m+1}) \oplus \bigoplus_{j\in Q_0(i,-)\setminus L} P_{j,m+1}\otimes \Irr(P_{j,m+1},P_{i,m+1}) \right)
       \]
-    \item 
   \end{enumerate}
 \end{proposition}
 \begin{proof}
-  To see (2), we note that there is a commutative diagram
+  To see the last part of (1), we note that there is a commutative diagram
   \[
     \xymatrix{
       & & 0 \ar[d] & 0 \ar[d] & \\
       & & P_{i'_{r'},m'_{r'}} \ar@{=}[r]\ar[d] & P_{i'_{r'},m'_{r'}} \ar[d] & \\
-      0 \ar[r] & P_{i_r,m_r} \ar[r]\ar@{=}[d] & P_{i,m} \ar[r]\ar[d] & P_{i_{k-r},m^*_{k-r}} \ar[r]\ar[d] & 0 \\
-      0 \ar[r] & P_{i_r,m_r} \ar[r] & P_{i'_{k'-r'},{m'}^*_{\! k'-r'}} \ar[r]\ar[d] & X \ar[r]\ar[d] & 0 \\
+      0 \ar[r] & P_{i_r,m_r} \ar[r]\ar@{=}[d] & P_{i,m} \ar[r]\ar[d] & P_{i_{t-r},m^*_{t-r}} \ar[r]\ar[d] & 0 \\
+      0 \ar[r] & P_{i_r,m_r} \ar[r] & P_{i'_{t'-r'},{m'}^*_{\! t'-r'}} \ar[r]\ar[d] & X \ar[r]\ar[d] & 0 \\
       & & 0 & 0 & 
     }
   \]
+
+  Part (2.a.i) follows from applying Corollary~\ref{cor:sequence reducing} to the sequences
+  \[\ses{P_{i,m}}{ P_{i_t,m^*_t} \oplus P_{i'_{t'},{m'}^*_{\! t'}} \oplus P_{i''_{t''},{m''}^*_{\! t''}} }{P_{i,m+1}}\]
+  \[\ses{P_{i_0,m_0}}{P_{i,m}}{P_{i_t,m^*_t}}\]
+  \[\ses{P_{i'_{t'},{m'}^*_{\! t'}}}{P_{i,m+1}}{P_{i'_0,{m'}^*_{\! 0}+1}}\]
+  \sayD{Is there a nice way to see (2.a.ii) without derived categories?}
+
+  Part (2.b.i) follows from applying Corollary~\ref{cor:sequence reducing} once using the sequences
+  \[\ses{P_{i,m}}{ P_{i_t,m^*_t} \oplus P_{i'_{t'},{m'}^*_{\! t'}} \oplus P_{i''_{t''},{m''}^*_{\! t''}} }{P_{i,m+1}}\]
+  \[\ses{P_{i_0,m_0}}{P_{i,m}}{P_{i_t,m^*_t}}\]
+  \[\ses{P_{i''_{t''},{m''}^*_{\! t''}}}{P_{i,m+1} \oplus P_{i''_{t''-1},{m''}^*_{\! t''-1}}}{P_{i''_{t''},{m''}^*_{\! t''}+1}}\]
+  and then again using the sequence
+  \[\ses{P_{i'_0,{m'}^*_{\! 0}}}{P_{i''_{t''},{m''}^*_{\! t''}+1}}{P_{i_0,m^*_0+2}}\]
+  coming from (2.a.i).
+
+  We prove parts (2.c.i) and (2.c.iii) by simultaneous downward induction on $r''$, the base cases $r''=t''$ and $r''=t''-1$ being (2.a.i) and (2.b.i) respectively.
+  By iteratively applying Corollary~\ref{cor:sequence reducing}, we may replace the sequence
+  \[\ses{P_{i,m}}{ P_{i_0,m^*_0} \oplus P_{i'_0,{m'}^*_{\! 0}} \oplus P_{i''_{t''},{m''}^*_{\! t''}} }{P_{i,m+1}}\]
+  by the sequence
+  \[\ses{P_{i,m}}{ P_{i_0,m^*_0} \oplus P_{i'_0,{m'}^*_{\! 0}} \oplus P_{i''_{r''},{m''}^*_{\! r''}} }{P_{i''_{r''+1},{m''}^*_{\! r''+1}+1}}\]
+  which reduces to the desired sequence by induction using Corollary~\ref{cor:sequence reducing}.
+  \sayD{Same question for (2.c.ii) and (2.c.iv).}
+
 \end{proof}
 
 
