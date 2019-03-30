@@ -1133,7 +1133,7 @@ Assume that $Q$ is wild with $s\geq 3$ and that either $q_1$ is not a leaf or th
 %Let us assume that this quiver is of type $\tilde E_8$. Then $q_1$ 
 
 \end{proof}
-
+In the following, we call a pair $(i_0,i_k)\in Q_0\times Q_0$ \emph{good} if the quotient $P_{i_k,m_k}/P_{i_0,0}$ is not preinjective, with $m_k$ as defined in Proposition \ref{pro: injective quotients}.
 \begin{lemma}\sayT{this holds for arbitrary orientations, check statement, do we need this?}
 	Let $i,j,l\in Q_0$ pairwise different such that $i\in p_{j,l}$ and assume that all arrows are oriented towards $i$.  Then $(P_{j,0}\oplus P_{l,0})/P_{i,0}$ is not preinjective and thus $P_{i,m}\to P_{j,m}\oplus P_{l,m}$ is injective for all $m\geq 0$ if and only if $i$ is $3$-valent, $j$ and $k$ are leaves and, moreover, $Q$ is flag quiver.
 \end{lemma}
@@ -1154,7 +1154,7 @@ Let $j_1\in N_i\cap p_{j,i}$ and $k_1\in N_{i}\cap p_{k,i}$. If $j_1$ is not a l
 \end{proof}
 
 
-In the following, we call a pair $(i_0,i_k)\in Q_0\times Q_0$ \emph{good} if the quotient $P_{i_k,m_k}/P_{i_0,0}$ is not preinjective, with $m_k$ as defined in Proposition \ref{pro: injective quotients}.
+
 
 We collect several sufficient conditions for $(i,j)\in Q_0\times Q_0$ being a good pair which follow directly from Proposition \ref{pro: injective quotients}.
 \begin{corollary}
@@ -1334,7 +1334,7 @@ We may assume that $I=N_{i}\backslash\{j_1,j_2\}$.
 \end{proof}
 
 
-
+\begin{comment}
 \begin{lemma}
   Let $i\in Q_0$ be not a limb. The pair $(\xi_{i,j}^m,I)$ with $I\neq\emptyset$ is reduced if $|I|\leq |N_{p_{i,j}}|-2$ or if $I=|N_{p_{i,j}}|-1$ and $q\in N_{p_{i,j}}\backslash I$ is not a limb with respect to $i$. 
 \end{lemma}      
@@ -1346,44 +1346,78 @@ $$\udim P_{i,m}< \sum_{k\in N_{p_{i,j}}\backslash I}\udim P_{i,k}^m.$$
 If $|I|=|N_{p_{i,j}}|-1|$, this means that the morphism $P_{i,m}\to P_{q,m}$ is surjective which is the case if and only if $q$ is a limb by Corollary \ref{cor:sectional morphisms}.
 \sayT{to be continued}
 \end{proof}
+\end{comment}
 
 \begin{lemma}\begin{enumerate}
-\item If $j$ is not a leaf, there exists a vertex $i$ such that the exact sequence $E_{i,j}^m$ is reduced.
+\item If $j$ is not a leaf, there exists a vertex $i$ such that the exact sequence $\xi_{i,j}^m$ is reduced.
 \item If $j$ is a leaf, every representation $P_{j}^m$ appears as an appropriate quotient.
 \end{enumerate}
 \end{lemma}
-For two vertices $p,q\in Q_0$ with $p\in N_q$,  when deleting the unique arrow between $p$ and $q$, we $Q$ splits up into two subquivers which we denote by $K_p$ and $K_q$.
-Write for short $N_{i,j}:=N_{p_{i,j}}$
-\begin{definition} We call a pair $(E_{i,j}^m,I)$ where $I\subset N_{i,j}$ with $N_{i,j}\backslash I=\{q\}$ \emph{strong reduced}\sayT{maybe we should call it reduced} if the following conditions are satisfied:
-\begin{enumerate}
-\item $(E_{i,j}^m,I)$ is reduced;
-\item If $q,j\in N_p$, then $q$ is not a leaf if $j$ is a limb;
-\item If $q\in N_j$, then $K_q$ is not of Dynkin type $D$.
-\end{enumerate}
-\end{definition}
-
+For two vertices $p,q\in Q_0$ with $p\in N_q$,  when deleting the unique arrow between $p$ and $q$, we $Q$ splits up into two subquivers. We denote the one containing $p$ by $K_{p,q}$ and the one containing $q$ by $K_{q,p}$. Moreover, for a subset $M\subset Q_0$ by $K_M$ we denote the smallest connected subquiver of $Q$ containing $M$. Write for short $N_{i,j}:=N_{p_{i,j}}$.
 
 
 We call a quiver \emph{$3$-valent} if it is a flag quiver with one $3$-valent vertex.
+\begin{definition} Let $i,j,q\in Q_0$. We call $(j,q)$ a dead end with respect to $i$ if one of the following conditions are satisfied:
 
-\begin{proposition}Let $Q$ be a tree quiver which is not $3$-valent. Let $i,j\in Q_0$ with $i\neq j$ such that $(E_{i,j}^m,I)$ is strong reduced with $N_{i,j}\backslash I=\{q\}$. Then there exists a vertex $l\in Q_0$ and $J\subset N_{l,q}$ with $i\in J$ and $N_{l,q}\backslash J=\{t\}$ such that $(E^m_{l,q},J)$ is strong reduced.
+\begin{enumerate}
+\item $j$ and $q$ are both limbs with respect to $i$;
+\item there there exists a vertex $l\in N_i$ such that 
+\begin{enumerate}
+\item $j,q\in K_{l,i}$; 
+\item $K_{\{j,q,l\}}$  is a $3$-valent quiver;\sayT{delete neighbors of $l$ which are not in direction $j,q$.}
+\item $q$ or $j$ is a leaf with respect to the $3$-valent vertex $p$ of $K_{\{j,q,l\}}$.
+\end{enumerate}
+\end{enumerate}
+We call a pair $(\xi_{i,j}^m,I)$ where $I\subset N_{i,j}$ with $N_{i,j}\backslash I=\{q\}$ \emph{strong reduced} if the pair $(j,q)$ is not a dead end with respect to $i$.
 
-\end{proposition}
+\end{definition}
 
-\begin{proof}\sayT{base cases?!, first try}
-We consider the three cases $q\in N_i,\,q\in N_j$ and $q\in N_{i,j}\backslash (N_i\cup N_j)$. Write $i=s_0,s_1,\ldots, s_r=j$ for the vertices on $p_{i,j}$.
+Note that $j$ and $p$ might be equal. The following is straightforward.\sayT{base cases are missing}
 
-Let $q\in N_i$. Since $(i,q)$ is a good pair, $q$ is not a limb with respect to $i$. Thus there exist $l_1,l_2\in K_q$ such that they $l_1$ and $l_2$ are no limbs with respect to each other (in $Q$). First assume that $l_1\notin N_q$ (or $l_2\notin N_{q}$). Then as $Q$ is not $3$-valent, Proposition \ref{pro: injective quotients} guarantees that $(l_1,l_2)$ is a good pair which means that $(E_{l_1,q}^m, N_{l_1,q}\backslash\{l_2\})$ is reduced. Actually, it is strong reduced as $q$ is not a limb with respect to any vertex. 
+\begin{lemma}\sayT{insert proof}If $(j,q)$ is not a dead end with respect to $i$ the pair $(\xi^m_{i,j},N_{i,j}\backslash \{q\})$ is reduced.
+\end{lemma}
+\begin{proof}
+We have to check that $P_{i,q}^0/P_{i,0}$ is not preinjective. If $K_{i,j,q}$ is not $3$-valent, this follows directly from Proposition \ref{pro: injective quotients}. If $K_{i,j,q}$ is $3$-valent both $q$ and $j$ are no leafs of $K_{i,j,q}$. But then again Proposition \ref{pro: injective quotients} implies that $(\xi^m_{i,j},N_{i,j}\backslash \{q\})$ is reduced.
+\end{proof}
 
-If $(K_q)_0=\{q,l_1,l_2\}$, then $K_{l_2}$ is just a point and not of Dynkin type $D$ which means that $(E_{l_1,q}^m, N_{l_1,q}\backslash\{l_2\})$ is also strong reduced.
+\begin{lemma}Let $Q$ be a tree quiver which is not $3$-valent. For every vertex $j\in Q_0$, there exist vertices $i,q\in Q_0$ such that $(\xi_{i,j}^m,N_{i,j}\backslash\{q\})$ is strong reduced.
+\end{lemma}
+\begin{proof}
+If $j$ is a limb with respect to a vertex $l$, then there exists a vertex $i$ such that on $p_{i,j}$ there are at least two $3$-valent vertices $p_1,p_2$ or one $n$-valent vertex $p$ with $n\geq 4$. 
 
+In the first case assume that $d(p_1,j)>d(p_2,j)$ and $q\in N_{p_1}\backslash p_{i,j}$. Then the pair $(j,q)$ is not a dead end with respect to $i$ and thus $(\xi_{i,j}^m,N_{i,j}\backslash\{q\})$ is strong reduced. In the second case $(\xi_{i,j}^m,N_{i,j}\backslash\{q\})$, where $q\in N_p\backslash p_{i,j}$ is arbitrary, is strong reduced.
 
+Thus assume that $j$ is not a limb with respect to any vertex which means that $|N_j|\geq 3$. If $|N_j|=3$, there exists a vertex $i$ which is at least $3$-valent. Taking any vertex $q\in N_i$, it is clear that $(\xi_{i,j}^m,N_{i,j}\backslash\{q\})$ is strong reduced. 
 
-Let $q\in N_j$, thus $j$ is not a limb with respect to any vertex. Thus either $q$ is not a limb with respect to $j$ or there exists $t\in N_{j}$ with $t\neq q$. In the second case, $t$ is not a leaf if $q$ is a leaf because $(i,q)$ is a good pair (part (4) of Proposition \ref{pro: injective quotients}). If $q$ is not a limb with respect to $j$, then for $t\in N_q\backslash\{j\}$ arbitrarily, the pair $(s_1,t)$ is good as $t$ is not a limb with respect to $s_1$ and as $K_q$ is not of type $D$. Moreover, $K_t$ is not of type $D$. In summary, $(E_{s_1,q}^m, N_{s_1,q}\backslash\{t\})$ is strong reduced. 
+As this arguments also applies if there exist two vertices of valency strictly greater than $2$, it remains to consider the case when $j$ is the only $n$-valent vertex with $n\geq 3$. By assumption we actually have $n\geq 4$ and, moreover, $Q$ is a flag quiver. In this case, taking any $i,q\in N_j$ it follows that $(\xi_{i,j}^m,N_{i,j}\backslash\{q\})$ is strong reduced.
+\end{proof}
+
+\begin{lemma}Let $Q$ be a tree quiver which is not $3$-valent. Let $i,j\in Q_0$ with $i\neq j$ such that $(\xi_{i,j}^m,I)$ is strong reduced with $N_{i,j}\backslash I=\{q\}$. Then there exists a vertex $l\in Q_0$ and $J\subset N_{l,q}$ with $i\in J$ and $N_{l,q}\backslash J=\{t\}$ such that $(E^m_{l,q},J)$ is strong reduced.
+
+\end{lemma}
+
+\begin{proof}
+We consider the three cases $q\in N_i,\,q\in N_j$ and $q\in N_{i,j}\backslash (N_i\cup N_j)$. Write $i=s_0,s_1,\ldots, s_r=j$ for the vertices on $p_{i,j}$.\sayT{we should make the last two cases into one}
+
+Let $q\in N_i$. Since $(i,q)$ is a good pair, $q$ is not a limb with respect to $i$. Thus there exist $l_1,l_2\in K_{q,i}$ such that $l_1$ and $l_2$ are no limbs with respect to each other (in $Q$). First assume that $l_1\notin N_q$ (or $l_2\notin N_{q}$). As $Q$ is not $3$-valent, Proposition \ref{pro: injective quotients} guarantees that $(l_1,l_2)$ is a good pair. Moreover, $(q,l_2)$ is not a dead end with respect to $l_1$ which means that $(\xi_{l_1,q}^m, N_{l_1,q}\backslash\{l_2\})$ is strong reduced. 
+
+If $(K_{q,i})_0=\{q,l_1,l_2\}$, then again $Q$ being not $3$-valent guarantees that $(q,l_2)$ is not a dead end with respect to $l_1$ which means that $(\xi_{l_1,q}^m, N_{l_1,q}\backslash\{l_2\})$ is also strong reduced.
+
+Let $q\in N_j$. As $(j,q)$ is not a dead end with respect to $i$, we either have $|N_{s_1,q}\cap K_{i,s_1}|\geq 2$ with $\{p_1,p_2\}\in N_{s_1,q}\cap K_{s_1,s_2}$ or $N_{s_1,q}\cap K_{i,s_1}=\{p\}$ for some vertex $p$ which is not a limb with respect to any vertex. 
+
+If $p_1\in N_{s_1}$ in the first case, it is straightforward that $(\xi_{p_1,q}^m,N_{p_1,q}\backslash\{p_2\})$ is strong reduced as $(j,q)$ is not a dead end with respect to $i$ and thus also $(q,p_2)$ is not a dead end with respect to $p_1$. Note that we also have $i\in N_{p_1,q}$ in this case.
+
+If $N_{s_1}=\{i,s_2\}$, then $(\xi_{s_1,q}^m, N_{s_1,q}\backslash\{p_1\})$ is strong reduced as $(j,q)$ is not a dead end with respect to $i$.  
+
+In the second case, the pair $(\xi_{p,q}^m,N_{p,q}\backslash\{l\})$ where $l\in N_{p}\backslash\{s_1\}$ is obviously strong reduced as $(q,l)$ is not a dead end with respect to $p$.
+
+%Thus either $q$ is not a limb with respect to $j$ or there exists $t\in N_{j}$ with $t\neq q$. In the second case, $t$ is not a leaf if $q$ is a leaf because $(i,q)$ is a good pair (part (4) of Proposition \ref{pro: injective quotients}). If $q$ is not a limb with respect to $j$, then for $t\in N_q\backslash\{j\}$ arbitrarily, the pair $(s_1,t)$ is good as $t$ is not a limb with respect to $s_1$ and as $K_q$ is not of type $D$. Moreover, $K_t$ is not of type $D$. In summary, $(\xi_{s_1,q}^m, N_{s_1,q}\backslash\{t\})$ is strong reduced. 
   
-Finally, let $q\in N_{s_u}$ for some $u\in\{1,\ldots,r-1\}$. If $u=r-1$, then $q$ is not a leaf if $j$ is a limb which also ensures that $K_{s_{u}}$ is not of type $D$ in this case. Then $(E_{s_1,q}^m, N_{s_1,q}\backslash\{j\})$ is strong reduced as $(s_1,j)$ is a good pair as $j$ is not a limb or $q$ not a leaf if $j$ is a limb.\sayT{DT condition}
+Finally, let $q\in N_{s_u}$ for some $u\in\{1,\ldots,r-1\}$. As above first assume that we find $\{p_1,p_2\}\in  N_{s_1,q}\cap K_{s_1,s_2}$. If $p_1\in N_{s_1}$, the pair $(\xi_{p_1,q}^m,N_{p_1,q}\backslash\{p_2\})$ is strong reduced as $(j,q)$ is not a dead end with respect to $i$. Furthermore, if $N_{s_1}=\{i,s_2\}$, then $(\xi_{s_1,q}^m, N_{s_1,q}\backslash\{p_2\})$ is strong reduced.
 
-Thus assume that $u\neq r-1$ and consider $(E_{s_1,q}^m, N_{s_1,q}\backslash\{s_{u+1}\})$.  
+If $N_{s_1,q}\cap K_{i,s_1}=\{p\}$, then $p$ is not a limb with respect to any vertex. As above $(\xi_{p,q}^m,N_{p,q}\backslash\{l\})$ where $l\in N_{p}\backslash\{s_1\}$ is strong reduced as $(q,l)$ is not a dead end with respect to $p$.
+%If $u=r-1$, then $q$ is not a leaf if $j$ is a limb which also ensures that $K_{s_{u}}$ is not of type $D$ in this case. Then $(\xi_{s_1,q}^m, N_{s_1,q}\backslash\{j\})$ is strong reduced as $(s_1,j)$ is a good pair as $j$ is not a limb or $q$ not a leaf if $j$ is a limb.\sayT{DT condition}
+
 
 \end{proof}
 
@@ -1405,7 +1439,7 @@ Every short exact sequence (\ref{ses}) induces a morphism $P_{i,k_l}^m\to \tau  
 
 \begin{proposition}
   \label{pro:cell decompositions}
-Let $(E_{i,j}^m,I)$ be a reduced with $I=\{k_1,\ldots,k_{r+1}\}$ and let $k_l=k_l^1,\ldots,k_l^{t_l}=j$ be the vertices on the path $p_{k_l,j}$. Then $P_{ij}^{m+1}$ has property (C) if $P_{i,k_l}^m$, $P^{m,I_{r}}_{i,j}$, $P_{i,k^{s}_l}^m/P_{i,k^{s-1}_l}^m$ and its $\tau$-translates have property (C) for $l=1,\ldots,r$ and $s=1,\ldots,t_l$ where we set $P_{i,k^{0}_l}^m=0$.\sayT{the vertices on the path from $k_l$ to $j$ are certain vertices on the path from $i\to j$}
+Let $(\xi_{i,j}^m,I)$ be a reduced with $I=\{k_1,\ldots,k_{r+1}\}$ and let $k_l=k_l^1,\ldots,k_l^{t_l}=j$ be the vertices on the path $p_{k_l,j}$. Then $P_{ij}^{m+1}$ has property (C) if $P_{i,k_l}^m$, $P^{m,I_{r}}_{i,j}$, $P_{i,k^{s}_l}^m/P_{i,k^{s-1}_l}^m$ and its $\tau$-translates have property (C) for $l=1,\ldots,r$ and $s=1,\ldots,t_l$ where we set $P_{i,k^{0}_l}^m=0$.\sayT{the vertices on the path from $k_l$ to $j$ are certain vertices on the path from $i\to j$}
 \end{proposition}
 \begin{proof}
   \sayT{this is the general strategy and roughly the induction step, there are assumptions missing, e.g. we need $\tau$-stability (induction basis)}
